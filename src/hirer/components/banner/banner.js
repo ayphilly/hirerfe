@@ -21,7 +21,7 @@ function Banner () {
                         <span className="top-title slide-up"> Let's hire your next great <strong> candidate </strong> </span>
 
                         <p> You know who you're looking for. We will help you find them.</p>
-                        <Link className="banner-inner-nav-link" to="/postjob" style={{textDecoration:'none'}}>Post A Job</Link>
+                        <Link className="banner-inner-nav-link" to="/hirer/postjob" style={{textDecoration:'none'}}>Post A Job</Link>
                         
                     </div>
                     <div className="left-bottom">
