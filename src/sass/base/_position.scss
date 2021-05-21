@@ -1,0 +1,15 @@
+//  display
+$displays: flex, inline-block, block, inline;
+@each $display in $displays {
+  .d-#{$display} {
+    display: $display;
+  }
+}
+
+// flex direction
+$directions: column, row;
+@each $direction in $directions {
+  .flex-#{$direction} {
+    flex-direction: $direction;
+  }
+}
