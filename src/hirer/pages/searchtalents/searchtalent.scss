@@ -1,0 +1,536 @@
+@import "../../../variables.scss";
+
+.searchtalent-container{
+    width: 100%;
+    height: 100em;
+    background-color: #FAFCFF;
+    @include rowflex(flex-start,flex-end);
+
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 100em;
+        margin-top: 100px;
+        margin-bottom: 300px;
+        @include rowflex(center,flex-start);
+    }
+    @include breakpoint(phablet) {
+        width: 100%;
+        height: auto; //AUTO
+        margin-top: 100px;
+       
+        @include rowflex(center,flex-start);
+    }
+
+    @include breakpoint(tablet) {
+        width: 100%;
+        height: 150em; //AUTO
+        margin-top: 100px;
+       
+        @include rowflex(center,flex-start);
+    }
+
+    .searchtalent-inner-col {
+        width: 95%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 70% 25%;
+        grid-template-rows: 100%;
+        column-gap: 5%;
+        align-items: flex-end;
+        justify-content: space-between;
+        
+        @include breakpoint(mobileonly) {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: 20% 75% ;
+            row-gap: 5%;
+            grid-auto-flow: dense;
+        }
+
+        @include breakpoint(phablet) {
+            width: 100%;
+            height: 90%;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: 20% 75% ;
+            row-gap: 10%;
+            grid-auto-flow: dense;
+            margin-bottom: 300px;
+        }
+
+        @include breakpoint(tablet) {
+            width: 100%;
+            height: 90%;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: 20% 75% ;
+            // row-gap: 5%;
+            grid-auto-flow: dense;
+            margin-bottom: 300px;
+        }
+
+        .searchtalent-left {
+            height: 100%;
+            width: 100%;
+            @include colflexx(flex-start);
+
+            @include breakpoint(mobileonly) {
+                width: 100%;
+                height: auto;
+                @include colflex(flex-start,space-between);
+            }
+            @include breakpoint(phablet) {
+                width: 100%;
+                height: 100em; //edit auto
+                // background-color: red;
+                @include colflex(center,space-around);
+            }
+            @include breakpoint(tablet) {
+                width: 100%;
+                height: 100em; //edit auto
+                // background-color: red;
+                @include colflex(flex-start,space-around);
+            }
+
+            .searchtalent-left-top {
+                width: 100%;
+                height: 20%;
+                @include colflex(flex-start,space-around);
+
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    height: 30%;
+                    @include colflex(flex-start,space-around);
+                }
+
+                @include breakpoint(phablet) {
+                    width: 100%;
+                    height: 30%;
+                    @include colflex(flex-start,space-around);
+                    
+                }
+
+                @include breakpoint(tablet) {
+                    width: 100%;
+                    height: 30%;
+                    @include colflex(flex-start,space-around);
+                }
+
+
+                form {
+                    width: 100%;
+
+                    @include colflex(flex-start,space-around);
+
+                    @include breakpoint(mobileonly) {
+                        width: 100%;
+                        height: 100%;
+                        // background-color: pink;
+                        @include rowflex(center, center);
+                    }
+
+                    @include breakpoint(phablet) {
+                        width: 100%;
+                        height: 100%;
+                        @include rowflex(center, center);
+                    }
+
+                    @include breakpoint(tablet) {
+                        width: 100%;
+                        height: 100%;
+                        @include rowflex(center, center);
+                    }
+                    
+                    .search-input {
+                        @include rowflex(flex-end, space-between);
+                        width: 95%;
+
+                        @include breakpoint(mobileonly) {
+                            width: 90%;
+                            height: 300px;
+                            // background-color: red;
+                            @include colflex(flex-start, space-between);
+                        }
+
+                        @include breakpoint(phablet) {
+                            width: 90%;
+                           
+                            height: fit-content;
+                            @include rowflex(flex-end, space-between);
+                        }
+
+                        @include breakpoint(tablet) {
+                            width: 90%;
+                            height: fit-content;
+                            @include rowflex(flex-end, space-between);
+                        }
+
+                        .search-submit {
+                            width: 300px;
+                            height: 60px;
+                            font-size: 1em;
+                            font-family: 'Inter', sans-serif;
+                            font-weight: 500;
+                            border: none;
+                            color: #fff;
+                            background-color: $blue-700;
+                            border-radius: 10px;
+                            cursor: pointer;
+                            transition: all 0.3s ease-in;
+                            text-decoration: none;
+                            @include rowflex(center, center);
+            
+                            @include breakpoint(mobileonly) {
+                                width: 100%;
+                                height: 50px;
+                            }
+                            @include breakpoint(phablet) {
+                                width: 100px;
+                                height: 60px;
+                            }
+
+
+                            @include breakpoint(tablet) {
+                                width: 200px;
+                                height: 50px;
+                            }
+            
+                            &:hover {
+                                background-color: $blue-900;
+                            }
+                        }
+
+                    }
+                    .form-dropdown {
+                        width: 90%;
+                        @include rowflex(flex-end, space-between);
+
+                        @include breakpoint(mobileonly) {
+                            display: none;
+                        }
+
+                        @include breakpoint(tablet) {
+                            width: 90%;
+                            height: fit-content;
+                            @include rowflex(center, space-between);
+                        }
+
+                        @include breakpoint(laptop) {
+                            width: 100%;
+                            height: fit-content;
+                            @include rowflex(center, space-between);
+
+                            div:nth-child(1){
+                                margin-left: 0px !important;
+                            }
+                        }
+                    }
+
+
+                    
+
+                    
+                }
+            }
+            hr {
+                width: 100%;
+                border: 1px solid #F9F8F9;
+
+                @include breakpoint(tablet) {
+                    width: 90%;
+                    
+                }
+            }
+
+            .searchtalent-left-bottom {
+                width: 100%;
+                height: 75%;
+                display: grid;
+                grid-template-columns: 30% 65%;
+                grid-template-rows: 100%;
+                column-gap: 5%;
+                justify-content: space-between;
+
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    height: 55em;
+                    display: grid;
+                    grid-template-columns:  100% ;
+                    grid-template-rows:100%;
+                    align-content: start;
+                    justify-content: space-between;
+                    justify-items: center;
+                    margin-top: 50px;
+                }
+
+                @include breakpoint (phablet) {
+                    width: 90%;
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns:  100% ;
+                    grid-template-rows:70%;
+                    row-gap: 5%;
+                    align-content: start;
+                    justify-content: space-between;
+                    justify-items: center;
+                    // margin-top: 50px;
+                    
+                }
+
+                @include breakpoint(tablet) {
+                    width: 100%;
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns:  100% ;
+                    grid-template-rows:20% 75%;
+                    row-gap: 5%;
+                    align-content: start;
+                    justify-content: space-between;
+                    justify-items: center;
+                    margin-top: 50px;
+                }
+
+
+                .left {
+                    width: 100%;
+                    height: 100%;
+                    // background-color: navy;
+                    @include rowflex(flex-start, space-between);
+                    @include breakpoint(mobileonly) {
+                        height: 0px;
+                        display: none;
+                    }
+
+                    @include breakpoint(phablet) {
+                        display: none;
+                    }
+
+                    @include breakpoint(tablet) {
+                        width: 100%;
+                        height: 30%;
+                        @include rowflex(center, center);
+                    }
+
+                    .left-inner {
+                        // background-color: red;
+                        width: 90%;
+                        height: 90%;
+
+                        .left-filter {
+                            
+                            height: fit-content;
+                            width: 100%;
+                            @include colflex(flex-start, space-between);
+                            margin-top: 50px;
+                            .single-filter{
+                                width: 100%;
+                                height: fit-content;
+                                @include colflex(flex-start, space-between);
+                                
+                                
+                                .accordion {
+
+                                    color: #444;
+                                    cursor: pointer;
+                                    width: 100%;
+                                    height: 30px;
+                                    border: none;
+                                    text-align: left;
+                                    outline: none;
+                                    font-size: 15px;
+                                    background-color: transparent;
+                                    transition: 0.4s;
+                                    @include rowflex(center, space-between);
+    
+                                    &.active{
+                                        &::after{
+                                            content: "\2212";
+                                        }
+                                       
+                                    }
+
+                                    &::after{
+                                        
+                                        content: '\002B';
+                                        color: #777;
+                                        font-weight: bold;
+                                        float: right;
+                                        margin-left: 5px;
+                                          
+                                    }
+                                }
+    
+                                ul {
+                                    list-style: none;
+                                    padding-left:0 ;
+                                    width: 100%;
+                                    max-height: 0;
+                                    overflow: hidden;
+                                    transition: max-height 0.2s ease-out;
+    
+                                    li {
+    
+                                    }
+                                }
+
+                            }
+                            
+                        }
+                    }
+
+                }
+
+                .right {
+                    width: 90%;
+                    height: 100%;
+                    
+                    @include colflex(center,space-around);
+                    @include breakpoint(mobileonly) {
+                        width: 90%;
+                        height: 100%;
+                        @include rowflex(flex-start,center);
+                    }
+
+                    @include breakpoint(phablet) {
+                        width: 100%;
+                        height: 100%;
+                        @include rowflex(flex-start,center);
+                    }
+                    .right-details {
+                        width: 90%;
+                        text-align: left;
+                        @include rowflex(center, space-between);
+                        p:nth-child(2) {
+                            color: $gray-500;
+                        }
+                    }
+                    .right-container {
+                        width: 90%;
+                        height: 100%;
+                        background: #FFFFFF;
+                        border: 1px solid #E0E0E0;
+                        box-sizing: border-box;
+                        border-radius: 10px;
+                        @include rowflex(center,center);
+                        @include breakpoint(mobileonly) {
+                            width: 100%;
+                            height: 100%;
+                            @include rowflex(center,center);
+                        }
+
+                        @include breakpoint(phablet) {
+                            width: 100%;
+                            height: 100%;
+                            
+                            @include rowflex(center,center);
+                        }
+
+                        @include breakpoint(tablet) {
+                            width: 100%;
+                            height: 100%;
+                            
+                            @include rowflex(center,center);
+                        }
+
+                        .right-inner {
+                            width: 90%;
+                            height: 100%;
+                            @include colflex(flex-start, space-around);
+                            // background-color: red;
+                            @include breakpoint(mobileonly) {
+                                width: 95%;
+                                height: 95%;
+                                @include colflex(center, space-between);
+
+                            }
+
+                            @include breakpoint(phablet) {
+                                width: 95%;
+                                height: 95%;
+                                @include colflex(center, space-between);
+                                
+                            }
+
+                            @include breakpoint(tablet) {
+                                width: 95%;
+                                height: 95%;
+                               
+                                @include colflex(center, space-between);
+                                
+                            }
+    
+                            hr {
+                                width: 100%;
+                                border: 1px solid $gray-100;
+
+                                
+                            }
+                        }
+                    }
+
+                    
+
+                }
+
+            }
+
+
+        }
+
+        .searchtalent-right {
+            width: 100%;
+            height: 100%;
+            @include rowflex(center,center);
+           
+
+            @include breakpoint (mobileonly) {
+                grid-column-start: 1;
+                grid-row-start: 1;
+                width: 100%;
+                height: 300px;
+            }
+            @include breakpoint (phablet) {
+                grid-column-start: 1;
+                grid-row-start: 1;
+                width: 100%;
+                height: 300px;
+            }
+            @include breakpoint (tablet) {
+                grid-column-start: 1;
+                grid-row-start: 1;
+                width: 100%;
+                height: 300px;
+            }
+
+            .searchtalent-right-inner {
+               
+                width: 100%;
+                height: fit-content;
+                @include breakpoint (mobileonly) {
+                    
+                    width: 100%;
+                    height: 300px;
+                }
+
+                @include breakpoint (phablet) {
+                    
+                    width:100%;
+                    height: 300px;
+                }
+
+                @include breakpoint (tablet) {
+                    
+                    width:100%;
+                    height: 300px;
+                }
+
+            }
+            
+        }
+
+
+    }
+
+}

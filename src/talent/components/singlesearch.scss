@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+.single-search-container {
+    width: fit-content;
+    display: inline-block;
+    height: 65px;
+    background-color: $gray-100;
+    border-radius: 10px;
+    padding: 0px 20px 0px 20px;
+    transition: all 0.3s ease-in;
+
+    @include rowflex(center,center);
+    @include breakpoint(mobileonly) {
+        height: 50px;
+        padding: 0px 10px 0px 10px;
+    }
+
+    .single-search-inner {
+        width: fit-content;
+        @include rowflex(center, space-between);
+        
+
+        p{
+            @include fontNormal(1em, 1em, $blue-902);
+            transition: all 0.3s ease-in;
+
+            @include breakpoint(mobileonly) {
+                @include fontNormal(.7em, 1em, $blue-902);
+            }
+            &:hover {
+                // background-color: $gray-300;
+                color: $blue-700;
+            }
+        }
+        .search-icon{
+            margin-right: 20px;
+        }
+
+    }
+    &:hover {
+        background-color: $gray-300;
+        color: $blue-700;
+    }
+}

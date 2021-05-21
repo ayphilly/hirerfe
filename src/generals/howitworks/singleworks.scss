@@ -1,0 +1,38 @@
+@import "../../variables.scss";
+
+
+.singlework-container {
+    height: 250px;
+    width: 14.4em;
+    @include rowflex(center,center);
+    text-align: center;
+    .singlework-inner {
+        width: 100%;
+        @include colflex(center,space-around);
+        img {
+            width: 70px;
+        }
+    
+        .singlework-content {
+            @include colflex(center,space-evenly);
+            p:nth-child(1) {
+                width: 75%;
+                @include fontSemiBold(1.3em,1.4em, $blue-901);
+                height: 2em;
+            }
+            p:nth-child(2) {
+                @include fontNormal(0.8em,1.4em, $blue-901);
+
+                @include breakpoint(phablet) {
+                    width: 75%;
+                    
+                }
+            }
+    
+        }
+
+    }
+
+    
+
+}

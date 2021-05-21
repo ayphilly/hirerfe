@@ -1,0 +1,87 @@
+@import "../../../variables.scss";
+
+.profile-details-container {
+    width: 95%;
+    @include breakpoint (mobileonly) {
+        width: 100%;
+    }
+
+    @include breakpoint (phablet) {
+        width: 100%;
+    }
+    // background-color: teal;
+
+    p:nth-child(1){
+        @include fontBold(2em, 1em, $gray-400);
+
+        @include breakpoint (mobileonly) {
+            @include fontBold(1.5em, 1em, $gray-400);
+        }
+        @include breakpoint (phablet) {
+            @include fontBold(1.5em, 1em, $gray-400);
+        }
+    }
+    .profile-information {
+        @include rowflex(flex-end, space-between);
+        
+        @include breakpoint (mobileonly) {
+            width: 100%;
+            @include colflex(flex-start, space-around);
+        }
+        @include breakpoint (phablet) {
+            width: 100%;
+            @include rowflex(flex-end, space-between);
+        }
+
+        .profile-information-inner {
+            @include colflex(flex-start, flex-end);
+
+            @include breakpoint (phablet) {
+                width: 60%;
+            }
+            
+
+            p:nth-child(1) {
+                
+                @include fontMedium(1.2em, 0em, $blue-901);
+
+                @include breakpoint (mobileonly) {
+                    margin: 0;
+                    @include fontMedium(1em, 0em, $blue-901);
+                }
+                @include breakpoint (phablet) {
+                    @include fontMedium(1.2em, 0em, $blue-901);
+                }
+            }
+            p:nth-child(2) {
+                @include fontLight(1.2em, 0em, $blue-901);
+
+                @include breakpoint (mobileonly) {
+                    margin-bottom: 0;
+                    @include fontLight(1em, 1em, $blue-901);
+                }
+                @include breakpoint (phablet) {
+                    margin-bottom: 0;
+                    @include fontLight(1em, 1em, $blue-901);
+                }
+            }
+
+        }
+        .change-profile{
+            @include fontMedium(1.2em, 1.5em, $blue-700);
+            text-decoration: none;
+
+            @include breakpoint (mobileonly) {
+                @include fontMedium(1em, 1em, $blue-901);
+            }
+
+            @include breakpoint (phablet) {
+                @include fontMedium(1em, 1em, $blue-901);
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

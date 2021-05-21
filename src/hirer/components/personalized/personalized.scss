@@ -1,0 +1,127 @@
+@import "../../../variables.scss";
+
+
+.personalized-container {
+    width: 100%;
+    height: 40em;
+    background-color: #FAFCFF;
+    @include rowflex(center,center);
+    @include breakpoint(mobileonly) {
+        height: 60em;
+    }
+    @include breakpoint(phablet) {
+        height: 50em;
+    }
+    @include breakpoint(tablet) {
+        height: 30em;
+    }
+    .personalized-innner-col{
+        width: 100%;
+        height: 80%;
+        @include colflex(center,flex-start);
+        text-align: center;
+        
+
+        .personalized-inner-top {
+            text-align: center;
+            height: 100%;
+            @include colflex(center,space-between);
+            @include breakpoint(phablet) {
+                height: 100%;
+            }
+            p:nth-child(1) {
+                @include fontBold(2.2em, 1em, $blue-902);
+                margin:0;
+                @include breakpoint(mobileonly) {
+                    @include fontBold(2em, 1em, $blue-902);
+                }
+                @include breakpoint(phablet) {
+                    width: 80%;
+                    @include fontBold(1.4em, 1em, $blue-902);
+                }
+
+                @include breakpoint(tablet) {
+                    width: 80%;
+                    @include fontBold(1.4em, 1em, $blue-902);
+                }
+            }
+            .personalized-subtitle {
+                @include fontNormal(1.2em, 1em, $blue-901);
+                width: 40%;
+                margin: 10px auto;
+               
+                @include breakpoint(mobileonly) {
+                    @include fontNormal(1em, 1em, $blue-901);
+                }
+                @include breakpoint(phablet) {
+                    margin: 20px auto;
+                    // width: 20%;
+                    @include fontNormal(1em, 1em, $blue-901);
+                }
+
+                @include breakpoint(tablet) {
+                    margin: 20px auto;
+                    width: 50%;
+                    @include fontNormal(1em, 1em, $blue-901);
+                }
+                
+            }
+
+            .personalized-list {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows: 170px;
+                column-gap: 50px;
+                row-gap: 50px;
+                width: 100%;
+                align-items: space-between;
+                align-content: center;
+                cursor: pointer;
+                height: 70%;
+
+                .step-container:nth-child(2) {
+                    margin-top: 50px;
+                }
+                @include breakpoint(mobileonly) {
+                    display: grid;
+                    grid-template-columns: auto;
+                    grid-template-rows: 170px 170px 170px;
+                    align-items: flex-start;
+                    justify-items: center;
+                    column-gap: 5px;
+                    row-gap: 30px;
+                }
+                @include breakpoint(tablet) {
+                    display: grid;
+                    grid-template-columns: auto auto auto;
+                    grid-template-rows:auto auto;
+                    column-gap: 5px;
+                    row-gap: 30px;
+                    height: 80%;
+                    width: 95%;
+                    
+                }
+                @include breakpoint(phablet) {
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    grid-template-rows:170px 170px ;
+                    column-gap: 5px;
+                    row-gap: 30px;
+                    height: 80%;
+                    width: 95%;
+                    align-items: center;
+                    justify-content: center;
+                    justify-items: center;
+                    align-self: center;
+                }
+            }
+
+        }
+
+        
+
+        
+
+
+    }
+}

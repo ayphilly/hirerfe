@@ -1,0 +1,193 @@
+@import "../variables.scss";
+
+.footer-container {
+    width: 100%;
+    height: 420px;
+    background-color: $blue-700;
+    @include rowflex(center, center);
+
+    @include breakpoint(mobileonly) {
+        @include rowflex(flex-start, center);
+        height: 60em;
+    }
+
+    .footer-inner-col {
+        width: 90%;
+        height: 90%;
+        @include colflex(center, space-between);
+
+        @include breakpoint(mobileonly) {
+            @include rowflex(center, center);
+            height: 100%;
+        }
+
+        .footer-inner-col-top {
+            width: 100%;
+            @include rowflex(flex-start, space-between);
+            @include breakpoint(mobileonly) {
+                width: 100%;
+                height: 80%;
+                @include colflex(center, space-between);
+                
+            }
+
+            .top-left {
+                width: 25%;
+                height: 170px;
+                @include colflex(flex-start, space-between);
+
+                @include breakpoint(mobileonly) {
+                    height: 30%;
+                    width: 100%;
+                    @include colflex(center, space-between);
+                    
+                }
+                img {
+                    width: auto;
+                    @include breakpoint(mobileonly) {
+                        width: 70px;
+                    }
+                }
+
+                .top-left-buttons {
+                    width: 100%;
+                    height: 100px;
+                    padding: 0px;
+                    @include rowflex(flex-start,space-between);
+
+                    @include breakpoint(mobileonly) {
+                        width: 90%;
+                        @include rowflex(flex-start,space-between);
+                    }
+
+                    .apple-button {
+                        width: 150px;
+                        height: 65px;
+                        background-color: $blue-800;
+                        @include rowflex(center,space-around);
+                        @include fontMedium(1.3em, 1em, #fff);
+                        text-decoration: none;
+                        border-radius: 10px;
+                        &:hover {
+                            background-color: $blue-900;
+                            color: $blue-500;
+                        }
+
+                        @include breakpoint(mobileonly) {
+                            @include fontMedium(1.1em, 1em, #fff);
+                        }
+                    }
+                    .android-button {
+                        width: 150px;
+                        height: 65px;
+                        background-color: $blue-800;
+                        @include rowflex(center,space-around);
+                        @include fontMedium(1.3em, 1em, #fff);
+                        text-decoration: none;
+                        border-radius: 10px;
+                        &:hover {
+                            background-color: $blue-900;
+                            color: $blue-500;
+                        }
+                        @include breakpoint(mobileonly) {
+                            @include fontMedium(1.1em, 1em, #fff);
+                        }
+                    }
+
+
+                }
+            }
+
+            .top-right {
+                width: 60%;
+                @include rowflex(flex-start, space-between);
+                text-align: left;
+
+                @include breakpoint(mobileonly) {
+                    height: 100%;
+                    width: 70%;
+                    @include colflex(center, space-between);
+                    text-align: center;
+                }
+
+
+                ul {
+                    list-style: none;
+                    padding: 0px;
+                    margin: 0px;
+                }
+                ul:nth-child(4) {
+                    width: 35%;
+
+                    @include breakpoint(mobileonly) {
+                        width: 65%;
+                    }
+                }
+
+                .Talents-footer-links, .Hirer-footer-links, .Help-footer-links, .Contact-footer-links  {
+
+                    li {
+                        @include fontNormal(0.9em, 2em, #fff);
+                        cursor: pointer;
+                        transition: all .3s ease-in;
+
+                        @include breakpoint(mobileonly) {
+                            @include fontNormal(0.8em, 2em, #fff);
+                        }
+
+                        &:hover {
+                            color: $blue-500;
+                        }
+                    }
+                    li:nth-child(1) {
+                        margin-bottom: 10px;
+                        @include fontMedium(1.2em, 1em, #fff);
+                        cursor:auto;
+                    }
+                }
+            }
+        }
+        hr{
+            width: 100%;
+            margin-bottom: 0 auto;
+            border: .5px solid $blue-800;
+        }
+        .footer-inner-col-bottom{
+            width: 100%;
+            color: #fff;
+            @include rowflex(center, space-between);
+
+            @include breakpoint(mobileonly) {
+                @include colflex(center, space-between);
+            }
+            
+            p{
+                @include fontNormal(1em,1em, #fff);
+
+                @include breakpoint(mobileonly) {
+                    @include fontNormal(0.8em, 1em, #fff);
+                }
+            }
+
+            .socials {
+                width: 10%;
+                @include rowflex(center, space-between);
+                @include breakpoint(mobileonly) {
+                    width: 30%;
+                }
+                .facebook-icon, .instagram-icon, .twitter-icon {
+                    transition: all .3s ease-in;
+                    
+                    &:hover {
+                        color: $blue-500;
+                    }
+
+                }
+
+                
+                
+            }
+
+        }
+    }
+}

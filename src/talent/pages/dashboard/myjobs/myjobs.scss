@@ -1,0 +1,86 @@
+@import "../../../../variables.scss";
+
+.myjobs-container {
+    width:  100%;
+    height: 100em;
+    background-color: #FAFCFF;
+    @include rowflex(flex-start,center);
+
+    .myjobs-inner {
+        width: 90%;
+        height: 40%;
+        position: relative;
+       
+        @include colflex(flex-start, space-between);
+
+        .myjobs-inner-top{
+            width: 90%;
+
+            @include colflex(flex-start, space-around);
+
+            p:first-child {
+                @include fontBold(2em, 1em, $blue-902);
+            }
+
+            .myjobs-nav-link {
+                width: 45%;
+                @include rowflex(flex-start, space-between);
+                border-bottom: 5px solid $gray-300;
+
+                .myjobs-single {
+                    width: 27%;
+                    height: 100%;
+                    text-align: left;
+                    cursor: pointer;
+                    @include rowflex(center, space-between);
+                    opacity: .2;
+                    p:nth-child(1) {
+                        @include fontSemiBold(1.2em, 1em, $blue-902);
+                    }
+
+                    p:nth-child(2) {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 5px;
+                        background-color: $blue-100;
+                        @include rowflex(center, center);
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                    }
+
+                    &.active {
+                        opacity: 1 !important;
+                        @include fontSemiBold(1.2em, 1em, $blue-902);
+                        border-bottom: 5px solid $blue-700;
+                    }
+
+                    &.notactive {
+                        opacity: .2;
+                        
+                    }
+                }
+            }
+
+           
+        }
+
+        .savedjobss, .applicationss, .archivess {
+                
+            width: 70%;
+            height: 400px;
+            position: absolute;
+            top: 45%;
+
+            &.sactive {
+                @include rowflex(center,center);
+                
+            }
+
+            &.hidelement {
+                display: none;
+            }
+
+            
+        }
+
+    }
+}

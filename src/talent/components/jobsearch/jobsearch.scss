@@ -1,0 +1,147 @@
+@import "../../../variables.scss";
+
+.jobsearch-container {
+            
+    // width: 80%;
+    // height: 200px;
+    // border-radius: 20px;
+    // position: absolute;
+    // bottom: -100px;
+    // margin: 0 auto;
+    // left: 135px;
+    // // top: 100px;
+    // background-color: #fff;
+    // box-shadow: 0px 5px 15px #F3F2F1;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    margin-left: 0px;
+    @include rowflex(center, center);
+
+    @include breakpoint(mobileonly) {
+        width: 90%;
+        height: 650px;
+        // margin: 0 auto;
+    }
+    @include breakpoint(phablet) {
+        // width: 220% !important;
+        width: 100% !important;
+        height: 90% !important;
+       
+        // left: 40px;
+        // margin: 0 auto;
+        @include rowflex(center, center);
+    }
+    @include breakpoint(tablet) {
+        width: 95%;
+        height: 95%;
+        // left: 50px;
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+
+    @include breakpoint(laptop) {
+        width: 100%;
+        height: 95%;
+        left: 50px;
+        margin: 0 auto;
+    }
+
+    
+    
+
+    .jobsearch-inner {
+        width: 90%;
+        height: 90%;
+        @include rowflex(center, center);
+
+        @include breakpoint(mobileonly) {
+            width: 100%;
+            height: 100%;
+            @include rowflex(center, flex-start);
+            position: relative;
+         }
+        @include breakpoint(phablet) {
+           width: 90% !important;
+           @include rowflex(center, center);
+        }
+
+        @include breakpoint(tablet) {
+            
+            width: 95%;
+            // @include rowflex(center, center);
+            
+         }
+        
+        form {
+            width: 100%;
+            height: 70%;
+            @include rowflex(flex-end, space-between);
+
+            @include breakpoint(mobileonly) {
+                @include colflex(flex-start, space-between);
+                width: 90%  !important;
+                height: 300px;
+            }
+
+            @include breakpoint(phablet) {
+                height: 100% !important;
+                width: 90% !important;
+               display: flex;
+               flex-direction: column;
+               align-items: flex-start !important;
+               
+                
+            }
+
+            @include breakpoint(tablet) {
+                @include rowflex(flex-end, space-between);
+               height: 100% !important;
+               width: 100% !important;
+               
+               
+           }
+            .search-submit {
+                width: 250px;
+                // height: 65px; 
+                height: 60px; 
+                font-size: 1em;
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                border: none;
+                color: #fff;
+                background-color: $blue-700;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, center);
+
+                @include breakpoint(mobileonly) {
+                    width: 330px;
+                    height: 50px;
+
+                }
+
+                @include breakpoint(phablet) {
+                    width: 95% !important;
+                    height: 50px;
+                }
+
+                @include breakpoint(tablet) {
+                    width: 40%;
+                    height: 50px;
+
+                }
+
+                
+                &:hover {
+                    background-color: $blue-900;
+                }
+            }
+        }
+    }
+
+}

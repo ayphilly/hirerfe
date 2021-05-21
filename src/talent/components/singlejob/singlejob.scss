@@ -1,0 +1,263 @@
+@import "../../../variables.scss";
+
+
+.resultjob-container {
+    width: 430px;
+    height: 270px;
+    background-color: #fff;
+    border: 1px solid $gray-300;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all .3s ease-in-out;
+    @include rowflex(center, center);
+
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        // width: 350px;
+        height: 270px;
+        @include rowflex(center,center);
+    }
+    @include breakpoint(phablet) {
+        width: 100%;
+        height: 270px;
+        @include rowflex(center,center);
+        // background-color: red;
+    }
+    @include breakpoint(tablet) {
+        width: 100%;
+        height: 270px;
+        @include rowflex(center,center);
+        // background-color: red;
+    }
+
+    &:hover {
+        box-shadow: 0px 5px 15px #F3F2F1;
+    }
+    
+    .singlejob-inner-col {
+        width: 90%;
+        height: 80%;
+        @include colflex(flex-start, space-between);
+
+        @include breakpoint(mobileonly) {
+            width: 90%;
+            height: 90%;
+            @include rowflex(center, space-evenly);
+            
+        }
+        
+        .single-inner-top {
+            width: 100%;
+            height: 100%;
+            @include rowflex(flex-start, space-between);
+            position: relative;
+
+            @include breakpoint(mobileonly) {
+                height: 70px;
+                
+            }
+
+            .single-job-profile {
+                @include rowflex(flex-start, space-between);
+                width: 100%;
+                height: 80%;
+                img {
+                    width: 50px;
+                }
+                .single-job-details {
+                    margin-left: 20px;
+                    width: 90%;
+                    
+                    @include colflex(flex-start, space-between);
+                    p{
+                        margin: 0;
+                    }
+                    p:nth-child(1) {
+                        @include fontSemiBold(1.2em, 1.4em, $blue-902);
+                        margin: 0;
+                        @include breakpoint(mobileonly) {
+                            @include fontSemiBold(1em, 1.4em, $blue-902);
+                        }
+                        @include breakpoint(tablet) {
+                            @include fontSemiBold(1.4em, 1.4em, $blue-902);
+                        }
+                    }
+                    p:nth-child(2) {
+                        @include fontNormal(1.1em, 1.4em, $blue-902);
+                        margin: 0;
+                        @include breakpoint(mobileonly) {
+                            @include fontNormal(.9em, 1.4em, $blue-902);
+                        }
+                        @include breakpoint(tablet) {
+                            @include fontNormal(1.2em, 1.4em, $blue-902);
+                        }
+                       
+                    }
+                    p:nth-child(3) {
+                        @include fontLight(1.2em, 1.4em, $blue-902);
+                        margin: 0;
+                        strong {
+                            font-weight: 600;
+                        }
+
+                        @include breakpoint(mobileonly) {
+                            @include fontLight(1em, 1.4em, $blue-902);
+                        }
+
+                        @include breakpoint(tablet) {
+                            @include fontLight(1.1em, 1.4em, $blue-902);
+                        }
+                    }
+
+                }
+                
+
+            }
+            .vertical-icon {
+                color: $gray-500;
+            }
+            .job-action {
+                width: 200px;
+                height: fit-content;
+                position: absolute;
+                right: 0px;
+                top: 30px;
+                background-color: #fff;
+                border: 1px solid $gray-300;
+                @include colflex(center, space-around);
+                border-radius: 5px;
+                padding: 10px;
+                box-shadow: 0px 0px 10px rgba(179, 179, 179, 0.3);
+                display: none;
+
+                &.moreactive{
+                    display: flex;
+                    
+                }
+                
+
+                div {
+                    @include rowflex(center, space-between);
+                    padding-left:10px;
+                    padding-right:10px;
+                    width: 100%;
+
+                    p {
+                        // margin-left: 10px;
+                        @include fontNormal(0.9em, 1em, $blue-901);
+                    }
+
+                    &:hover {
+                        background-color: $gray-100;
+                        width: 100%;
+                        color: $blue-700;
+                        
+                    }
+                    
+                }
+
+            }
+
+
+        }
+
+        .single-job-description {
+            width: 100%;
+            height: fit-content;
+            p:first-child {
+                text-align: left;
+                width: 100%;
+                @include fontLight(.8em, 1.4em, $blue-901);
+
+                @include breakpoint(mobileonly) {
+                    @include fontLight(.8em, 1.4em, $blue-901);
+                }
+
+                @include breakpoint(tablet) {
+                    @include fontLight(1.1em, 1.4em, $blue-902);
+                }
+            }
+        }
+
+        .single-inner-bottom {
+            width: 100%;
+            @include rowflex(center, space-between);
+            @include breakpoint(mobileonly) {
+                height: 30px;
+                
+            }
+            .bottom-left-details{
+                width: 45%;
+                height: 40px;
+                text-align: left;
+                @include rowflex(center,space-between);
+
+                @include breakpoint(mobileonly) {
+                    width: 45%;
+                }
+
+                @include breakpoint(phablet) {
+                    width: 45%;
+                }
+                p{
+                    width: 80px;
+                    height: 40px;
+                    border-radius: 5px;
+                    background-color: $green-100;
+                    @include fontNormal(1em, 0em, $green-901);
+                    @include rowflex(center, center);
+
+                    @include breakpoint(mobileonly) {
+                        @include fontNormal(1em, 0em, $blue-901);
+                    }
+
+                    @include breakpoint(phablet) {
+                        @include fontNormal(1em, 0em, $blue-901);
+                        
+                    }
+
+                    @include breakpoint(mobileonly) {
+                        @include fontNormal(1em, 0em, $blue-901);
+                    }
+                }
+
+                .level{
+                    width: 80px;
+                    background-color: $blue-100;
+                    @include fontNormal(1em, 0em, $blue-901);
+                    // @include rowflex(center, center);
+                    @include breakpoint(mobileonly) {
+                        @include fontNormal(.8em, 0em, $blue-901);
+                    }
+
+                    @include breakpoint(phablet) {
+                        @include fontNormal(1em, 0em, $blue-901);
+                        
+                    }
+                }
+
+            }
+            .bottom-right{
+                width: 25%;
+                p{
+                    @include fontNormal(1em, 1em, $blue-901);
+                    @include rowflex(center, space-around);
+                    @include breakpoint(mobileonly) {
+                        width: 100px;
+                        @include fontNormal(1em, 0em, $blue-901);
+                    }
+
+                    @include breakpoint(phablet) {
+                        @include fontNormal(1em, 0em, $blue-901);
+                        
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+}

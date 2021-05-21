@@ -1,0 +1,119 @@
+@import "../../../variables.scss";
+
+.singlefeed-container {
+    width: 800px;
+    height: 350px;
+    @include rowflex(center, center);
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    background-image: url("../../talentassets/waves.svg");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+
+    @include breakpoint(mobileonly) {
+        width: 350px;
+        height: 300px;
+    }
+    @include breakpoint(phablet) {
+        width: 90% !important;
+        height: 300px;
+    }
+    .singlefeed-inner {
+        width: 80%;
+        height: 80%;
+        @include rowflex(flex-start, space-between);
+        position: relative;
+        text-align: left;
+        padding:0px;
+
+        @include breakpoint(mobileonly) {
+            height: 90%;
+            width: 90%;
+        }
+
+        &.left {
+            width: 20%;
+            img {
+                width: 100px;
+                height: 100px;
+
+                @include breakpoint(mobileonly) {
+                    width: 50px;
+                    height: 50px;
+                }
+
+                @include breakpoint(phablet) {
+                    width: 50px !important;
+                    height: 50px !important;
+                }
+            }
+            margin-top: 15px;
+        }
+
+        &.right {
+            
+            width: 75%;
+            height: 90%;
+            
+            @include colflex(flex-start, space-between);
+            
+            p:nth-child(1) {
+                @include fontNormal(1em, 1.5em, $blue-901);
+                @include breakpoint(mobileonly) {
+                    @include fontNormal(.8em, 1.2em, $blue-901);
+                }
+                @include breakpoint(phablet) {
+                    @include fontNormal(.1em, 1.2em, $blue-901);
+                    font-size: .8em !important;
+                    // width: 80%;
+                }
+                
+            }
+
+            .bottom {
+                @include colflex(flex-start, flex-start);
+                height: 100px;
+                p:nth-child(1) {
+                    @include fontMedium(1em, 1.4em, $blue-901);
+                    height: 0px;
+                    @include breakpoint(mobileonly) {
+                        @include fontMedium(.8em, 1.2em, $blue-901);
+                    }
+
+                    @include breakpoint(phablet) {
+                        font-size: .7em !important;
+                    }
+                    
+                }
+                p:nth-child(2) {
+                    @include fontLight(1em, 0em, $blue-901);
+                    
+                    height: 0px;
+                    @include breakpoint(mobileonly) {
+                        @include fontLight(.8em, 1.2em, $blue-901);
+                    }
+                    
+                }
+                img {
+                    position: absolute;
+                    bottom: 0px;
+                    right: 0px;
+                    // @include breakpoint(mobileonly) {
+                    //     width: 50px;
+                    // }
+
+                    @include breakpoint(phablet) {
+                        width: 70px !important;
+                       bottom: -30px !important;
+                        right: 0px;
+                    }
+                }
+
+            }
+        }
+
+        
+    }
+}

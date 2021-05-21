@@ -1,0 +1,55 @@
+@import "../../../variables.scss";
+
+.step-container {
+    width: 100%;
+    height: 100%;
+    @include rowflex(center,center);
+    .step-inner-col {
+        width: 70%;
+        height: 90%;
+        @include rowflex(flex-start,space-around);
+        @include breakpoint(phablet) {
+            width: 100%;
+            
+        }
+
+        @include breakpoint(tablet) {
+            width: 100%;
+            
+        }
+        h1 {
+            margin: 0;
+            height: 100%;
+            @include rowflex(flex-start,flex-start);
+            
+            @include fontBold(5em, .7em, $blue-200);
+
+            @include breakpoint(tablet) {
+                @include fontBold(5em, .7em, $blue-200);
+            }
+        }
+
+        .step-right {
+            text-align: left;
+            width: 70%;
+            height: 40%;
+            @include colflex(flex-start, space-between);
+            p:nth-child(1) {
+                @include fontBold(1.1em, 1em, $blue-902);
+                // margin-bottom: 20px;
+
+            }
+            p:nth-child(2) {
+                @include fontLight(1em, 1.1em, $blue-901);
+                margin: 0;
+                height: 10px;
+                @include breakpoint(tablet) {
+                    width: 100%;
+                    line-height: 1.2em;
+                    margin-top: 5px;
+                }
+
+            }
+        }
+    }
+}

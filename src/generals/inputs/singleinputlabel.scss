@@ -1,0 +1,64 @@
+@import "../../variables.scss";
+
+
+.form-input {
+    @include colflexx(flex-start);
+    height:fit-content;
+    width: 100%;
+    @include breakpoint(mobileonly) {
+        @include colflex(flex-start, space-between);
+    }
+    @include breakpoint(phablet) {
+        width: 100%!important;
+        
+    }
+    @include breakpoint(tablet) {
+        width: 100%!important;
+        
+    }
+    label {
+        // height: 30px;
+        margin: 0;
+        @include fontNormal(1em,2em, $blue-900);
+        @include breakpoint(mobileonly) {
+            height: 20px;
+            @include fontMedium(.8em,1em, $blue-902);
+        }
+    }
+
+    
+   
+    input[type='text'], input[type='password'] {
+        width: 100%;
+        // margin-top: 30px;
+        height: 60px;
+        background: #F9F8F9;
+        border: 1px solid $gray-400;
+        box-sizing: border-box;
+        border-radius: 5px;
+        outline: none;
+        padding-left: 20px;
+        @include fontNormal(1em, 1em, $gray-600);
+
+        @include breakpoint(mobileonly) {
+            width: 100%!important;
+            height: 50px;
+        }
+        @include breakpoint(tablet) {
+            width: 100% !important;
+            height: 50px;
+        }
+
+        @include breakpoint(phablet) {
+            width: 100% !important; //250PX
+            // height: 50px;
+        }
+        
+
+        &:focus {
+            border: 1px solid $blue-500;
+            background-color: $blue-100;
+            color: $blue-901;
+        }
+    }
+}

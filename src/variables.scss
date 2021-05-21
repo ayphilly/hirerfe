@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+// Colors
+
+$blue-100: #F0F8FF;
+$blue-200: #D0E8FF;
+$blue-300: #B0D8FF;
+$blue-400: #90C8FF;
+$blue-500: #70B8FF;
+$blue-600: #5AA2E8;
+$blue-700: #4385C6;
+$blue-800: #2F6AA4;
+$blue-900: #1F5182;
+$blue-901: #123960;
+$blue-902: #0A2643;
+
+$gray-100 : #F9F8F9;
+$gray-200 : #F8F6F5;
+$gray-300 : #EAEAEA;
+$gray-400 : #CCCCCC;
+$gray-500 : #8B8C8C;
+$gray-600 : #4F4F4F;
+$gray-700 : #2D2F30;
+$gray-800 : #151617;
+
+$green-100 : #F0FFF6;
+$green-200 : #CEFFE3;
+$green-300 : #ADFFD0;
+$green-400 : #8CFFBD;
+$green-500 : #69FCA8;
+$green-600 : #4DDA89;
+$green-700 : #35B86D;
+$green-800 : #219653;
+$green-900 : #12743C;
+$green-901 : #075227;
+
+
+//flex
+
+@mixin rowflex ($align, $just){
+    display: flex;
+    align-items: $align;
+    justify-content: $just;
+}
+
+@mixin colflex ($align, $just){
+    display: flex;
+    flex-direction: column;
+    align-items: $align;
+    justify-content: $just;
+}
+
+@mixin colflexx ($align){
+  display: flex;
+  flex-direction: column;
+  align-items: $align;
+  
+}
+
+
+
+
+
+// font styles
+
+@mixin font($fs, $lh, $color) {
+    font-size: $fs;
+    line-height: $lh;
+    color: $color;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    
+}
+@mixin fontLight($fs, $lh, $color) {
+    @include font($fs, $lh, $color);
+    font-weight: 300;
+}
+
+@mixin fontNormal($fs, $lh, $color) {
+    @include font($fs, $lh, $color);
+    font-weight: 400;
+}
+
+@mixin fontMedium($fs, $lh, $color) {
+    @include font($fs, $lh, $color);
+    font-weight: 500;
+}
+
+@mixin fontSemiBold($fs, $lh, $color) {
+    @include font($fs, $lh, $color);
+    font-weight: 600;
+}
+
+
+@mixin fontBold($fs, $lh, $color) {
+    @include font($fs, $lh, $color);
+    font-weight: 700;
+}
+
+@mixin fontBlack($fs, $lh, $color) {
+    @include font($fs, $lh, $color);
+    font-weight: 900;
+}
+
+
+
+
+// keyframes
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+      @content;
+    }
+    @-moz-keyframes #{$animationName} {
+      @content;
+    }
+    @-o-keyframes #{$animationName} {
+      @content;
+    }
+    @keyframes #{$animationName} {
+      @content;
+    }
+}
+
+@mixin animate($name, $duration, $iteration, $direction) {
+    -webkit-animation-duration: $duration;
+       -moz-animation-duration: $duration;
+         -o-animation-duration: $duration;
+            animation-duration: $duration;
+    -webkit-animation-iteration-count: $iteration;
+       -moz-animation-iteration-count: $iteration;
+         -o-animation-iteration-count: $iteration;
+            animation-iteration-count: $iteration;
+    -webkit-animation-name: $name;
+       -moz-animation-name: $name;
+         -o-animation-name: $name;
+            animation-name: $name;
+    -webkit-animation-direction: $direction;
+       -moz-animation-direction: $direction;
+         -o-animation-direction: $direction;
+            animation-direction: $direction;
+}
+
+
+/*********************
+BREAKPOINTS
+*********************/
+
+@mixin breakpoint($point) {
+  @if $point == desktop {
+    @media (min-width: 70em) { @content ; }
+ }
+  @else if $point == laptop {
+    @media (min-width: 64em) { @content ; }
+    // @media (max-width: 56em) { @content ; }
+ }
+   @else if $point == tablet {
+    // @media (min-width: 50em) { @content ; }
+    @media (min-width: 768px) and (max-width: 1024px) {@content;}
+   
+ }
+  @else if $point == phablet {
+    // @media (min-width: 37.5em)  { @content ; }
+    @media (min-width: 481px) and (max-width: 768px) { @content; }
+ }
+ @else if $point == mobileonly {
+    // @media (max-width: 37.5em)  { @content ; }
+    @media (min-width: 320px) and (max-width: 480px) { @content; }
+
+ }
+}

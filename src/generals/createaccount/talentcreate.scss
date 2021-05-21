@@ -1,0 +1,103 @@
+@import "../../variables.scss";
+
+.talent-account-container {
+
+    width: 90%;
+    height: 95%;
+    display: none;
+    position: absolute;
+    
+    &.active {
+        // display: none;
+        // display: flex;
+        // visibility: hidden;
+        visibility: visible;
+    }
+    &.hide {
+        visibility: hidden;
+    }
+    
+    @include rowflex(center, center);
+
+    .talent-account-inner {
+        width: 100%;
+        height: 95%;
+        margin: 0;
+        // background-color: rebeccapurple;
+        @include colflex(flex-start, space-between);
+        
+        .create-account-texts {
+            height: 20%;
+            text-align: left;
+            
+            @include colflex(flex-start,space-around);
+            p:nth-child(1) {
+                @include fontBold(2em, 1em, $blue-902);
+                margin:0;
+            }
+            p:nth-child(2) {
+                @include fontLight(1.1em, 1em, $blue-901);
+                // margin: 0;
+
+            }
+            .create-account-note {
+                width: 55%;
+                height: 50px;
+                @include rowflex(flex-start, space-between);
+                
+                p{
+                    margin: 0;
+                    @include fontNormal(1em, 1.5em, $gray-400);
+
+                }
+                .asterisk-icon {
+                    color: red;
+                }
+            }
+
+        }
+
+        form {
+            width: 100%;
+            height: 75%;
+            // background-color: aqua;
+            @include colflex(flex-start, space-between);
+            @include breakpoint(mobileonly) {
+                @include colflex(center, space-between);
+                height: 90%;
+            }
+            .talent-details {
+                width: 100%;
+                // height: 25%;
+                @include rowflex(flex-start, space-between);
+            }
+
+            .create-submit {
+                width: 100%;
+                height: 65px;
+                font-size: 1em;
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                border: none;
+                color: #fff;
+                background-color: $blue-700;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, center);
+
+                @include breakpoint(mobileonly) {
+                    width: 300px;
+                    height: 50px;
+                }
+
+                &:hover {
+                    background-color: $blue-900;
+                }
+            }
+        }
+        
+    }
+
+}

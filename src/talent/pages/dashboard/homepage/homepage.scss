@@ -1,0 +1,140 @@
+@import "../../../../variables.scss";
+
+.dashboard-homepage-container {
+    width: 100%;
+    height: 150em;
+    @include colflex(center,center);
+    background-color:  #FAFCFF;
+
+    @include breakpoint(mobileonly) {
+        height: 320em;
+        @include colflex(center,flex-end);
+    }
+
+    @include breakpoint(tablet) {
+        height: 135em;
+    }
+    @include breakpoint(phablet) {
+        height: 320em;
+        @include colflex(center,flex-end);
+        
+    }
+    .dashboard-homepage-inner {
+        width: 95%;
+        height: 90%;
+        @include colflex(flex-start, space-around);
+
+        @include breakpoint(mobileonly) {
+            width: 95%;
+            height: 90%;
+            margin-bottom: 100px;
+            @include colflex(flex-start,space-around);
+        }
+
+        @include breakpoint(phablet) {
+            height: 90%;
+            margin-bottom: 100px;
+            @include colflex(center,space-around);
+        }
+
+        // background-color: red;
+
+        .dashboard-search {
+            width: 78%;
+            height: 250px;
+            @include colflex(flex-start,space-between);
+            // overflow: hidden;
+
+            @include breakpoint(mobileonly) {
+                width: 100%;
+                height: 250px;
+            }
+        
+            @include breakpoint(tablet) {
+                height: 250px;
+            }
+            @include breakpoint(phablet) {
+                width: 100%;
+                height: 550px;
+                @include colflex(flex-start,space-between);
+            }
+
+            
+
+            p:nth-child(1) {
+                margin: 0;
+                @include fontSemiBold(2em, 1em, $blue-902);
+            }
+            p:nth-child(2) {
+                // margin: 0;
+                @include fontLight(1em, 1.5em, $blue-902);
+            }
+        }
+
+        .dashboard-recommend {
+            width: 100%;
+            @include colflex(flex-start,space-around);
+
+            .recommend-headline {
+                margin: 0;
+                @include fontSemiBold(2em, 1em, $blue-902);
+
+                @include breakpoint(mobileonly) {
+                    width: 70%;
+                    @include fontSemiBold(1.5em, 1em, $blue-902);
+                }
+            }
+            p:nth-child(2) {
+                // margin: 0;
+                @include fontLight(1em, 1.5em, $blue-902);
+            }
+        }
+
+        .dashboard-jobalert {
+            width: 100%;
+            height: 450px;
+            @include colflex(flex-start,space-around);
+
+            @include breakpoint(mobileonly) {
+                height: 35em;
+            }
+            @include breakpoint(phablet) {
+                height: 500px;
+            }
+
+            .jobalert-headline {
+                margin: 0;
+                @include fontSemiBold(2em, 1em, $blue-902);
+            }
+            p:nth-child(2) {
+                // margin: 0;
+                @include fontLight(1em, 1.5em, $blue-902);
+            }
+
+            .jobalert-inner-box {
+                // height: 60%;
+                width: 100%;
+            }
+        }
+
+        .dashboard-scout-jobs {
+            width: 100%;
+            @include colflex(flex-start,space-around);
+
+            @include breakpoint(mobileonly) {
+                // height: 35em;
+                
+            }
+
+            .scout-jobs-headline {
+                margin: 0;
+                @include fontSemiBold(2em, 1em, $blue-902);
+            }
+            p:nth-child(2) {
+                // margin: 0;
+                @include fontLight(1em, 1.5em, $blue-902);
+            }
+        }
+    }
+    
+}

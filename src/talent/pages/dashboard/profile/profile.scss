@@ -1,0 +1,261 @@
+@import "../../../../variables.scss";
+
+.user-profile-container {
+    width: 100%;
+    height: 120em;
+    @include colflex(center,flex-start);
+    margin: 0 auto;
+    position: relative;
+
+    @include breakpoint (mobileonly) {
+        width: 100%;
+        height: 100em;
+        overflow: hidden;
+    }
+    @include breakpoint (phablet) {
+        width: 90%;
+        height: 105em;
+        overflow: hidden;
+    }
+    .user-profile-inner {
+        width: 50%;
+        height: 90%;
+        @include colflex(flex-start, space-around);
+        position: relative;
+
+        @include breakpoint (mobileonly) {
+            width: 90%;
+            height: 90%;
+            @include colflex(flex-start, space-around);
+        }
+
+        @include breakpoint (phablet) {
+            width: 100%;
+            height: 90%;
+            @include colflex(flex-start, space-around);
+        }
+
+        @include breakpoint (tablet) {
+            width: 80%;
+            height: 90%;
+            @include colflex(flex-start, space-around);
+        }
+
+        .profile-picture-container {
+            width: 80%;
+            @include colflex(flex-start,space-around);
+            
+            @include breakpoint (mobileonly) {
+                width: 90%;
+                @include colflex(flex-start, space-around);
+            }
+
+            @include breakpoint (phablet) {
+                width: 90%;
+                @include colflex(flex-start, space-around);
+            }
+
+            @include breakpoint(tablet) {
+                width: 90%;
+                @include colflex(flex-start, space-around);
+            }
+            
+
+            .profile-picture-top {
+                p:nth-child(1) {
+                    @include fontBold(2em, 0em, $blue-901);
+                    @include breakpoint (mobileonly) {
+                        @include fontBold(1.5em, 0em, $blue-901);
+                    }
+                }
+                p:nth-child(2) {
+                    @include fontLight(1.2em, 1em, $blue-901);
+                    @include breakpoint (mobileonly) {
+                        @include fontLight(1em, 1em, $blue-901);
+                    }
+                }
+            }
+
+            .profile-picture-bottom {
+                width: 80%;
+                @include rowflex(center, space-between);
+                @include breakpoint (mobileonly) {
+                    width: 100%;
+                }
+
+                @include breakpoint (phablet) {
+                    width: 80%;
+                }
+
+                @include breakpoint(tablet) {
+                    width: 60%;
+                }
+                img {
+                    width: 70px;
+                    border-radius: 50px;
+                    background-blend-mode: normal;
+                    box-shadow: inset 0px 0px 4px rgba(0, 59, 82, 0.42);
+                    @include breakpoint (mobileonly) {
+                        width: 50px;
+                    }
+
+                }
+                button {
+                    width: 200px;
+                    height: 60px;
+                    border-radius: 5px;
+                    background-color: $blue-700;
+                    outline: none;
+                    border: none;
+                    color: #fff;
+
+                    &:hover {
+                        background-color: $blue-800;
+                    }
+                    @include breakpoint (mobileonly) {
+                        width: 150px;
+                    }
+
+                    @include breakpoint (phablet) {
+                        width: 150px;
+                    }
+
+                    @include breakpoint (tablet) {
+                        width: 150px;
+                    }
+
+                    
+                }
+                .profile-picture-delete {
+
+                    width: 100px;
+                    height: 60px;
+                    border-radius: 5px;
+                    color: $blue-901;
+                    background-color: $gray-300;
+                    text-decoration: none;
+                    @include rowflex(center,center);
+
+                    @include breakpoint (mobileonly) {
+                        width: 90px;
+                    }
+
+                    @include breakpoint (phablet) {
+                        width: 100px;
+                    }
+
+                }
+            }
+        }
+
+        .personal-details-container {
+            width: 100%;
+            height: 45%;
+            @include colflex(flex-start, space-between);
+
+            @include breakpoint (mobileonly) {
+                width: 100%;
+                height: 45%;
+            }
+
+            @include breakpoint (phablet) {
+                width: 100%;
+                height: 45%;
+            }
+
+            p:nth-child(1){
+                @include fontBold(2em, 1em, $gray-400);
+            }
+            form {
+                width: 95%;
+                height: 90%;
+                @include colflex(flex-start, space-around);
+                @include breakpoint (mobileonly) {
+                    width: 100%;
+                    height: 90%;
+                }
+                @include breakpoint (phablet) {
+                    width: 95%;
+                    height: 90%;
+                }
+            }
+        }
+
+        .save-changes {
+            width: 200px;
+            height: 60px;
+            border-radius: 5px;
+            background-color: $blue-700;
+            outline: none;
+            border: none;
+            color: #fff;
+            transition: all 0.3s ease-in;
+            float: right;
+
+            &:hover {
+                background-color: $blue-800;
+            }
+        }
+
+       
+    }
+
+    .c-passworddiv, .c-accountdiv {
+        width: 40%;
+        height: 400px;
+        position: absolute;
+        top: 10%;
+        left: 30%;
+        z-index: 8;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 15px #EBEBEB;
+        border-radius: 15px;
+        &.inactive {
+            @include rowflex(center,center);
+        }
+        &.hidden {  
+            display: none;
+        }
+    }
+
+    .c-availabilitydiv{
+        width: 40%;
+        height: 600px;
+        position: absolute;
+        top: 10%;
+        left: 30%;
+        z-index: 8;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 15px #EBEBEB;
+        border-radius: 15px;
+        &.inactive{
+            @include rowflex(center,center);
+        }
+        &.hidden {  
+            display: none;
+        }
+    }
+
+    .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        background: rgba(112, 184, 255, 0.15);
+        backdrop-filter: blur(10px);
+        transition: all 1s ease-in;
+        &.active {
+          // display: none;
+          // display: flex;
+          // visibility: hidden;
+          z-index: 7;
+          display: flex;
+          transition: all 1s ease-in;
+        }
+        &.hidden {
+            display: none;
+            transition: all 1s ease-in;
+        }
+    }
+}

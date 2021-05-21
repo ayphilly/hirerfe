@@ -1,0 +1,287 @@
+@import "../../../variables.scss";
+
+.talent-navbar-container {
+    width: 100%;
+    height: 100px;
+    @include rowflex(center, center);
+    z-index: 10;
+    .navbar-inner {
+        width: 95%;
+        height: 95%;
+        @include rowflex(center, space-between);
+
+        @include breakpoint(mobileonly) {
+            width: 80%;
+            @include rowflex(center, space-between);
+        }
+        @include breakpoint(phablet) {
+            width: 95%;
+            @include rowflex(center, space-between);
+        }
+
+        @include breakpoint(tablet) {
+            width: 90%;
+            @include rowflex(center, space-between);
+        }
+
+        @include breakpoint(laptop) {
+            width: 95%;
+            @include rowflex(center, space-between);
+           
+        }
+
+        &.left {
+            width:25%;
+            height: 100%;
+            @include rowflex(center, space-between);
+            @include breakpoint(tablet) {
+                width: 40%;
+            }
+            img {
+                width: auto;
+            }
+            .navbar-inner-nav-link {
+                // max-height: 100%;
+                height: 95%;
+                // position: relative;
+                @include fontNormal(1em, 1em, $blue-902);
+                @include rowflex(center, space-around);
+                cursor: pointer;
+                transition: all 0.1s ease-in-out;
+                &.active {
+                    color: $blue-700;
+                    // border-bottom: 5px solid $blue-700;
+                }
+
+                &:hover {
+                    color: $blue-700;
+                   
+                    border-bottom: .2em solid $blue-700;
+                }
+                .nav-link-icon {
+                    margin-left:10px;
+                }
+                @include breakpoint(mobileonly) {
+                    display: none;
+                }
+
+                @include breakpoint(phablet) {
+                    display: none;
+                }
+                @include breakpoint(tablet) {
+                    display: flex;
+                    width: 90%;
+                }
+            }
+
+            @include breakpoint(mobileonly) {
+                width: 30%;
+                @include rowflex(center, flex-start);
+            }
+            @include breakpoint(phablet) {
+                width: 40%;
+                @include rowflex(center, space-between);
+                @include fontNormal(.8em, 1em, $blue-902);
+            }
+            @include breakpoint(tablet) {
+                width: 45%;
+                @include rowflex(center, space-between);
+                @include fontNormal(.8em, 1em, $blue-902);
+            }
+
+            @include breakpoint(laptop) {
+                width: 30%;
+                @include rowflex(center, space-between);
+                @include fontNormal(1em, 1em, $blue-902);
+            }
+            
+        }
+
+        
+
+        &.right {
+            width: 30%;
+            @include rowflex(center, space-around);
+
+            @include breakpoint(phablet) {
+                width: 65% !important;
+            }
+            
+            .navbar-inner-nav-link {
+                max-height: 100%;
+                
+                height: 99%;
+                position: relative;
+                @include fontNormal(1em, 1em, $blue-902);
+                @include rowflex(center, center);
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                
+                padding-bottom: 3px;
+                &.active {
+                    color: $blue-700;
+                    border-bottom: 3px solid $blue-700;
+                }
+
+                &:hover {
+                    color: $blue-700;
+                    padding: 0px;
+                    border-bottom: 3px solid $blue-700;
+                }
+                .nav-link-icon {
+                    margin-left:10px;
+                }
+
+                @include breakpoint(mobileonly) {
+                    display: none;
+                }
+
+                @include breakpoint(phablet) {
+                    display: none;
+                }
+                
+                
+            }
+
+            .navbar-inner-nav-link:nth-child(3) {
+                @include fontBold(1em, 1em, $blue-700);
+                text-decoration: none;
+            }
+            .navbar-inner-nav-btn{
+                width: 150px;
+                height: 50px;
+                font-size: 1em;
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                border: none;
+                color: #fff;
+                background-color: $blue-700;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, center);
+
+                &:hover {
+                    background-color: $blue-900;
+                }
+                @include breakpoint(mobileonly) {
+                    display: none;
+                }
+                
+
+                @include breakpoint(phablet) {
+                    display: none;
+                }
+
+                @include breakpoint(tablet) {
+                    width: 100px;
+                    height: 50px;
+                }
+
+                
+                
+            }
+
+            .notification {
+                width: 50px;
+
+                @include breakpoint(mobileonly) {
+                    display: none;
+                }
+                @include breakpoint(phablet) {
+                    width: 35px;
+                }
+    
+                @include breakpoint(tablet) {
+                    width: 50px;
+                }
+    
+                @include breakpoint(laptop) {
+                    width: 50px;
+                }
+            }
+
+            .dashboard-profile {
+                width: 45%;
+                @include rowflex (center, space-between);
+
+                @include breakpoint(mobileonly) {
+                    display: none;
+                }
+                @include breakpoint(phablet) {
+                    width: 60%;
+                }
+    
+                @include breakpoint(tablet) {
+                    width: 45%;
+                }
+    
+                
+                img {
+                    width: 50px;
+
+                    @include breakpoint(mobileonly) {
+                        width: 30px;
+                    }
+                    @include breakpoint(phablet) {
+                        width: 35px;
+                    }
+        
+                    @include breakpoint(tablet) {
+                        width: 50px;
+                    }
+        
+                    @include breakpoint(laptop) {
+                        width: 50px;
+                    }
+                }
+
+                .dashboard-user {
+                    p:nth-child(1) {
+                        @include fontLight(1em, 1em, $blue-902);
+                    }
+                    p:nth-child(2) {
+                        @include fontMedium(1em, 0em, $blue-902);
+                    }
+                }
+            }
+
+            .hamburger-icon {
+                display: none;
+                font-size: 2em;
+                @include breakpoint(mobileonly) {
+                    display: flex;
+                }
+                @include breakpoint(phablet) {
+                    display: flex;
+                }
+            }
+
+            @include breakpoint(mobileonly) {
+                width: 30%;
+                @include rowflex(center, flex-end);
+            }
+            @include breakpoint(phablet) {
+                width: 45%;
+                @include rowflex(center, flex-end);
+                
+                @include fontNormal(.8em, 1em, $blue-902);
+            }
+
+            @include breakpoint(tablet) {
+                width: 45%;
+                @include rowflex(center, space-between);
+                @include fontNormal(.8em, 1em, $blue-902);
+            }
+
+            @include breakpoint(laptop) {
+                width: 30%;
+                @include rowflex(center, space-between);
+                @include fontNormal(1em, 1em, $blue-902);
+            }
+
+        }
+    }
+
+}

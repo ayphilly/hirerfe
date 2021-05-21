@@ -1,0 +1,145 @@
+@import "../../variables.scss";
+
+.howitworks-container {
+
+    width: auto;
+    height: 50vh;
+    overflow: hidden;
+    @include rowflex(center, center);
+    position: relative;
+    @include breakpoint(mobileonly) {
+        // height: 170vh;
+        width: 95%;
+        height: 80em;
+        @include rowflex(flex-start, center);
+    }
+
+    @include breakpoint(phablet) {
+        // height: 170vh;
+        width: 95%;
+        height: 45em;
+        @include rowflex(flex-start, center);
+    }
+
+    @include breakpoint(tablet) {
+        // height: 170vh;
+        width: 100%;
+        height: 55em;
+        @include rowflex(flex-start, center);
+    }
+
+    @include breakpoint(laptop) {
+        // height: 170vh;
+        width: 100%;
+        height: 35em;
+        @include rowflex(center, center);
+    }
+
+    .howitworks-inner {
+        @include colflex(center, space-around);
+        width: fit-content;
+        height: 70%;
+        @include breakpoint(mobileonly) {
+            @include colflex(center, space-between);
+            height: 90%;
+            width: 100%;
+
+        }
+        @include breakpoint(phablet) {
+            @include colflex(center, space-between);
+            height: 90%;
+            width: 100%;
+
+        }
+        @include breakpoint(tablet) {
+            @include colflex(center, space-between);
+            height: 90%;
+            width: 80%;
+
+        }
+
+        @include breakpoint(laptop) {
+            @include colflex(center, space-between);
+            height: 85%;
+            width: 100%;
+        }
+        .howitworks-headline {
+            text-align: center;
+            @include breakpoint(mobileonly) {
+                
+                height: 10%;
+            }
+            @include breakpoint(tablet) {
+                
+                height: 30%;
+            }
+            
+            p:nth-child(1) {
+                @include fontBold(2em, 1.4em, $blue-902);
+                height: 20px;
+                @include breakpoint(mobileonly) {
+                    @include fontBold(1.5em, 1em, $blue-300);
+                }
+
+            }
+            p:nth-child(2) {
+                @include fontNormal(1em, 1em, $blue-901);
+                @include breakpoint(mobileonly) {
+                    @include fontNormal(.8em, 1em, $blue-300);
+                }
+
+            }
+        }
+
+        .howitworks-content {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            grid-template-rows: 280px;
+            column-gap: 50px;
+            width: 100%;
+            align-items: space-between;
+
+            @include breakpoint(mobileonly) {
+                height: 90%;
+                width: 100%;
+                grid-template-columns: auto ;
+                grid-template-rows: 280px 280px 280px 280px;
+                justify-items: center;
+                
+            }
+            @include breakpoint(phablet) {
+                height: 90%;
+                width: 100%;
+                grid-template-columns: auto auto ;
+                grid-template-rows: 280px 280px;
+                column-gap: 25px;
+                row-gap: 30px;
+                justify-items: center;
+                
+            }
+            @include breakpoint(tablet) {
+                height: 90%;
+                width: 100%;
+                grid-template-columns: auto auto ;
+                grid-template-rows: 280px 280px;
+                column-gap: 50px;
+                row-gap: 25px;
+                justify-items: center;
+                
+            }
+
+            @include breakpoint(laptop) {
+                display: grid;
+                grid-template-columns: auto auto auto auto auto;
+                grid-template-rows: 280px;
+                column-gap: 30px;
+                width: 100%;
+                align-content: center;
+                justify-content: center;
+                align-items: space-between;
+                
+            }
+        }
+    }
+
+}

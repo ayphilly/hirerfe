@@ -1,0 +1,101 @@
+@import "../../../variables.scss";
+
+.topjobs-container {
+    width: 100%;
+    height: 100vh;
+    @include colflex(center,center);
+    // background-color: $blue-100;
+
+    @include breakpoint(mobileonly) {
+        height: 100em;
+        @include colflex(center,flex-start);
+    }
+
+    @include breakpoint(tablet) {
+        height: 60em !important;
+        @include colflex(center,center);
+    }
+
+    @include breakpoint(phablet) {
+        height: 55em;
+        @include colflex(center,center);
+    }
+
+    .topjobs-inner {
+        width: 90%;
+        height: 70%;
+        @include colflex(center, space-between);
+
+        @include breakpoint(mobileonly) {
+            margin-top: 50px;
+            @include colflex(center, space-around);
+        }
+        
+
+        .topjobs-top {
+            width: 30%;
+            @include breakpoint(mobileonly) {
+                width: 80%;
+            }
+            @include breakpoint(phablet) {
+                width: 60% !important;
+            }
+            @include breakpoint(tablet) {
+                width: 50%;
+            }
+            p:nth-child(1) {
+                @include fontBold(2em, 1.4em, $blue-902);
+                margin:0;
+                @include breakpoint(mobileonly) {
+
+                    @include fontBold(1.5em, 1.2em, $blue-902);
+                }
+
+            }
+            p:nth-child(2) {
+                @include fontNormal(1em, 1.4em, $blue-901);
+
+                @include breakpoint(mobileonly) {
+                    @include fontNormal(.8em, 1.4em, $blue-901);
+                }
+
+            }
+        }
+
+        .singlejob-list {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: 200px;
+            column-gap: 15px;
+            row-gap: 20px;
+            width: 100%;
+            max-height: 100%;
+            height: 100%;
+            
+            
+            align-items: flex-start;
+            // justify-content: stretch; 
+
+            @include breakpoint(mobileonly) {
+                grid-template-columns: auto;
+                grid-template-rows: 200px;
+                height: 90%;
+            }
+
+            @include breakpoint(tablet) {
+                grid-template-columns: auto auto;
+                grid-template-rows: 200px;
+                // height: 90%;
+            }
+            @include breakpoint(phablet) {
+                grid-template-columns: auto auto;
+                grid-template-rows: 200px;
+                // height: 90%;
+            }
+
+            &.moreractive{
+                display: flex;
+            }
+        }
+    }
+}

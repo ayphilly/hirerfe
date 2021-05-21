@@ -1,0 +1,366 @@
+@import "../../../../variables.scss";
+
+.job-review-container {
+    width: 50%;
+    height: 1200px;
+    // display: none;
+    background-color: transparent;
+    margin-bottom: 500px;
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 70em;
+        @include rowflex(center, center);
+    }
+    @include breakpoint(tablet) {
+        width: 70%;
+        height: 70em;
+        @include rowflex(center, center);
+    }
+    
+
+    .job-review-inner {
+        width: 90%;
+        height: 95%;
+        margin: 0;
+        @include colflex(center, space-around);
+        @include breakpoint(mobileonly) {
+            @include colflex(center, space-between);
+        }
+        @include breakpoint(tablet) {
+            @include colflex(center, space-between);
+        }
+        
+        .job-review-texts {
+            
+            height: 100px;
+            width:100%;
+            background-color: $blue-700;
+            box-shadow: 0px 0px 15px rgba(245, 245, 245, 0.25);
+            @include rowflex(center,space-around);
+            border-radius: 10px 10px 0px 0px;
+
+            @include breakpoint(mobileonly) {
+                height:10%;
+            }
+            @include breakpoint(tablet) {
+                height:10%;
+            }
+            
+
+            .job-inner-texts {
+                height: 20%;
+                width:90%;
+                text-align: left;
+                
+                
+                padding-left: 10px;
+                @include rowflex(flex-end,space-between);
+                p:nth-child(1) {
+                    @include fontBold(1.5em, 1em, $blue-100);
+                    margin:0;
+                    @include breakpoint(mobileonly) {
+                        @include fontBold(1.1em, 1em, $blue-100);
+                        
+                    }
+                }
+                p:nth-child(2) {
+                    @include fontNormal(1.1em, 1em, $gray-400);
+                    margin: 0;
+                    @include breakpoint(mobileonly) {
+                        @include fontNormal(.8em, 1em, $gray-400);
+                        
+                    }
+
+                }
+
+            }
+            
+           
+
+        }
+
+        .job-final {
+            width: 100%;
+            height: 85%;
+            // margin-top: 50px;
+            @include rowflex(center,center);
+            @include breakpoint(tablet) {
+                margin-top: 50px;
+                @include rowflex(center,center);
+            }
+
+            .job-final-inner {
+                width: 100%;
+                height: 95%;
+                text-align: left;
+                @include colflex(center,space-around);
+               
+
+                .job-title {
+                    width: 100%;
+                    height: 100%;
+                    padding-top: 20px;
+                    background: #FFFFFF;
+                    box-shadow: 0px 0px 15px #F3F2F1;
+                    border-radius: 10px;
+                    text-align: left;
+                    @include rowflex(center,center);
+                    @include breakpoint(mobileonly) {
+                        height: 30em;
+                    }
+                    @include breakpoint(tablet) {
+                        height: 30em;
+                    }
+                    
+                    .job-title-inner {
+                        width: 90%;
+                        height: 100%;
+                        @include colflex(center,space-around);
+                        @include breakpoint(mobileonly) {
+                            height: fit-content;
+                        }
+
+                        .job-title-top{
+                            width: 100%;
+                            height: 40%;
+                            @include rowflex(center,center);
+
+                            @include breakpoint(mobileonly) {
+                                width: 100%;
+                                height: 50%;
+                                @include rowflex(flex-start,center);
+                                
+                            }
+
+                            .job-title-left {
+                                width: 100%;
+                                height: 100%;
+                                @include colflex(flex-start,center);
+                                @include breakpoint(mobileonly) {
+                                    height: 20%;
+                                    width: 100%;
+                                    
+                                }
+                                p:nth-child(1){
+                                    margin: 0;
+                                    @include fontMedium(1.1em,1em, $blue-901);
+                                    @include breakpoint(mobileonly) {
+                                        margin: 0;
+                                        @include fontMedium(1em,1em, $blue-901);
+                                    }
+                                }
+                                p:nth-child(2){
+                                    margin: 0;
+                                    @include fontLight(1em,2em, $blue-901);
+                                    @include breakpoint(mobileonly) {
+                                        margin: 0;
+                                        @include fontLight(.8em,2em, $blue-901);
+                                    }
+                                }
+                                .job-title-btn {
+                                    width: 150px;
+                                    height: 50px;
+                                    font-size: 1em;
+                                    font-family: 'Inter', sans-serif;
+                                    font-weight: 500;
+                                    border: none;
+                                    color: #fff;
+                                    background-color: $blue-700;
+                                    border-radius: 10px;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease-in;
+                                    text-decoration: none;
+                                    @include rowflex(center, center);
+
+                                    @include breakpoint(mobileonly) {
+                                        width: 100px;
+                                        height: 50px;
+                                        @include fontNormal(.8em,2em, $blue-100);
+                                    }
+    
+                                    &:hover {
+                                        background-color: $blue-900;
+                                    }
+                                   
+                                }
+                            }
+                            a{
+                                margin: 0;
+                                @include fontMedium(1.1em,1em, $blue-901);
+                                @include breakpoint(mobileonly) {
+                                    @include fontMedium(.8em,1em, $blue-901);
+                                }
+                            }
+
+                        }
+                        
+
+                        hr {
+                            width: 100%;
+                            border: 1px solid $gray-200;
+                        }
+    
+                        .job-desc {
+                            width: 100%;
+                            height: 70%;
+                            @include rowflex(center,center);
+                            .job-desc-inner {
+        
+                                p:nth-child(1){
+                                    margin: 0;
+                                    @include fontNormal(1em,2em, $blue-902);
+                                    @include breakpoint(mobileonly) {
+                                        @include fontNormal(.8em,2em, $blue-901);
+                                    }
+                                }
+            
+                                p:nth-child(2){
+                                    
+                                    @include fontNormal(1em,1.5em, $blue-902);
+                                    @include breakpoint(mobileonly) {
+                                        @include fontMedium(.8em,1em, $blue-901);
+                                    }
+                                }
+            
+                                ul {
+                                    text-decoration: none;
+                                    padding: 0;
+                                    list-style: none;
+            
+                                    
+            
+                                    li {
+                                        @include fontLight(1em,2em, $blue-901);
+                                        margin-left: 10px;
+                                        @include breakpoint(mobileonly) {
+                                            @include fontLight(.8em,1em, $blue-901);
+                                        }
+                                    }
+                                    li:first-child {
+                                        @include fontMedium(1em,2em, $blue-901);
+                                        margin-left: 0px;
+                                        @include breakpoint(mobileonly) {
+                                            @include fontMedium(.8em,1em, $blue-901);
+                                        }
+            
+                                    }
+                                }
+        
+                            }
+                            
+                        }
+                    }
+                }
+
+                .application-container {
+                    width: 100%;
+                    box-shadow: 0px 0px 15px #F3F2F1;
+                    border-radius: 0px 0px 10px 10px;   
+                    height: 30em;
+                    margin-top: 50px;
+                    @include rowflex(flex-start,center);
+    
+                    .application-inner {
+                        width: 100%;
+                        height: 90%;
+                        // background-color: turquoise;
+                        @include colflex(center,space-between);
+    
+                        .application-top {
+                            width: 100%;
+                            height: 30%;
+                            background-color: $blue-700;
+                            border-radius: 10px 10px 0px 0px;
+                            @include rowflex(center,space-around);
+                            text-align: left;
+    
+                            .application-top-inner {
+                                
+                                width: 60%;
+                                p:nth-child(1){
+                                    margin: 0;
+                                    @include fontSemiBold(1.3em,1em, $blue-100);
+                                    @include breakpoint(mobileonly) {
+                                        @include fontSemiBold(1em,1em, $blue-100);
+                                    }
+                                }
+                                p:nth-child(2){
+                                    @include fontLight(1em,1em, $blue-100);
+                                    @include breakpoint(mobileonly) {
+                                        @include fontLight(.8em,1em, $blue-100);
+                                    }
+                                }
+                            }
+    
+                            img {
+                                width: 70px;
+                                @include breakpoint(mobileonly) {
+                                    width: 40px;
+                                }
+                            }
+                        }
+                        .application-details {
+                            width: 100%;
+                            height: 70%;
+                            @include rowflex(center,center);
+                            text-align: left;
+                            .application-details-inner {
+                                width: 90%;
+                                height: 90%;
+                                @include colflex(flex-start, space-between);
+                                .apps {
+                                    width: 100%;
+                                    @include rowflex(flex-start,space-between);
+                                    .apps-left {
+                                        @include colflex(flex-start,space-between);
+                                        @include breakpoint(mobileonly) {
+                                            @include colflex(flex-start,space-between);
+                                        }
+                                        p:nth-child(1){
+                                            margin: 0;
+                                            @include fontLight(1em,2em, $blue-901);
+
+                                            @include breakpoint(mobileonly) {
+                                                @include fontLight(.8em,1em, $blue-901);
+                                            }
+                                            
+                                        }
+                                        p:nth-child(2){
+                                            // margin: 0;
+                                            @include fontMedium(1em,1em, $blue-901);
+                                            @include breakpoint(mobileonly) {
+                                                
+                                                @include fontMedium(.8em,1em, $blue-901);
+                                            }
+                                            
+                                        }
+                                    }
+                                    a{
+                                        margin: 0;
+                                        @include fontMedium(1em,2em, $blue-901);
+                                        @include breakpoint(mobileonly) {
+                                            @include fontMedium(.8em,1em, $blue-901);
+                                        }
+                                    }
+                                    
+
+                                }
+                                hr {
+                                    width: 100%;
+                                    border: 1px solid $gray-200;
+                                }
+
+
+                            }
+
+                           
+                        }
+                    }
+                }
+                
+
+                
+            }
+        }
+    }
+}

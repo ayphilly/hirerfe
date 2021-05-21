@@ -1,0 +1,238 @@
+@import "../../../../variables.scss";
+
+.job-experience-container {
+
+    width: 50%;
+    height: 70em;
+    display: none;
+    
+    margin-bottom: 500px;
+    &.active {
+       
+        visibility: visible;
+    }
+    &.hide {
+        visibility: hidden;
+    }
+    
+    @include rowflex(center, center);
+
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        @include rowflex(center, center);
+        height:60em;
+        margin-bottom: 500px;
+    }
+    @include breakpoint(tablet) {
+        width: 70%;
+        @include rowflex(center, center);
+        height:60em;
+        margin-bottom: 500px;
+    }
+
+    .job-experience-inner {
+        width: 90%;
+        height: 95%;
+        margin: 0;
+        border-radius: 10px;
+        
+        @include colflex(center, space-between);
+        @include breakpoint(mobileonly) {
+            width: 90%;
+            height: 90%;
+        }
+        
+        .job-experience-texts {
+            
+            height:20%;
+            width:100%;
+            background-color: $blue-700;
+            box-shadow: 0px 0px 15px rgba(245, 245, 245, 0.25);
+            @include rowflex(center,space-around);
+            border-radius: 10px 10px 0px 0px;
+
+            @include breakpoint(mobileonly) {
+                height:10%;
+            }
+            
+
+            .job-inner-texts {
+                height: 20%;
+                width:90%;
+                text-align: left;
+                
+                
+                padding-left: 10px;
+                @include rowflex(flex-end,space-between);
+                p:nth-child(1) {
+                    @include fontBold(1.5em, 1em, $blue-100);
+                    margin:0;
+                    @include breakpoint(mobileonly) {
+                        @include fontBold(1.1em, 1em, $blue-100);
+                        
+                    }
+                }
+                p:nth-child(2) {
+                    @include fontNormal(1.1em, 1em, $gray-400);
+                    margin: 0;
+                    @include breakpoint(mobileonly) {
+                        @include fontNormal(.8em, 1em, $gray-400);
+                        
+                    }
+
+                }
+
+            }
+            
+           
+
+        }
+
+        .applicant-qualifications {
+            width: 100%;
+            height: 95%;
+            background: #FFFFFF;
+            box-shadow: 0px 0px 15px #F3F2F1;
+            margin-top: 50px;
+            @include colflex(center,flex-start);
+
+            @include breakpoint(mobileonly) {
+                height: 95%;
+                
+            }
+
+            .applicant-inner {
+                width: 95%;
+                height: fit-content;
+                padding-bottom: 20px;
+                text-align: left;
+                
+                @include colflex(center,space-between);
+
+                .applicant-inner-texts {
+                    width: 90%;
+                    height: 100px;
+                    @include rowflex(center,center);
+                    p:nth-child(1) {
+                        width: 100%;
+                        margin: 0;
+                        @include fontBold(1.2em, 1em, $blue-901);
+
+                        @include breakpoint(mobileonly) {
+                            @include fontBold(1em, 1em, $blue-901);
+                        }
+                    }
+                    
+
+                }
+
+                
+                
+
+                .add-experience {
+                    width: 90%;
+                    margin-top: 10px;
+                    @include rowflex(center,center);
+
+                    .add-experience-inner {
+                        width: 100%;
+                        cursor: pointer;
+                        @include colflex(flex-start,space-between);
+                        p{
+                            width: 40%;
+                            @include fontNormal(1em, 1em, $blue-700);
+                            @include rowflex(center, space-between);
+
+                            @include breakpoint(mobileonly) {
+                                width: 70%;
+                                @include fontNormal(1em, 1em, $blue-901);
+                            }
+
+                            &:hover {
+                                color: $blue-500;
+                            }
+                        }
+                    }
+                    
+                }
+    
+
+            }
+
+            
+        }
+
+        .experience-btn {
+            width: 100%;
+            height: 200px;
+            @include rowflex(center,space-around);
+            background: #FFFFFF;
+            box-shadow: 0px 5px 15px #F3F2F1;
+            border-radius: 10px;
+            margin-top: 50px;
+
+            @include breakpoint(mobileonly) {
+                height: 10em;
+                @include rowflex(center, space-around);
+                
+            }
+
+            .back-btn {
+                width: 35%;
+                height: 65px;
+                font-size: 1em;
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                border: none;
+                color: $blue-901;
+                background-color: $blue-100;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, center);
+    
+                @include breakpoint(mobileonly) {
+                    width: 150px;
+                    height: 50px;
+                }
+    
+                &:hover {
+                    background-color: $blue-900;
+                }
+            }
+            .next-btn {
+                width: 35%;
+                height: 65px;
+                font-size: 1em;
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                border: none;
+                color: #fff;
+                background-color: $blue-700;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, center);
+    
+                @include breakpoint(mobileonly) {
+                    width: 150px;
+                    height: 50px;
+                }
+    
+                &:hover {
+                    background-color: $blue-900;
+                }
+            }
+        }
+
+        
+
+        
+        
+    }
+
+    
+
+}

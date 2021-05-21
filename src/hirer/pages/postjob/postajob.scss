@@ -1,0 +1,7 @@
+@import "../../../variables.scss";
+.postajob-container{
+    width: 100%;
+    // height: 100%;
+    @include colflex(center,center);
+
+}

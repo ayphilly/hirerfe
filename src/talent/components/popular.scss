@@ -1,0 +1,154 @@
+@import "../../variables.scss";
+
+.popular-container {
+    width: 100%;
+    height: 50vh;
+    @include rowflex(flex-end, center);
+    position: relative;
+    // z-index: -2;
+    @include breakpoint(mobileonly) {
+        height: 100vh;
+        @include rowflex(center,center);
+    }
+
+    @include breakpoint(phablet) {
+        height: 100vh !important;
+        @include rowflex(center,center);
+        margin-top: 50px;
+    }
+
+    @include breakpoint(tablet) {
+        height:50em !important;
+        @include rowflex(center,center);
+    }
+
+    @include breakpoint(laptop) {
+        height: 35em;
+        @include rowflex(flex-end,center);
+    }
+    .inner {
+        @include colflex(center, space-between);
+        width: fit-content;
+        height: 75%;
+        @include breakpoint(mobileonly) {
+            height: 80%;
+            @include colflex(center, space-around);
+            margin-top: 50px;
+        }
+
+        @include breakpoint(tablet) {
+            height: 70% !important;
+            @include colflex(center, space-between);
+            margin-top: 50px;
+            width: 90%;
+        }
+
+        @include breakpoint(phablet) {
+            height: 30em;
+            @include colflex(center, space-around);
+            margin-top: 50px;
+        }
+
+        @include breakpoint(laptop) {
+            width: 85%;
+            height: 75%;
+            @include colflex(center, space-around);
+            margin-top: 50px;
+        }
+
+        
+        .popular-headline {
+            
+            p:nth-child(1) {
+                @include fontBold(2em, 1.4em, $blue-902);
+                height: 20px;
+
+                @include breakpoint(mobileonly) {
+                    @include fontBold(1.5em, 1.4em, $blue-902);
+                }
+
+            }
+            p:nth-child(2) {
+                @include fontNormal(1em, 1em, $blue-901);
+                @include breakpoint(mobileonly) {
+                    @include fontNormal(.8em, 1.4em, $blue-902);
+                    margin: 0;
+                }
+
+            }
+        }
+
+        .popular-searches-content {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            grid-template-rows: 65px;
+            column-gap: 15px;
+            row-gap: 20px;
+            width: 100%;
+            align-items: space-between;
+            cursor: pointer;
+
+            @include breakpoint(mobileonly) {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-template-rows: 65px 65px 65px;
+                align-items: flex-start;
+                justify-items: center;
+                column-gap: 5px;
+                row-gap: 10px;
+            }
+
+            @include breakpoint(tablet) {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows: 65px 65px 65px;
+                align-items: center;
+                justify-content: center;
+                column-gap: 5px;
+                row-gap: 10px;
+            }
+
+            @include breakpoint(phablet) {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-template-rows: 65px;
+                justify-items: center;
+                column-gap: 5px;
+                row-gap: 10px;
+            }
+
+        }
+
+        .popular-search-link {
+            @include fontNormal(1em, 1em, $blue-700);
+            text-decoration: none;
+            width: 20%;
+            @include rowflex(center,space-between);
+
+            @include breakpoint(mobileonly) {
+                width:50%;
+                @include fontNormal(.8em, 1em, $blue-700);
+            }
+            @include breakpoint(phablet) {
+                width:45% !important;
+                margin-top: 40px;
+                
+                @include fontNormal(1em, 1em, $blue-700);
+            }
+
+            @include breakpoint(tablet) {
+                width:20% !important;
+                margin-top: 40px;
+                
+                @include fontNormal(1em, 1em, $blue-700);
+            }
+
+            .direction-icon {
+                margin-left: 20px;
+            }
+
+        }
+    }
+
+    
+}

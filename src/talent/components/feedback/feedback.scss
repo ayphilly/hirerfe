@@ -1,0 +1,62 @@
+@import "../../../variables.scss";
+
+.feedback-container {
+    width: 100%;
+    height: 80vh;
+    @include rowflex(center,center);
+    background-color: $blue-100;
+    @include breakpoint(mobileonly) {
+        height: 50em;
+    }
+    @include breakpoint(tablet) {
+        height: 50em;
+    }
+    @include breakpoint(laptop) {
+        height: 50em;
+    }
+
+    .feedback-inner {
+        width: 80%;
+        height: 85%;
+
+        @include breakpoint(tablet) {
+            height: 75%;
+        }
+        @include colflex(center, space-around);
+
+        .feedback-top {
+            width: 30%;
+            @include breakpoint(mobileonly) {
+                width: 80%;
+            }
+            @include breakpoint(tablet) {
+                width: 50%;
+            }
+            @include breakpoint(phablet) {
+                width: 75% !important;
+            }
+            @include breakpoint(laptop) {
+                width: 50% !important;
+            }
+
+            p:nth-child(1) {
+                @include fontBold(2em, 1.4em, $blue-902);
+                @include breakpoint(mobileonly) {
+                    @include fontBold(1.5em, 1.4em, $blue-902);
+                }
+                @include breakpoint(phablet) {
+                    @include fontBold(2em, 1.4em, $blue-902);
+                }
+                height: 20px;
+
+            }
+            p:nth-child(2) {
+                @include fontNormal(1em, 1.4em, $blue-901);
+                @include breakpoint(mobileonly) {
+                    @include fontNormal(.8em, 1.4em, $blue-902);
+                }
+
+            }
+        }
+    }
+}

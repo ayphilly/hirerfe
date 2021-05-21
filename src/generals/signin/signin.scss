@@ -1,0 +1,271 @@
+@import "../../variables.scss";
+
+.signin-container {
+
+    width: 100%;
+    height: 55em;
+    @include rowflex(center,center);
+    margin-bottom: 200px;
+
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 55em;
+        @include rowflex(center, center);
+        margin-bottom: 500px;
+    }
+    @include breakpoint(tablet) {
+        width: 100%;
+        @include rowflex(center, center);
+        height: 55em;
+        margin-bottom: 400px;
+    }
+    @include breakpoint(phablet) {
+        width: 100%;
+        @include rowflex(center, center);
+        height: 55em;
+        margin-bottom: 400px;
+    }
+    
+    &.active {
+        // display: none;
+        // display: flex;
+        // visibility: hidden;
+        visibility: visible;
+    }
+    &.hide {
+        visibility: hidden;
+    }
+    
+    @include rowflex(center, center);
+
+    .signin-inner {
+        width: 40%;
+        height: 95%;
+        // margin: 0;
+        background-color: #fff;
+        box-shadow: 0px 0px 15px #F5F5F5;
+        border-radius: 10px 10px 0px 0px;
+        @include colflex(center, space-between);
+
+        @include breakpoint(mobileonly) {
+            width: 90%;
+            height: 85%;
+            @include colflex(center, space-between);
+           
+        }
+        
+        .signin-texts {
+            height: 20%;
+            width: 90%;
+            text-align: left;
+            
+            @include colflex(flex-start,space-around);
+            @include breakpoint(mobileonly) {
+                height: 12%;
+                width: 90%;
+                @include colflex(flex-start,space-between);
+               
+            }
+            @include breakpoint(tablet) {
+                height: 12%;
+                width: 90%;
+                @include colflex(flex-start,space-between);
+               
+            }
+            
+           
+            p:nth-child(1) {
+                @include fontBold(2em, 1em, $blue-902);
+                @include breakpoint(mobileonly) {
+                    @include fontBold(1.5em, 1em, $blue-902);
+                }
+                // margin:0;
+            }
+            p:nth-child(2) {
+                width: 50%;
+                @include fontLight(1.1em, 1.3em, $blue-901);
+                margin: 0;
+                margin-top: -20px;
+                @include breakpoint(mobileonly) {
+                    @include fontLight(.8em, 1.3em, $blue-901);
+                }
+                @include breakpoint(tablet) {
+                    width: 70%;
+                    @include fontLight(.8em, 1.3em, $blue-901);
+                }
+
+            }
+            
+
+        }
+
+        .signin-options {
+            width: 90%;
+            height: 20%;
+            @include rowflex(center,space-between);
+            @include breakpoint(mobileonly) {
+                width: 90%;
+                height: 150px;
+                @include colflex(center,space-around);
+            }
+            @include breakpoint(tablet) {
+                width: 90%;
+                height: 200px;
+                @include colflex(center,space-around);
+            }
+            .google {
+                width: 250px;
+                height: 65px;
+                @include fontNormal(1em, 1em, red);
+                border: none;
+                color: #DD2323;
+                background: #FFEBEB;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, space-around);
+                cursor: pointer;
+
+                
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    height: 50px;
+                    @include fontNormal(.8em, 1em, red);
+                }
+                @include breakpoint(tablet) {
+                    width: 100%;
+                    height: 60px;
+                    @include fontNormal(.8em, 1em, red);
+                }
+
+                &:hover {
+                    color: #DD2323;
+                    background-color: #ffd9d9;
+
+                }
+
+            }
+            .facebook {
+                width: 250px;
+                height: 65px;
+                @include fontNormal(1em, 1em, #284176);
+                border: none;
+                color: #3B5998;;
+                background: #F3F7FF;
+                border-radius: 10px;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, space-around);
+
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    height: 50px;
+                    @include fontNormal(.8em, 1em, #284176);
+                }
+
+                @include breakpoint(tablet) {
+                    width: 100%;
+                    height: 60px;
+                    @include fontNormal(.8em, 1em, #284176);
+                }
+
+                &:hover {
+                    color: #3B5998;
+                    background-color: #e4edff;
+
+                }
+
+            }
+
+        }
+
+        .signin-divide {
+            width: 90%;
+            height: 5%;
+            @include rowflex(center,space-between);
+            hr {
+                width: 45%;
+                border: 1px solid $gray-200;
+            }
+            @include fontNormal(1em,1em, $blue-901);
+            @include breakpoint(mobileonly) {
+                @include fontNormal(.8em,1em, $blue-901);
+            }
+
+        }
+
+        form {
+            width: 100%;
+            height: 70%;
+            // background-color: aqua;
+            // @include colflex(flex-start, space-around);
+            @include rowflex(center,center);
+            @include breakpoint(mobileonly) {
+                @include colflex(center, space-between);
+                height: 60%;
+                width: 100%;
+            }
+            @include breakpoint(tablet) {
+                @include colflex(center, space-between);
+                height: 60%;
+                width: 100%;
+            }
+            .form-inner {
+                width: 90%;
+                height: 90%;
+                margin: 0;
+                @include colflex(flex-start, space-around);
+                @include breakpoint(mobileonly) {
+                   
+                    width: 90%;
+                    height: 90%;
+                    @include colflex(flex-start, space-evenly);
+                }
+                p {
+                    @include fontNormal(.8em, 1em, $blue-902);
+                    a {
+                        text-decoration: none;
+                        color: $blue-700 ;
+                    }
+                }
+                p:nth-child(2) {
+                    @include fontNormal(.8em, 1em, $blue-902);
+                    a {
+                        text-decoration: none;
+                        color: $blue-700 ;
+                    }
+                }
+                .signin-submit {
+                    width: 100%;
+                    height: 65px;
+                    font-size: 1em;
+                    font-family: 'Inter', sans-serif;
+                    font-weight: 500;
+                    border: none;
+                    color: #fff;
+                    background-color: $blue-700;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in;
+                    text-decoration: none;
+                    @include rowflex(center, center);
+    
+                    @include breakpoint(mobileonly) {
+                        width: 100%;
+                        height: 50px;
+                    }
+    
+                    &:hover {
+                        background-color: $blue-900;
+                    }
+                }
+            }
+            
+        }
+        
+    }
+
+}

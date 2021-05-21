@@ -1,0 +1,36 @@
+@import "../../variables.scss";
+
+.checkbox {
+    
+    @include rowflex(center, space-between);
+    width: fit-content;
+    
+    height: fit-content;
+    @include fontNormal(1em, 1em, $blue-902);
+    // background-color: turquoise;
+   &.padded {
+        padding: 1em;
+        /* blue 100 */
+
+        background: $blue-100;
+        /* blue 500 */
+
+        border: 1.5px solid $blue-500;
+        box-sizing: border-box;
+        border-radius: 5px;
+
+        color: $blue-500;
+
+   }
+
+    input[type="checkbox"] {
+        display: none;
+        
+    }
+    .label {
+        text-align: right;
+        margin-left: 20px;
+        @include fontNormal(1.1em, 1em, $blue-901)
+      }
+  }
+  

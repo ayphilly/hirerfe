@@ -1,0 +1,97 @@
+@import "../../variables.scss";
+
+
+.single-form-input {
+    // @include colflexx(flex-start);
+    width: 500px;
+    @include rowflex(center,center);
+    height:fit-content;
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        @include colflex(flex-start, space-between);
+    }
+    @include breakpoint(phablet) {
+        width: 100% !important;
+        @include colflex(flex-start, space-between);
+        // height: 50px;
+       
+    }
+
+    @include breakpoint(tablet) {
+        width: 100% !important;
+        @include colflex(flex-start, space-between);
+        // height: 50px;
+       
+    }
+
+    @include breakpoint(laptop) {
+        width: 100% !important;
+        @include colflex(flex-start, space-between);
+        // height: 50px;
+       
+    }
+
+    label {
+        // height: 10px;
+        margin: 0;
+        @include fontMedium(1.25em,1em, $blue-901);
+        @include breakpoint(mobileonly) {
+            @include fontMedium(1em,1em, $blue-901);
+        }
+    }
+    p{
+        @include fontLight(1em,1em, $blue-900);
+        margin-top:1px;
+        @include breakpoint(mobileonly) {
+            @include fontLight(.8em,1.2em, $blue-900);
+        }
+    }
+    input[type='text'], input[type='password'] {
+        // width: 100%;
+        height: 60px;
+        background: #F9F8F9;
+        border: 1px solid $gray-400;
+        box-sizing: border-box;
+        border-radius: 5px;
+        outline: none;
+        padding-left: 20px;
+        @include fontNormal(1em, 1em, $gray-600);
+
+        @include breakpoint(mobileonly) {
+            width: 330px !important;
+            height: 50px;
+        }
+        @include breakpoint(phablet) {
+            width: 100% !important;
+            // height: 50px;
+           
+        }
+
+        @include breakpoint(tablet) {
+            width: 95% !important;
+            // background-color: red !important;
+            height: 50px;
+           ;
+        }
+
+    
+        
+        @include breakpoint(laptop) {
+            width: 90% !important;
+            // height: 50px;
+           ;
+        }
+
+        
+        
+
+        &:focus {
+            border: 1px solid $blue-500;
+            background-color: $blue-100;
+            color: $blue-901;
+        }
+    }
+    
+    
+
+}

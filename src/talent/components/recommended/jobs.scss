@@ -1,0 +1,50 @@
+@import "../../../variables.scss";
+
+
+.recommended-container {
+    width: 100%;
+    height: fit-content;
+    @include rowflex(flex-start,center);
+
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: fit-content;
+        @include rowflex(flex-start,center);
+    }
+
+
+    .recommended-inner {
+        width: 100%;
+        height:fit-content;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto;
+        column-gap: 20px;
+        row-gap: 20px;
+        max-height: 100%;
+        align-content: flex-start;
+
+        @include breakpoint(mobileonly) {
+            grid-template-columns: auto;
+            grid-template-rows:auto;
+            height: 100%;
+            width: 100%;
+            align-content: center;
+            justify-content: center;
+        }
+
+        @include breakpoint(tablet) {
+            grid-template-columns: auto auto;
+            grid-template-rows: 200px;
+            // height: 90%;
+        }
+        @include breakpoint(phablet) {
+            grid-template-columns: auto;
+            grid-template-rows: auto;
+            column-gap: 20px;
+            row-gap: 20px;
+            // height: 90%;
+        }
+
+    }
+}
