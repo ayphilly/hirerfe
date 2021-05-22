@@ -6,26 +6,33 @@ export const DropdownWrapper = styled.div`
   align-items:flex-start;
   justify-content: flex-end;
   backgroundColor: black;
-  width:fit-content;
+  // width:fit-content;
   text-align: left;
   // margin:0;
   height: fit-content;
-  // width:100%;
+  width:100%;
+
+  @media screen and (max-width: 450px) {
+    width: 100% !important;
+ 
+  }
 
   @media screen and (max-width: 600px) {
-    width: 80%!important;
-    margin-left: 10px !important;
+    width: 100%!important;
+    // margin-left: 10px !important;
     // background-color: black !important;
   }
+
   @media (min-width: 768px) and (max-width: 1024px) {
-    width: 80%!important;
-    margin-left: 10px !important;
+    width: 100%!important;
+    // margin-left: 10px !important;
+    
 
   }
   @media (min-width: 64em) { 
 
-    width: 80%!important;
-    margin-left: 10px !important;
+    width: 100%!important;
+    // margin-left: 10px !important;
 
   }
 `;
@@ -33,7 +40,7 @@ export const DropdownWrapper = styled.div`
 export const StyledSelect = styled.select`
 
   backgroundColor: red;
-  // width:90%;
+  width:100%;
   margin-bottom: 1rem;
   height: 60px;
   background-color: #F9F8F9;
@@ -76,7 +83,7 @@ export const StyledSelect = styled.select`
     
   }
   @media screen and (max-width: 450px) {
-    width: 30%!important;
+    width: 100%!important;
     
   }
   

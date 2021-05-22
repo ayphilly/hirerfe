@@ -98,5 +98,11 @@ export const personal = [
 
 
 
-
+export const defaultData = {
+   
+    jobtitle : "",
+    joblocation : "",
+    jobtype : "",
+    jobdescription: " "
+}
 
