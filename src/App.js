@@ -8,8 +8,8 @@ import {Profile} from "./talent/pages/dashboard/profile/profile"
 import {Searchjob} from "./talent/pages/searchjob/searchjob"
 import {Searchtalent} from "./hirer/pages/searchtalents/searchtalent"
 import Hirer from "./hirer/pages/homepage/hirer"
-import {Createjob} from "./hirer/pages/postjob/createjob"
-import {Createnewjob} from "./hirer/pages/hirerjobpost/createnewjob"
+// import {Createjob} from "./hirer/pages/postjob/createjob"
+// import {Createnewjob} from "./hirer/pages/hirerjobpost/createnewjob"
 import {Jobtype} from "./hirer/components/createjob/createjobstep/jobtype/jobtype"
 import Footer from "./generals/footer"
 import Resetpassword from "./generals/pages/resetpassword/resetpassword"
@@ -64,8 +64,8 @@ function App() {
         <Route path="/searchtalent" component={Searchtalent} />  */}
 
         <HirerWithNavbar exact path='/hirer' component={Hirer} />
-        <HirerWithNavbar exact path="/hirer/postjob" component={Createjob} />
-        <HirerWithNavbar exact path="/hirer/postnewjob" component={Createnewjob} />
+        {/* <HirerWithNavbar exact path="/hirer/postjob" component={Createjob} />
+        <HirerWithNavbar exact path="/hirer/postnewjob" component={Createnewjob} /> */}
         <HirerWithNavbar exact path="/hirer/searchtalent" component={Searchtalent} />
         <HirerWithNavbar exact path="/hirer/jobber" component={Jobtype} />
 
