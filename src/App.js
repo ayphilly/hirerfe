@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.scss';
-import {Route, Switch } from 'react-router-dom';
-import Homepage from "./talent/pages/homepage/talent"
-import {Dashboardhome} from "./talent/pages/dashboard/homepage/homepage"
-import {Myjobs} from "./talent/pages/dashboard/myjobs/myjobs"
-import {Profile} from "./talent/pages/dashboard/profile/profile"
-import {Searchjob} from "./talent/pages/searchjob/searchjob"
-import {Searchtalent} from "./hirer/pages/searchtalents/searchtalent"
-import Hirer from "./hirer/pages/homepage/hirer"
-// import {Createjob} from "./hirer/pages/postjob/createjob"
-// import {Createnewjob} from "./hirer/pages/hirerjobpost/createnewjob"
-import {Jobtype} from "./hirer/components/createjob/createjobstep/jobtype/jobtype"
-import Footer from "./generals/footer"
+import logo from "./logo.svg";
+import "./App.scss";
+import { Route, Switch } from "react-router-dom";
+import Homepage from "./talent/pages/homepage/talent";
+import { Dashboardhome } from "./talent/pages/dashboard/homepage/homepage";
+import { Myjobs } from "./talent/pages/dashboard/myjobs/myjobs";
+import { Profile } from "./talent/pages/dashboard/profile/profile";
+import { Searchjob } from "./talent/pages/searchjob/searchjob";
+import { Searchtalent } from "./hirer/pages/searchtalents/searchtalent";
+import Hirer from "./hirer/pages/homepage/hirer";
 import Resetpassword from "./generals/pages/resetpassword/resetpassword"
-import {Signin} from "./generals/signin/signin"
-import Talentnav  from "./talent/components/navbar"
-import Dashboardnav  from "./talent/components/dashboardnavbar/dashboardnav"
-import Hirernav from "./hirer/components/navbar/navbar"
-import Createaccount from "./generals/createaccount/createaccount"
-import {closePage} from "./helper"
+import Footer from "./generals/footer";
+import { Signin } from "./generals/signin/signin";
+import Talentnav from "./talent/components/navbar";
+import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
+import Hirernav from "./hirer/components/navbar/navbar";
+import Createaccount from "./generals/createaccount/createaccount";
+import { closePage } from "./helper";
 
 import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 
@@ -67,7 +64,7 @@ function App() {
         {/* <HirerWithNavbar exact path="/hirer/postjob" component={Createjob} />
         <HirerWithNavbar exact path="/hirer/postnewjob" component={Createnewjob} /> */}
         <HirerWithNavbar exact path="/hirer/searchtalent" component={Searchtalent} />
-        <HirerWithNavbar exact path="/hirer/jobber" component={Jobtype} />
+        {/* <HirerWithNavbar exact path="/hirer/jobber" component={Jobtype} /> */}
 
         <Route path="/signin" component={Signin} /> 
         
