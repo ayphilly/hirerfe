@@ -1,9 +1,38 @@
 import React, { useState } from "react";
 
+const formFields = [
+  {
+    id: "jobTitle",
+    label: "Job Title",
+  },
+  {
+    id: "jobLocation",
+    label: "Job Location",
+  },
+  {
+    id: "jobType",
+    label: "Job Type",
+  },
+  {
+    id: "jobDescription",
+    label: "Job Description",
+  },
+];
 const PostJob = () => {
   const [step, setStep] = useState(0);
-  const previousStep = () => setStep(step - 1);
-  const nextStep = () => setStep(step + 1);
+  const [error, setError] = useState(false);
+  const [formData, setFormData] = useState({
+    jobTitle: "",
+    jobLocation: "",
+    jobType: "FT",
+    jobDescription: "",
+  });
+  const setField = (field) => {
+    setError(false);
+    setFormData({ ...formData, ...field });
+  };
+  const previousStep = () => step > 0 && setStep(step - 1);
+  const nextStep = () => step < 3 && setStep(step + 1);
   return (
     <>
       <div
@@ -12,6 +41,7 @@ const PostJob = () => {
       >
         <div
           style={{
+            "--width": `${(step + 1) * 25}%`,
             backgroundColor: "#fff",
             width: "90%",
             maxWidth: "500px",
@@ -19,19 +49,87 @@ const PostJob = () => {
           }}
           className="plain-card d-flex flex-column "
         >
-          <div className="f-24 fw-700">Step 1 of 4 &bull; Job Title</div>
+          <div className="f-24 fw-700">
+            Step {step + 1} of 4 &bull; {formFields[step].label}
+          </div>
           <p className="mb-8">
             Enter your details to join The #1 Mastermind On Global Communities -
             No Catch - Pay Once, get twelve months full access.
           </p>
           <label className="mb-3" htmlFor="jobTitle">
-            Job Title
+            {formFields[step].label}
             <span style={{ color: "red" }}>*</span>
           </label>
-          <input className="mb-8 classic-input" type="text" />
-          <button onClick={nextStep} className="btn btn-primary w-100">
-            Next
-          </button>
+          {step === 0 && (
+            <input
+              value={formData[formFields[step].id]}
+              onChange={(e) =>
+                setField({ [formFields[step].id]: e.target.value })
+              }
+              className="mb-8 classic-input"
+              type="text"
+            />
+          )}
+          {step === 1 && (
+            <input
+              value={formData[formFields[step].id]}
+              onChange={(e) =>
+                setField({ [formFields[step].id]: e.target.value })
+              }
+              className="mb-8 classic-input"
+              type="text"
+            />
+          )}
+          {step === 2 && (
+            <select
+              value={formData[formFields[step].id]}
+              onChange={(e) =>
+                setField({ [formFields[step].id]: e.target.value })
+              }
+              className="mb-8 classic-input"
+              type="text"
+            >
+              <option value="FT">Full Time</option>
+              <option value="C">Contract</option>
+              <option value="R">Remote</option>
+            </select>
+          )}
+          {step === 3 && (
+            <textarea
+              rows={5}
+              value={formData[formFields[step].id]}
+              onChange={(e) =>
+                setField({ [formFields[step].id]: e.target.value })
+              }
+              className="mb-8 classic-input"
+              type="text"
+            />
+          )}
+          {error && (
+            <div
+              style={{ color: "red", marginTop: "-2rem", marginBottom: "1rem" }}
+            >
+              This field is required!{" "}
+            </div>
+          )}
+          <div className="d-flex justify-content-end">
+            <button
+              onClick={previousStep}
+              className={
+                "btn btn-dark btn-secondary mr-4" + ` ${step === 0 && "d-none"}`
+              }
+            >
+              Back
+            </button>
+            <button
+              onClick={() =>
+                formData[formFields[step].id] ? nextStep() : setError(true)
+              }
+              className={"btn btn-primary" + ` ${step === 0 && "w-100"}`}
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </>
