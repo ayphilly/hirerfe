@@ -8,7 +8,7 @@ import { Profile } from "./talent/pages/dashboard/profile/profile";
 import { Searchjob } from "./talent/pages/searchjob/searchjob";
 import { Searchtalent } from "./hirer/pages/searchtalents/searchtalent";
 import Hirer from "./hirer/pages/homepage/hirer";
-import Resetpassword from "./generals/pages/resetpassword/resetpassword"
+
 import Footer from "./generals/footer";
 import { Signin } from "./generals/signin/signin";
 import Talentnav from "./talent/components/navbar";
@@ -16,6 +16,10 @@ import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
 import Hirernav from "./hirer/components/navbar/navbar";
 import Createaccount from "./generals/createaccount/createaccount";
 import { closePage } from "./helper";
+// import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
+// import PostJob from "./hirer/pages/PostJob";
+import Resetpassword from "./generals/pages/resetpassword/resetpassword"
+
 
 import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 
