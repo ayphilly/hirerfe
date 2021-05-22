@@ -1,5 +1,5 @@
 //  display
-$displays: flex, inline-block, block, inline;
+$displays: none, flex, inline-block, block, inline;
 @each $display in $displays {
   .d-#{$display} {
     display: $display;
@@ -18,10 +18,16 @@ $directions: column, row;
 .align-items-center {
   align-items: center;
 }
+.align-items-end {
+  align-items: flex-end;
+}
 
 // Justify Content
 .justify-content-center {
   justify-content: center;
+}
+.justify-content-end {
+  justify-content: flex-end;
 }
 
 // Sizing
