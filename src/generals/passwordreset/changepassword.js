@@ -16,7 +16,7 @@ export const Changepassword = (props) => {
           setError('');
         }
     };
-
+    
     useEffect(() => {
         validate();
     }, [password]);
