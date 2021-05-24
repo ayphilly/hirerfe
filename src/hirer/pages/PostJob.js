@@ -47,10 +47,8 @@ const PostJob = () => {
         <div
           style={{
             "--width": `${(step + 1) * 20}%`,
-            backgroundColor: "#fff",
             width: "90%",
             maxWidth: "500px",
-            boxShadow: "0 0 20px rgba(0,0,0,0.1)",
           }}
           className="plain-card progress d-flex flex-column "
         >
