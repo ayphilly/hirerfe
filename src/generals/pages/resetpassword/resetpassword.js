@@ -1,6 +1,7 @@
 import "./resetpassword.scss"
 import {Verifyemail} from "../../passwordreset/verifyemail"
 import {Changepassword} from "../../passwordreset/changepassword"
+import {Resetsuccessful} from "../../passwordreset/successful"
 import {useEffect, useState} from "react"
 const steps = [
     {id: 'verifymail'},
@@ -28,6 +29,10 @@ const Resetpassword = () => {
         }
         {
            step === 1 && <Changepassword {...props} ></Changepassword>
+        }
+
+        {
+           step === 2 && <Resetsuccessful {...props} ></Resetsuccessful>
         }
 
         </div>
