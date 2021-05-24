@@ -3,16 +3,18 @@
 // Module
 @import "module/buttons";
 
+* {
+  box-sizing: border-box;
+}
 .plain-card {
   background-color: #fff;
   width: 100%;
-  max-width: 500px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   position: relative;
-  padding: 75px;
+  padding: 75px 50px;
 }
 
-.plain-card::before {
+.progress::before {
   content: "";
   top: 0;
   left: 0;
@@ -23,7 +25,10 @@
 
   transition: width 0.25s ease-in-out;
 }
-
+.progress-bottom::before {
+  bottom: 0;
+  top: auto;
+}
 .classic-input {
   font-family: "Inter", sans-serif;
   border-radius: $btn-radius;

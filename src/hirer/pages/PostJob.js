@@ -52,7 +52,7 @@ const PostJob = () => {
             maxWidth: "500px",
             boxShadow: "0 0 20px rgba(0,0,0,0.1)",
           }}
-          className="plain-card d-flex flex-column "
+          className="plain-card progress d-flex flex-column "
         >
           <div className="f-24 fw-700">
             Step {step + 1} of 5 &bull; {formFields[step].label}
