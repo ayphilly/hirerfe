@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import EducationFields from "./components/EducationFields";
+import UserProfileFields from "./components/UserProfileFields";
 
 const CreateProfile = () => {
   const [step, setStep] = useState(0);
@@ -26,9 +28,16 @@ const CreateProfile = () => {
             <div className="f-28 fw-600">User Profile</div>
             <p>Tell us about yourself.</p>
           </div>
-          <div className="f-18">Step {step + 1} / 5</div>
+          <div style={{ color: "gray" }} className="f-18">
+            Step {step + 1} / 5
+          </div>
         </div>
       </div>
+      <form className="plain-card mb-8">
+        {step == 0 && <UserProfileFields />}
+        {step == 1 && <EducationFields />}
+      </form>
+      {/* Form Nav */}
       <div
         style={{ paddingTop: "20px", paddingBottom: "20px" }}
         className="plain-card d-flex justify-content-between"
@@ -40,7 +49,7 @@ const CreateProfile = () => {
           Back
         </button>
         <button onClick={() => nextStep()} className="btn btn-primary">
-          Next
+          Continue
         </button>
       </div>
     </div>
