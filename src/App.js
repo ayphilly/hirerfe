@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.scss";
 import { Route, Switch } from "react-router-dom";
 import Homepage from "./talent/pages/homepage/talent";
