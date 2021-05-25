@@ -17,6 +17,10 @@ const formFields = [
     id: "jobDescription",
     label: "Job Description",
   },
+  {
+    id: "jobSalary",
+    label: "Job Salary",
+  },
 ];
 const PostJob = () => {
   const [step, setStep] = useState(0);
@@ -26,13 +30,14 @@ const PostJob = () => {
     jobLocation: "",
     jobType: "FT",
     jobDescription: "",
+    jobSalary: 0,
   });
   const setField = (field) => {
     setError(false);
     setFormData({ ...formData, ...field });
   };
   const previousStep = () => step > 0 && setStep(step - 1);
-  const nextStep = () => step < 3 && setStep(step + 1);
+  const nextStep = () => step < 4 && setStep(step + 1);
   return (
     <>
       <div
@@ -41,16 +46,14 @@ const PostJob = () => {
       >
         <div
           style={{
-            "--width": `${(step + 1) * 25}%`,
-            backgroundColor: "#fff",
+            "--width": `${(step + 1) * 20}%`,
             width: "90%",
             maxWidth: "500px",
-            boxShadow: "0 0 20px rgba(0,0,0,0.1)",
           }}
-          className="plain-card d-flex flex-column "
+          className="plain-card progress d-flex flex-column "
         >
           <div className="f-24 fw-700">
-            Step {step + 1} of 4 &bull; {formFields[step].label}
+            Step {step + 1} of 5 &bull; {formFields[step].label}
           </div>
           <p className="mb-8">
             Enter your details to join The #1 Mastermind On Global Communities -
@@ -97,6 +100,16 @@ const PostJob = () => {
           {step === 3 && (
             <textarea
               rows={5}
+              value={formData[formFields[step].id]}
+              onChange={(e) =>
+                setField({ [formFields[step].id]: e.target.value })
+              }
+              className="mb-8 classic-input"
+              type="text"
+            />
+          )}
+          {step === 4 && (
+            <input
               value={formData[formFields[step].id]}
               onChange={(e) =>
                 setField({ [formFields[step].id]: e.target.value })
