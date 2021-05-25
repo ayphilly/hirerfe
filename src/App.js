@@ -8,7 +8,7 @@ import { Profile } from "./talent/pages/dashboard/profile/profile";
 import { Searchjob } from "./talent/pages/searchjob/searchjob";
 import { Searchtalent } from "./hirer/pages/searchtalents/searchtalent";
 import Hirer from "./hirer/pages/homepage/hirer";
-import { Createjob } from "./hirer/pages/postjob/createjob";
+// import { Createjob } from "./hirer/pages/postjob/createjob";
 import Footer from "./generals/footer";
 import { Signin } from "./generals/signin/signin";
 import Talentnav from "./talent/components/navbar";
