@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+
 import "./App.scss";
 import { Route, Switch } from "react-router-dom";
 import Homepage from "./talent/pages/homepage/talent";
@@ -8,7 +8,7 @@ import { Profile } from "./talent/pages/dashboard/profile/profile";
 import { Searchjob } from "./talent/pages/searchjob/searchjob";
 import { Searchtalent } from "./hirer/pages/searchtalents/searchtalent";
 import Hirer from "./hirer/pages/homepage/hirer";
-import { Createjob } from "./hirer/pages/postjob/createjob";
+// import { Createjob } from "./hirer/pages/postjob/createjob";
 import Footer from "./generals/footer";
 import { Signin } from "./generals/signin/signin";
 import Talentnav from "./talent/components/navbar";
@@ -17,7 +17,7 @@ import Hirernav from "./hirer/components/navbar/navbar";
 import Createaccount from "./generals/createaccount/createaccount";
 import Resetpassword from "./generals/pages/resetpassword/resetpassword"
 import {Jobdescription} from "./generals/pages/jobdescription/jobdescription"
-import {Jobapplication} from "./generals/jobapplication/jobapplication"
+
 import { closePage } from "./helper";
 import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import PostJob from "./hirer/pages/PostJob";
@@ -106,11 +106,6 @@ function App() {
           exact
           path="/talent/jobdescription"
           component={Jobdescription}
-        />
-        <TalentWithNavbar
-          exact
-          path="/talent/jobapplication"
-          component={Jobapplication}
         />
 
         {/* <Route path="/hirer" render = { (props)=> <Hirer {...props} closePage={closePage} openPage ={openPage}/> } /> 
