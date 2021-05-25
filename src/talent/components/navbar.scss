@@ -89,11 +89,13 @@
             @include breakpoint(tablet) {
                 width: 40% !important;
                 @include rowflex(center, space-between);
+                
                 @include fontNormal(.8em, 1em, $blue-902);
             }
 
             @include breakpoint(laptop) {
-                width: 30%;
+                width: 33% !important;
+                
                 @include rowflex(center, space-between);
                 @include fontNormal(1em, 1em, $blue-902);
             }
@@ -211,7 +213,7 @@
             }
 
             @include breakpoint(laptop) {
-                width: 40%;
+                width: 40% !important;
                 @include rowflex(center, space-between);
                 @include fontNormal(1em, 1em, $blue-902);
             }

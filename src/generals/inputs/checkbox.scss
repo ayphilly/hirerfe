@@ -28,9 +28,13 @@
         
     }
     .label {
-        text-align: right;
+        text-align: left;
         margin-left: 20px;
-        @include fontNormal(1.1em, 1em, $blue-901)
+        @include fontNormal(1.1em, 1em, $blue-901);
+
+        @include breakpoint (mobileonly) {
+            @include fontNormal(.8em, 1em, $blue-901)
+        }
       }
   }
   
