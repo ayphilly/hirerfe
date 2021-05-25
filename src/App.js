@@ -16,6 +16,8 @@ import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
 import Hirernav from "./hirer/components/navbar/navbar";
 import Createaccount from "./generals/createaccount/createaccount";
 import Resetpassword from "./generals/pages/resetpassword/resetpassword"
+import {Jobdescription} from "./generals/pages/jobdescription/jobdescription"
+import {Jobapplication} from "./generals/jobapplication/jobapplication"
 import { closePage } from "./helper";
 import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import PostJob from "./hirer/pages/PostJob";
@@ -93,6 +95,16 @@ function App() {
           exact
           path="/talent/searchjob"
           component={Searchjob}
+        />
+        <TalentWithNavbar
+          exact
+          path="/talent/jobdescription"
+          component={Jobdescription}
+        />
+        <TalentWithNavbar
+          exact
+          path="/talent/jobapplication"
+          component={Jobapplication}
         />
 
         {/* <Route path="/hirer" render = { (props)=> <Hirer {...props} closePage={closePage} openPage ={openPage}/> } /> 

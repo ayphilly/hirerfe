@@ -144,3 +144,26 @@ export const jobUnveil = () => {
         })
     }
 }
+
+export const openApplication = () => {
+    var applybutton= document.querySelector(".apply-job");
+    applybutton.addEventListener("click", function () {
+        var container = document.querySelector('.jobdescription-container')
+        var cont = container.querySelector(".jobapplication-container");
+        cont.className = cont.className.replace(" hidden", " ");
+        var overlay =container.getElementsByClassName('overlay')
+        overlay[0].className = overlay[0].className.replace(" hidden", " active");
+    })
+}
+export const closeApplication = () => {
+        var closebutton= document.querySelector(".jobapplication-close");
+        closebutton.addEventListener("click", function () {
+
+        var container = document.querySelector('.jobdescription-container')
+        var cont = container.querySelector(".jobapplication-container");
+        cont.className = cont.className.replace(" ", " hidden");
+        var overlay =container.getElementsByClassName('overlay')
+        overlay[0].className = overlay[0].className.replace(" active", " hidden");
+        
+    })
+}
