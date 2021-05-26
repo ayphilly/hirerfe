@@ -1,6 +1,25 @@
 import React, { useState } from "react";
 import EducationFields from "./components/EducationFields";
+import ExperienceFields from "./components/ExperienceFields";
 import UserProfileFields from "./components/UserProfileFields";
+
+const formSteps = [
+  {
+    title: "User Profile",
+  },
+  {
+    title: "Education",
+  },
+  {
+    title: "Experience",
+  },
+  {
+    title: "Skills",
+  },
+  {
+    title: "Profile Overview",
+  },
+];
 
 const CreateProfile = () => {
   const [step, setStep] = useState(0);
@@ -9,23 +28,25 @@ const CreateProfile = () => {
     setFormData({ ...formData, ...field });
   };
   const previousStep = () => step > 0 && setStep(step - 1);
-  const nextStep = () => step < 1 && setStep(step + 1);
+  const nextStep = () => step < 4 && setStep(step + 1);
+
+  const { title } = formSteps[step];
   return (
     <div
-      style={{ width: "100%", padding: "100px 0", margin: "auto" }}
-      className="d-flex flex-column align-items-center c-700"
+      style={{ width: "95%", padding: "100px 0", margin: "auto" }}
+      className="d-flex flex-column align-items-center c-850"
     >
       <div
         style={{
           paddingTop: "65px",
           paddingBottom: "65px",
-          "--width": `${(step + 1) * 33.33}%`,
+          "--width": `${(step + 1) * 20}%`,
         }}
         className="plain-card progress progress-bottom d-flex flex-column mb-8"
       >
         <div className="d-flex justify-content-between">
           <div>
-            <div className="f-28 fw-600">User Profile</div>
+            <div className="f-28 fw-600">{title}</div>
             <p>Tell us about yourself.</p>
           </div>
           <div style={{ color: "gray" }} className="f-18">
@@ -33,9 +54,10 @@ const CreateProfile = () => {
           </div>
         </div>
       </div>
-      <form className="plain-card mb-8">
-        {step == 0 && <UserProfileFields />}
+      <form className="plain-card mb-8 align-items-stretch">
+        {step == 0 && <UserProfileFields setField={setField} />}
         {step == 1 && <EducationFields />}
+        {step == 2 && <ExperienceFields />}
       </form>
       {/* Form Nav */}
       <div
