@@ -1,0 +1,75 @@
+@import "../../../variables.scss";
+
+.profile-card-contaner {
+    width: 80%;
+    height: 110px;
+    @include rowflex(flex-start, space-between);
+
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        
+    }
+    img {
+        width: 15%;
+    }
+    .profile-card-top-right {
+        width: 90%;
+        @include breakpoint(mobileonly) {
+            width: 80%;
+            // height: 50%;
+        }
+        @include breakpoint(phablet) {
+            width: 80%;
+        }
+
+        @include breakpoint(tablet) {
+            width: 80%;
+        }
+        @include breakpoint(laptop) {
+            width: 80%;
+        }
+        p:nth-child(1) {
+            margin:0;
+            @include fontBold(1.2em,.5em, $blue-902);
+
+
+            @include breakpoint(mobileonly) {
+                @include fontBold(1em,1em, $blue-902);
+            }
+            @include breakpoint(phablet) {
+                @include fontBold(1.1em,1em, $blue-902);
+            }
+        }
+        p:nth-child(2) {
+            @include fontNormal(.9em,.5em, $blue-901);
+
+            @include breakpoint(mobileonly) {
+                @include fontNormal(.9em,.5em, $blue-901);
+            }
+            @include breakpoint(phablet) {
+                @include fontNormal(.9em,0em, $blue-901);
+            }
+        }
+        p:nth-child(3) {
+            @include fontLight(.9em,1em, $gray-500);
+            
+            @include breakpoint(mobileonly) {
+                @include fontLight(.9em,1em, $gray-500);
+            }
+            @include breakpoint(phablet) {
+                @include fontLight(.9em,1em, $gray-500);
+            }
+        }
+
+        p:nth-child(4) {
+            @include fontLight(.9em,.5em, $gray-500);
+            
+            @include breakpoint(mobileonly) {
+                @include fontLight(.9em,.5em, $gray-500);
+            }
+            @include breakpoint(phablet) {
+                @include fontLight(.9em,1em, $gray-500);
+            }
+        }
+    }
+}

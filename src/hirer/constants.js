@@ -44,6 +44,57 @@ export const personal = [
     }
 ];
 
+export const experience = [
+    {
+        jobtitle: 'Administrative Officer',
+        company:'Aspire Consulting',
+        date:'Jun 2020 - Jul 2020',
+        state: 'Lagos',
+        type: 'Contract',
+        icao: 'admin',
+    },
+    {
+        jobtitle: 'Front End Dev',
+        company:'Aspire Consulting',
+        date:'Jun 2019 - Jul 2020',
+        state: 'Lagos',
+        type: 'Full time',
+        icao: 'frontend',
+    },
+    {
+        jobtitle: 'Desktop Administrator',
+        company:'Afrinn Solution',
+        date:'Jun 2020 - Jul 2020',
+        state: 'Lagos',
+        type: 'Contract',
+        icao: 'admin',
+    },
+];
+
+export const education = [
+    {
+        school: 'Federal University Of Technology Akure',
+        degree:'Bachelors in Business admin',
+        date:'2010 - 2015',
+        icao: 'futa',
+    }
+];
+
+export const certifications = [
+    {
+        school: 'Federal University Of Technology Akure',
+        degree:'Bachelors in Business admin',
+        date:'2010 - 2015',
+        icao: 'futa',
+    },
+    {
+        school: 'Federal University Of Technology Akure',
+        degree:'Bachelors in Business admin',
+        date:'2010 - 2015',
+        icao: 'futo',
+    },
+];
+
 
 // export const jobList = [
 //     {
