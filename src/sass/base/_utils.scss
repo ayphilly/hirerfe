@@ -1,5 +1,5 @@
 // Containers
-@for $weight from 1 through 9 {
+@for $weight from 1 through 12 {
   .c-#{$weight*50 + 300} {
     max-width: #{$weight * 50 + 300}px;
     width: 100%;
