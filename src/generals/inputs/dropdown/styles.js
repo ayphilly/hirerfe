@@ -4,28 +4,28 @@ export const DropdownWrapper = styled.div`
   display: flex;
   flex-flow: column;
   align-items:flex-start;
-  justify-content: flex-end;
+  justify-content: flex-start;
   backgroundColor: black;
-  width:fit-content;
+  // width:fit-content;
   text-align: left;
   // margin:0;
   height: fit-content;
-  // width:100%;
+  width:100%;
 
   @media screen and (max-width: 600px) {
-    width: 80%!important;
-    margin-left: 10px !important;
+    width: 95%!important;
+    // margin-left: 10px !important;
     // background-color: black !important;
   }
   @media (min-width: 768px) and (max-width: 1024px) {
-    width: 80%!important;
-    margin-left: 10px !important;
+    width: 100%!important;
+    // margin-left: 10px !important;
 
   }
   @media (min-width: 64em) { 
 
-    width: 80%!important;
-    margin-left: 10px !important;
+    width: 95%!important;
+    // margin-left: 10px !important;
 
   }
 `;
@@ -53,7 +53,7 @@ export const StyledSelect = styled.select`
    appearance: none;  
 
   @media screen and (max-width: 1200px) {
-    width: 400px;
+    width: 100% !important;
     // background-color: black !important; 
   }
   @media (min-width: 768px) and (max-width: 1024px) {
@@ -61,22 +61,23 @@ export const StyledSelect = styled.select`
 
   }
   @media screen and (max-width: 800px) {
-    width: 130px!important;
+    width: 100% !important;
     // background-color: black !important;
     
   }
   @media (min-width: 64em) { 
 
-    width: 100%!important;
+    width: 100% !important;
 
   }
   @media screen and (max-width: 600px) {
-    width: 100%!important;
+    width: 100% !important;
     
     
   }
   @media screen and (max-width: 450px) {
-    width: 30%!important;
+    width: 100% !important;
+    // background-color: black !important;
     
   }
   

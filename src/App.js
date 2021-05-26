@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.scss";
 import { Route, Switch } from "react-router-dom";
 import Homepage from "./talent/pages/homepage/talent";
@@ -8,13 +8,16 @@ import { Profile } from "./talent/pages/dashboard/profile/profile";
 import { Searchjob } from "./talent/pages/searchjob/searchjob";
 import { Searchtalent } from "./hirer/pages/searchtalents/searchtalent";
 import Hirer from "./hirer/pages/homepage/hirer";
-import { Createjob } from "./hirer/pages/postjob/createjob";
+// import { Createjob } from "./hirer/pages/postjob/createjob";
 import Footer from "./generals/footer";
 import { Signin } from "./generals/signin/signin";
 import Talentnav from "./talent/components/navbar";
 import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
 import Hirernav from "./hirer/components/navbar/navbar";
 import Createaccount from "./generals/createaccount/createaccount";
+import Resetpassword from "./generals/pages/resetpassword/resetpassword"
+import {Jobdescription} from "./generals/pages/jobdescription/jobdescription"
+
 import { closePage } from "./helper";
 import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import PostJob from "./hirer/pages/PostJob";
@@ -85,6 +88,9 @@ function App() {
       <Switch>
         {/* <Route exact path="/" render = { (props)=> <Homepage {...props} closePage={closePage} openPage ={openPage}/> }   />
         <Route path="/searchjob" component={Searchjob} />  */}
+
+        <Route path="/resetpassword" component={Resetpassword} /> 
+
         <TalentWithNavbar exact path="/" component={Homepage} />
         <TalentWithNavbar
           exact
@@ -95,6 +101,11 @@ function App() {
           exact
           path="/talent/createprofile"
           component={CreateProfile}
+         />
+        <TalentWithNavbar
+          exact
+          path="/talent/jobdescription"
+          component={Jobdescription}
         />
 
         {/* <Route path="/hirer" render = { (props)=> <Hirer {...props} closePage={closePage} openPage ={openPage}/> } /> 

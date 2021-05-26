@@ -1,0 +1,82 @@
+@import "../../variables.scss";
+
+.companyinfo-container {
+    width: 100%;
+    height: 350px;
+
+    @include rowflex(center,center);
+
+    .companyinfo-inner-col {
+        width: 95%;
+        height: 95%;
+        background: #FFFFFF;
+        border: 1px solid $gray-300;
+        box-sizing: border-box;
+        border-radius: 10px;
+
+        @include colflex(center,space-around);
+
+        .companyinfo-top{
+            width: 90%;
+            height: 20%;
+            @include rowflex(center, space-between);
+            p:nth-child(1) {
+                @include fontSemiBold(1.2em, 0em, $blue-902);
+
+                @include breakpoint(laptop) {
+                    @include fontSemiBold(1em, 0em, $blue-902);
+                }
+            }
+
+            .company-rating {
+                width: 30%;
+                @include rowflex(center,space-around);
+                p:nth-child(1) {
+                    @include fontLight(1em, 1.5em, $blue-902);
+                }
+    
+                .star-icon {
+                    color: #407BFF;
+                }
+
+            }
+           
+
+        }
+        hr {
+            width: 100%;
+            border: 1px solid $gray-200;
+        }
+        .companyinfo-bottom {
+            width: 90%;
+            height: 80%;
+            @include colflex(flex-start, space-around);
+            p:nth-child(1) {
+                @include fontSemiBold(1em, 0em, $blue-902);
+
+            }
+            p:nth-child(2) {
+                @include fontLight(1em, 1.5em, $blue-902);
+            }
+
+            p:nth-child(4) {
+                @include fontLight(.6em, 1.5em, $gray-500);
+            }
+            .follow-company {
+                width: 200px;
+                height: 50px;
+                background: $blue-100;
+                border-radius: 10px;
+                border: none;
+                @include fontMedium(1em, 1em, $blue-901);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background: $blue-700;
+                    color: #fff;
+
+                }
+            }
+        }
+    }
+}

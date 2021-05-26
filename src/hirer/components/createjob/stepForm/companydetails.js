@@ -28,8 +28,6 @@ export const Companydetails = (props) => {
     var handleCheckboxChange = (event) => {
         
         setCheck(event.checkState)
-        
-        
         // props.setForm(event.checkState)
     }
     // console.log(props.formData)
