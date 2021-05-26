@@ -22,7 +22,7 @@ import { closePage } from "./helper";
 import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import PostJob from "./hirer/pages/PostJob";
 import CreateProfile from "./talent/CreateProfile";
-
+import {Talentprofile} from "./hirer/pages/talentprofile/talentprofile"
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
@@ -118,6 +118,11 @@ function App() {
           exact
           path="/hirer/searchtalent"
           component={Searchtalent}
+        />
+         <HirerWithNavbar
+          exact
+          path="/hirer/talentprofile"
+          component={Talentprofile}
         />
 
         <Route path="/signin" component={Signin} />
