@@ -4,20 +4,20 @@ import Singleinputlabel from "../inputs/singleinputlabel"
 import {useEffect, useState} from "react"
 export const Verifyemail = (props) => {
 
-    const [email, setEmail] = useState("");
-    const [error, setError] = useState('');
+    const [email, setEmail] = useState();
+    const [error, setError] = useState(false);
 
     const validate = () => {
-        if (email === '') {
-          setError("This field is required");
+        if (email === "") {
+          setError(true);
         } else {
-          setError('');
+          setError(false);
         }
     };
 
     useEffect(() => {
         validate();
-    }, [email]);
+    },[email]);
     
     return (
         <Resetcontainer
@@ -36,9 +36,9 @@ export const Verifyemail = (props) => {
                     disabled= {false}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                {error ? <p>{error}</p> : <p>{error}</p>}
+                {error ? <p> This field is required </p> : <p></p>}
                 
-                <button type="button" className="next-step-btn" onClick={ () => props.next()} disabled={error ? true : false} >Send Instructions</button>
+                <button type="button" className="next-step-btn" onClick={ () => props.next()} disabled={email ? false : true} >Send Instructions</button>
             </form>
         </Resetcontainer>
     )
