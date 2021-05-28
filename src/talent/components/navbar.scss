@@ -87,7 +87,7 @@
                 @include fontNormal(.8em, 1em, $blue-902);
             }
             @include breakpoint(tablet) {
-                width: 40% !important;
+                width: 45% !important;
                 @include rowflex(center, space-between);
                 
                 @include fontNormal(.8em, 1em, $blue-902);
