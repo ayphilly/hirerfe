@@ -7,10 +7,12 @@ import {certifications, education, experience} from "../../constants"
 import {useEffect, useState} from 'react'
 export const Talentprofile = () => {
 
+    const [isOpen, setOpen] = useState(false)
     const exp = experience.map((experience, key)=> {
         return (
             <div className="profile-details">
                 <Profilecard
+                    key={ key}
                     company={experience.company}
                     jobtitle = {experience.jobtitle}
                     date = {experience.date}
@@ -27,6 +29,7 @@ export const Talentprofile = () => {
         return (
             <div className="profile-details">
                 <Profilecard
+                    key={ key}
                     school={education.school}
                     date = {education.date}
                     degree= {education.degree}
@@ -39,6 +42,7 @@ export const Talentprofile = () => {
         return (
             <div className="profile-details">
                 <Profilecard
+                    key={ key}
                     school={certifications.school}
                     date = {certifications.date}
                     degree= {certifications.degree}
@@ -51,28 +55,41 @@ export const Talentprofile = () => {
     })
 
     const openMore = ()=> {
-
         var button = document.getElementsByClassName("more-talent")
         button[0].addEventListener("click", function() {
             var moreContainer = document.querySelector(".profile-box-more")
-            moreContainer.className= moreContainer.className.replace(" hidden", " ");
+            moreContainer.className= moreContainer.className.replace(" hidden", " ")
+            setOpen(true);
         })
-        
     }
     const closeMore = () => {
 
-        var container= document.getElementsByClassName("talent-profile-container")
-        container[0].addEventListener("click", function() {
-            var moreContainer = document.querySelector(".profile-box-more")
-            moreContainer.className= moreContainer.className.replace(" ", " hidden");
-        })
-
+        if (isOpen === true) {
+            // alert(isOpen)
+            var container= document.getElementsByClassName("talent-profile-container")
+           
+            container[0].addEventListener("click", function() {
+                var moreContainer = document.querySelector(".profile-box-more")
+                moreContainer.className= moreContainer.className.replace(" ", " hidden")
+                setOpen(false);
+            })
+            
+        } else {
+            // setOpen(false);
+            // alert("dsad")
+            console.log("is open")
+        }
+        
     }
     useEffect(()=> {
+       
         openMore();
     })
+    useEffect(()=> {
+        closeMore();
+    }, [isOpen])
     return (
-        <div className="talent-profile-container" onClick={closeMore}>
+        <div className="talent-profile-container" >
 
             <div className="talent-profile-inner-col">
 

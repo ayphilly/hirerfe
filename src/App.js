@@ -22,7 +22,8 @@ import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import PostJob from "./hirer/pages/PostJob";
 import CreateProfile from "./talent/CreateProfile";
 import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
-import DashboardSide from "./talent/pages/DashboardSide";
+import {Talentprofile} from "./hirer/pages/talentprofile/talentprofile"
+import {Notification} from "./talent/pages/notification/notification"
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
@@ -106,6 +107,11 @@ function App() {
           exact
           path="/talent/jobdescription"
           component={Jobdescription}
+        />
+        <TalentWithNavbar
+          exact
+          path="/talent/notification"
+          component={Notification}
         />
 
         {/* <Route path="/hirer" render = { (props)=> <Hirer {...props} closePage={closePage} openPage ={openPage}/> } /> 
