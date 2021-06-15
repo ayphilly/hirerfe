@@ -1,9 +1,9 @@
 import "./notification.scss";
 import {Emptystate} from "../../components/emptystate/emptystate"
 import Empty from "../../talentassets/Empty.svg"
-
+import {useState, useEffect} from "react"
 export const Notification = ()=> {
-
+    const [notifications, setNotifications] = useState(null);
     return (
         <div className="notification-container">
             <div className="notification-inner-col">
@@ -15,17 +15,21 @@ export const Notification = ()=> {
                 </div>
                 <div className="notificaton-inner-right">
                     <div className="right-alert">
-                        <p>Notification</p>
+                        <p>Notifications</p>
                         <p>{0}</p>
                     </div>
                     
                     <div className="right-inner-col">
-                        <Emptystate
-                            image= {Empty}
-                            title = "No Notifications"
-                            subtitle=" Once you begin a job search, we'll notify you here about matching jobs, the application status. "
-                        />
-                    
+                       {notifications ? 
+                            "Notify Me!!!!"
+                       : 
+                            <Emptystate
+                                image= {Empty}
+                                title = "No Notifications"
+                                subtitle=" Once you begin a job search, we'll notify you here about matching jobs, the application status. "
+                            />
+                       } 
+
 
                     </div>
                         
