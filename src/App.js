@@ -22,8 +22,8 @@ import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import PostJob from "./hirer/pages/PostJob";
 import CreateProfile from "./talent/CreateProfile";
 import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
-import {Talentprofile} from "./hirer/pages/talentprofile/talentprofile"
-import {Notification} from "./talent/pages/notification/notification"
+import { Notification } from "./talent/pages/notification/notification";
+import DashboardSide from "./talent/pages/DashboardSide";
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
