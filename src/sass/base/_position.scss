@@ -40,3 +40,10 @@ $directions: column, row;
 .w-100 {
   width: 100%;
 }
+
+// Flex Generics
+.flex-container {
+  margin: 0 -1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

@@ -1,4 +1,3 @@
-
 import "./App.scss";
 import { Route, Switch } from "react-router-dom";
 import Homepage from "./talent/pages/homepage/talent";
@@ -15,15 +14,16 @@ import Talentnav from "./talent/components/navbar";
 import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
 import Hirernav from "./hirer/components/navbar/navbar";
 import Createaccount from "./generals/createaccount/createaccount";
-import Resetpassword from "./generals/pages/resetpassword/resetpassword"
-import {Jobdescription} from "./generals/pages/jobdescription/jobdescription"
+import Resetpassword from "./generals/pages/resetpassword/resetpassword";
+import { Jobdescription } from "./generals/pages/jobdescription/jobdescription";
 
 import { closePage } from "./helper";
 import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import PostJob from "./hirer/pages/PostJob";
 import CreateProfile from "./talent/CreateProfile";
-import {Talentprofile} from "./hirer/pages/talentprofile/talentprofile"
-import {Notification} from "./talent/pages/notification/notification"
+import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
+import { Notification } from "./talent/pages/notification/notification";
+import DashboardSide from "./talent/pages/DashboardSide";
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
@@ -90,7 +90,7 @@ function App() {
         {/* <Route exact path="/" render = { (props)=> <Homepage {...props} closePage={closePage} openPage ={openPage}/> }   />
         <Route path="/searchjob" component={Searchjob} />  */}
 
-        <Route path="/resetpassword" component={Resetpassword} /> 
+        <Route path="/resetpassword" component={Resetpassword} />
 
         <TalentWithNavbar exact path="/" component={Homepage} />
         <TalentWithNavbar
@@ -102,7 +102,7 @@ function App() {
           exact
           path="/talent/createprofile"
           component={CreateProfile}
-         />
+        />
         <TalentWithNavbar
           exact
           path="/talent/jobdescription"
@@ -125,7 +125,7 @@ function App() {
           path="/hirer/searchtalent"
           component={Searchtalent}
         />
-         <HirerWithNavbar
+        <HirerWithNavbar
           exact
           path="/hirer/talentprofile"
           component={Talentprofile}
@@ -149,6 +149,11 @@ function App() {
           exact
           path="/dashboard/profile"
           component={Profile}
+        />
+        <DashboardWithNavbar
+          exact
+          path="/dashboard-side"
+          component={DashboardSide}
         />
 
         {/* <Route component={Error} /> */}
