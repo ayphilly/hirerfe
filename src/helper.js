@@ -167,3 +167,39 @@ export const closeApplication = () => {
         
     })
 }
+
+export const validEmailRegex = RegExp(
+    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+);
+
+export const validNameRegex = RegExp(
+    /^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/i
+);
+
+export const validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+    return valid;
+};
+
+export const validation = (name,value,errors) => {
+    // let errors = errors;
+    switch(name) {
+        case 'email':
+          errors.email = validEmailRegex.test(value) ? '' : ' Your email is invalid';
+          break;
+        case 'name':
+          errors.name = validNameRegex.test(value) ? '' : ' Your name is invalid';
+          break;
+        case 'company_name':
+          errors.company_name = validNameRegex.test(value)  ? '' : 'Your Company name is invalid';
+          break;
+        case 'password':
+          errors.password = value.length >= 6 ? '' : 'Your Password is too short';
+          break;
+        default:
+          break;
+    }
+    
+    return errors;
+}

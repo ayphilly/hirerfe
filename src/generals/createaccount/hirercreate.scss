@@ -8,9 +8,6 @@
     position: absolute;
     
     &.active {
-        // display: none;
-        // display: flex;
-        // visibility: hidden;
         visibility: visible;
     }
     &.hide {
@@ -18,6 +15,12 @@
     }
     
     @include rowflex(center, center);
+
+    @include breakpoint(mobileonly) {
+        // @include colflex(flex-start, space-between);
+        width: 95%;
+        height: 100%;
+    }
 
     .hirer-account-inner {
         width: 100%;
@@ -41,7 +44,7 @@
 
             }
             .create-account-note {
-                width: 55%;
+                // width: 55%;
                 height: 50px;
                 @include rowflex(flex-start, space-between);
                 
@@ -51,6 +54,7 @@
 
                 }
                 .asterisk-icon {
+                    margin-right: 10px;
                     color: red;
                 }
             }
@@ -60,16 +64,54 @@
         form {
             width: 100%;
             height: 75%;
-            // background-color: aqua;
             @include colflex(flex-start, space-between);
+
+
             @include breakpoint(mobileonly) {
+                @include colflex(flex-start, space-around);
+                height: 100%;
+            }
+           
+            @include breakpoint(phablet) {
                 @include colflex(center, space-between);
                 height: 90%;
+            }
+    
+            @include breakpoint(tablet) {
+                // @include colflex(center, space-between);
+                height: 90%;
+               ;
             }
             .company-details {
                 width: 100%;
                 // height: 25%;
                 @include rowflex(flex-start, space-between);
+
+                @include breakpoint(mobileonly) {
+                    @include colflex(center, space-between);
+                    width: 100%;
+                    height:280px;
+                }
+               
+                @include breakpoint(phablet) {
+                    @include colflex(center, space-between);
+                    width: 100%;
+                }
+
+                .c-person, .c-name {
+                    width: 48%;
+                    height: 100%;
+
+                    @include breakpoint(mobileonly) {
+                        width: 100%;
+                        height: 100%;
+                        @include rowflex(flex-end, space-between);
+                    }
+                   
+                    @include breakpoint(phablet) {
+                        width: 100%;
+                    }
+                }
             }
 
             .create-submit {
@@ -88,7 +130,7 @@
                 @include rowflex(center, center);
 
                 @include breakpoint(mobileonly) {
-                    width: 300px;
+                    width: 100%;
                     height: 50px;
                 }
 
