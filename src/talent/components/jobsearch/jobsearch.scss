@@ -46,7 +46,7 @@
         width: 100%;
         height: 95%;
         left: 50px;
-        margin: 0 auto;
+        // margin: 0 auto;
     }
 
     
@@ -77,8 +77,13 @@
         
         form {
             width: 100%;
-            height: 70%;
-            @include rowflex(flex-end, space-between);
+            height: 100%;
+            // @include rowflex(flex-start, space-around);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            
 
             @include breakpoint(mobileonly) {
                 @include colflex(flex-start, space-between);
@@ -103,9 +108,42 @@
                
                
            }
-            .search-submit {
-                width: 250px;
+           .form-details-search{
+               width: 60%;
+               height: 100%;
+               @include rowflex(flex-end, space-between);
+
+               @include breakpoint(mobileonly) {
+                @include colflex(flex-start,space-between);
+                width: 100%;
+                height: 60%;
+               }
+
+               @include breakpoint(phablet) {
+                @include colflex(flex-start,space-between);
+                width: 100%;
+                height: 60%;
+               }
+
+               .search-title, .search-location {
+                   width: 48%;
+                   @include rowflex(flex-start, space-around);
+
+                   @include breakpoint(mobileonly) {
+                    width: 100%;
+                   }
+
+                   @include breakpoint(phablet) {
+                    width: 100%;
+                   }
+                  
+               }
+
+            }
+            .job-search-submit {
+                width: 35%;
                 // height: 65px; 
+                margin-top: 50px;
                 height: 60px; 
                 font-size: 1em;
                 font-family: 'Inter', sans-serif;

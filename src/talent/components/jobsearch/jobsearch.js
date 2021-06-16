@@ -7,27 +7,35 @@ const Jobsearch = ()=> {
 
             <div className="jobsearch-inner">
                 <form>
-                    <Singleinput
-                        type="text"
-                        placeholder ="Job title, keywords, or company"
-                        label ="What ?"
+                    <div className="form-details-search">
+                        <div className="search-title">
+                            <Singleinput
+                                type="text"
+                                placeholder ="Job title, keywords, or company"
+                                label ="What ?"
+                                subtext="Job title, keywords, or company"
+                                name="jobtitle"
+                                width={400}
+                            
+                            ></Singleinput>
+                        </div>
                         
-                        subtext="Job title, keywords, or company"
-                        name="jobtitle"
-                        width={400}
-                    
-                    ></Singleinput>
-                    <Singleinput
-                        type="text"
-                        placeholder ="city or postcode"
-                        label ="Where ?"
-                        subtext="city or postcode"
-                        name="joblocation"
-                        width={400}
-                    
-                    ></Singleinput>
 
-                    <button type="submit" className="search-submit"> Search </button>
+                        <div className="search-location">
+                            <Singleinput
+                                type="text"
+                                placeholder ="city or postcode"
+                                label ="Where ?"
+                                subtext="city or postcode"
+                                name="joblocation"
+                                width={400}
+                            
+                            ></Singleinput>
+
+                        </div>
+
+                    </div>
+                    <button type="submit" className="job-search-submit"> Search </button>
                 </form>
 
             </div>

@@ -70,6 +70,32 @@
                 width: 100%;
                 // height: 25%;
                 @include rowflex(flex-start, space-between);
+
+                @include breakpoint(mobileonly) {
+                    @include colflex(center, space-between);
+                    width: 100%;
+                    height:280px;
+                }
+               
+                @include breakpoint(phablet) {
+                    @include colflex(center, space-between);
+                    width: 100%;
+                }
+
+                .talent-details-name, .talent-details-phone {
+                    width: 48%;
+                    height: 100%;
+
+                    @include breakpoint(mobileonly) {
+                        width: 100%;
+                        height: 100%;
+                        @include rowflex(flex-end, space-between);
+                    }
+                   
+                    @include breakpoint(phablet) {
+                        width: 100%;
+                    }
+                }
             }
 
             .create-submit {

@@ -8,7 +8,9 @@
     height:fit-content;
     @include breakpoint(mobileonly) {
         width: 100%;
-        @include colflex(flex-start, space-between);
+        height: fit-content;
+        padding: 0;
+        @include colflex(flex-start, space-evenly);
     }
     @include breakpoint(phablet) {
         width: 100% !important;
@@ -26,6 +28,7 @@
 
     @include breakpoint(laptop) {
         width: 100% !important;
+        // background-color: red;
         @include colflex(flex-start, space-between);
         // height: 50px;
        
@@ -47,7 +50,7 @@
         }
     }
     input[type='text'], input[type='password'] {
-        // width: 100%;
+        // width: 100% !important;
         height: 60px;
         background: #F9F8F9;
         border: 1px solid $gray-400;
@@ -58,7 +61,8 @@
         @include fontNormal(1em, 1em, $gray-600);
 
         @include breakpoint(mobileonly) {
-            width: 330px !important;
+            // width: 330px !important;
+            width: 100% !important;
             height: 50px;
         }
         @include breakpoint(phablet) {
@@ -77,7 +81,7 @@
     
         
         @include breakpoint(laptop) {
-            width: 90% !important;
+            width: 100% !important;
             // height: 50px;
            ;
         }
