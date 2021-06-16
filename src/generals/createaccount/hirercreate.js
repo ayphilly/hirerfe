@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 import "./hirercreate.scss"
 import { useState, useEffect } from "react";
-import axios from "axios"
+// import axios from "axios"
 import { validateForm, validation } from "../../helper";
 
 const Hirercreate = () =>  {

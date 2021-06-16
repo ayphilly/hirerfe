@@ -2,7 +2,7 @@ import Singleinput from "../inputs/singleinput"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from "react";
-import axios from "axios"
+// import axios from "axios"
 import {validateForm, validation } from "../../helper";
 import "./talentcreate.scss";
 
