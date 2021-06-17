@@ -4,7 +4,7 @@ import store from "./store";
 
 // create a new axios instance
 const instance = axios.create({
-  baseURL: "https://hirer-be.herokuapp.com/api/v1",
+  baseURL: "https://hirer-be.herokuapp.com/api",
   withCredentials: true,
 });
 
@@ -39,7 +39,7 @@ axiosRetry(instance, {
  * @param  {string} path - API url for GET request
  * @returns {Promise<AxiosResponse<any>>} - A response with a typeof AxiosResponse
  */
-export const sendGetRequest = async (path) => {
+export const get = async (path) => {
   const response = await instance({
     url: path,
     method: "get",
@@ -54,25 +54,11 @@ export const sendGetRequest = async (path) => {
  * @param  {Object} params - The data to be sent along with the request
  * @returns {Promise<AxiosResponse<any>>} - A response with a typeof AxiosResponse
  */
-export const sendPostRequest = async (path, params) => {
+export const post = async (path, params) => {
   const response = await instance({
     url: path,
     method: "post",
     data: params,
-  });
-  return response;
-};
-
-/**
- * Performs a DELETE request
- *
- * @param  {string} path - API url for DELETE request
- * @returns {Promise<AxiosResponse<any>>} - A response with a typeof AxiosResponse
- */
-export const sendDeleteRequest = async (path) => {
-  const response = await instance({
-    url: path,
-    method: "delete",
   });
   return response;
 };
@@ -84,14 +70,14 @@ export const sendDeleteRequest = async (path) => {
  * @param  {Object} params - The data to be sent along with the request
  * @returns {Promise<AxiosResponse<any>>} - A response with a typeof AxiosResponse
  */
-export const sendPutRequest = async (path, params) => {
+export const put = async (path, params) => {
   const response = await instance({
     url: path,
-    method: "patch",
+    method: "put",
     data: params,
   });
   return response;
 };
 
-const requests = [sendGetRequest, sendPostRequest, sendDeleteRequest];
+const requests = [get, post];
 export default requests;
