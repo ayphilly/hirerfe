@@ -21,7 +21,8 @@ const retryDelay = (retryNumber = 0) => {
 };
 
 instance.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${store.getState().auth.token}`;
+  if (store.getState().auth.token)
+    config.headers.Authorization = `Bearer ${store.getState().auth.token}`;
   return config;
 });
 
