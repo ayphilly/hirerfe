@@ -1,5 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../slices/authSlice";
+import companyReducer from "../slices/companySlice";
+import talentReducer from "../slices/talentSlice";
 
 function saveToLocalStorage(state) {
   try {
@@ -22,7 +24,11 @@ function loadFromLocalStorage() {
 }
 
 const store = configureStore({
-  reducer: { auth: authReducer },
+  reducer: {
+    auth: authReducer,
+    company: companyReducer,
+    talent: talentReducer,
+  },
   devTools: true,
   preloadedState: loadFromLocalStorage(),
 });

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 
 const formFields = [
   {
@@ -38,6 +39,9 @@ const PostJob = () => {
   };
   const previousStep = () => step > 0 && setStep(step - 1);
   const nextStep = () => step < 4 && setStep(step + 1);
+
+  useEffect(() => {}, []);
+
   return (
     <>
       <div
