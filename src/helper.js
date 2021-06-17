@@ -13,6 +13,19 @@ export const slideUp = () => {
 
 }
 
+export const slideDown = () => {
+
+    const tl = gsap.timeline();
+    tl.from(".slide-down", {
+        transform: "translateY(0%)",
+        top: -5000,
+        opacity: 1,
+        duration: 1,
+        // stagger: 0.1,
+      })
+
+}
+
 
 export const openPage = () => {
     var mine = document.querySelector(".creation")
@@ -176,6 +189,10 @@ export const validNameRegex = RegExp(
     /^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/i
 );
 
+export const validNumberRegex = RegExp(
+    /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g
+);
+
 export const validateForm = errors => {
     let valid = true;
     Object.values(errors).forEach(val => val.length > 0 && (valid = false));
@@ -186,13 +203,16 @@ export const validation = (name,value,errors) => {
     // let errors = errors;
     switch(name) {
         case 'email':
-          errors.email = validEmailRegex.test(value) ? '' : ' Your email is invalid';
+          errors.email = validEmailRegex.test(value) ? '' : ' Please re-enter a valid email.';
           break;
         case 'name':
-          errors.name = validNameRegex.test(value) ? '' : ' Your name is invalid';
+          errors.name = validNameRegex.test(value) ? '' : ' Please re-enter a valid name.';
+          break;
+        case 'phone':
+          errors.phone = validNumberRegex.test(value) ? '' : ' That doesn’t look right, please re-enter your phone number.';
           break;
         case 'company_name':
-          errors.company_name = validNameRegex.test(value)  ? '' : 'Your Company name is invalid';
+          errors.company_name = validNameRegex.test(value)  ? '' : 'That doesn’t look right, please re-enter your company name.';
           break;
         case 'password':
           errors.password = value.length >= 6 ? '' : 'Your Password is too short';

@@ -1,12 +1,13 @@
 import "./createaccount.scss"
 import Hirercreate from "./hirercreate"
 import Talentcreate from "./talentcreate"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import {slideDown} from "../../helper.js"
 const Createaccount = (props)=> {
 
-
+    const [created, setCreated] = useState(true)
     var openLink = () => {
         var link = document.querySelectorAll(".create-account-link");
 
@@ -52,12 +53,16 @@ const Createaccount = (props)=> {
     useEffect (()=> {
         openLink()
         closeLink();
+        slideDown();
         
     })
 
     return (
         <div className="create-account-container hidden">
             <div className="create-account-inner">
+                { created && <div className="create-account-success slide-down">
+                    <p>Account Succesfully Created </p>
+                </div>}
                 <div className="create-account-close">
                     <FontAwesomeIcon icon={faTimes} className="asterisk-icon"/>
                 </div>

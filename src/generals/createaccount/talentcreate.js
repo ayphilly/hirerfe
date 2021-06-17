@@ -4,6 +4,7 @@ import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from "react";
 // import axios from "axios"
 import {validateForm, validation } from "../../helper";
+import apiClient from "../../api";
 import "./talentcreate.scss";
 
 const Talentcreate = () => {
@@ -29,7 +30,13 @@ const Talentcreate = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if(validateForm(formState.errors)) {
-          alert(JSON.stringify(formState))
+
+            apiClient.get('csrf-cookie').then(response =>  {
+                console.log(response);
+            }, (error) => {
+                console.log("errrrrr")
+                console.log(error);
+            })
         }else{
           alert('Invalid Form')
         }

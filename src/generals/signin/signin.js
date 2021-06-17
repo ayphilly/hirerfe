@@ -2,8 +2,36 @@ import "./signin.scss"
 import Singleinputlabel from "../inputs/singleinputlabel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
-
+import { useState, useEffect } from "react"
+import apiClient from "../../api"
 export const Signin =()=> {
+
+    const [formState, setFormstate] = useState({
+        email: '',
+        password: ''
+    })
+    const [error, setError] = useState({
+        message : ""
+    })
+
+    const handleUserInput = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+        
+       
+       setFormstate({...formState, [name]: value});
+       
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        alert(JSON.stringify(formState))
+        // apiClient.get('csrf-cookie').then(response =>  {
+        //     console.log(response);
+        // }, (error) => {
+        //     console.log("errrrrr")
+        //     console.log(error);
+        // })
+    }
     return (
         <div className="signin-container">
 
@@ -31,14 +59,15 @@ export const Signin =()=> {
                 </div>
                 
                 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="form-inner">
                         <Singleinputlabel
                             type="text"
                             placeholder ="Continue with your email"
                             label ="Email"
                             name="email"
-                            width= {520}
+                            onChange={(event) => handleUserInput(event)}
+                            // width= {520}
                         >
 
                         </Singleinputlabel>
@@ -48,7 +77,8 @@ export const Signin =()=> {
                             placeholder ="Continue with your password"
                             label ="Password"
                             name="password"
-                            width= {520}
+                            onChange={(event) => handleUserInput(event)}
+                            // width= {520}
                         >
 
                         </Singleinputlabel>
