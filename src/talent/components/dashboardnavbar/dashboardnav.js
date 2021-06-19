@@ -5,8 +5,10 @@ import notification from "../../talentassets/Notification.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-function Dashboardnav () {
+import { useSelector, useDispatch } from 'react-redux'
 
+function Dashboardnav () {
+    const data = useSelector((state) => state.auth.authData)
     return (
         <div className="talent-navbar-container">
             <div className="navbar-inner">
@@ -24,7 +26,7 @@ function Dashboardnav () {
                         <img src={profile} alt="user profile"/>
                         <div className="dashboard-user">
                             <p> Welcome</p>
-                            <p>Ajibade Thomas </p>
+                            <p>{data.name} </p>
                         </div>
                     </div>
 

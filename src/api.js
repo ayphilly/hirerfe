@@ -1,15 +1,17 @@
 import axios from 'axios';
 
-const headers = {
-    'X-CSRF-TOKEN'    : 'XSRF-TOKEN',
-    'X-Requested-With': 'XMLHttpRequest',
-};
+// const headers = {
+//     'X-CSRF-TOKEN'    : 'XSRF-TOKEN',
+//     'X-Requested-With': 'XMLHttpRequest',
+// };
 const apiClient = axios.create({
     baseURL: 'http://hirer-be.herokuapp.com/api/',
-    
-    withCredentials: true,
-   
+    headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+    },
+    // withCredentials: true,
 });
+
 // apiClient.interceptors.response.use(function(response){
 //     return response;
 // }, function(error){

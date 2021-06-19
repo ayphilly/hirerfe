@@ -4,38 +4,75 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { useState, useEffect } from "react"
 import apiClient from "../../api"
+import { useSelector, useDispatch } from 'react-redux'
+import { setAuthData } from "../../slices/authSlice"
+import { useParams, useHistory, useLocation } from "react-router";
 export const Signin =()=> {
 
+    const dispatch = useDispatch()
+    let history = useHistory();
     const [formState, setFormstate] = useState({
         email: '',
         password: ''
     })
-    const [error, setError] = useState({
-        message : ""
+
+    const [response, setResponse] = useState({
+        status: null,
+        message: ''
     })
 
     const handleUserInput = (e) =>{
         const name = e.target.name;
         const value = e.target.value;
-        
-       
+
        setFormstate({...formState, [name]: value});
-       
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert(JSON.stringify(formState))
-        // apiClient.get('csrf-cookie').then(response =>  {
-        //     console.log(response);
-        // }, (error) => {
-        //     console.log("errrrrr")
-        //     console.log(error);
-        // })
+        // alert(JSON.stringify(formState))
+        apiClient.post('v1/auth/login', formState)
+        .then((response) => {
+            // console.log(response);
+
+            if (response.status) {
+                // console.log(response.data.status);
+                // console.log(response.data.data.name);
+                dispatch(setAuthData(response.data.data));
+                
+                setResponse({
+                    status: response.data.status,
+                    message: response.data.message
+                })
+
+                response.data.data.role == "company" ? history.push("/dashboard") :history.push("/dashboard")
+                
+                
+
+            } else {
+
+                console.log(response);
+                setResponse({
+                    status: response.status,
+                    message: response.message
+                })
+            }
+            
+        }, (error) => {
+            // console.log(error.response.data.status)
+            setResponse({
+                status: error.response.data.status,
+                message: error.response.data.message
+            })
+           
+        });
     }
     return (
         <div className="signin-container">
-
+            
             <div className="signin-inner">
+                { response.message && <div className= {`signin-message ${response.status ? 'success' : 'error'}`}>
+                        <p>{response.message}</p>
+                </div>}
                 <div className="signin-texts">
                     <p>Welcome Back</p>
                     <p>Reach top talent and find the right candidate today.</p>
@@ -44,11 +81,11 @@ export const Signin =()=> {
 
                 <div className="signin-options">
                     <a href="#" className="google">
-                        <FontAwesomeIcon icon={faGoogle} className="brand-icon"/> 
+                        <FontAwesomeIcon icon={faGoogle} className="sc-icon"/> 
                         Continue with Google
                     </a>
                     <a href="#" className="facebook">
-                        <FontAwesomeIcon icon={faFacebookF} className="brand-icon"/> 
+                        <FontAwesomeIcon icon={faFacebookF} className="sc-icon"/> 
                         Continue with Facebook
                     </a>
 
@@ -84,7 +121,7 @@ export const Signin =()=> {
                         </Singleinputlabel>
 
                         <p> Forgotten password ? <a href="#"> Reset here </a> </p>
-                        <button type="submit" className="signin-submit"> Sign In </button>
+                        <button type="submit" className="signin-submit"  disabled={formState.email && formState.password ? false : true} > Sign In </button>
 
                         <p> New member ? <a href="#"> Create your free account now </a>  </p>
 

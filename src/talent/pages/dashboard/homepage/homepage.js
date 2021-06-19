@@ -4,17 +4,21 @@ import {Recommendations} from "../../../components/recommended/jobs"
 import {Scoutjobs} from "../../../components/dashboardscout/scoutjobs"
 import {Dashboardalert} from "../../../components/dashboardalert/dashboardalert"
 import Tryhirer from "../../../components/tryhirer/tryhirer"
-
+import { useSelector, useDispatch } from 'react-redux'
 
 export const Dashboardhome = ()=> {
-
+    
     return (
         <div className="dashboard-homepage-container">
             <div className="dashboard-homepage-inner">
                 <div className="dashboard-search">
                     <p>Hello, what would you like to explore today?</p>
                     <p>Search for Job Titles, Companies and Keywords</p>
-                    <Jobsearch></Jobsearch>
+                    <div className="dashboard-jobsearch">
+                        <Jobsearch></Jobsearch>
+
+                    </div>
+                    
                 </div>
 
                 <div className="dashboard-recommend">

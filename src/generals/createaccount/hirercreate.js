@@ -9,7 +9,7 @@ import axios from "axios"
 import { validateForm, validation } from "../../helper";
 import apiClient from "../../api";
 
-const Hirercreate = () =>  {
+const Hirercreate = (props) =>  {
 
     const count = useSelector((state) => state.auth.authData)
     const dispatch = useDispatch()
@@ -40,38 +40,42 @@ const Hirercreate = () =>  {
         event.preventDefault();
         if(validateForm(formState.errors)) {
             
-            // alert(JSON.stringify(formState))
-            // let data = {}
-            // data.email = formState.email;
-            // data.name = formState.name;
-            // data.company_name = formState.company_name;
-            // data.password = formState.password;
-            // data.password_confirmation=formState.password;
-            apiClient.get('csrf-cookie').then(response =>  {
-                
-                console.log(response);
-                // apiClient.post('auth/company/register', {
-                //     email: formState.email,
-                //     name: formState.name,
-                //     company_name :'08115861199',
-                //     password : formState.password,
-                //     password_confirmation : formState.password,
-                //   })
-                // .then((response) => {
-                //     console.log(response.status);
-                //     console.log("mmmeee")
-                //     alert(response.data)
-                    
-                // }, (error) => {
-                //     console.log("e")
-                //     console.log(error);
-                // });
-
-            }, (error) => {
-                console.log("errrrrr")
-                console.log(error);
-            })
             
+            
+            
+            apiClient.post('v1/auth/company/register', {
+                email: formState.email,
+                name: formState.name,
+                company_name :'covenworks',
+                password : formState.password,
+                password_confirmation : formState.password,
+              })
+            .then((response) => {
+                console.log(response);
+                if (response.status) {
+
+                    props.setUpCreated(response.data)
+                    props.showAlert();
+                    setTimeout(()=> {
+                        props.clearAlert();
+
+                    }, 10000)
+
+                } else {
+                    props.setUpCreated(response)
+                    props.showAlert();
+                    setTimeout(()=> {
+                        props.clearAlert();
+
+                    }, 2000)
+                }
+                // alert(response.data)
+                
+            }, (error) => {
+                console.log("e")
+                console.log(error);
+                
+            });
 
 
         }else{

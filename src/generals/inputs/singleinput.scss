@@ -36,7 +36,7 @@
 
     label {
         // height: 10px;
-        margin: 0;
+        // margin: 0;
         @include fontMedium(1.25em,1em, $blue-901);
         @include breakpoint(mobileonly) {
             @include fontMedium(1em,1em, $blue-901);
@@ -44,7 +44,7 @@
     }
     p{
         @include fontLight(1em,1em, $blue-900);
-        margin-top:1px;
+        margin-top:2px;
         @include breakpoint(mobileonly) {
             @include fontLight(.8em,1.2em, $blue-900);
         }
@@ -87,7 +87,11 @@
         }
 
         
-        
+        // &:valid {
+        //     border: 1px solid $blue-500;
+        //     background-color: $blue-100;
+        //     color: $blue-901;
+        // }
 
         &:focus {
             border: 1px solid $blue-500;
