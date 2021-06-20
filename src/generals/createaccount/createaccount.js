@@ -72,8 +72,8 @@ const Createaccount = (props)=> {
     return (
         <div className="create-account-container hidden">
             <div className="create-account-inner">
-                { show && <div className= {`create-account-success ${created.errors ? 'error' : 'success'}`}>
-                    <p>{created.message}, {created.errors ? created.errors.email[0] : ""} </p>
+                { show && <div className= {`create-account-success slide-down ${created.errors ? 'error' : 'success'}`}>
+                    <p>{created.message}, { created.errors ? created.errors.email ? created.errors.email[0] : created.errors.name[0] : " "} </p>
                 </div>}
                 <div className="create-account-close">
                     <FontAwesomeIcon icon={faTimes} className="asterisk-icon"/>

@@ -31,13 +31,14 @@ const Hirercreate = (props) =>  {
 
         errors = validation(name,value,errors);
        
-       setForm({...formState, [name]: value, password_confirmation:formState.password , errors});
+        setForm({...formState, [name]: value, password_confirmation:formState.password , errors});
        
     }
 
     
     const handleSubmit = (event) => {
         event.preventDefault();
+
         if(validateForm(formState.errors)) {
             
             
@@ -62,6 +63,8 @@ const Hirercreate = (props) =>  {
                     }, 10000)
 
                 } else {
+
+                    
                     props.setUpCreated(response)
                     props.showAlert();
                     setTimeout(()=> {
@@ -72,8 +75,14 @@ const Hirercreate = (props) =>  {
                 // alert(response.data)
                 
             }, (error) => {
-                console.log("e")
-                console.log(error);
+                
+                setForm({...formState, errors:error.response.data.errors})
+                props.setUpCreated(error.response.data)
+                props.showAlert();
+                setTimeout(()=> {
+                    props.clearAlert();
+
+                }, 10000)
                 
             });
 

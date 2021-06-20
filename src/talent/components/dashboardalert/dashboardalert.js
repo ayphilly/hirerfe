@@ -12,24 +12,35 @@ export const Dashboardalert = () => {
                     <p> <strong>Don't Miss Out!</strong> Get jobs matching your preferences as soon as they're posted.  </p>
                 </div>
                 <form className="dashboard-alert-form">
-                    <Singleinput
-                        type="text"
-                        placeholder ="Job title, keywords, or company"
-                        label ="What ?"
-                        subtext="Job title, keywords, or company"
-                        name="jobalerttitle"
-                        width={450}
+                    <div className="form-jobalert-inputs">
+                        <div className="jobalert-title">
+                            <Singleinput
+                                type="text"
+                                placeholder ="Job title, keywords, or company"
+                                label ="What ?"
+                                subtext="Job title, keywords, or company"
+                                name="jobalerttitle"
+                                
+                            
+                            ></Singleinput>
+
+                        </div>
+                        <div className="jobalert-location">
+                            <Singleinput
+                                type="text"
+                                placeholder ="city or postcode"
+                                label ="Where ?"
+                                subtext="city or postcode"
+                                name="jobalertlocation"
+                            
+                            
+                            ></Singleinput>
+                        </div>
+
+                    </div>
                     
-                    ></Singleinput>
-                    <Singleinput
-                        type="text"
-                        placeholder ="city or postcode"
-                        label ="Where ?"
-                        subtext="city or postcode"
-                        name="jobalertlocation"
-                        width={450}
                     
-                    ></Singleinput>
+                    
 
                     <button type="submit" className="dashboard-alert-btn"> Create Job Alert </button>
                 </form>

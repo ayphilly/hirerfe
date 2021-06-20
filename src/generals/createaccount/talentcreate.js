@@ -31,45 +31,44 @@ const Talentcreate = (props) => {
         event.preventDefault();
         if(validateForm(formState.errors)) {
 
-            apiClient.get('csrf-cookie').then(response =>  {
-                console.log(response);
-
-                apiClient.post('v1/auth/talent/register', {
-                    email: formState.email,
-                    name: formState.name,
-                    phone :'08115861199',
-                    password : formState.password,
-                    password_confirmation : formState.password,
-                  })
-                .then((response) => {
-                    console.log(response.status);
-                    if (response.status) {
-
-                        props.setUpCreated(response.data)
-                        props.showAlert();
-                        setTimeout(()=> {
-                            props.clearAlert();
-    
-                        }, 10000)
-    
-                    } else {
-                        props.setUpCreated(response)
-                        props.showAlert();
-                        setTimeout(()=> {
-                            props.clearAlert();
-    
-                        }, 5000)
-                    }
-                    
-                }, (error) => {
-                    console.log("e")
-                    console.log(error);
-                });
-
-            }, (error) => {
-                console.log("errrrrr")
-                console.log(error);
+            apiClient.post('v1/auth/talent/register', {
+                email: formState.email,
+                name: formState.name,
+                phone :'08115861199',
+                password : formState.password,
+                password_confirmation : formState.password,
             })
+            .then((response) => {
+                console.log(response.status);
+                if (response.status) {
+
+                    props.setUpCreated(response.data)
+                    props.showAlert();
+                    setTimeout(()=> {
+                        props.clearAlert();
+
+                    }, 10000)
+
+                } else {
+                    props.setUpCreated(response)
+                    props.showAlert();
+                    setTimeout(()=> {
+                        props.clearAlert();
+
+                    }, 5000)
+                }
+                
+            }, (error) => {
+                setForm({...formState, errors:error.response.data.errors})
+                props.setUpCreated(error.response.data)
+                props.showAlert();
+                setTimeout(()=> {
+                    props.clearAlert();
+
+                }, 10000)
+            });
+
+           
         }else{
           alert('Invalid Form')
         }

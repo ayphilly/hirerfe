@@ -20,7 +20,7 @@ export const slideDown = () => {
         transform: "translateY(0%)",
         top: -5000,
         opacity: 1,
-        duration: 1,
+        duration: 1 ,
         // stagger: 0.1,
       })
 
@@ -203,19 +203,19 @@ export const validation = (name,value,errors) => {
     // let errors = errors;
     switch(name) {
         case 'email':
-          errors.email = validEmailRegex.test(value) ? '' : ' Please re-enter a valid email.';
+          errors.email = value == '' ? 'Email Field cannot be empty' : validEmailRegex.test(value) ? '' : ' Please re-enter a valid email.';
           break;
         case 'name':
-          errors.name = validNameRegex.test(value) ? '' : ' Please re-enter a valid name.';
+          errors.name = value == '' ? 'Name Field cannot be empty' :  validNameRegex.test(value) ? '' : ' Please re-enter a valid name.';
           break;
         case 'phone':
-          errors.phone = validNumberRegex.test(value) ? '' : ' That doesn’t look right, please re-enter your phone number.';
+          errors.phone = value == '' ? 'Number Field cannot be empty': validNumberRegex.test(value) ? '' : ' Please re-enter your phone number.';
           break;
         case 'company_name':
-          errors.company_name = validNameRegex.test(value)  ? '' : 'That doesn’t look right, please re-enter your company name.';
+          errors.company_name = value == '' ? 'Company Name Field cannot be empty': validNameRegex.test(value)  ? '' : 'Please re-enter your company name.';
           break;
         case 'password':
-          errors.password = value.length >= 6 ? '' : 'Your Password is too short';
+          errors.password = value == '' ? 'Password Field cannot be empty': value.length >= 6 ? '' : 'Your Password is too short';
           break;
         default:
           break;
