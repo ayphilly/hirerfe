@@ -7,7 +7,7 @@ import Tryhirer from "../../../components/tryhirer/tryhirer"
 import { useSelector, useDispatch } from 'react-redux'
 
 export const Dashboardhome = ()=> {
-    
+    const data = useSelector((state) => state.auth.authData)
     return (
         <div className="dashboard-homepage-container">
             <div className="dashboard-homepage-inner">

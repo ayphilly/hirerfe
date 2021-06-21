@@ -10,6 +10,7 @@ import Hirer from "./hirer/pages/homepage/hirer";
 // import { Createjob } from "./hirer/pages/postjob/createjob";
 import Footer from "./generals/footer";
 import { Signin } from "./generals/signin/signin";
+import { Error } from "./generals/error/error";
 import Talentnav from "./talent/components/navbar";
 import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
 import Hirernav from "./hirer/components/navbar/navbar";
@@ -166,7 +167,7 @@ function App() {
           component={DashboardSide}
         />
 
-        {/* <Route component={Error} /> */}
+        <Route component={Error} />
       </Switch>
       <div className="overlay hidden"></div>
       <Createaccount closePage={closePage}></Createaccount>
