@@ -1,12 +1,13 @@
 import "./createaccount.scss"
 import Hirercreate from "./hirercreate"
 import Talentcreate from "./talentcreate"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import {slideDown} from "../../helper.js"
 const Createaccount = (props)=> {
-
-
+    const [show, setShow] = useState(false)
+    const [created, setCreated] = useState({})
     var openLink = () => {
         var link = document.querySelectorAll(".create-account-link");
 
@@ -41,7 +42,16 @@ const Createaccount = (props)=> {
         }
 
     }
+    const showAlert = () => {
+        setShow(show ? false: true)
+    }
+    const clearAlert = () => {
+        setShow(false)
+    }
 
+    const setUpCreated = (data) => {
+        setCreated(data);
+    }
     var closeLink = () => {
         var close = document.querySelector(".create-account-close");
         close.addEventListener("click", function () {
@@ -53,11 +63,18 @@ const Createaccount = (props)=> {
         openLink()
         closeLink();
         
+        
     })
+    useEffect (()=> {
+        slideDown();
+    }, [show])
 
     return (
         <div className="create-account-container hidden">
             <div className="create-account-inner">
+                { show && <div className= {`create-account-success slide-down ${created.errors ? 'error' : 'success'}`}>
+                    <p>{created.message}, { created.errors ? created.errors.email ? created.errors.email[0] : created.errors.name[0] : " "} </p>
+                </div>}
                 <div className="create-account-close">
                     <FontAwesomeIcon icon={faTimes} className="asterisk-icon"/>
                 </div>
@@ -68,8 +85,8 @@ const Createaccount = (props)=> {
                     </div>
 
                     <div className="create-account-user" id="conts">
-                        <Hirercreate></Hirercreate>
-                        <Talentcreate></Talentcreate>
+                        <Hirercreate showAlert ={showAlert} clearAlert={clearAlert} setUpCreated={setUpCreated}></Hirercreate>
+                        <Talentcreate showAlert ={showAlert} clearAlert={clearAlert} setUpCreated={setUpCreated}></Talentcreate>
                     </div>
 
 

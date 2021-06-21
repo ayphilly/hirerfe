@@ -41,7 +41,7 @@
 
         .dashboard-search {
             width: 78%;
-            height: 250px;
+            height: 300px;
             @include colflex(flex-start,space-between);
             // overflow: hidden;
 
@@ -68,6 +68,11 @@
             p:nth-child(2) {
                 // margin: 0;
                 @include fontLight(1em, 1.5em, $blue-902);
+            }
+
+            .dashboard-jobsearch {
+                width: 100%;
+                height: 240px;
             }
         }
 

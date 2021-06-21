@@ -4,9 +4,10 @@ import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from "react";
 // import axios from "axios"
 import {validateForm, validation } from "../../helper";
+import apiClient from "../../api";
 import "./talentcreate.scss";
 
-const Talentcreate = () => {
+const Talentcreate = (props) => {
     const [formState, setForm ] = useState({
         email: '',
         name: '',
@@ -29,7 +30,45 @@ const Talentcreate = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if(validateForm(formState.errors)) {
-          alert(JSON.stringify(formState))
+
+            apiClient.post('v1/auth/talent/register', {
+                email: formState.email,
+                name: formState.name,
+                phone :'08115861199',
+                password : formState.password,
+                password_confirmation : formState.password,
+            })
+            .then((response) => {
+                console.log(response.status);
+                if (response.status) {
+
+                    props.setUpCreated(response.data)
+                    props.showAlert();
+                    setTimeout(()=> {
+                        props.clearAlert();
+
+                    }, 10000)
+
+                } else {
+                    props.setUpCreated(response)
+                    props.showAlert();
+                    setTimeout(()=> {
+                        props.clearAlert();
+
+                    }, 5000)
+                }
+                
+            }, (error) => {
+                setForm({...formState, errors:error.response.data.errors})
+                props.setUpCreated(error.response.data)
+                props.showAlert();
+                setTimeout(()=> {
+                    props.clearAlert();
+
+                }, 10000)
+            });
+
+           
         }else{
           alert('Invalid Form')
         }

@@ -1,12 +1,23 @@
 import "./singleinputlabel.scss"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
+import { useState, useEffect } from "react"
 
 
 const Singleinputlabel = (props) => {
 
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
+
     return (
         <div className="form-input">
             <label> {props.label} </label>
-            <input type={props.type} name={props.name} value={props.value} onChange={props.onChange} placeholder={props.placeholder} disabled={props.disabled} style={{width: props.width +'px'}}></input>
+            <div style={{position: 'relative', display: 'inline-block', width: 100+"%"}}>
+                <input type={props.type ? props.type == "password" ? passwordShown ? "text" : "password": "text" : props.type}  name={props.name}  placeholder={props.placeholder} style={{width: props.width +'px', marginBottom : 10, border: props.error ? "1px solid red": '', backgroundColor: props.error ? "#FFEBEB": ''  }} onChange = {props.onChange}/>
+                {props.name == "password" && <FontAwesomeIcon icon={passwordShown ? faEyeSlash : faEye} className="eye" size="lg" style={{position: 'absolute', right: 20, top: 20, width: 20, height: 20, color : '#8B8C8C'}} onClick={togglePasswordVisiblity}/>}
+            </div>
         </div>
     )
 }

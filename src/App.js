@@ -10,6 +10,7 @@ import Hirer from "./hirer/pages/homepage/hirer";
 // import { Createjob } from "./hirer/pages/postjob/createjob";
 import Footer from "./generals/footer";
 import { Signin } from "./generals/signin/signin";
+import { Error } from "./generals/error/error";
 import Talentnav from "./talent/components/navbar";
 import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
 import Hirernav from "./hirer/components/navbar/navbar";
@@ -24,6 +25,10 @@ import CreateProfile from "./talent/CreateProfile";
 import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
 import { Notification } from "./talent/pages/notification/notification";
 import DashboardSide from "./talent/pages/DashboardSide";
+import Accountverification from "./generals/verifyaccount/accountverification";
+import { useRouteMatch } from "react-router";
+
+
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
@@ -84,11 +89,17 @@ const DashboardWithNavbar = ({
 };
 
 function App() {
+  const { path } = useRouteMatch()
   return (
     <div className="App">
       <Switch>
         {/* <Route exact path="/" render = { (props)=> <Homepage {...props} closePage={closePage} openPage ={openPage}/> }   />
         <Route path="/searchjob" component={Searchjob} />  */}
+
+        {/* Verify User Email */}
+        <Route path={`/verifyemail`}>
+          <Accountverification />
+        </Route>
 
         <Route path="/resetpassword" component={Resetpassword} />
 
@@ -156,7 +167,7 @@ function App() {
           component={DashboardSide}
         />
 
-        {/* <Route component={Error} /> */}
+        <Route component={Error} />
       </Switch>
       <div className="overlay hidden"></div>
       <Createaccount closePage={closePage}></Createaccount>

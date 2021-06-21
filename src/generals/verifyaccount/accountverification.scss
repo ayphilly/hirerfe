@@ -1,0 +1,103 @@
+@import "../../variables.scss";
+
+.account-verification-container {
+    width: 100%;
+    height: 100vh;
+    background: #FAFCFF;
+    @include rowflex(center, center);
+
+    @include breakpoint(mobileonly) {
+
+        width: 100%;
+        height: 150vh;
+
+    }
+
+    @include breakpoint(phablet) {
+
+        width: 100%;
+        height: 150vh;
+
+    }
+    
+    .account-verification-box {
+        width: 50%;
+        height: 600px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 50px rgba(0, 108, 150, 0.2);
+        border-radius: 0px;
+        position: relative;
+        @include rowflex(center,center);
+
+        @include breakpoint(mobileonly) {
+            width: 90%;
+            height: 100vh;
+        }
+
+        @include breakpoint(phablet) {
+            width: 90%;
+            height: 70vh;
+        }
+
+        .account-verification-rect {
+            width: 100%;
+            height: 10px;
+            position: absolute;
+            top: 0;
+            background-color: $blue-700;
+        }
+
+        .box-inner {
+            width: 90%;
+            height: 90%;
+            @include colflex(center, space-around);
+
+            img {
+                width: auto;
+            }
+            p {
+                font-size: 36px;
+                width: 80%;
+                text-align: center;
+                @include fontNormal(2.5em, 1.5em, $blue-902);
+
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    @include fontNormal(1.8em, 1.5em, $blue-902);
+                }
+        
+                @include breakpoint(phablet) {
+                    width: 100%;
+                    @include fontNormal(2.5em, 1.5em, $blue-902);
+                }
+            }
+    
+            .verify-btn {
+                width: 80%;
+                height: 65px;
+                font-size: 1em;
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                border: none;
+                color: #fff;
+                background-color: $blue-700;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, center);
+    
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    height: 50px;
+                }
+    
+                &:hover {
+                    background-color: $blue-900;
+                }
+            }
+        }
+
+        
+    }
+}
