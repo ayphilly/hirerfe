@@ -3,10 +3,10 @@ import Singleinputlabel from "../inputs/singleinputlabel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { useState, useEffect } from "react"
-import apiClient from "../../api"
-import { useSelector, useDispatch } from 'react-redux'
+import {post} from "../../requests"
+import {useDispatch } from 'react-redux'
 import { setAuthData } from "../../slices/authSlice"
-import { useParams, useHistory, useLocation } from "react-router";
+import {useHistory} from "react-router";
 export const Signin =()=> {
 
     const dispatch = useDispatch()
@@ -30,7 +30,7 @@ export const Signin =()=> {
     const handleSubmit = (event) => {
         event.preventDefault();
         // alert(JSON.stringify(formState))
-        apiClient.post('v1/auth/login', formState)
+        post('/v1/auth/login', formState)
         .then((response) => {
             // console.log(response);
 
@@ -44,7 +44,10 @@ export const Signin =()=> {
                     message: response.data.message
                 })
 
-                response.data.data.role == "company" ? history.push("/dashboard") :history.push("/dashboard")
+                setTimeout(()=> {
+                    response.data.data.role == "company" ? history.push("/dashboard") :history.push("/dashboard");
+                }, 2000)
+                
                 
                 
 

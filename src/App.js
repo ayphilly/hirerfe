@@ -15,7 +15,8 @@ import Talentnav from "./talent/components/navbar";
 import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
 import Hirernav from "./hirer/components/navbar/navbar";
 import Createaccount from "./generals/createaccount/createaccount";
-import Resetpassword from "./generals/pages/resetpassword/resetpassword";
+import Forgotpassword from "./generals/pages/resetpassword/forgotpassword";
+import Changeoldpassword from "./generals/pages/resetpassword/changeoldpassword";
 import { Jobdescription } from "./generals/pages/jobdescription/jobdescription";
 
 import { closePage } from "./helper";
@@ -101,7 +102,8 @@ function App() {
           <Accountverification />
         </Route>
 
-        <Route path="/resetpassword" component={Resetpassword} />
+        <Route path="/forgotpassword" component={Forgotpassword} />
+        <Route path="/resetpassword/:token/:hash" component={Changeoldpassword} />
 
         <TalentWithNavbar exact path="/" component={Homepage} />
         <TalentWithNavbar

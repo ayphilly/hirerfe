@@ -4,7 +4,7 @@ import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from "react";
 // import axios from "axios"
 import {validateForm, validation } from "../../helper";
-import apiClient from "../../api";
+import {post} from "../../requests"
 import "./talentcreate.scss";
 
 const Talentcreate = (props) => {
@@ -31,7 +31,7 @@ const Talentcreate = (props) => {
         event.preventDefault();
         if(validateForm(formState.errors)) {
 
-            apiClient.post('v1/auth/talent/register', {
+            post('v1/auth/talent/register', {
                 email: formState.email,
                 name: formState.name,
                 phone :'08115861199',

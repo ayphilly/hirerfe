@@ -2,59 +2,145 @@ import "./changepassword.scss"
 import {Resetcontainer} from "./resetcontainer"
 import Singleinputlabel from "../inputs/singleinputlabel"
 import {useEffect, useState} from "react"
+import { validateForm, validation } from "../../helper";
+import { post } from "../../requests"
+import { useSelector } from 'react-redux'
+import {
+    
+    useParams
+  } from "react-router-dom";
+
 export const Changepassword = (props) => {
 
-    const [password, setPassword] = useState("");
-    const [cpassword, setCpassword] = useState("");
-    const [error, setError] = useState('');
+    const data = useSelector((state) => state.resetpassword.email)
+    let { token, hash } = useParams();
+    
+    const [password, setPassword] = useState({
+        password : '',
+        errors : {
+            password : '',
+        }
+
+    });
+
+    const [response, setResponse] = useState({
+        status: null,
+        message: ''
+    })
+
     
 
-    const validate = () => {
-        if (password === '') {
-          setError("This field is required");
+    const [cpassword, setConfirmation] = useState({
+        confirm_password: '',
+        error : ''
+
+    });
+   
+    const handlePasswordInput = (e)=> {
+        const name = e.target.name;
+        const value = e.target.value;
+        let errors = password.errors;
+
+        errors = validation(name,value,errors);
+
+        setPassword({...password, [name]: value, errors});
+
+    }
+    const handleCpasswordInput = (e)=> {
+        const name = e.target.name;
+        const value = e.target.value;
+        let error = cpassword.error;
+
+        // errors = validation(name,value,errors);
+        if (value === password.password) {
+            error = ''
         } else {
-          setError('');
+            error = "password does not match, try again"
         }
-    };
+
+        setConfirmation({...cpassword, [name]: value, error});
+
+    }
+
+    const changePassword= (event) => {
+
+        event.preventDefault();
+       
+       
+        post('/v1/auth/reset-password', { 
+                email: data,
+                token:token,
+                password: password.password,
+                password_confirmation: cpassword.confirm_password
+            })
+        .then((response) => {
+
+            if (response.status) {
+
+                setResponse({
+                    status: response.data.status,
+                    message: response.data.message
+                })
+
+                props.next();
+                
+            } else {
+                setResponse({
+                    status: response.data.status,
+                    message: response.data.message
+                })
+            }
+            
+        }, (error) => {
+            setResponse({
+                status: error.response.data.status,
+                message: error.response.data.message
+            })
+        });
+
+    }
     
-    useEffect(() => {
-        validate();
-    }, [password]);
+    useEffect(()=> {
+        // alert(hash, token);
+    })
+
     
     return (
         <Resetcontainer
             step ="1"
-            title = "Email Adddress"
             subtitle = "Your new password must be different from previously used passwords. "
-            
+            email={data}
+            response= {response}
             height={650}
         >
-            <form>
+            <form onSubmit={changePassword}>
                 <Singleinputlabel
                     type="password"
                     label ="Password"
                     id="password"
                     name="password"
-                    value={password}
+                    value={password.password}
                     disabled= {false}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(event) => handlePasswordInput(event)}
+                    error = {password.errors.password}
                 />
                 <Singleinputlabel
                     type="password"
                     label ="Confirm Password"
-                    id="cpassword"
-                    name="cpassword"
-                    value={cpassword}
+                    id="confirm_password"
+                    name="confirm_password"
+                    value={cpassword.confirm_password}
                     disabled= {false}
-                    onChange={(e) => setCpassword(e.target.value)}
+                    onChange={(event) => handleCpasswordInput(event)}
+                    error = {cpassword.error}
                 />
-                {error ? <p className="error">{error}</p> : <p>{error}</p>}
+               
                 <p className="modify">
                     By modifying your account, you agree to Hirer's Terms of Service 
                     and consent to our Cookie Policy and Privacy Policy.
                 </p>
                 
-                <button type="button" className="next-step-btn" onClick={ () => props.next()} disabled={error ? true : false} >Reset</button>
+                <button type="submit" className="next-step-btn" disabled={ (password.password == cpassword.confirm_password) ? (password.password === '' || cpassword.confirm_password === '') ? true  : false : true  }  >Reset</button>
             </form>
         </Resetcontainer>
     )

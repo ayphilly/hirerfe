@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../slices/authSlice";
 import companyReducer from "../slices/companySlice";
 import talentReducer from "../slices/talentSlice";
+import resetpasswordReducer from "../slices/resetpasswordSlice";
 
 function saveToLocalStorage(state) {
   try {
@@ -28,6 +29,7 @@ const store = configureStore({
     auth: authReducer,
     company: companyReducer,
     talent: talentReducer,
+    resetpassword: resetpasswordReducer
   },
   devTools: true,
   preloadedState: loadFromLocalStorage(),

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setToken, setAuthData } from "../../slices/authSlice";
 import axios from "axios"
 import { validateForm, validation } from "../../helper";
-import apiClient from "../../api";
+import {post} from "../../requests"
 
 const Hirercreate = (props) =>  {
 
@@ -41,10 +41,7 @@ const Hirercreate = (props) =>  {
 
         if(validateForm(formState.errors)) {
             
-            
-            
-            
-            apiClient.post('v1/auth/company/register', {
+            post('/v1/auth/company/register', {
                 email: formState.email,
                 name: formState.name,
                 company_name :'covenworks',
