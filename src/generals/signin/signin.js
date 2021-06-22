@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { useState, useEffect } from "react"
 import {post} from "../../requests"
-import { useSelector, useDispatch } from 'react-redux'
+import {useDispatch } from 'react-redux'
 import { setAuthData } from "../../slices/authSlice"
-import { useParams, useHistory, useLocation } from "react-router";
+import {useHistory} from "react-router";
 export const Signin =()=> {
 
     const dispatch = useDispatch()

@@ -16,8 +16,9 @@ const Singleinputlabel = (props) => {
             <label> {props.label} </label>
             <div style={{position: 'relative', display: 'inline-block', width: 100+"%"}}>
                 <input type={props.type ? props.type == "password" ? passwordShown ? "text" : "password": "text" : props.type}  name={props.name}  placeholder={props.placeholder} style={{width: props.width +'px', marginBottom : 10, border: props.error ? "1px solid red": '', backgroundColor: props.error ? "#FFEBEB": ''  }} onChange = {props.onChange}/>
-                {props.name == "password" && <FontAwesomeIcon icon={passwordShown ? faEyeSlash : faEye} className="eye" size="lg" style={{position: 'absolute', right: 20, top: 20, width: 20, height: 20, color : '#8B8C8C'}} onClick={togglePasswordVisiblity}/>}
+                {props.type == "password" && <FontAwesomeIcon icon={passwordShown ? faEyeSlash : faEye} className="eye" size="lg" style={{position: 'absolute', right: 20, top: 20, width: 20, height: 20, color : '#8B8C8C'}} onClick={togglePasswordVisiblity}/>}
             </div>
+            <p  style={{color:'red', height:5, width:100+'%'}} > {props.error ? props.error : " "}</p>
         </div>
     )
 }

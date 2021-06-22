@@ -14,8 +14,8 @@ const Accountverification = () => {
     // alert(JSON.stringify(values))
     
     const [message, setMessage] = useState({
-        status: true,
-        text: "account verification complete, you can now log in "
+        status: '',
+        text: ""
     })
 
     const [resend, setResend] = useState({
@@ -66,10 +66,11 @@ const Accountverification = () => {
     }
 
     useEffect(()=>{
-        setMessage({
-            status: true,
-            text: "Your email has been verified, You Can Now Log In"
-        })
+        verifyAccount();
+        // setMessage({
+        //     status: true,
+        //     text: "Your email has been verified, You Can Now Log In"
+        // })
 
     }, [message.status])
 

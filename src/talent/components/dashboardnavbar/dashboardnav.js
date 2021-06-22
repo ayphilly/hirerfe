@@ -5,7 +5,7 @@ import notification from "../../talentassets/Notification.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 function Dashboardnav () {
     const data = useSelector((state) => state.auth.authData)
