@@ -1,7 +1,7 @@
 import "./singlefeedback.scss";
 import quote from "../../talentassets/quote.svg"
 import profile from "../../talentassets/profile.png"
-const Singlefeed = () => {
+const Singlefeed = (props) => {
 
     return (
         <div className="singlefeed-container">
@@ -18,10 +18,10 @@ const Singlefeed = () => {
                     </p>
                     <div className="bottom">
                         <p>
-                            Dapo,
+                            {props.name + ','}
                         </p>
                         <p>
-                            Hired by Softcom
+                            {'Hired by ' + props.company}
                         </p>
 
                         <img src={quote}></img>

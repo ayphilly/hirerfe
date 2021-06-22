@@ -90,7 +90,7 @@ export const Verifyemail = (props) => {
                 />
                 
                 
-                <button type="submit" className="next-step-btn" disabled={validateForm(email.errors) ? false : true} >Send Instructions</button>
+                <button type="submit" className="next-step-btn" disabled={validateForm(email.errors) ? email.email === '' ? true: false : true} >Send Instructions</button>
             </form>
         </Resetcontainer>
     )
