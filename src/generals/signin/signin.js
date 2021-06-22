@@ -7,6 +7,7 @@ import {post} from "../../requests"
 import {useDispatch } from 'react-redux'
 import { setAuthData } from "../../slices/authSlice"
 import {useHistory} from "react-router";
+import { Link } from 'react-router-dom';
 export const Signin =()=> {
 
     const dispatch = useDispatch()
@@ -123,7 +124,7 @@ export const Signin =()=> {
 
                         </Singleinputlabel>
 
-                        <p> Forgotten password ? <a href="#"> Reset here </a> </p>
+                        <p> Forgotten password ? <Link className="" to="/forgotpassword" style={{textDecoration:'none'}}>Reset Here</Link> </p>
                         <button type="submit" className="signin-submit"  disabled={formState.email && formState.password ? false : true} > Sign In </button>
 
                         <p> New member ? <a href="#"> Create your free account now </a>  </p>

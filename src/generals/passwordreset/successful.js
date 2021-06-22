@@ -3,8 +3,8 @@ import successful from "../../hirer/hirerassets/successful.svg"
 import { useHistory } from 'react-router-dom';
 export const Resetsuccessful = (props)=> {
     const history = useHistory();
-    const moveToHompage = () => {
-        history.push("/");
+    const moveToSignin = () => {
+        history.push("/signin");
     };
 
     return (
@@ -16,7 +16,7 @@ export const Resetsuccessful = (props)=> {
                     <p>
                         Your Password Reset Was a Successful
                     </p>
-                    <button type="button" className="successful-btn" onClick={moveToHompage} >Go To Homepage</button>
+                    <button type="button" className="successful-btn" onClick={moveToSignin} >Go To Sign in</button>
             
             </div>
 
