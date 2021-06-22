@@ -55,9 +55,9 @@ const CreateProfile = () => {
         </div>
       </div>
       <form className="plain-card mb-8 align-items-stretch">
-        {step == 0 && <UserProfileFields setField={setField} />}
-        {step == 1 && <EducationFields />}
-        {step == 2 && <ExperienceFields />}
+        {step === 0 && <UserProfileFields setField={setField} />}
+        {step === 1 && <EducationFields />}
+        {step === 2 && <ExperienceFields />}
       </form>
       {/* Form Nav */}
       <div
