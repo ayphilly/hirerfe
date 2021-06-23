@@ -1,6 +1,6 @@
 import React from "react";
 import "./radiobox.scss";
-import {useState, useEffect} from "react"
+
 
 const RadioButton = (props) => {
     return (

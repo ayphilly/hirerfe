@@ -1,7 +1,7 @@
 import Singleinput from "../inputs/singleinput"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
-import { useState, useEffect } from "react";
+import { useState} from "react";
 // import axios from "axios"
 import {validateForm, validation } from "../../helper";
 import {post} from "../../requests"
@@ -16,6 +16,10 @@ const Talentcreate = (props) => {
         password_confirmation: '',
         errors: { email: '', name: '', phone: '', password: ''}
     })
+
+    const disableBtn = () => {
+        return validateForm(formState.errors) ? (formState.email === '' || formState.name ==='' ||formState.phone ==='' || formState.password === '') ? true: false : true;
+    }
 
     const handleUserInput = (e) =>{
         const name = e.target.name;
@@ -149,7 +153,7 @@ const Talentcreate = (props) => {
 
                     </Singleinput>
 
-                    <button type="submit" className="create-submit" disabled={validateForm(formState.errors) ? false : true}> Create </button>
+                    <button type="submit" className="create-submit" disabled={disableBtn()}> Create </button>
 
                     
                     

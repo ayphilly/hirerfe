@@ -2,7 +2,7 @@ import "./signin.scss"
 import Singleinputlabel from "../inputs/singleinputlabel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
-import { useState, useEffect } from "react"
+import { useState} from "react"
 import {post} from "../../requests"
 import {useDispatch } from 'react-redux'
 import { setAuthData } from "../../slices/authSlice"

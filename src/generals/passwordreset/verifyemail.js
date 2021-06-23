@@ -1,7 +1,7 @@
 import "./verifyemail.scss"
 import {Resetcontainer} from "./resetcontainer"
 import Singleinputlabel from "../inputs/singleinputlabel"
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import { validateForm, validation } from "../../helper";
 import { post } from "../../requests"
 import { setMail } from "../../slices/resetpasswordSlice"

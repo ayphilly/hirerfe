@@ -45,6 +45,10 @@
             position: absolute;
             top: 0;
             background-color: $blue-700;
+
+            &.error {
+                background-color: $red-700;
+            }
         }
 
         .box-inner {
@@ -69,6 +73,10 @@
                 @include breakpoint(phablet) {
                     width: 100%;
                     @include fontNormal(2.5em, 1.5em, $blue-902);
+                }
+
+                &.error {
+                    color: $red-600;
                 }
             }
     

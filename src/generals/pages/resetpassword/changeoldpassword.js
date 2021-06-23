@@ -1,11 +1,7 @@
 import "./forgotpassword.scss"
 import {Changepassword} from "../../passwordreset/changepassword"
 import {Resetsuccessful} from "../../passwordreset/successful"
-import {useEffect, useState} from "react"
-const steps = [
-    {id: 'verifymail'},
-    {id: 'checkmail'}
-]
+import {useState} from "react"
 
 const Changeoldpassword = () => {
     

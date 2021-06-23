@@ -1,7 +1,7 @@
 @import "../../../variables.scss";
 
 .singlefeed-container {
-    width: 800px !important;
+    width: 800px;
     // width: 100px !important;
     height: 350px;
     @include rowflex(center, center);
@@ -14,7 +14,7 @@
     background-size: cover;
 
     @include breakpoint(mobileonly) {
-        width: 350px;
+        width: 330px;
         height: 300px;
     }
     @include breakpoint(phablet) {

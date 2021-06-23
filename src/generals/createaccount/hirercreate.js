@@ -2,18 +2,13 @@ import Singleinput from "../inputs/singleinput"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 import "./hirercreate.scss"
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux'
-import { setToken, setAuthData } from "../../slices/authSlice";
-import axios from "axios"
+import { useState} from "react";
 import { validateForm, validation } from "../../helper";
 import {post} from "../../requests"
 
 const Hirercreate = (props) =>  {
 
-    const count = useSelector((state) => state.auth.authData)
-    const dispatch = useDispatch()
-
+   
     const [formState, setForm ] = useState({
         email: '',
         name: '',
@@ -22,6 +17,10 @@ const Hirercreate = (props) =>  {
         password_confirmation: '',
         errors: { email: '', name: '', company_name: '', password: ''}
     })
+
+    const disableBtn = () => {
+       return validateForm(formState.errors) ? (formState.email === '' || formState.name ==='' ||formState.company_name ==='' || formState.password === '') ? true: false : true;
+    }
 
     
     const handleUserInput = (e) =>{
@@ -168,7 +167,7 @@ const Hirercreate = (props) =>  {
 
                     </Singleinput>
 
-                    <button type="submit" className="create-submit" disabled={validateForm(formState.errors) ? false : true}> Create </button>
+                    <button type="submit" className="create-submit" disabled={disableBtn()}> Create </button>
                     
                 </form>
 

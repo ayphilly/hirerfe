@@ -7,23 +7,59 @@ import {TweenLite, Power3} from 'gsap'
 function Feedback() {
 
     let testimonialList = useRef(null);
-    const testimonialWidth = 820;
+    const [testimonialWidth, setWidth] = useState()
     const [state, setState] = useState({
         isActive1: true,
         isActive2: false,
         isActive3: false
     });
+    const [dimensions, setDimensions] = useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+    })
 
+    useEffect(() => {
+        // monitor screensize change for carousel
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })
+            
+        }
+        window.addEventListener('resize', handleResize)
+        // clean up event listener
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+        }
+    })
+
+    useEffect(()=> {
+        setState({isActive1:true, isActive2:false, isActive3:false});
+    }, [dimensions])
+    
     useEffect(() => {
         TweenLite.to(testimonialList.children[0], 1, {
             opacity:1
         })
     }, [])
 
+    useEffect(()=>{
+        
+        let wdd = document.querySelector(".t-carousel"); 
+       
+        let wod = wdd.getElementsByTagName('ul');
+        
+        let test = parseInt(wod[0].offsetWidth);
+        test > 830 ? setWidth(810) : setWidth(test-10)
+        
+        
+    },[dimensions])
+
 
     const slideLeft = (index, duration, multiplied=1) => {
         TweenLite.to (testimonialList.children[index], duration, {
-            x: -testimonialWidth * multiplied,
+            x: -(testimonialWidth) * multiplied,
             ease: Power3
         })
 
@@ -37,9 +73,9 @@ function Feedback() {
     };
 
     const scale = (index, duration) => {
-        TweenLite.from (testimonialList.children[index], 1, {
-            scale: 1.4,
-            ease: Power3
+        TweenLite.from (testimonialList.children[index], duration, {
+            scale: 1.2,
+            ease: Power3.easeOut
         })
     }
 
@@ -47,13 +83,13 @@ function Feedback() {
         if (testimonialList.children[0].classList.contains('active')) {
             setState({isActive1:false, isActive2:true});
 
-            slideLeft(0, 1,1);
+            slideLeft(0, 1);
            
-            slideLeft(1, 1,1);
+            slideLeft(1, 1);
             scale(1,1);
 
-            slideLeft(2, 1,1);
-            slideLeft(2, 0,1);
+            slideLeft(2, 1);
+            slideLeft(2, 0);
             
 
         } else if (testimonialList.children[1].classList.contains('active')) {
@@ -65,7 +101,7 @@ function Feedback() {
             slideLeft(2, 1, 2);
             scale(2, 1);
         } else if (testimonialList.children[2].classList.contains('active')) {
-            setState({isActive3:false, isActive1:true});
+            setState({isActive1:true, isActive3:false });
             slideLeft(2, 1, 3);
 
             slideLeft(0, 1,0);
@@ -118,8 +154,8 @@ function Feedback() {
                         <FontAwesomeIcon icon={faArrowLeft} className="arrow-left-icon" size="2x"/>
                      </div>
                  
-                    <div className="t-carousel">
-                        <ul ref={ el => (testimonialList = el ) } >
+                    <div className="t-carousel" id="demo" >
+                        <ul ref={ el => (testimonialList = el ) } className="ullist">
                             <li className={state.isActive1 ? "active" : '' }> <Singlefeed name="tunde" company="SoftCom" /> </li>
                             <li className={state.isActive2 ? "active" : '' }> <Singlefeed name="Chika" company="Coven Works"/></li>
                             <li className={state.isActive3 ? "active" : '' }> <Singlefeed name="Ahmed" company="Microsoft"/></li>

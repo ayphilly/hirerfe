@@ -20,14 +20,13 @@ import Changeoldpassword from "./generals/pages/resetpassword/changeoldpassword"
 import { Jobdescription } from "./generals/pages/jobdescription/jobdescription";
 
 import { closePage } from "./helper";
-import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import PostJob from "./hirer/pages/PostJob";
 import CreateProfile from "./talent/CreateProfile";
 import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
 import { Notification } from "./talent/pages/notification/notification";
 import DashboardSide from "./talent/pages/DashboardSide";
 import Accountverification from "./generals/verifyaccount/accountverification";
-import { useRouteMatch } from "react-router";
+
 
 
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
@@ -90,7 +89,7 @@ const DashboardWithNavbar = ({
 };
 
 function App() {
-  const { path } = useRouteMatch()
+  // const { path } = useRouteMatch()
   return (
     <div className="App">
       <Switch>

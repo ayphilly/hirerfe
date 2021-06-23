@@ -1,9 +1,10 @@
 import "./accountverification.scss"
 import Check from "../../talent/talentassets/check.svg";
+import Errorclose from "../../talent/talentassets/errorclose.svg";
 import { useParams, useHistory, useLocation } from "react-router";
 import { useState, useEffect } from "react";
 import queryString from 'query-string'
-
+import apiClient from "../../api"
 import {post, get} from "../../requests"
 const Accountverification = () => {
 
@@ -28,7 +29,7 @@ const Accountverification = () => {
     }
 
     const resendVerification = () => {
-        get('v1/email/resend-verify')
+        get('/v1/email/resend-verify')
         .then((response) => {
             setResend({
                 error: false,
@@ -46,15 +47,16 @@ const Accountverification = () => {
 
     const verifyAccount = () => {
 
-        get(`v1/email/verify/${values.id}/${values.hash}?${values.expires}&${values.signature}`)
+        get(`/v1/email/verify/${values.id}/${values.hash}?expires=${values.expires}&signature=${values.signature}`)
         .then((response) => {
-            console.log(response.status);
+            console.log(response);
             setMessage({
-                status: response.status,
-                text: response.message
+                status: true,
+                text: "Your email has been successfully verified"
             })
             
         }, (error) => {
+            console.log(values)
             setMessage({
                 status: false,
                 text: "Your email could not be verified, Verification token is expired/invalid"
@@ -66,13 +68,13 @@ const Accountverification = () => {
     }
 
     useEffect(()=>{
-        verifyAccount();
-        // setMessage({
-        //     status: true,
-        //     text: "Your email has been verified, You Can Now Log In"
-        // })
+        // verifyAccount();
+        setMessage({
+            status: false,
+            text: "Your email has been verified, You Can Now Log In"
+        })
 
-    }, [message.status])
+    }, [])
 
     
 
@@ -81,12 +83,13 @@ const Accountverification = () => {
         <div className="account-verification-container">
            
             <div className="account-verification-box">
-                <div className="account-verification-rect"></div>
+                <div className={` account-verification-rect  + ${message.status ? '' : ' error'} ` }></div>
                 
                 <div className="box-inner">
-                    <img src={Check} alt="Check-icon"/>
 
-                    <p>
+                    { message.status ? <img src={Check} alt="Check-icon"/> : <img src={Errorclose} alt="error-icon"/>}
+
+                    <p className={`${message.status ? '' : ' error'} ` }>
                         {message.text}
                     </p>
                     <button className="verify-btn" onClick={ message.status ? goToSignin : resendVerification }> 
