@@ -68,11 +68,11 @@ const Accountverification = () => {
     }
 
     useEffect(()=>{
-        // verifyAccount();
-        setMessage({
-            status: false,
-            text: "Your email has been verified, You Can Now Log In"
-        })
+        verifyAccount();
+        // setMessage({
+        //     status: false,
+        //     text: "Your email has been verified, You Can Now Log In"
+        // })
 
     }, [])
 

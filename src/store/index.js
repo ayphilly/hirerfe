@@ -3,6 +3,7 @@ import authReducer from "../slices/authSlice";
 import companyReducer from "../slices/companySlice";
 import talentReducer from "../slices/talentSlice";
 import resetpasswordReducer from "../slices/resetpasswordSlice";
+import avatarReducer from "../slices/avatarSlice";
 
 function saveToLocalStorage(state) {
   try {
@@ -29,7 +30,8 @@ const store = configureStore({
     auth: authReducer,
     company: companyReducer,
     talent: talentReducer,
-    resetpassword: resetpasswordReducer
+    resetpassword: resetpasswordReducer,
+    avatar: avatarReducer,
   },
   devTools: true,
   preloadedState: loadFromLocalStorage(),

@@ -8,18 +8,70 @@ import {Changeaccount} from "../../../components/changeaccountype/changeaccount"
 import {Changeavailability} from "../../../components/changeavailability/changeavailability"
 import {openProfile, closeProfile} from "../../../../helper"
 import { useEffect, useState } from "react"
+import { post } from "../../../../requests"
+import { useSelector,useDispatch } from 'react-redux'
+import { setAvatar } from "../../../../slices/avatarSlice"
 export const Profile = () => {
     
+    const talentAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+    const talentAvatar = useSelector((state) => state.avatar.avatar);
+    const dispatch = useDispatch();
     const [inputs, setInputs] = useState({});
+
+    const [avi, setAvi] = useState({
+        status: '',
+        message: '',
+        data: ''
+    });
     
     useEffect(()=> {
         openProfile();
     })
-     var setInput = (e) => {
+
+    var setInput = (e) => {
          setInputs({...inputs,
              [e.target.name] : [e.target.value]
          }, [inputs])
-     }
+    }
+
+    const imageHandler = (e) => {
+        const reader = new FileReader();
+        reader.onload = () =>{
+          if(reader.readyState === 2){
+           uploadAvi(reader.result);
+            // alert(reader.result.base64)
+          }
+        }
+        reader.readAsDataURL(e.target.files[0])
+    };
+
+    const uploadAvi = (result) => {
+
+        post('/v1/talent/avatar-upload', {
+            file: result
+        })
+        .then((response) => {
+            console.log(response);
+            dispatch(setAvatar(response.data));
+            setAvi({
+                status: response.status,
+                message: response.message,
+                data: response.data
+            })
+            
+            
+        }, (error) => {
+            
+            
+        });
+
+    }
+
+    useEffect(()=> {
+        setAvi({...avi, data:'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'})
+    }, [])
+
+   
     
     return (
         <div className="user-profile-container" id="user-profile-container">
@@ -33,8 +85,12 @@ export const Profile = () => {
                         <p>Choose a new avatar to be used across Coven</p>
                     </div>
                     <div className="profile-picture-bottom">
-                        <img src={profile} alt="user profile"/>
-                        <button>Upload New Picture</button>
+                        {talentAvatar ? <img src={talentAvatar} alt="user profile"/> :<img src={talentAvi} alt="user profile"/>  }
+                        {/* <img src={data} alt="user profile"/> */}
+                        {/* <button id="btnopendialog">Upload New Picture</button> */}
+                        {/* onChange={this.imageHandler} */}
+                        <input type="file" accept="image/*" name="image-upload" id="inputavi"  hidden onChange={imageHandler}/>
+                        <label htmlFor="inputavi" className="image-upload" id="image-upload">Upload New Picture</label>
                         <a href="#" className="profile-picture-delete">Delete</a>
 
                     </div>
