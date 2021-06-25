@@ -11,8 +11,8 @@
 
     @include breakpoint (mobileonly) {
         width: 100%;
-        height: 110em;
-        overflow: hidden;
+        height: 130em;
+        // overflow: hidden;
     }
     @include breakpoint (phablet) {
         width: 90%;
@@ -214,7 +214,7 @@
 
             @include breakpoint (phablet) {
                 width: 100%;
-                height: 45%;
+                // height: 45%;
             }
 
             p:nth-child(1){
@@ -227,6 +227,7 @@
                 @include breakpoint (mobileonly) {
                     width: 100%;
                     height: 100%;
+                    @include colflex(flex-start, space-around);
                 }
                 @include breakpoint (phablet) {
                     width: 95%;
@@ -238,13 +239,22 @@
                     height: 60%;
                     @include colflex(flex-start, space-between);
 
+                    @include breakpoint(mobileonly){
+                        height: 55%;
+                        @include colflex(flex-start,space-around);
+                    }
+                    @include breakpoint(phablet){
+                        height: 50%;
+                        @include colflex(flex-start,space-around);
+                    }
+
                     .form-account-inputs {
                         width: 100%;
                         height: 70%;
                         @include colflex(flex-start,space-around);
 
                         @include breakpoint(mobileonly){
-                            height: 75%;
+                            height: 60%;
                             @include colflex(flex-start,space-around);
                         }
                         @include breakpoint(phablet){
@@ -259,11 +269,11 @@
                         @include colflex(flex-start,space-around);
 
                         @include breakpoint(mobileonly){
-                            height: 400px;
+                            height: 250px;
                             @include colflex(flex-start,space-around);
                         }
                         @include breakpoint(phablet){
-                            height: 400px;
+                            height: 300px;
                             @include colflex(flex-start,space-around);
                         }
 

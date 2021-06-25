@@ -6,6 +6,7 @@
     height:100px;
     width: 100%;
     @include breakpoint(mobileonly) {
+        height:100px;
         @include colflex(flex-start, space-between);
     }
     @include breakpoint(phablet) {
@@ -17,11 +18,13 @@
         
     }
     label {
-        // height: 30px;
-        margin: 0;
+        height: 10px;
+        
+        // margin: 0;
         @include fontNormal(1em,2em, $blue-900);
         @include breakpoint(mobileonly) {
             height: 20px;
+            margin-bottom: 5px;
             @include fontMedium(.8em,1em, $blue-902);
         }
     }
