@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Homepage from "./talent/pages/homepage/talent";
 import { Dashboardhome } from "./talent/pages/dashboard/homepage/homepage";
 import { Myjobs } from "./talent/pages/dashboard/myjobs/myjobs";
-import { Profile } from "./talent/pages/dashboard/profile/profile";
+import { Account } from "./talent/pages/dashboard/account/account";
 import { Searchjob } from "./talent/pages/searchjob/searchjob";
 import { Searchtalent } from "./hirer/pages/searchtalents/searchtalent";
 import Hirer from "./hirer/pages/homepage/hirer";
@@ -149,7 +149,7 @@ function App() {
 
         <DashboardWithNavbar
           exact
-          path="/dashboard"
+          path="/dashboard/talent"
           component={Dashboardhome}
         />
         <DashboardWithNavbar
@@ -159,12 +159,12 @@ function App() {
         />
         <DashboardWithNavbar
           exact
-          path="/dashboard/profile"
-          component={Profile}
+          path="/dashboard/talent/account"
+          component={Account}
         />
         <DashboardWithNavbar
           exact
-          path="/dashboard-side"
+          path="/dashboard/hirer"
           component={DashboardSide}
         />
 

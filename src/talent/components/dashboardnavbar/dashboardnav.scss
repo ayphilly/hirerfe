@@ -5,7 +5,7 @@
     height: 100px;
     @include rowflex(center, center);
     z-index: 10;
-    .navbar-inner {
+    .dashboard-navbar-inner {
         width: 95%;
         height: 95%;
         @include rowflex(center, space-between);
@@ -31,7 +31,7 @@
         }
 
         &.left {
-            width:25%;
+            width:25% !important;
             height: 100%;
             @include rowflex(center, space-between);
             @include breakpoint(tablet) {
@@ -90,7 +90,7 @@
             }
 
             @include breakpoint(laptop) {
-                width: 30%;
+                width: 25% !important;
                 @include rowflex(center, space-between);
                 @include fontNormal(1em, 1em, $blue-902);
             }
@@ -100,7 +100,7 @@
         
 
         &.right {
-            width: 30%;
+            width: 30% !important;
             @include rowflex(center, space-around);
 
             @include breakpoint(phablet) {
@@ -203,7 +203,7 @@
             }
 
             .dashboard-profile {
-                width: 45%;
+                width: 50%;
                 @include rowflex (center, space-between);
 
                 @include breakpoint(mobileonly) {
@@ -276,7 +276,7 @@
             }
 
             @include breakpoint(laptop) {
-                width: 30%;
+                width: 30% !important;
                 @include rowflex(center, space-between);
                 @include fontNormal(1em, 1em, $blue-902);
             }

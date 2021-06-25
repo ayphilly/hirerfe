@@ -46,7 +46,7 @@ export const Signin =()=> {
                 })
 
                 setTimeout(()=> {
-                    response.data.data.role == "company" ? history.push("/dashboard") :history.push("/dashboard");
+                    response.data.data.role == "company" ? history.push("/dashboard/hirer") :history.push("/dashboard/talent");
                 }, 2000)
                 
                 

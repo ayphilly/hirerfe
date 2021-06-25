@@ -33,7 +33,7 @@ export const DropdownWrapper = styled.div`
 export const StyledSelect = styled.select`
 
   backgroundColor: red;
-  // width:90%;
+  // width:100%;
   margin-bottom: 1rem;
   height: 60px;
   background-color: #F9F8F9;

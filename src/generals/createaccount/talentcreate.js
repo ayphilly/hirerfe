@@ -35,10 +35,10 @@ const Talentcreate = (props) => {
         event.preventDefault();
         if(validateForm(formState.errors)) {
 
-            post('v1/auth/talent/register', {
+            post('/v1/auth/talent/register', {
                 email: formState.email,
                 name: formState.name,
-                phone :'08115861199',
+                phone :formState.phone,
                 password : formState.password,
                 password_confirmation : formState.password,
             })
@@ -99,7 +99,7 @@ const Talentcreate = (props) => {
                                 label ="Full Name"
                                 subtext="Enter your full name"
                                 name="name"
-                                width= {285}
+                                value={formState.name}
                                 onChange={(event) => handleUserInput(event)}
                                 error = {formState.errors.name}
                             >
@@ -113,8 +113,8 @@ const Talentcreate = (props) => {
                                 label ="Phone Number"
                                 subtext="Enter your phone number"
                                 name="phone"
-                                width= {285}
-                                onChange={(event) => handleUserInput(event)}
+                                value={formState.phone}
+                                onChange={ (event) => handleUserInput(event) }
                                 error = {formState.errors.phone}
 
                             >
@@ -133,7 +133,7 @@ const Talentcreate = (props) => {
                             label ="Your Email"
                             subtext="Enter your email address"
                             name="email"
-                            width= {585}
+                            value={formState.email}
                             onChange={(event) => handleUserInput(event)}
                             error = {formState.errors.email}
                         >
@@ -146,7 +146,7 @@ const Talentcreate = (props) => {
                             label ="Your Password"
                             subtext="Enter your 8 digits password"
                             name="password"
-                            width= {585}
+                            value={formState.password}
                             onChange={(event) => handleUserInput(event)}
                             error = {formState.errors.password}
                         >

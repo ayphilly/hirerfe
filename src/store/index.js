@@ -31,7 +31,7 @@ const store = configureStore({
     company: companyReducer,
     talent: talentReducer,
     resetpassword: resetpasswordReducer,
-    avatar: avatarReducer,
+    // avatar: avatarReducer,
   },
   devTools: true,
   preloadedState: loadFromLocalStorage(),
