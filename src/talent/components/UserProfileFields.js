@@ -1,16 +1,28 @@
 import React from "react";
+import { useProfile } from "../customHooks";
 
 const UserProfileFields = () => {
+  const { profile, dispathProfileAction } = useProfile();
   return (
     <>
       <div className="form-group mb-8">
-        <label className="d-block mb-2 f-16" htmlFor="firstName">
-          First Name
+        <label className="d-block mb-2 f-16" htmlFor="fullName">
+          Full Name
           <span style={{ color: "red" }}>*</span>
         </label>
-        <input type="text" className="classic-input w-100" />
+        <input
+          onChange={(e) => {
+            dispathProfileAction("user", {
+              ...profile.user,
+              name: e.target.value,
+            });
+          }}
+          value={profile.user.name}
+          type="text"
+          className="classic-input w-100"
+        />
       </div>
-      <div className="form-group mb-8">
+      <div className="form-group d-none mb-8">
         <label className="d-block mb-2 f-16" htmlFor="lastName">
           Last Name
           <span style={{ color: "red" }}>*</span>
