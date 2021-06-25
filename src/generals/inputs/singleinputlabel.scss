@@ -3,7 +3,7 @@
 
 .form-input {
     @include colflexx(flex-start);
-    height:fit-content;
+    height:100px;
     width: 100%;
     @include breakpoint(mobileonly) {
         @include colflex(flex-start, space-between);

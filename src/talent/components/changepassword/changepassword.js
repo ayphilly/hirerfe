@@ -9,6 +9,7 @@ export const Changepassword = (props)=> {
         
     }
 
+
     
     return (
         <div className="changepassword-container">
@@ -17,7 +18,7 @@ export const Changepassword = (props)=> {
                     <Singleinputlabel
                         type="password"
                         label ="Old Password"
-                        name="oldpassword"
+                        name="password"
                         value=""
                         disabled= {false}
                         onChange={props.setInput}
@@ -26,7 +27,7 @@ export const Changepassword = (props)=> {
                     <Singleinputlabel
                         type="password"
                         label ="New Password"
-                        name="newpassword"
+                        name="confirm_password"
                         value=""
                         onChange={props.setInput}
                         disabled= {false}

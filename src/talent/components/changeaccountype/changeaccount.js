@@ -43,7 +43,7 @@ export const Changeaccount = (props)=> {
 
                    <div className="form-buttons">
                        <button type="cancel" onClick={ closeBox}> Cancel </button>
-                       <button> Change Password </button>
+                       <button> Change Account </button>
                    </div>    
                         
                 </form>

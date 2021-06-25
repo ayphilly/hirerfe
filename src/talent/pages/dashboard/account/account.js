@@ -6,6 +6,7 @@ import {Changepassword} from "../../../components/changepassword/changepassword"
 import {Changeaccount} from "../../../components/changeaccountype/changeaccount"
 import {Changeschedule} from "../../../components/changeavailability/changeschedule"
 import { Dropdown, Option } from "../../../../generals/inputs/dropdown/dropdown"
+import RadioButton from "../../../../generals/inputs/radiobox"
 import {openProfile, closeProfile} from "../../../../helper"
 import { useEffect, useState } from "react"
 import { post, get } from "../../../../requests"
@@ -26,7 +27,8 @@ export const Account = () => {
         availability: {
             id:'',
             value:''
-        }
+        },
+        gender: userAccount.profile ? userAccount.profile.gender : ''
     });
     const [show, setShow] = useState(false)
     const [response, setResponse] = useState({
@@ -55,9 +57,6 @@ export const Account = () => {
     }
     var setDropdown = (e) => {
         const index = e.target.selectedIndex;
-        console.log(index)
-        
-
         dispatch(updateTalentAvailability({id:index,value:e.target.value}))
        
    }
@@ -197,44 +196,45 @@ export const Account = () => {
                 </div>
 
                 <div className="personal-details-container">
-                    <p>Personal Details</p>
+                    
                     <form onSubmit={handleSubmt}>
                         <div className="form-personal-details">
-                            <Singleinputlabel
-                                type="text"
-                                label ="Full Name"
-                                name="fullname"
-                                value={userAccount ? userAccount.name : ''}
-                                disabled= {true}
-                                
-                            />
+                            <p>Personal Details</p>
+                            <div className="form-account-inputs">
+                                <Singleinputlabel
+                                    type="text"
+                                    label ="Full Name"
+                                    name="fullname"
+                                    value={userAccount ? userAccount.name : ''}
+                                    disabled= {true}
+                                    
+                                />
 
-                            <Singleinputlabel
-                                type="text"
-                                label ="email"
-                                name="email"
-                                value={userAccount ? userAccount.email : ''}
-                                disabled= {true}
-                            />
-                            <Singleinputlabel
-                                type="text"
-                                label ="Phone Number"
-                                name="phone"
-                                value={ userAccount.profile ? userAccount.profile.phone : ''}
-                                disabled= {false}
-                                onChange={ (event) => setInput(event) }
-                            />
-                            <Singleinputlabel
-                                type="text"
-                                label ="Location"
-                                name="location"
-                                // value={inputs.location}
-                                value={ userAccount.profile ? userAccount.profile.location : ''}
-                                disabled= {false}
-                                onChange={ (event) => setInput(event) }
-                            />
-
-                            <Textarea
+                                <Singleinputlabel
+                                    type="text"
+                                    label ="email"
+                                    name="email"
+                                    value={userAccount ? userAccount.email : ''}
+                                    disabled= {true}
+                                />
+                                <Singleinputlabel
+                                    type="text"
+                                    label ="Phone Number"
+                                    name="phone"
+                                    value={ userAccount.profile ? userAccount.profile.phone : ''}
+                                    disabled= {false}
+                                    onChange={ (event) => setInput(event) }
+                                />
+                                <Singleinputlabel
+                                    type="text"
+                                    label ="Location"
+                                    name="location"
+                                    // value={inputs.location}
+                                    value={ userAccount.profile ? userAccount.profile.location : ''}
+                                    disabled= {false}
+                                    onChange={ (event) => setInput(event) }
+                                />
+                                <Textarea
                                 type="text"
                                 label ="Bio"
                                 name="bio"
@@ -243,6 +243,46 @@ export const Account = () => {
                                 onChange={ (event) => setInput(event) }
                                 // width= {605}
                             />
+                            </div>
+                            
+
+                            
+
+                            <div className="personal-details-gender">
+                                <div className="gender-inner-top">
+                                    <p>Gender</p>
+                                    <p>How you would like to be identified</p>
+                                </div>
+                                <div className="gender-inner-radios">
+                                    <RadioButton 
+                                        changed={ (event) => setInput(event) } 
+                                        id="1" 
+                                        isSelected={ userAccount.profile.gender && userAccount.profile.gender === "M" } 
+                                        label="Male" 
+                                        value="M" 
+                                        name="gender"
+                                    />
+
+                                    <RadioButton 
+                                        changed={ (event) => setInput(event)  } 
+                                        id="2" 
+                                        isSelected={ userAccount.profile.gender && userAccount.profile.gender === "F" } 
+                                        label="Female" 
+                                        value="F" 
+                                        name="gender"
+                                    />
+                                    <RadioButton 
+                                        changed={ (event) => setInput(event) } 
+                                        id="3" 
+                                        isSelected={ userAccount.profile.gender && userAccount.profile.gender === "O" } 
+                                        label="Others" 
+                                        value="O" 
+                                        name="gender"
+                                    />
+
+                                </div>
+
+                            </div>
                         </div>
                         
                         

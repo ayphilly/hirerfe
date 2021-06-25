@@ -2,11 +2,11 @@
 
 .user-profile-container {
     width: 100%;
-    height: 120em;
+    height: 130em;
+    margin-bottom: 300px;
     @include colflex(center,center);
-    margin: 0 auto;
+    // margin: 0 auto;
     position: relative;
-
     
 
     @include breakpoint (mobileonly) {
@@ -66,9 +66,8 @@
     .user-profile-inner {
         width: 50%;
         height: 90%;
-        @include colflex(flex-start, space-around);
+        @include colflex(flex-start, space-between);
         position: relative;
-        
 
         @include breakpoint (mobileonly) {
             width: 90%;
@@ -90,6 +89,7 @@
 
         .profile-picture-container {
             width: 80%;
+            height: 200px;
             @include colflex(flex-start,space-around);
             
             @include breakpoint (mobileonly) {
@@ -138,13 +138,13 @@
                     width: 60%;
                 }
                 img {
-                    width: 70px;
+                    width: 80px;
                     object-fit: contain;
                     border-radius: 50px;
                     background-blend-mode: normal;
                     box-shadow: inset 0px 0px 4px rgba(0, 59, 82, 0.42);
                     @include breakpoint (mobileonly) {
-                        width: 50px;
+                        width: 60px;
                     }
 
                 }
@@ -163,14 +163,19 @@
                     }
                     @include breakpoint (mobileonly) {
                         width: 150px;
+                        @include fontNormal(.8em, 1em,#fff);
+                        @include rowflex(center,center);
                     }
 
                     @include breakpoint (phablet) {
                         width: 150px;
+                        @include fontNormal(.8em, 1em,#fff);
+                        @include rowflex(center,center);
                     }
 
                     @include breakpoint (tablet) {
                         width: 150px;
+                        @include rowflex(center,center);
                     }
 
                     
@@ -218,8 +223,7 @@
             form {
                 width: 95%;
                 height: 100%;
-                // background-color: red;
-                @include colflex(flex-start, space-between);
+                @include colflex(flex-start, space-around);
                 @include breakpoint (mobileonly) {
                     width: 100%;
                     height: 100%;
@@ -231,9 +235,63 @@
 
                 .form-personal-details{
                     width: 100%;
-                    height: 50%;
-                    @include colflex(flex-start, space-around);
+                    height: 60%;
+                    @include colflex(flex-start, space-between);
+
+                    .form-account-inputs {
+                        width: 100%;
+                        height: 70%;
+                        @include colflex(flex-start,space-around);
+
+                        @include breakpoint(mobileonly){
+                            height: 75%;
+                            @include colflex(flex-start,space-around);
+                        }
+                        @include breakpoint(phablet){
+                            height: 75%;
+                            @include colflex(flex-start,space-around);
+                        }
+                        
+                    }
+                    .personal-details-gender {
+                        width: 100%;
+                        height: 300px;
+                        @include colflex(flex-start,space-around);
+
+                        @include breakpoint(mobileonly){
+                            height: 400px;
+                            @include colflex(flex-start,space-around);
+                        }
+                        @include breakpoint(phablet){
+                            height: 400px;
+                            @include colflex(flex-start,space-around);
+                        }
+
+                        .gender-inner-top{
+                            height: 10%;
+                            p:nth-child(1) {
+                                @include fontBold(1.5em,0em, $blue-902);
+                                @include breakpoint(mobileonly){
+                                    @include fontBold(1.2em,0em, $blue-902);
+                                }
+                            }
+                            p:nth-child(2) {
+                                @include fontLight(1em,0em, $blue-901);
+                                @include breakpoint(mobileonly){
+                                    @include fontLight(.8em,0em, $blue-901);
+                                }
+                            }
+                        }
+                        .gender-inner-radios {
+                            margin-top: 30px;
+                            width: 100%;
+                            height: 60%;
+                            @include colflex(flex-start,space-between);
+                        }
+                    }
                 }
+
+                
 
                 .save-changes {
                     width: 200px;

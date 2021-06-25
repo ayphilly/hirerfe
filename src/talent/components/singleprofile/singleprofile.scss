@@ -72,11 +72,13 @@
             text-decoration: none;
 
             @include breakpoint (mobileonly) {
-                @include fontMedium(1em, 1em, $blue-901);
+                margin-top: 20px;
+                @include fontMedium(1em, 1em, $blue-700);
             }
 
             @include breakpoint (phablet) {
-                @include fontMedium(1em, 1em, $blue-901);
+                margin-top: 20px;
+                @include fontMedium(1em, 1em, $blue-700);
             }
 
             &:hover {
