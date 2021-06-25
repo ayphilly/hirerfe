@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { post } from "../requests";
 import EducationFields from "./components/EducationFields";
 import ExperienceFields from "./components/ExperienceFields";
+import SkillsFields from "./components/SkillsFields";
 import UserProfileFields from "./components/UserProfileFields";
 
 const formSteps = [
@@ -31,6 +33,12 @@ const CreateProfile = () => {
   const nextStep = () => step < 4 && setStep(step + 1);
 
   const { title } = formSteps[step];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    post("/v1/talent/profile", formData);
+  };
+
   return (
     <div
       style={{ width: "95%", padding: "100px 0", margin: "auto" }}
@@ -54,10 +62,14 @@ const CreateProfile = () => {
           </div>
         </div>
       </div>
-      <form className="plain-card mb-8 align-items-stretch">
+      <form
+        onSubmit={handleSubmit}
+        className="plain-card mb-8 align-items-stretch"
+      >
         {step === 0 && <UserProfileFields setField={setField} />}
         {step === 1 && <EducationFields />}
         {step === 2 && <ExperienceFields />}
+        {step === 3 && <SkillsFields />}
       </form>
       {/* Form Nav */}
       <div

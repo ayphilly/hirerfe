@@ -26,7 +26,6 @@ import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
 import { Notification } from "./talent/pages/notification/notification";
 import DashboardSide from "./talent/pages/DashboardSide";
 import Accountverification from "./generals/verifyaccount/accountverification";
-import { useRouteMatch } from "react-router";
 
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
