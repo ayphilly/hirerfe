@@ -136,7 +136,7 @@ export const Account = () => {
             location: userAccount.profile.location,
             latitude: 45.49494949,
             longitude: 33.030303,
-            gender: "M",
+            gender: userAccount.profile.gender,
             availability: userAccount.profile.availability.id
         })
         .then((response) => {
