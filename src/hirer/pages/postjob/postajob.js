@@ -46,6 +46,7 @@ const Postajob = () => {
         <div className="postajob-container"> 
         {
             
+            
         }
 
         </div>

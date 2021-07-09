@@ -18,7 +18,8 @@ import Createaccount from "./generals/createaccount/createaccount";
 import Forgotpassword from "./generals/pages/resetpassword/forgotpassword";
 import Changeoldpassword from "./generals/pages/resetpassword/changeoldpassword";
 import { Jobdescription } from "./generals/pages/jobdescription/jobdescription";
-
+import { Redirect } from "./generals/pages/redirection/redirect";
+import { Auth } from "./generals/pages/auth/auth";
 import { closePage } from "./helper";
 import PostJob from "./hirer/pages/PostJob";
 import CreateProfile from "./talent/CreateProfile";
@@ -144,6 +145,8 @@ function App() {
         />
 
         <Route path="/signin" component={Signin} />
+        <Route path="/register" component={Redirect} />
+        <Route path="/auth" component={Auth} />
 
         {/* Dashboard Talent */}
 

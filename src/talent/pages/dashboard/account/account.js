@@ -257,7 +257,7 @@ export const Account = () => {
                                     <RadioButton 
                                         changed={ (event) => setInput(event) } 
                                         id="1" 
-                                        isSelected={ userAccount.profile.gender && userAccount.profile.gender === "M" } 
+                                        isSelected={ userAccount.profile && userAccount.profile.gender === "M" } 
                                         label="Male" 
                                         value="M" 
                                         name="gender"
@@ -266,7 +266,7 @@ export const Account = () => {
                                     <RadioButton 
                                         changed={ (event) => setInput(event)  } 
                                         id="2" 
-                                        isSelected={ userAccount.profile.gender && userAccount.profile.gender === "F" } 
+                                        isSelected={ userAccount.profile && userAccount.profile.gender === "F" } 
                                         label="Female" 
                                         value="F" 
                                         name="gender"
@@ -274,7 +274,7 @@ export const Account = () => {
                                     <RadioButton 
                                         changed={ (event) => setInput(event) } 
                                         id="3" 
-                                        isSelected={ userAccount.profile.gender && userAccount.profile.gender === "O" } 
+                                        isSelected={ userAccount.profile && userAccount.profile.gender === "O" } 
                                         label="Others" 
                                         value="O" 
                                         name="gender"

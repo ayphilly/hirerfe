@@ -5,6 +5,7 @@ import store from "./store";
 // create a new axios instance
 const instance = axios.create({
   baseURL: "https://hirer-be.herokuapp.com/api",
+  // baseURL: "https://hirer-be.herokuapp.com/auth",
   withCredentials: true,
 });
 

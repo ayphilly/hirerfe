@@ -48,11 +48,10 @@ const Footer = () => {
                         <ul className="Contact-footer-links">
                             <li>Get In Touch</li>
                             <li>
-                                The Paper Packaging Company
-                                2b, Rumens road, Ikoyi
-                                Lagos, Nigeria
-                                P: +234 909 527 6666
-                                E: info@tppcng.com
+                                10, Hughes Avenue, Off Herbert Macaulay Way, Yaba, Lagos State.
+                                110 W Randol Mill Rd. Arlington Texas 76011
+                                NG: +2347064838833 ||  US: +13042041510
+                                
                             </li>
                         </ul>
 

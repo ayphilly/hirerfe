@@ -3,11 +3,13 @@ import Singleinputlabel from "../inputs/singleinputlabel"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { useState} from "react"
-import {post} from "../../requests"
+import axios from "axios"
+import {post, get} from "../../requests"
 import {useDispatch } from 'react-redux'
 import { setAuthData } from "../../slices/authSlice"
 import {useHistory} from "react-router";
 import { Link } from 'react-router-dom';
+import {Socialoption} from "../createaccount/socialsoption"
 export const Signin =()=> {
 
     const dispatch = useDispatch()
@@ -70,6 +72,34 @@ export const Signin =()=> {
            
         });
     }
+    const socials = (event) => {
+        event.preventDefault();
+      
+        axios.get('https://hirer-be.herokuapp.com/auth/login/talent/google')
+        .then((response) => {
+            console.log(response.status);
+            if (response.status) {
+                console.log(response.data);
+                
+                setResponse(response.data)
+                window.location.href = response.data.data;
+
+            } else {
+                // props.setUpCreated(response)
+                // props.showAlert();
+                // setTimeout(()=> {
+                //     props.clearAlert();
+
+                // }, 5000)
+            }
+            
+        }, (error) => {
+            
+            console.log(error.response.data);
+            setResponse(error.response.data)
+        });
+
+    }
     return (
         <div className="signin-container">
             
@@ -82,22 +112,13 @@ export const Signin =()=> {
                     <p>Reach top talent and find the right candidate today.</p>
                    
                 </div>
-
-                <div className="signin-options">
-                    <a href="#" className="google">
-                        <FontAwesomeIcon icon={faGoogle} className="sc-icon"/> 
-                        Continue with Google
-                    </a>
-                    <a href="#" className="facebook">
-                        <FontAwesomeIcon icon={faFacebookF} className="sc-icon"/> 
-                        Continue with Facebook
-                    </a>
-
+                <div className="socials-options">
+                    <Socialoption
+                        title="Continue"
+                        glink ={socials}
+                    ></Socialoption>
                 </div>
-                <div className="signin-divide">
-                    <hr/> Or <hr/>
-
-                </div>
+                    
                 
                 
                 <form onSubmit={handleSubmit}>

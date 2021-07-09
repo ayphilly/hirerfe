@@ -24,7 +24,10 @@ export const Dashboardhome = ()=> {
                 <div className="dashboard-recommend">
                     <p className="recommend-headline">Jobs Recommended for You</p>
                     <p>Recommendations are based on your profile, job preferences, and activity on Hirer.</p>
-                    <Recommendations></Recommendations>
+                   
+                        <Recommendations></Recommendations>
+                   
+                    
                 </div>
 
                 <div className="dashboard-jobalert">
