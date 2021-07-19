@@ -27,8 +27,6 @@ import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
 import { Notification } from "./talent/pages/notification/notification";
 import DashboardSide from "./talent/pages/DashboardSide";
 import Accountverification from "./generals/verifyaccount/accountverification";
-import { Review } from "./talent/pages/review/review";
-
 
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
@@ -90,7 +88,6 @@ const DashboardWithNavbar = ({
 };
 
 function App() {
-  // const { path } = useRouteMatch()
   return (
     <div className="App">
       <Switch>
@@ -103,7 +100,10 @@ function App() {
         </Route>
 
         <Route path="/forgotpassword" component={Forgotpassword} />
-        <Route path="/resetpassword/:token/:hash" component={Changeoldpassword} />
+        <Route
+          path="/resetpassword/:token/:hash"
+          component={Changeoldpassword}
+        />
 
         <TalentWithNavbar exact path="/" component={Homepage} />
         <TalentWithNavbar

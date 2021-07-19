@@ -160,6 +160,61 @@ export const Signin =()=> {
 
             </div>
 
+        <div className="signin-options">
+          <a href="#dummylink" className="google">
+            <FontAwesomeIcon icon={faGoogle} className="sc-icon" />
+            Continue with Google
+          </a>
+          <a href="#dummylink" className="facebook">
+            <FontAwesomeIcon icon={faFacebookF} className="sc-icon" />
+            Continue with Facebook
+          </a>
         </div>
-    )
-}
+        <div className="signin-divide">
+          <hr /> Or <hr />
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-inner">
+            <Singleinputlabel
+              type="text"
+              placeholder="Continue with your email"
+              label="Email"
+              name="email"
+              onChange={(event) => handleUserInput(event)}
+              // width= {520}
+            ></Singleinputlabel>
+
+            <Singleinputlabel
+              type="password"
+              placeholder="Continue with your password"
+              label="Password"
+              name="password"
+              onChange={(event) => handleUserInput(event)}
+              // width= {520}
+            ></Singleinputlabel>
+
+            <p>
+              {" "}
+              Forgotten password ? <a href="#dummylink"> Reset here </a>{" "}
+            </p>
+            <button
+              type="submit"
+              className="signin-submit"
+              disabled={formState.email && formState.password ? false : true}
+            >
+              {" "}
+              Sign In{" "}
+            </button>
+
+            <p>
+              {" "}
+              New member ?{" "}
+              <a href="#dummylink"> Create your free account now </a>{" "}
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
