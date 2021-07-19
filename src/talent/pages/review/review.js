@@ -35,7 +35,7 @@ export const Review = () => {
                     <div className="review-top left">
                         <div className="left-top">
                             <span className="top-title slide-up" > Let Find You Great Places to <strong> Work </strong> </span>
-                            <p> Discover millions of company reviews. </p>
+                            <p> Discover millions of companies reviews. </p>
 
                         </div>
                         <div className="left-bottom">
