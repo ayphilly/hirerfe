@@ -3,7 +3,7 @@
 .popular-container {
     width: 100%;
     height: 50vh;
-    @include rowflex(flex-end, center);
+    @include rowflex(flex-start, center);
     position: relative;
     // z-index: -2;
     @include breakpoint(mobileonly) {
@@ -24,7 +24,7 @@
 
     @include breakpoint(laptop) {
         height: 35em;
-        @include rowflex(flex-end,center);
+        @include rowflex(flex-start,center);
     }
     .inner {
         @include colflex(center, space-between);

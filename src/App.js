@@ -27,7 +27,7 @@ import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
 import { Notification } from "./talent/pages/notification/notification";
 import DashboardSide from "./talent/pages/DashboardSide";
 import Accountverification from "./generals/verifyaccount/accountverification";
-
+import { Review } from "./talent/pages/review/review";
 
 
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
@@ -164,6 +164,11 @@ function App() {
           exact
           path="/dashboard/talent/account"
           component={Account}
+        />
+        <DashboardWithNavbar
+          exact
+          path="/dashboard/company"
+          component={Review}
         />
         <DashboardWithNavbar
           exact
