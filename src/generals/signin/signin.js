@@ -215,6 +215,6 @@ export const Signin =()=> {
           </div>
         </form>
       </div>
-    </div>
-  );
-};
+      
+    );
+}
