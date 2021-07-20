@@ -34,7 +34,7 @@ export const Auth = () => {
                 text: response.data.message
             })
             setTimeout(()=> {
-                response.data.data.role == "company" ? history.push("/dashboard/hirer") :history.push("/dashboard/talent");
+                response.data.data.role === "company" ? history.push("/dashboard/hirer") :history.push("/dashboard/talent");
             }, 2000)
             
             
