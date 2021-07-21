@@ -5,8 +5,13 @@ import {Applications} from "../../../components/activeapplications/applications"
 import {Archived} from "../../../components/archivedjobs/archived"
 import {activeList,savedList} from "../../../constants"
 import {jobUnveil } from "../../../../helper"
-export const Myjobs = () => {
+import { del, get} from "../../../../requests"
+export const Myjobs = (props) => {
 
+    const [response, setResponse] = useState({
+        status: null,
+        message: ''
+    })
     const [savedJobs, setSavedjobs] = useState([]);
     const [activeJobs, setActivejobs] = useState([]);
 
@@ -20,6 +25,61 @@ export const Myjobs = () => {
     useEffect(()=>{
         jobUnveil();
     })
+
+    var delSavedjob = (event, id)=> {
+        event.preventDefault();
+       
+       
+        del('/v1/talent/jobs/', { data: { id: id} })
+        .then((response) => {
+
+            if (response.status) {
+
+                setResponse({
+                    status: response.data.status,
+                    message: response.data.message
+                })
+                
+            } else {
+                setResponse({
+                    status: response.data.status,
+                    message: response.data.message
+                })
+            }
+            
+        }, (error) => {
+            setResponse({
+                status: error.response.data.status,
+                message: error.response.data.message
+            })
+        });
+
+    }
+
+    var getSavedJobs = ()=> {
+       
+        get('/v1/talent/jobs/')
+        .then((response) => {
+
+            if (response.status) {
+                setSavedjobs(response.data.data.saved_jobs)
+                
+            } else {
+                setResponse({
+                    status: response.data.status,
+                    message: response.data.message
+                })
+            }
+            
+        }, (error) => {
+            setResponse({
+                status: error.response.data.status,
+                message: error.response.data.message
+            })
+        });
+
+    }
+
 
     return (
         <div className="myjobs-container">
@@ -45,7 +105,9 @@ export const Myjobs = () => {
                 </div>
 
                 <div className="savedjobss sactive">
-                   <Savedjobs></Savedjobs>
+                   <Savedjobs
+                        delete = {delSavedjob}
+                   ></Savedjobs>
                 </div>
 
                 <div className="applicationss hidelement">

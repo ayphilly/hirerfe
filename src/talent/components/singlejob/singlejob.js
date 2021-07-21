@@ -9,7 +9,7 @@ function Singlejob  (props) {
 
     useEffect( () => {
         props.click()
-    })
+    },[])
 
 
     return (
@@ -27,7 +27,7 @@ function Singlejob  (props) {
                     <FontAwesomeIcon icon={faEllipsisV} className="vertical-icon" />
 
                     <div className="job-action">
-                        <div className="save">
+                        <div className="save" onClick={(event) => props.save(event, props.id)}>
                             <FontAwesomeIcon icon={faHeart} className="send-icon" />
                             <p> Save Job </p>
                         </div>

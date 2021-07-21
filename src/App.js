@@ -28,7 +28,7 @@ import { Notification } from "./talent/pages/notification/notification";
 import DashboardSide from "./talent/pages/DashboardSide";
 import Accountverification from "./generals/verifyaccount/accountverification";
 import { Review } from "./talent/pages/review/review";
-
+import { Jobresult } from "./talent/pages/searchjob/jobresults";
 
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
@@ -108,8 +108,8 @@ function App() {
         <TalentWithNavbar exact path="/" component={Homepage} />
         <TalentWithNavbar
           exact
-          path="/talent/searchjob"
-          component={Searchjob}
+          path="/talent/searchjob/:jobtitle/:location"
+          component={Jobresult}
         />
         <HirerWithNavbar
           exact
@@ -118,7 +118,7 @@ function App() {
         />
         <TalentWithNavbar
           exact
-          path="/talent/jobdescription"
+          path="/talent/jobdescription/:id"
           component={Jobdescription}
         />
         <TalentWithNavbar

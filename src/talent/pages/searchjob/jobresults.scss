@@ -1,0 +1,57 @@
+@import "../../../variables.scss";
+
+.job-results-container{
+    width: 100%;
+    height: 110em;
+    background-color: red;
+    @include rowflex(center,center);
+
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 100em;
+        margin-top: 100px;
+        margin-bottom: 300px;
+        @include rowflex(center,flex-start);
+    }
+
+    @include breakpoint(phablet) {
+        width: 100%;
+        height:auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        @include rowflex(center,center);
+    }
+
+    @include breakpoint(tablet) {
+        width: 100%;
+        height:auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        @include rowflex(center,center);
+    }
+
+    .job-results-inner {
+        width: 100%;
+        height: 100%;
+        @include rowflex(center,center);
+       
+        
+        @include breakpoint(mobileonly) {
+            width: 100%;
+            height: 100%;
+           
+        }
+
+        @include breakpoint(phablet) {
+            width: 95%;
+            height: 90%;
+            
+        }
+
+        @include breakpoint(tablet) {
+            width: 95%;
+            height: 90%;
+            
+        }
+    }
+}

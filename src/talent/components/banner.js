@@ -4,13 +4,25 @@ import target from "../talentassets/logo-target.svg"
 import verizon from "../talentassets/logo-verizon.svg"
 import search from "../talentassets/searching.svg"
 import Jobsearch from "./jobsearch/jobsearch"
-
-import {useEffect} from "react"
+import { useParams, useHistory, useLocation } from "react-router";
+import {useState,useEffect} from "react"
 import {slideUp} from "../../helper.js"
 function Banner () {
-
-    
-
+    let history = useHistory();
+    var redirect = (jobtitle,location)=> {
+        history.push(`/talent/searchjob/${jobtitle}/${location}`);
+    }
+    const [formState, setForm ] = useState({
+        jobtitle: '',
+        location: ''
+       
+    })
+    const handleUserInput = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+       setForm({...formState,[name]:value});
+       
+    }
     useEffect(()=>{
         slideUp();
     }, [])
@@ -45,7 +57,12 @@ function Banner () {
 
                 <div className="banner-inner bottom">
                     
-                    <Jobsearch></Jobsearch>
+                    <Jobsearch
+                        myFunction={redirect}
+                        handleUserInput={handleUserInput}
+                        formState={formState}
+                        
+                    ></Jobsearch>
                 </div>
             </div>
 

@@ -8,16 +8,33 @@ import {Creatjobalert} from "../../components/jobalert/createjobalert"
 import Singlejob from "../../components/singlejob/singlejob"
 import {Jobfilter} from "../../components/jobfilter/jobfilter"
 import {jobSearch} from "../../constants"
-import Hirer from "../../components/navbar"
+import {
+    
+    useParams
+  } from "react-router-dom";
 import {useState, useEffect} from "react"
 import {accordionFunc} from "../../../helper"
-
+import { Empty } from "../../../generals/emptyresult/emptyresult";
+import Jobsearch from "../../components/jobsearch/jobsearch";
 export const Searchjob = (props) => {
     
     const [status, setStatus] = useState(null);
     const [accord, setAccord] = useState(false)
     const [userloc, setLoc]= useState({})
     const [addr, setAddr]= useState()
+    let { jobtitle, location } = useParams();
+
+    const [formState, setForm ] = useState({
+        jobtitle: jobtitle,
+        location: location
+       
+    })
+    const handleUserInput = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+       setForm({...formState,[name]:value});
+       
+    }
 
     var openAction =()=> {
         var mor = document.querySelectorAll(".vertical-icon");
@@ -57,6 +74,7 @@ export const Searchjob = (props) => {
             </Singlejob>
         )
     })
+    // var jobs = 0;
 
     
     var id, options;
@@ -107,8 +125,10 @@ export const Searchjob = (props) => {
     }
       
     useEffect(()=> {
+       
         accordionFunc();
         getLocation();
+        // alert(`job title is ${jobtitle} and location is ${location}`);
     })
     useEffect(()=> {
        const timer = setTimeout(() => {
@@ -141,39 +161,17 @@ export const Searchjob = (props) => {
     //       }
       
     // })
-
-    return (
-        <div className="searchjob-container">
+    if (jobs == 0) {
+        return (
+            <div className="searchjob-container">
             <div className="searchjo-inner-col">
                 <div className="searchjob-left">
                     <div className="searchjob-left-top">
                         
                         <form>
                             <div className="search-input">
-                                <Singleinput
-                                    type="text"
-                                    placeholder ="Job title, keywords, or company"
-                                    label ="What ?"
-                                    subtext="Job title, keywords, or company"
-                                    name="title"
-                                    width={340}
-                                >
-
-                                </Singleinput>
-                                <Singleinput
-                                    type="text"
-                                    placeholder ={addr}
-                                    label ="Where ?"
-                                    subtext="city or postcode"
-                                    name="location"
-                                    width={340}
-                                    value={addr}
-                                >
-
-                                </Singleinput>
-
-                                <button type="submit" className="search-submit"> Search </button>
-
+                                <Jobsearch></Jobsearch>
+                                
                             </div>
                             
                             <div className = "form-dropdown">
@@ -280,11 +278,7 @@ export const Searchjob = (props) => {
                         </div>
                         <div className="right">
                             <div className="right-inner">
-                                {
-                                    jobs
-                                }
-
-
+                                <Empty></Empty>
                             </div>
 
                         </div>
@@ -306,5 +300,157 @@ export const Searchjob = (props) => {
             </div>
 
         </div>
-    )
+        )
+    }
+    else {
+
+    
+        return (
+            <div className="searchjob-container">
+                <div className="searchjo-inner-col">
+                    <div className="searchjob-left">
+                        <div className="searchjob-left-top">
+                            
+                            <form>
+                                <div className="search-input">
+                                    <Jobsearch
+                                        handleUserInput={handleUserInput}
+                                        formState={formState}
+                                    />
+                                    {/* <button type="submit" className="search-submit"> Search </button> */}
+
+                                </div>
+                                
+                                <div className = "form-dropdown">
+                                    <Dropdown
+                                        // formLabel="Number of hirers"
+                                        buttonText="Send form"
+                                        // onChange={handleSelect}
+                                        width={200}
+                                    >
+                                        <Option selected value="Job Type" />
+                                        <Option value="1-5" />
+                                        <Option value="6-10" />
+                                        <Option value="10-20" />
+                                    </Dropdown>
+                                    <Dropdown
+                                        // formLabel="Number of hirers"
+                                        buttonText="Send form"
+                                        // onChange={handleSelect}
+                                        width={200}
+                                    >
+                                        <Option selected value="Location" />
+                                        <Option value="1-5" />
+                                        <Option value="6-10" />
+                                        <Option value="10-20" />
+                                    </Dropdown>
+                                    <Dropdown
+                                        // formLabel="Number of hirers"
+                                        buttonText="Send form"
+                                        // onChange={handleSelect}
+                                        width={200}
+                                    >
+                                        <Option selected value="Salary" />
+                                        <Option value="1-5" />
+                                        <Option value="6-10" />
+                                        <Option value="10-20" />
+                                    </Dropdown>
+                                    <Dropdown
+                                        // formLabel="Number of hirers"
+                                        buttonText="Send form"
+                                        // onChange={handleSelect}
+                                        width={200}
+                                    >
+                                        <Option selected value="Date Posted" />
+                                        <Option value="1-5" />
+                                        <Option value="6-10" />
+                                        <Option value="10-20" />
+                                    </Dropdown>
+
+                                </div>
+                            </form>
+                        </div>
+
+                        <hr/>
+
+                        <div className="searchjob-left-bottom">
+                            <div className="left">
+                                <div className="left-inner">
+                                    <Creatjobalert></Creatjobalert>
+                                    
+
+                                    <div className="left-filter">
+                                        <div className="single-filter">
+                                            <button className="accordion">
+                                                Employment Type
+                                                
+                                            </button>
+                                            <ul className="panel">
+                                                
+                                                <li> <Jobfilter label="Remote" result = {5} ></Jobfilter> </li>
+                                                <li> <Jobfilter label="Contract" result = {0} ></Jobfilter> </li>
+                                                <li> <Jobfilter label="Full time" result = {3} ></Jobfilter> </li>
+                                            </ul>
+
+                                        </div>
+
+                                        <div className="single-filter">
+                                            <button className="accordion">Locations</button>
+                                            <ul className="panel">
+                                                
+                                                <li> <Jobfilter label="Lagos" result = {1} ></Jobfilter> </li>
+                                                <li> <Jobfilter label="Abuja" result = {0} ></Jobfilter> </li>
+                                                <li> <Jobfilter label="Ibadan" result = {4} ></Jobfilter> </li>
+                                            </ul>
+
+                                        </div>
+
+                                        <div className="single-filter">
+                                            <button className="accordion">Salary Range</button>
+                                            <ul className="panel">
+                                                
+                                                <li> <Jobfilter label="$5-$10" result = {2} ></Jobfilter> </li>
+                                                <li> <Jobfilter label="$50-$100" result = {3} ></Jobfilter> </li>
+                                                <li> <Jobfilter label=">$1000" result = {0} ></Jobfilter> </li>
+                                            </ul>
+
+                                        </div>
+
+                                        
+                                    </div>
+                                    
+
+                                </div>
+
+                            </div>
+                            <div className="right">
+                                <div className="right-inner">
+                                    {
+                                        jobs
+                                    }
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div className="searchjob-right">
+                        <div className="searchjob-right-inner">
+                            <MapContainer
+                                loc ={userloc}
+                            ></MapContainer>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        )
+    }
 }

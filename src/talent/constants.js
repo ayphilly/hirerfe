@@ -195,6 +195,7 @@ export const scoutList = [
 
 export const jobSearch = [
     {
+        id:1,
         title: 'Administrative Officer',
         company: 'Aspire Consulting',
         location: 'Lagos',
@@ -203,6 +204,7 @@ export const jobSearch = [
         icao: 'admin',
     },
     {
+        id:2,
         title: 'UI/UX Designer',
         company: 'Ezra Consulting',
         location: 'Lagos',
@@ -211,6 +213,7 @@ export const jobSearch = [
         icao: 'UI',
     },
     {
+        id:3,
         title: 'Clerical Officer',
         company: 'Softcom LTD',
         location: 'Lagos',

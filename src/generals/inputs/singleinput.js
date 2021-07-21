@@ -15,7 +15,7 @@ const Singleinput = (props) => {
             <label className="sing-form-label"> {props.label} </label>
             <p>{ props.subtext  && props.subtext}</p>
             <div style={{position: 'relative', display: 'inline-block', width: 100+"%"}}>
-                <input type={props.type ? props.type === "password" ? passwordShown ? "text" : "password": "text" : props.type}  name={props.name}  placeholder={props.placeholder} style={{width: props.width +'px', marginBottom : 10, border: props.error ? "1px solid red": '', backgroundColor: props.error ? "#FFEBEB": ''  }} onChange = {props.onChange}/>
+                <input type={props.type ? props.type === "password" ? passwordShown ? "text" : "password": "text" : props.type} value={props.value}  name={props.name}  placeholder={props.placeholder} style={{width: props.width +'px', marginBottom : 10, border: props.error ? "1px solid red": '', backgroundColor: props.error ? "#FFEBEB": ''  }} onChange = {props.onChange}/>
                 {props.name === "password" && <FontAwesomeIcon icon={passwordShown ? faEyeSlash : faEye} className="eye" size="lg" style={{position: 'absolute', right: 20, top: 20, width: 20, height: 20, color : '#8B8C8C'}} onClick={togglePasswordVisiblity}/>}
             </div>
            

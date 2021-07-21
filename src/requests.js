@@ -80,5 +80,14 @@ export const put = async (path, params) => {
   return response;
 };
 
+export const del = async (path, params) => {
+  const response = await instance({
+    url: path,
+    method: "delete",
+    data: params,
+  });
+  return response;
+};
+
 const requests = [get, post];
 export default requests;
