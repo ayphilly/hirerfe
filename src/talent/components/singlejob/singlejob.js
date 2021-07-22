@@ -71,10 +71,8 @@ function Singlejob  (props) {
                 </div>
 
             </div>
-
         </div>
-    )
-
+    );
 }
 
-export default Singlejob
+export default Singlejob;

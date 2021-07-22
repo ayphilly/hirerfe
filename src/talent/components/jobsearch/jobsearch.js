@@ -21,47 +21,45 @@ const Jobsearch = (props)=> {
        
     }
     return (
-        <div className="jobsearch-container">
+            <div className="jobsearch-container">
 
-            <div className="jobsearch-inner">
-                <form onSubmit={handleSubmit}>
-                    <div className="form-details-search">
-                        <div className="search-title">
-                            <Singleinput
-                                type="text"
-                                placeholder ="Enter Job title"
-                                label ="What ?"
-                                subtext="Job title, keywords, or company"
-                                name="jobtitle"
-                                value={props.formState.jobtitle}
-                                onChange={(event) => props.handleUserInput(event)}
-                                width={400}
+                <div className="jobsearch-inner">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-details-search">
+                            <div className="search-title">
+                                <Singleinput
+                                    type="text"
+                                    placeholder ="Enter Job title"
+                                    label ="What ?"
+                                    subtext="Job title, keywords, or company"
+                                    name="jobtitle"
+                                    value={props.formState.jobtitle}
+                                    onChange={(event) => props.handleUserInput(event)}
+                                    width={400}
+                                
+                                ></Singleinput>
+                            </div>
                             
-                            ></Singleinput>
+
+                            <div className="search-location">
+                                <Singleinput
+                                    type="text"
+                                    placeholder ="enter city name"
+                                    label ="Where ?"
+                                    subtext="city"
+                                    name="location"
+                                    value={props.formState.location}
+                                    onChange={(event) => props.handleUserInput(event)}
+                                
+                                ></Singleinput>
+
+                            </div>
+
                         </div>
-                        
+                        <button type="submit" className="job-search-submit" > Search {props.address} </button>
+                    </form>
 
-                        <div className="search-location">
-                            <Singleinput
-                                type="text"
-                                placeholder ="enter city name"
-                                label ="Where ?"
-                                subtext="city"
-                                name="location"
-                                value={props.formState.location}
-                                onChange={(event) => props.handleUserInput(event)}
-                            
-                            ></Singleinput>
-
-                        </div>
-
-                    </div>
-                    <button type="submit" className="job-search-submit" > Search {props.address} </button>
-                </form>
-
-            </div>
-
-
+                </div>
 
         </div>
     )
@@ -69,14 +67,14 @@ const Jobsearch = (props)=> {
 
 export default Jobsearch;
 
-{/* <div className="form-job">
-                        <label> What ? </label>
-                        <p>Job title, keywords, or company</p>
-                        <input type="text" id="title" name="title"  placeholder="Job title, keywords, or company"></input>
-                    </div>
+//  <div className="form-job">
+//                         <label> What ? </label>
+//                         <p>Job title, keywords, or company</p>
+//                         <input type="text" id="title" name="title"  placeholder="Job title, keywords, or company"></input>
+//                     </div>
 
-                    <div className="form-location">
-                        <label> Where ? </label>
-                        <p>city or postcode</p>
-                        <input type="text" name="location" id="location" placeholder="city or postcode"></input>
-                    </div> */}
+//                     <div className="form-location">
+//                         <label> Where ? </label>
+//                         <p>city or postcode</p>
+//                         <input type="text" name="location" id="location" placeholder="city or postcode"></input>
+//                     </div>

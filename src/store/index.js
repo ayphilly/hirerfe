@@ -5,10 +5,10 @@ import talentReducer from "../slices/talentSlice";
 import resetpasswordReducer from "../slices/resetpasswordSlice";
 import avatarReducer from "../slices/avatarSlice";
 
-function saveToLocalStorage(state) {
+function saveToLocalStorage({ auth }) {
   try {
-    const serialisedState = JSON.stringify(state);
-    localStorage.setItem("redux-state", serialisedState);
+    const serialisedState = JSON.stringify({ auth });
+    localStorage.setItem("hirer-redux-state", serialisedState);
   } catch (e) {
     console.warn(e);
   }
@@ -16,7 +16,7 @@ function saveToLocalStorage(state) {
 
 function loadFromLocalStorage() {
   try {
-    const serialisedState = localStorage.getItem("redux-state");
+    const serialisedState = localStorage.getItem("hirer-redux-state");
     if (serialisedState === null) return undefined;
     return JSON.parse(serialisedState);
   } catch (e) {
@@ -31,7 +31,6 @@ const store = configureStore({
     company: companyReducer,
     talent: talentReducer,
     resetpassword: resetpasswordReducer,
-    // avatar: avatarReducer,
   },
   devTools: true,
   preloadedState: loadFromLocalStorage(),

@@ -1,5 +1,23 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { get, post } from "../../requests";
+import * as yup from 'yup';
+
+const initialValues = {
+  jobTitle: "",
+  jobLocation: "",
+  jobType: "",
+  jobDescription: "",
+  jobSalary: 0,
+};
+
+let schema = yup.object().shape({
+  jobTitle: yup.string().required(),
+  jobLocation: yup.string().required(),
+  jobType: yup.string().required(),
+  jobDescription: yup.string().required(),
+  jobSalary: yup.number().required(),
+});
 
 const formFields = [
   {
@@ -26,21 +44,42 @@ const formFields = [
 const PostJob = () => {
   const [step, setStep] = useState(0);
   const [error, setError] = useState(false);
-  const [formData, setFormData] = useState({
-    jobTitle: "",
-    jobLocation: "",
-    jobType: "FT",
-    jobDescription: "",
-    jobSalary: 0,
-  });
+  const [jobTypes, setJobTypes] = useState([]);
+  const [formData, setFormData] = useState(initialValues);
   const setField = (field) => {
     setError(false);
     setFormData({ ...formData, ...field });
   };
+
+  const submitForm = () => {
+    if(!schema.isValid(formData)){
+      return alert("Form has Errors");
+    }
+    post("/v1/job/create", {
+      title: formData.jobTitle,
+      location: formData.jobLocation,
+      latitude: "45.49494949",
+      longitude: "33.030303",
+      type_id: formData.jobType,
+      salary: formData.jobSalary,
+      description: formData.jobDescription,
+    })
+      .then(() => alert("Job Posted Successfully"))
+      .catch(({ response }) => {
+        console.log(response);
+        alert("Error, check console!");
+      });
+  };
+
   const previousStep = () => step > 0 && setStep(step - 1);
   const nextStep = () => step < 4 && setStep(step + 1);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    (async () => {
+      const { data: responseData } = await get("/v1/job/types");
+      setJobTypes(responseData.data.job_types);
+    })();
+  }, []);
 
   return (
     <>
@@ -96,9 +135,12 @@ const PostJob = () => {
               className="mb-8 classic-input"
               type="text"
             >
-              <option value="FT">Full Time</option>
-              <option value="C">Contract</option>
-              <option value="R">Remote</option>
+              <option value="" hidden disabled></option>
+              {jobTypes.map(({ id, type }, idx) => (
+                <option key={idx} value={id}>
+                  {type}
+                </option>
+              ))}
             </select>
           )}
           {step === 3 && (
@@ -138,14 +180,20 @@ const PostJob = () => {
             >
               Back
             </button>
-            <button
-              onClick={() =>
-                formData[formFields[step].id] ? nextStep() : setError(true)
-              }
-              className={"btn btn-primary" + ` ${step === 0 && "w-100"}`}
-            >
-              Next
-            </button>
+            {step !== 4 ? (
+              <button
+                onClick={() =>
+                  formData[formFields[step].id] ? nextStep() : setError(true)
+                }
+                className={"btn btn-primary" + ` ${step === 0 && "w-100"}`}
+              >
+                Next
+              </button>
+            ) : (
+              <button onClick={submitForm} className="btn btn-primary">
+                Submit
+              </button>
+            )}
           </div>
         </div>
       </div>

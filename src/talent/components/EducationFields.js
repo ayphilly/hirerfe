@@ -1,6 +1,8 @@
 import React from "react";
+import { useProfile } from "../customHooks";
 
 const EducationFields = () => {
+  const { profile, dispathProfileAction } = useProfile();
   return (
     <>
       <div className="form-group mb-8">
@@ -8,10 +10,21 @@ const EducationFields = () => {
           Level of Education
           <span style={{ color: "red" }}>*</span>
         </label>
-        <select className="classic-input w-100" type="text">
-          <option selected disabled hidden>
+        <select
+          onChange={(e) => {
+            dispathProfileAction("education", {
+              ...profile.education,
+              level: e.target.value,
+            });
+          }}
+          value={profile.education.level}
+          className="classic-input w-100"
+          type="text"
+        >
+          <option value="" selected disabled hidden>
             Select your level of Education
           </option>
+          <option value="BEL">Basic Education Level</option>
         </select>
       </div>
       <div className="form-group mb-8">
@@ -20,7 +33,7 @@ const EducationFields = () => {
           <span style={{ color: "red" }}>*</span>
         </label>
         <select className="classic-input w-100" type="text">
-          <option selected disabled hidden>
+          <option value="" selected disabled hidden>
             Select your field of study
           </option>
         </select>

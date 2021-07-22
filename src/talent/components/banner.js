@@ -65,9 +65,9 @@ function Banner () {
                     ></Jobsearch>
                 </div>
             </div>
-
-        </div>
-    )
+          </div>
+        
+  );
 }
 
 export default Banner;
