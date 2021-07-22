@@ -1,42 +1,69 @@
-import "./jobsearch.scss";
-import Singleinput from "../../../generals/inputs/singleinput";
-const Jobsearch = () => {
-  return (
-    <div className="jobsearch-container">
-      <div className="jobsearch-inner">
-        <form>
-          <div className="form-details-search">
-            <div className="search-title">
-              <Singleinput
-                type="text"
-                placeholder="Job title, keywords, or company"
-                label="What ?"
-                subtext="Job title, keywords, or company"
-                name="jobtitle"
-                width={400}
-              ></Singleinput>
-            </div>
+import "./jobsearch.scss"
+import Singleinput from "../../../generals/inputs/singleinput"
+import { useState} from "react";
+const Jobsearch = (props)=> {
+    
+    const [formState, setForm ] = useState({
+        jobtitle: '',
+        location: ''
+       
+    })
+    const handleUserInput = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+       setForm({...formState,[name]:value});
+       
+    }
 
-            <div className="search-location">
-              <Singleinput
-                type="text"
-                placeholder="city or postcode"
-                label="Where ?"
-                subtext="city or postcode"
-                name="joblocation"
-                width={400}
-              ></Singleinput>
-            </div>
-          </div>
-          <button type="submit" className="job-search-submit">
-            {" "}
-            Search{" "}
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-};
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        props.myFunction(props.formState.jobtitle, props.formState.location);
+       
+    }
+    return (
+            <div className="jobsearch-container">
+
+                <div className="jobsearch-inner">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-details-search">
+                            <div className="search-title">
+                                <Singleinput
+                                    type="text"
+                                    placeholder ="Enter Job title"
+                                    label ="What ?"
+                                    subtext="Job title, keywords, or company"
+                                    name="jobtitle"
+                                    value={props.formState ? props.formState.jobtitle :''}
+                                    onChange={ props.handleUserInput ? (event) => props.handleUserInput(event) : ''}
+                                    width={400}
+                                
+                                ></Singleinput>
+                            </div>
+                            
+
+                            <div className="search-location">
+                                <Singleinput
+                                    type="text"
+                                    placeholder ="enter city name"
+                                    label ="Where ?"
+                                    subtext="city"
+                                    name="location"
+                                    value={props.formState ? props.formState.location :''}
+                                    onChange={ props.handleUserInput ? (event) => props.handleUserInput(event) : ''}
+                                
+                                ></Singleinput>
+
+                            </div>
+
+                        </div>
+                        <button type="submit" className="job-search-submit" > Search {props.address} </button>
+                    </form>
+
+                </div>
+
+        </div>
+    )
+}
 
 export default Jobsearch;
 

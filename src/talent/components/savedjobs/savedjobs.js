@@ -6,7 +6,7 @@ import Singlejob from "../singlejob/singlejob"
 import {savedList} from "../../constants"
 import {openAction} from "../../../helper"
 
-export const Savedjobs = () => {
+export const Savedjobs = (props) => {
 
     const [savedjobs, setSavedjobs] = useState([]);
 

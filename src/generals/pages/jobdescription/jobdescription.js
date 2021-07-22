@@ -4,17 +4,46 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
 import {Companyinfo} from "../../companyinfo/companyinfo"
 import {Jobapplication} from "../../jobapplication/jobapplication"
-import {useEffect} from "react"
+import {useEffect, useState} from "react"
+import {useParams} from "react-router-dom";
 import {closeApplication, openApplication} from "../../../helper"
+import { get } from "../../../requests"
 export const Jobdescription = ()=> {
 
+    let { id } = useParams();
+    const [job, setJob] = useState()
+    const [error, setError] = useState({})
     
+    const getJob = () => {
+        get(`api/v1/job/${id}`)
+          .then((response) => {
+  
+              if (response.status) {
+  
+                  setJob(response.data.data.job)
+                  
+              } else {
+                 setError({
+                      status: response.data.status,
+                      message: response.data.message
+                  })
+              }
+              
+          }, (error) => {
+              setError({
+                  status: error.response.data.status,
+                  message: error.response.data.message
+              })
+          });
+ 
+    }
 
     useEffect(()=> {
         openApplication();
         // closeApplication();
         
     })
+
      return(
         <div className="jobdescription-container">
             <div className="jobdescription-inner-col">
@@ -27,7 +56,7 @@ export const Jobdescription = ()=> {
                             <p>Administrative Officer</p>
                             <p>Aspire Consulting</p>
                             <p>Lagos <strong>• Fulltime</strong></p>
-                            <button className="apply-job"> Apply Now </button>
+                            <button className="apply-job"> Apply Now {id} </button>
 
                         </div>
 

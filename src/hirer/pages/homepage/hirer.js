@@ -6,6 +6,7 @@ import visibility from "../../hirerassets/visibility.svg";
 import perfect from "../../hirerassets/perfect.svg";
 import payroll from "../../hirerassets/payroll.svg";
 
+
 import Hirernav from "../../components/navbar/navbar";
 import Banner from "../../components/banner/banner";
 import Savetime from "../../components/backed/savetime";
@@ -14,6 +15,7 @@ import Feedback from "../../components/feedback/feedback";
 import Howitworks from "../../../generals/howitworks/howitworks";
 import { useEffect } from "react";
 import { openPage } from "../../../helper";
+
 
 const Hirer = (props) => {
   var images = [quality, visibility, perfect, payroll];

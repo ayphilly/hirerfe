@@ -4,8 +4,9 @@
 .single-form-input {
     // @include colflexx(flex-start);
     width: 500px;
+    height: 100px;
     @include rowflex(center,center);
-    height:fit-content;
+    // height:fit-content;
     @include breakpoint(mobileonly) {
         width: 100%;
         height: fit-content;

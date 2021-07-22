@@ -24,7 +24,7 @@
 
     .hirer-account-inner {
         width: 100%;
-        height: 95%;
+        height: 100%;
         margin: 0;
         // background-color: rebeccapurple;
         @include colflex(flex-start, space-between);
@@ -64,7 +64,7 @@
         form {
             width: 100%;
             height: 75%;
-            @include colflex(flex-start, space-between);
+            @include colflex(flex-start, space-around);
 
 
             @include breakpoint(mobileonly) {

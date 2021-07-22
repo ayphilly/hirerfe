@@ -1,7 +1,10 @@
-import "./singleinputlabel.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+
+import "./singleinputlabel.scss"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
+import { useState} from "react"
+
+
 
 const Singleinputlabel = (props) => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -57,7 +60,7 @@ const Singleinputlabel = (props) => {
         )}
       </div>
       <p style={{ color: "red", height: 5, width: 100 + "%" }}>
-        {" "}
+        
         {props.error ? props.error : " "}
       </p>
     </div>

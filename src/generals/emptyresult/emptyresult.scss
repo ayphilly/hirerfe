@@ -1,0 +1,81 @@
+@import "../../variables.scss";
+
+.empty-container {
+    width: 100%;
+    height: 100vh;
+    background-color: #FAFCFF;
+    @include rowflex(center,center);
+
+    .empty-inner {
+        width: 80%;
+        height: 90%;
+        @include rowflex(flex-start,center);
+
+        @include breakpoint(mobileonly) {
+            width: 80%;
+            height: 90%;
+        }
+
+        @include breakpoint(phablet) {
+            width: 80%;
+            height: 90%;
+        }
+
+        .empty-inner-main {
+            width: 90%;
+            height: 90%;
+            text-align: center;
+            @include colflex(center, center);
+
+            img {
+                width: 400px;
+
+                @include breakpoint(mobileonly) {
+                    width: 250px;
+                }
+            }
+
+            p:nth-child(2) {
+                height:0;
+                @include fontSemiBold(2.5em, 1em, $blue-902);
+                @include breakpoint(mobileonly) {
+                    @include fontSemiBold(2em, 1em, $blue-902);
+                }
+            }
+
+            p:nth-child(3) {
+                width: 60%;
+                @include fontLight(1.5em, 1.4em, $blue-901);
+                @include breakpoint(mobileonly) {
+                    width: 90%;
+                    @include fontLight(1em, 1.4em, $blue-901);
+                }
+            }
+
+            .empty-btn {
+                width: 50%;
+                height: 65px;
+                font-size: 1em;
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                border: none;
+                color: #fff;
+                background-color: $blue-700;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s ease-in;
+                text-decoration: none;
+                @include rowflex(center, center);
+
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    height: 50px;
+                }
+
+                &:hover {
+                    background-color: $blue-900;
+                }
+            }
+        }
+    }
+}

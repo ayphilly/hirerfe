@@ -22,7 +22,7 @@ export const Jobapplication = (props) => {
 
     useEffect(()=> {
         props.closeApplication();
-    })
+    },[])
 
     return (
         <div className="jobapplication-container hidden">

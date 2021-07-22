@@ -189,7 +189,7 @@ export const Account = () => {
                        
                         <input type="file" accept="image/*" name="image-upload" id="inputavi"  hidden onChange={imageHandler}/>
                         <label htmlFor="inputavi" className="image-upload" id="image-upload">Upload New Picture</label>
-                        <a href="#" className="profile-picture-delete">Delete</a>
+                        <a href={() => false} className="profile-picture-delete">Delete</a>
 
                     </div>
 
