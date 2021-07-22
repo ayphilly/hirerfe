@@ -10,7 +10,7 @@ export const Socialoption = (props) => {
                     <FontAwesomeIcon icon={faGoogle} className="sc-icon"/> 
                     {props.title} with Google
                 </a>
-                <a href="#" className="facebook">
+                <a href={() => false} className="facebook">
                     <FontAwesomeIcon icon={faFacebookF} className="sc-icon"/> 
                     {props.title} with Facebook
                 </a>

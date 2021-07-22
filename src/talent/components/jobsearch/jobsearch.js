@@ -33,8 +33,8 @@ const Jobsearch = (props)=> {
                                     label ="What ?"
                                     subtext="Job title, keywords, or company"
                                     name="jobtitle"
-                                    value={props.formState.jobtitle}
-                                    onChange={(event) => props.handleUserInput(event)}
+                                    value={props.formState ? props.formState.jobtitle :''}
+                                    onChange={ props.handleUserInput ? (event) => props.handleUserInput(event) : ''}
                                     width={400}
                                 
                                 ></Singleinput>
@@ -48,8 +48,8 @@ const Jobsearch = (props)=> {
                                     label ="Where ?"
                                     subtext="city"
                                     name="location"
-                                    value={props.formState.location}
-                                    onChange={(event) => props.handleUserInput(event)}
+                                    value={props.formState ? props.formState.location :''}
+                                    onChange={ props.handleUserInput ? (event) => props.handleUserInput(event) : ''}
                                 
                                 ></Singleinput>
 

@@ -9,7 +9,7 @@ export const Singleprofile = (props) => {
           <p>{props.title}</p>
           <p> {props.subtitle}</p>
         </div>
-        <a href="#dummylink" className={`change-profile ${props.className}`}>
+        <a href={() => false} className={`change-profile ${props.className}`}>
           {props.link}
         </a>
       </div>

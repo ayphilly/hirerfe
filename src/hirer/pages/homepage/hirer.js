@@ -6,7 +6,6 @@ import visibility from "../../hirerassets/visibility.svg";
 import perfect from "../../hirerassets/perfect.svg";
 import payroll from "../../hirerassets/payroll.svg";
 
-<<<<<<< HEAD
 import Hirernav from "../../components/navbar/navbar"
 import Banner from "../../components/banner/banner"
 import Savetime from "../../components/backed/savetime"
@@ -19,16 +18,6 @@ import Createaccount from "../../../generals/createaccount/createaccount"
 import {useEffect} from "react";
 import { gsap, ScrollTrigger, Draggable, MotionPathPlugin } from "gsap/all";
 import {openPage, closePage} from "../../../helper"
-=======
-import Hirernav from "../../components/navbar/navbar";
-import Banner from "../../components/banner/banner";
-import Savetime from "../../components/backed/savetime";
-import Personalized from "../../components/personalized/personalized";
-import Feedback from "../../components/feedback/feedback";
-import Howitworks from "../../../generals/howitworks/howitworks";
-import { useEffect } from "react";
-import { openPage } from "../../../helper";
->>>>>>> 8007ad382bd7a9f787874a8bad72b6ebfd55e456
 
 const Hirer = (props) => {
   var images = [quality, visibility, perfect, payroll];

@@ -29,7 +29,8 @@ import DashboardSide from "./talent/pages/DashboardSide";
 import Accountverification from "./generals/verifyaccount/accountverification";
 import { Review } from "./talent/pages/review/review";
 import { Jobresult } from "./talent/pages/searchjob/jobresults";
-
+import { CustomRoute } from "./customRoute";
+import Register from "./generals/createaccount/register";
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
@@ -146,37 +147,68 @@ function App() {
           component={Talentprofile}
         />
 
+        <Route exact path="/createaccount" component={Register} />
         <Route path="/signin" component={Signin} />
         <Route path="/register" component={Redirect} />
         <Route path="/auth" component={Auth} />
 
         {/* Dashboard Talent */}
 
-        <DashboardWithNavbar
+        {/* <DashboardWithNavbar
           exact
           path="/dashboard/talent"
           component={Dashboardhome}
-        />
-        <DashboardWithNavbar
+        /> */}
+       
+        {/* <DashboardWithNavbar
           exact
           path="/dashboard/myjobs"
           component={Myjobs}
-        />
-        <DashboardWithNavbar
+        /> */}
+         {/* <DashboardWithNavbar
           exact
           path="/dashboard/talent/account"
           component={Account}
+        /> */}
+        {/* <DashboardWithNavbar
+          exact
+          path="/dashboard/company"
+          component={Review}
+        /> */}
+
+        {/* Only logged in talent can access routes */}
+         <CustomRoute
+          condition="talent"
+          exact
+          path="/dashboard/talent/home"
+          component={Dashboardhome}
         />
-        <DashboardWithNavbar
+        <CustomRoute
+          condition="talent"
+          exact
+          path="/dashboard/talent/myjobs/:id"
+          component={Myjobs}
+        />
+        
+        <CustomRoute
+          condition="talent"
+          exact
+          path="/dashboard/talent/account/:id"
+          component={Account}
+        />
+        <CustomRoute
+          condition="talent"
           exact
           path="/dashboard/company"
           component={Review}
         />
+       
         <DashboardWithNavbar
           exact
           path="/dashboard/hirer"
           component={DashboardSide}
         />
+
 
         <Route component={Error} />
       </Switch>

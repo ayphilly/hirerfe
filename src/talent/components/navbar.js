@@ -34,9 +34,8 @@ function Talentnav() {
           >
             Sign in
           </Link>
-          <a href="#dummylink" className="navbar-inner-nav-btn creation">
-            {" "}
-            Join For Free{" "}
+          <a href={() => false} className="navbar-inner-nav-btn creation">
+            Join For Free
           </a>
           <FontAwesomeIcon icon={faBars} className="hamburger-icon" size="lg" />
         </div>

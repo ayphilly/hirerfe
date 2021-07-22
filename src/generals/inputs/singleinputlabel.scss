@@ -1,7 +1,7 @@
 @import "../../variables.scss";
 
 
-.form-input {
+.form-input{
     @include colflexx(flex-start);
     height:100px;
     width: 100%;
@@ -18,9 +18,7 @@
         
     }
     label {
-        height: 10px;
-        
-        // margin: 0;
+        height: auto;
         @include fontNormal(1em,2em, $blue-900);
         @include breakpoint(mobileonly) {
             height: 20px;

@@ -212,7 +212,7 @@
             }
 
             .dashboard-profile {
-                width: 50%;
+                width: 30%;
                 @include rowflex (center, space-between);
 
                 @include breakpoint(mobileonly) {
@@ -258,7 +258,7 @@
                 }
             }
 
-            .hamburger-con {
+            .hamburger-icon {
                 display: none;
                 // font-size: 2em;
                 @include breakpoint(mobileonly) {
