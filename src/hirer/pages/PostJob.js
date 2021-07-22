@@ -1,6 +1,23 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { get, post } from "../../requests";
+import * as yup from 'yup';
+
+const initialValues = {
+  jobTitle: "",
+  jobLocation: "",
+  jobType: "",
+  jobDescription: "",
+  jobSalary: 0,
+};
+
+let schema = yup.object().shape({
+  jobTitle: yup.string().required(),
+  jobLocation: yup.string().required(),
+  jobType: yup.string().required(),
+  jobDescription: yup.string().required(),
+  jobSalary: yup.number().required(),
+});
 
 const formFields = [
   {
@@ -28,19 +45,16 @@ const PostJob = () => {
   const [step, setStep] = useState(0);
   const [error, setError] = useState(false);
   const [jobTypes, setJobTypes] = useState([]);
-  const [formData, setFormData] = useState({
-    jobTitle: "",
-    jobLocation: "",
-    jobType: "",
-    jobDescription: "",
-    jobSalary: 0,
-  });
+  const [formData, setFormData] = useState(initialValues);
   const setField = (field) => {
     setError(false);
     setFormData({ ...formData, ...field });
   };
 
   const submitForm = () => {
+    if(!schema.isValid(formData)){
+      return alert("Form has Errors");
+    }
     post("/v1/job/create", {
       title: formData.jobTitle,
       location: formData.jobLocation,
