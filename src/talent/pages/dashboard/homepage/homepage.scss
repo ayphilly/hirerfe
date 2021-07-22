@@ -7,8 +7,8 @@
     background-color:  #FAFCFF;
 
     @include breakpoint(mobileonly) {
-        height: 320em;
-        @include colflex(center,flex-end);
+        height: 310em;
+        @include colflex(center,space-between);
     }
 
     @include breakpoint(tablet) {
@@ -47,11 +47,11 @@
 
             @include breakpoint(mobileonly) {
                 width: 100%;
-                height: 250px;
+                height: 500px;
             }
         
             @include breakpoint(tablet) {
-                height: 250px;
+                height: 450px;
             }
             @include breakpoint(phablet) {
                 width: 100%;
@@ -72,7 +72,8 @@
 
             .dashboard-jobsearch {
                 width: 100%;
-                height: 240px;
+                height: 80%;
+                @include colflex(flex-start,center);
             }
         }
 
@@ -98,10 +99,10 @@
         .dashboard-jobalert {
             width: 100%;
             height: 450px;
-            @include colflex(flex-start,space-around);
+            @include colflex(flex-start,space-between);
 
             @include breakpoint(mobileonly) {
-                height: 35em;
+                height: 37em;
             }
             @include breakpoint(phablet) {
                 height: 500px;
@@ -109,17 +110,19 @@
 
             .jobalert-headline {
                 margin: 0;
+                height: 0;
                 @include fontSemiBold(2em, 1em, $blue-902);
             }
             p:nth-child(2) {
-                // margin: 0;
+                
                 @include fontLight(1em, 1.5em, $blue-902);
             }
 
             .jobalert-inner-box {
-                // height: 60%;
                 width: 100%;
+                height: 80%;
             }
+
         }
 
         .dashboard-scout-jobs {

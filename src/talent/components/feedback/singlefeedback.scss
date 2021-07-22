@@ -2,10 +2,12 @@
 
 .singlefeed-container {
     width: 800px;
+    // width: 100px !important;
     height: 350px;
     @include rowflex(center, center);
     background-color: #fff;
     border-radius: 20px;
+    border: 1px solid $blue-300;
     overflow: hidden;
     background-image: url("../../talentassets/waves.svg");
     background-position: center;
@@ -13,7 +15,7 @@
     background-size: cover;
 
     @include breakpoint(mobileonly) {
-        width: 350px;
+        width: 330px;
         height: 300px;
     }
     @include breakpoint(phablet) {

@@ -1,11 +1,8 @@
 import "./forgotpassword.scss"
 import {Verifyemail} from "../../passwordreset/verifyemail"
 import {Checkmail} from "../../passwordreset/checkmail"
-import {useEffect, useState} from "react"
-const steps = [
-    {id: 'verifymail'},
-    {id: 'checkmail'}
-]
+import {useState} from "react"
+
 
 const Forgotpassword = () => {
     

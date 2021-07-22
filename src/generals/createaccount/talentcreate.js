@@ -1,10 +1,12 @@
 import Singleinput from "../inputs/singleinput"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle, faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
-import { useState, useEffect } from "react";
-// import axios from "axios"
+import { useState} from "react";
+import axios from "axios"
+import {Socialoption} from "./socialsoption"
 import {validateForm, validation } from "../../helper";
-import {post} from "../../requests"
+import {post, get} from "../../requests"
 import "./talentcreate.scss";
 
 const Talentcreate = (props) => {
@@ -16,6 +18,10 @@ const Talentcreate = (props) => {
         password_confirmation: '',
         errors: { email: '', name: '', phone: '', password: ''}
     })
+
+    const disableBtn = () => {
+        return validateForm(formState.errors) ? (formState.email === '' || formState.name ==='' ||formState.phone ==='' || formState.password === '') ? true: false : true;
+    }
 
     const handleUserInput = (e) =>{
         const name = e.target.name;
@@ -31,10 +37,10 @@ const Talentcreate = (props) => {
         event.preventDefault();
         if(validateForm(formState.errors)) {
 
-            post('v1/auth/talent/register', {
+            post('/v1/auth/talent/register', {
                 email: formState.email,
                 name: formState.name,
-                phone :'08115861199',
+                phone :formState.phone,
                 password : formState.password,
                 password_confirmation : formState.password,
             })
@@ -73,6 +79,43 @@ const Talentcreate = (props) => {
           alert('Invalid Form')
         }
     }
+
+    const socials = (event) => {
+        event.preventDefault();
+      
+        axios.get('https://hirer-be.herokuapp.com/auth/login/talent/google')
+        .then((response) => {
+            console.log(response.status);
+            if (response.status) {
+                console.log(response.data);
+                window.location.href = response.data.data;
+                props.setUpCreated(response.data)
+                props.showAlert();
+                setTimeout(()=> {
+                    props.clearAlert();
+                }, 3000)
+
+            } else {
+                // props.setUpCreated(response)
+                // props.showAlert();
+                // setTimeout(()=> {
+                //     props.clearAlert();
+
+                // }, 5000)
+            }
+            
+        }, (error) => {
+            
+            console.log(error.response.data);
+            props.setUpCreated(error.response.data)
+            props.showAlert();
+            setTimeout(()=> {
+                props.clearAlert();
+
+            }, 3000)
+        });
+
+    }
     return (
         <div className="talent-account-container talent hide">
             <div className="talent-account-inner">
@@ -84,7 +127,11 @@ const Talentcreate = (props) => {
                         <p> Denotes Mandatory Fields </p>
                     </div>
                 </div>
-                
+
+               <Socialoption
+                 title="Sign Up"
+                 glink ={socials}
+               ></Socialoption>
                 <form onSubmit={handleSubmit}>
                     <div className="talent-details">
 
@@ -95,7 +142,7 @@ const Talentcreate = (props) => {
                                 label ="Full Name"
                                 subtext="Enter your full name"
                                 name="name"
-                                width= {285}
+                                value={formState.name}
                                 onChange={(event) => handleUserInput(event)}
                                 error = {formState.errors.name}
                             >
@@ -109,8 +156,8 @@ const Talentcreate = (props) => {
                                 label ="Phone Number"
                                 subtext="Enter your phone number"
                                 name="phone"
-                                width= {285}
-                                onChange={(event) => handleUserInput(event)}
+                                value={formState.phone}
+                                onChange={ (event) => handleUserInput(event) }
                                 error = {formState.errors.phone}
 
                             >
@@ -129,7 +176,7 @@ const Talentcreate = (props) => {
                             label ="Your Email"
                             subtext="Enter your email address"
                             name="email"
-                            width= {585}
+                            value={formState.email}
                             onChange={(event) => handleUserInput(event)}
                             error = {formState.errors.email}
                         >
@@ -142,14 +189,14 @@ const Talentcreate = (props) => {
                             label ="Your Password"
                             subtext="Enter your 8 digits password"
                             name="password"
-                            width= {585}
+                            value={formState.password}
                             onChange={(event) => handleUserInput(event)}
                             error = {formState.errors.password}
                         >
 
                     </Singleinput>
 
-                    <button type="submit" className="create-submit" disabled={validateForm(formState.errors) ? false : true}> Create </button>
+                    <button type="submit" className="create-submit" disabled={disableBtn()}> Create </button>
 
                     
                     

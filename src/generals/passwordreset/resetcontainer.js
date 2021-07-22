@@ -1,5 +1,5 @@
 import "./resetcontainer.scss"
-import {useEffect, useState} from "react";
+
 export const Resetcontainer = (props)=> {
 
     

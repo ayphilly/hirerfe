@@ -124,6 +124,45 @@ export const jobList = [
     },
 ];
 
+export const companyList = [
+    {
+        company: 'Aspire Consulting',
+        location: 'Lagos',
+        reviews: '10',
+        icao: 'admin',
+    },
+    {
+        company: 'Aspire Consulting',
+        location: 'Lagos',
+        reviews: '10',
+        icao: 'admin',
+    },
+    {
+        company: 'Aspire Consulting',
+        location: 'Lagos',
+        reviews: '10',
+        icao: 'admin',
+    },
+    {
+        company: 'Aspire Consulting',
+        location: 'Lagos',
+        reviews: '10',
+        icao: 'admin',
+    },
+    {
+        company: 'Aspire Consulting',
+        location: 'Lagos',
+        reviews: '10',
+        icao: 'admin',
+    },
+    {
+        company: 'Aspire Consulting',
+        location: 'Lagos',
+        reviews: '10',
+        icao: 'admin',
+    },
+];
+
 export const scoutList = [
     {
         title: 'Administrative Officer',

@@ -11,7 +11,7 @@ export function Dropdown(props) {
   return (
       <DropdownWrapper>
           <StyledLabel htmlFor="services">{props.formLabel}</StyledLabel>
-            <StyledSelect id={props.id} name={props.name} action={props.action} onChange={props.onChange} style={{width: props.width +'px'}}>
+            <StyledSelect id={props.id} name={props.name} value={props.value} action={props.action} onChange={props.onChange} style={{width: props.width +'px'}}>
                 {props.children}
             </StyledSelect>
 

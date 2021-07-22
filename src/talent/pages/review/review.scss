@@ -1,0 +1,357 @@
+@import "../../../variables.scss";
+
+.review-container {
+    width: 100%;
+    height: 150em;
+    background-color: #FAFCFF;
+    @include rowflex(center, center);
+    z-index: 5;
+    position: relative;
+    // overflow: hidden;
+
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 150vh;
+        @include colflex(flex-start, center);
+    }
+
+    @include breakpoint(tablet) {
+        width: 100%;
+        height: 50em !important;
+    }
+    @include breakpoint(phablet) {
+        width: 100% !important;
+        height: 80em;
+    }
+
+    @include breakpoint(laptop) {
+        width: 100% !important;
+        // height: 50em;
+        
+    }
+    .review-inner {
+        width: 100%;
+        height: 90%;
+        
+        @include colflex(center, space-around);
+
+        @include breakpoint(mobileonly) {
+            width: 95%;
+            @include colflex(center, center);
+        }
+
+        @include breakpoint(phablet) {
+            width: 95%;
+            @include colflex(center, center);
+            // @include rowflex(center, center);
+        }
+
+        @include breakpoint(tablet) {
+            width: 95%;
+            @include rowflex(center, flex-start);
+            // @include colflex(center, center);
+        }
+
+        @include breakpoint(laptop) {
+            width: 95%;
+            
+            // @include rowflex(center, center);
+        }
+
+        .review-top {
+            width: 95%;
+            height:30%;
+            overflow: hidden;
+            @include rowflex(center, space-between);
+
+            @include breakpoint(mobileonly) {
+                width: 95%;
+                @include colflex(center, center);
+            }
+
+            @include breakpoint(phablet) {
+                width: 95%;
+                @include colflex(center, center);
+                // @include rowflex(center, center);
+            }
+
+            @include breakpoint(tablet) {
+                width: 95%;
+                @include rowflex(center, flex-start);
+                // @include colflex(center, center);
+            }
+
+            @include breakpoint(laptop) {
+                width: 95%;
+                
+                // @include rowflex(center, center);
+            }
+
+       
+
+            &.left {
+                width: 50%;
+                height: 360px;
+                position: relative;
+                @include colflex(flex-start, space-between);
+
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    height: 70%;
+                    margin: 0;
+                    @include colflex(flex-start, flex-start);
+                }
+
+                @include breakpoint(tablet) {
+                    width: 70%;
+                    height: 65% !important;
+                    margin: 0;
+                    @include colflex(flex-start, space-around);
+                }
+                @include breakpoint(phablet) {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    @include colflex(flex-start, flex-start);
+                }
+
+                .left-top {
+                    width: 100%;
+                    height: 45%;
+                    text-align: left;
+
+                
+
+                    @include breakpoint(mobileonly) {
+                        width: 80%;
+                        height: 60%;
+                        @include colflex(flex-start, center);
+                    }
+                    @include breakpoint(phablet) {
+                        width: 80%;
+                        height: 60%;
+                        @include colflex(flex-start, center);
+                    }
+                    @include breakpoint(tablet) {
+                        width: 60%;
+                        height: 50%;
+                        @include colflex(flex-start, flex-start);
+                    }
+
+                    @include breakpoint(laptop) {
+                        width: 100%;
+                        @include colflex(flex-start, center);
+                    }
+
+                    .top-title {
+                        // opacity: 0;
+                        transform: translateY(100%);
+                        position: relative;
+                        --slideHeight: 100%;
+                        &::after {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            content: " ";
+                            width: 100%;
+                            height: var(--slideHeight);
+                            background-color: #FAFCFF;
+
+                        }
+                        @include fontBold(3.5em, 1.4em, $blue-902);
+
+                        @include breakpoint(mobileonly) {
+                            @include fontBold(2em, 1.4em, $blue-902);
+
+                        }
+
+                        @include breakpoint(tablet) {
+                            @include fontBold(2.5em, 1.4em, $blue-902);
+
+                        }
+
+                        @include breakpoint(laptop) {
+                            @include fontBold(3em, 1.4em, $blue-902);
+
+                        }
+
+                        strong {
+                            color: $blue-700;
+                            position: relative;
+                        }
+
+                    }
+                    p:nth-child(2) {
+                        @include fontNormal(1.25em, 1em, $blue-902);
+                        text-align: left;
+
+                        @include breakpoint(tablet) {
+                            @include fontNormal(1.3em, 1em, $blue-902);
+
+                        }
+                    }
+                }
+                .left-bottom {
+                    width: 100%;
+                    text-align: left;
+                    
+                    p {
+                        @include fontNormal(1.125em, 1em, $blue-902);
+
+                        @include breakpoint(mobileonly) {
+                            width: 100%;
+                            height: fit-content;
+                            @include fontNormal(1em, 1em, $blue-902);
+                        }
+
+                    }
+
+                    .bottom-form {
+                        width: 100%;
+                        @include rowflex(center, space-between);
+                        @include breakpoint(mobileonly) {
+                            width: 90%;
+                        }
+                        @include breakpoint(phablet) {
+                            width: 90% !important;
+                        }
+                        @include breakpoint(tablet) {
+                            width: 60% !important;
+                        }
+                        form {
+
+                            .review-submit {
+                                width: 50%;
+                                height: 65px;
+                                font-size: 1em;
+                                font-family: 'Inter', sans-serif;
+                                font-weight: 500;
+                                border: none;
+                                color: #fff;
+                                background-color: $blue-700;
+                                border-radius: 10px;
+                                cursor: pointer;
+                                transition: all 0.3s ease-in;
+                                text-decoration: none;
+                                @include rowflex(center, center);
+                
+                                @include breakpoint(mobileonly) {
+                                    width: 300px;
+                                    height: 50px;
+                                }
+                
+                                &:hover {
+                                    background-color: $blue-900;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+
+            }
+            &.right {
+                height: 90%;
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+                @include rowflex(flex-start, flex-start);
+                @include breakpoint(mobileonly) {
+                margin-top: -70px;
+                }
+                @include breakpoint(phablet) {
+                    width: 100% !important;
+                    position: relative;
+                    margin-top: -130px;
+                }
+                @include breakpoint(tablet) {
+                    width: 80% !important;
+                    height: 100%;
+                    overflow: hidden;
+                    
+                }
+                @include breakpoint(laptop) {
+                    width: 90% !important;
+                    overflow: hidden !important;
+                }
+                img {
+                    width: auto;
+                    position: absolute;
+                    top: -50px;
+                    right: 0px;
+                    @include breakpoint(mobileonly) {
+                        width: 500px;
+                        top: -70px;
+                        right: -30px;
+                    }
+                    @include breakpoint(phablet) {
+                        width: 520px !important;
+                        top: -80px !important; 
+                        right: 0px;
+                    }
+
+                    @include breakpoint(tablet) {
+                        width: 500px  !important;
+                        top: -20px !important;
+                        right: -90px;
+                    }
+
+                    
+
+                    @include breakpoint(laptop) {
+                        width: auto;
+                        // top: -150px;
+                        // right: -90px;
+                        
+                    }
+                    
+
+                }
+            }
+        }
+
+        .companies-container {
+            width: 100%;
+            height: 700px;
+
+            .singlecompany-list {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows: 1fr 1fr 1fr;
+                column-gap: 15px;
+                row-gap: 20px;
+                width: 100%;
+                max-height: 100%;
+                height: 100%;
+                
+                
+                align-items: flex-start;
+                // justify-content: stretch; 
+    
+                @include breakpoint(mobileonly) {
+                    grid-template-columns: auto;
+                    grid-template-rows: 200px;
+                    height: 90%;
+                }
+    
+                @include breakpoint(tablet) {
+                    grid-template-columns: auto auto;
+                    grid-template-rows: 200px;
+                    // height: 90%;
+                }
+                @include breakpoint(phablet) {
+                    grid-template-columns: auto auto;
+                    grid-template-rows: 200px;
+                    // height: 90%;
+                }
+    
+                &.moreractive{
+                    display: flex;
+                }
+            }
+        }
+
+        
+
+    }
+}

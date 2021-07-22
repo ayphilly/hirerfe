@@ -2,7 +2,7 @@ import "./changepassword.scss"
 import {Resetcontainer} from "./resetcontainer"
 import Singleinputlabel from "../inputs/singleinputlabel"
 import {useEffect, useState} from "react"
-import { validateForm, validation } from "../../helper";
+import {validation } from "../../helper";
 import { post } from "../../requests"
 import { useSelector } from 'react-redux'
 import {
@@ -140,7 +140,7 @@ export const Changepassword = (props) => {
                     and consent to our Cookie Policy and Privacy Policy.
                 </p>
                 
-                <button type="submit" className="next-step-btn" disabled={ (password.password == cpassword.confirm_password) ? (password.password === '' || cpassword.confirm_password === '') ? true  : false : true  }  >Reset</button>
+                <button type="submit" className="next-step-btn" disabled={ (password.password === cpassword.confirm_password) ? (password.password === '' || cpassword.confirm_password === '') ? true  : false : true  }  >Reset</button>
             </form>
         </Resetcontainer>
     )

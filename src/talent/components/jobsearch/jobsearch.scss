@@ -28,20 +28,17 @@
     }
     @include breakpoint(phablet) {
         // width: 220% !important;
-        width: 100% !important;
+        width: 90% !important;
         height: 90% !important;
        
         // left: 40px;
         // margin: 0 auto;
-        @include rowflex(center, center);
+        // @include rowflex(center, center);
     }
     @include breakpoint(tablet) {
         width: 95%;
         height: 95%;
-        // left: 50px;
-        display: flex;
-        align-items: center !important;
-        justify-content: center !important;
+        
     }
     
 
@@ -91,7 +88,7 @@
             @include breakpoint(mobileonly) {
                 @include colflex(flex-start, space-between);
                 width: 100%  !important;
-                height: 300px;
+                height: 350px;
             }
 
             @include breakpoint(phablet) {

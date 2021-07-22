@@ -1,7 +1,7 @@
 import "./verifyemail.scss"
 import {Resetcontainer} from "./resetcontainer"
 import Singleinputlabel from "../inputs/singleinputlabel"
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import { validateForm, validation } from "../../helper";
 import { post } from "../../requests"
 import { setMail } from "../../slices/resetpasswordSlice"
@@ -90,7 +90,7 @@ export const Verifyemail = (props) => {
                 />
                 
                 
-                <button type="submit" className="next-step-btn" disabled={validateForm(email.errors) ? false : true} >Send Instructions</button>
+                <button type="submit" className="next-step-btn" disabled={validateForm(email.errors) ? email.email === '' ? true: false : true} >Send Instructions</button>
             </form>
         </Resetcontainer>
     )

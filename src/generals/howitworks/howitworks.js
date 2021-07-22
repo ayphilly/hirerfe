@@ -1,8 +1,5 @@
 import "./howitworks.scss";
-import job from "../../talent/talentassets/jobs.svg"
-import review from "../../talent/talentassets/review.svg"
-import boost from "../../talent/talentassets/boost.svg"
-import suitcase from "../../talent/talentassets/suitcase.svg"
+
 // import {workList} from "../../talent/constants";
 import Singlework from "./singleworks";
 const Howitworks = (props) => {

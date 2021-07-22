@@ -2,18 +2,14 @@ import Singleinput from "../inputs/singleinput"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAsterisk } from '@fortawesome/free-solid-svg-icons'
 import "./hirercreate.scss"
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux'
-import { setToken, setAuthData } from "../../slices/authSlice";
-import axios from "axios"
+import { useState} from "react";
 import { validateForm, validation } from "../../helper";
 import {post} from "../../requests"
-
+import { Socialoption } from "./socialsoption";
+import axios from "axios";
 const Hirercreate = (props) =>  {
 
-    const count = useSelector((state) => state.auth.authData)
-    const dispatch = useDispatch()
-
+   
     const [formState, setForm ] = useState({
         email: '',
         name: '',
@@ -22,6 +18,10 @@ const Hirercreate = (props) =>  {
         password_confirmation: '',
         errors: { email: '', name: '', company_name: '', password: ''}
     })
+
+    const disableBtn = () => {
+       return validateForm(formState.errors) ? (formState.email === '' || formState.name ==='' ||formState.company_name ==='' || formState.password === '') ? true: false : true;
+    }
 
     
     const handleUserInput = (e) =>{
@@ -35,7 +35,42 @@ const Hirercreate = (props) =>  {
        
     }
 
-    
+    const socials = (event) => {
+        event.preventDefault();
+      
+        axios.get('https://hirer-be.herokuapp.com/auth/login/company/google')
+        .then((response) => {
+            console.log(response.status);
+            if (response.status) {
+                console.log(response.data);
+                window.location.href = response.data.data;
+                props.setUpCreated(response.data)
+                props.showAlert();
+                setTimeout(()=> {
+                    props.clearAlert();
+                }, 3000)
+
+            } else {
+                // props.setUpCreated(response)
+                // props.showAlert();
+                // setTimeout(()=> {
+                //     props.clearAlert();
+
+                // }, 5000)
+            }
+            
+        }, (error) => {
+            
+            console.log(error.response.data);
+            props.setUpCreated(error.response.data)
+            props.showAlert();
+            setTimeout(()=> {
+                props.clearAlert();
+
+            }, 3000)
+        });
+
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -99,6 +134,11 @@ const Hirercreate = (props) =>  {
                         <p> Denotes Mandatory Fields </p>
                     </div>
                 </div>
+
+                <Socialoption
+                 title="Sign Up"
+                 glink ={socials}
+               ></Socialoption>
                 
                 <form onSubmit={handleSubmit}>
                     <div className="company-details">
@@ -168,7 +208,7 @@ const Hirercreate = (props) =>  {
 
                     </Singleinput>
 
-                    <button type="submit" className="create-submit" disabled={validateForm(formState.errors) ? false : true}> Create </button>
+                    <button type="submit" className="create-submit" disabled={disableBtn()}> Create </button>
                     
                 </form>
 

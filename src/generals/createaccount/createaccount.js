@@ -59,6 +59,7 @@ const Createaccount = (props)=> {
         })
 
     }
+    
     useEffect (()=> {
         openLink()
         closeLink();

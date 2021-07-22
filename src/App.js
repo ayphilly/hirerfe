@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Homepage from "./talent/pages/homepage/talent";
 import { Dashboardhome } from "./talent/pages/dashboard/homepage/homepage";
 import { Myjobs } from "./talent/pages/dashboard/myjobs/myjobs";
-import { Profile } from "./talent/pages/dashboard/profile/profile";
+import { Account } from "./talent/pages/dashboard/account/account";
 import { Searchjob } from "./talent/pages/searchjob/searchjob";
 import { Searchtalent } from "./hirer/pages/searchtalents/searchtalent";
 import Hirer from "./hirer/pages/homepage/hirer";
@@ -18,7 +18,8 @@ import Createaccount from "./generals/createaccount/createaccount";
 import Forgotpassword from "./generals/pages/resetpassword/forgotpassword";
 import Changeoldpassword from "./generals/pages/resetpassword/changeoldpassword";
 import { Jobdescription } from "./generals/pages/jobdescription/jobdescription";
-
+import { Redirect } from "./generals/pages/redirection/redirect";
+import { Auth } from "./generals/pages/auth/auth";
 import { closePage } from "./helper";
 import PostJob from "./hirer/pages/PostJob";
 import CreateProfile from "./talent/CreateProfile";
@@ -144,12 +145,14 @@ function App() {
         />
 
         <Route path="/signin" component={Signin} />
+        <Route path="/register" component={Redirect} />
+        <Route path="/auth" component={Auth} />
 
         {/* Dashboard Talent */}
 
         <DashboardWithNavbar
           exact
-          path="/dashboard"
+          path="/dashboard/talent"
           component={Dashboardhome}
         />
         <DashboardWithNavbar
@@ -159,12 +162,17 @@ function App() {
         />
         <DashboardWithNavbar
           exact
-          path="/dashboard/profile"
-          component={Profile}
+          path="/dashboard/talent/account"
+          component={Account}
         />
         <DashboardWithNavbar
           exact
-          path="/dashboard-side"
+          path="/dashboard/company"
+          component={Review}
+        />
+        <DashboardWithNavbar
+          exact
+          path="/dashboard/hirer"
           component={DashboardSide}
         />
 

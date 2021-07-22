@@ -3,6 +3,7 @@ import authReducer from "../slices/authSlice";
 import companyReducer from "../slices/companySlice";
 import talentReducer from "../slices/talentSlice";
 import resetpasswordReducer from "../slices/resetpasswordSlice";
+import avatarReducer from "../slices/avatarSlice";
 
 function saveToLocalStorage({ auth }) {
   try {

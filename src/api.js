@@ -5,11 +5,11 @@ import axios from 'axios';
 //     'X-Requested-With': 'XMLHttpRequest',
 // };
 const apiClient = axios.create({
-    baseURL: 'http://hirer-be.herokuapp.com/api/',
+    baseURL: 'https://hirer-be.herokuapp.com/api/',
     headers: {
         'X-Requested-With': 'XMLHttpRequest'
     },
-    // withCredentials: true,
+    withCredentials: true,
 });
 
 // apiClient.interceptors.response.use(function(response){
