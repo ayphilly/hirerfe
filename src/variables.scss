@@ -51,6 +51,7 @@ $red-901 : #550000;
 
 @mixin rowflex ($align, $just){
     display: flex;
+    flex-direction: row;
     align-items: $align;
     justify-content: $just;
 }
@@ -60,6 +61,13 @@ $red-901 : #550000;
     flex-direction: column;
     align-items: $align;
     justify-content: $just;
+}
+
+@mixin rowflexx ($align){
+  display: flex;
+  flex-direction: row;
+  align-items: $align;
+  
 }
 
 @mixin colflexx ($align){

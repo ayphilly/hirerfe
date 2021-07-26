@@ -140,6 +140,39 @@ export const jobUnveil = () => {
   }
 };
 
+export const dashjobUnveil = () => {
+  var jobsContainer = document.getElementById("dash-jobs-nav-link");
+  var innerPg = document.getElementById("myjobs-inner");
+  var mylinks = document.querySelectorAll(".myjobs-single");
+
+  for (var i = 0; i < mylinks.length; i++) {
+    mylinks[i].addEventListener("click", function () {
+      var current = jobsContainer.getElementsByClassName("active");
+      var oldActive = current[0].className.split(" ")[1] + "ss";
+
+      var currentPg = innerPg.getElementsByClassName(oldActive);
+
+      currentPg[0].className = currentPg[0].className.replace(
+        " sactive",
+        " hidelement"
+      );
+      current[0].className = current[0].className.replace(
+        " active",
+        " notactive"
+      );
+
+      var newActive = this.className.split(" ")[1] + "ss";
+      var newPg = innerPg.getElementsByClassName(newActive);
+      newPg[0].className = newPg[0].className.replace(
+        " hidelement",
+        " sactive"
+      );
+
+      this.className += " active";
+    });
+  }
+};
+
 export const openApplication = () => {
   var applybutton = document.querySelector(".apply-job");
   applybutton.addEventListener("click", function () {

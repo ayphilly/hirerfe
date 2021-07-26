@@ -1,0 +1,67 @@
+@import "../../../../variables.scss";
+
+.sidebar-container {
+    width: 100%;
+    height: 100%;
+    @include rowflex(center, center);
+    
+    .sidebar-inner {
+        width: 100%;
+        height: 90%;
+        @include colflex(flex-start, space-between);
+        
+        .singlebar-container {
+            width: 100%;
+            height: 70px;
+            z-index: 1;
+            
+           
+            .singlebar-inner {
+                max-width: 100%;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                @include rowflex(center, center);
+
+                .single-bar {
+                    width: 100%;
+                    height: 100%;
+                    padding: 10px;
+                    @include rowflexx(center);
+                    cursor: pointer;
+                    opacity: .5;
+                    background-color: transparent;
+                    &:hover {
+                        opacity: 1;
+                        background-color: #FAFCFF;
+                        border-right: 5px solid $blue-600;
+                        p{
+                            @include fontNormal(1.2em, 1em, $blue-700);
+                        }
+                    }
+        
+                    &.active {
+                        opacity: 1;
+                        background-color: #FAFCFF;
+                        border-right: 5px solid $blue-600;
+                        p{
+                            @include fontNormal(1.2em, 1em, $blue-700);
+                        }
+                    }
+                    img {
+                        width: 25px;
+                        margin-right: 20px;
+                    }
+                    p{
+                        
+                        @include fontNormal(1.2em, 1em, $blue-200);
+                    }
+
+                }
+
+                
+                text-align: right;
+            }
+        }
+    }
+}

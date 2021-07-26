@@ -1,0 +1,126 @@
+@import "../../../../variables.scss";
+
+.dash-jobs-container {
+    width: 100%;
+    height: 100%;
+
+    @include rowflex(flex-start,center);
+
+    .dash-jobs-inner {
+        width: 95%;
+        height: 55%;
+        position: relative;
+        @include colflexx(flex-start);
+        .headertext{
+            opacity: .5;
+            @include fontBold(2.25em, 1em, $blue-902);
+        }
+        &.top {
+            width: 100%;
+            height: fit-content;
+            margin-bottom: 30px;
+            @include rowflex(flex-start,flex-start);
+        }
+
+        &.bottom {
+            width: 100%;
+            height: fit-content;
+            position: relative;
+            @include rowflex(flex-start, flex-start);
+            .dash-jobs-nav-link {
+                width: 35%;
+                height: fit-content;
+                @include rowflexx(flex-start);
+                border-bottom: 3px solid $gray-300;
+
+                .dash-jobs-single {
+                    width: 45%;
+                    height: 100%;
+                    text-align: left;
+                    cursor: pointer;
+                    @include rowflexx(center);
+                    opacity: .2;
+                    p:nth-child(1) {
+                        margin-right:20px; 
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                    }
+
+                    p:nth-child(2) {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 5px;
+                        background-color: $blue-100;
+                        @include rowflex(center, center);
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                    }
+
+                    &.active {
+                        opacity: 1 !important;
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                        border-bottom: 5px solid $blue-700;
+                    }
+
+                    &.notactive {
+                        opacity: .2;
+                        
+                    }
+                }
+            }
+
+            .postedjob-container{
+                position: absolute;
+                top:150%;
+                width: 100%;
+                
+    
+                &.sactive {
+                    width: 75%;
+                    height: fit-content;
+                    display: grid;
+                    grid-template-columns:1fr 1fr;
+                    grid-template-rows: 180px 180px;
+                    column-gap: auto;
+                    row-gap: 20px;
+                    justify-items: start;
+                    
+                }
+    
+                &.hide {
+                    display: none;
+                }
+    
+                
+            }
+    
+            .draft-container {
+                width: 100%;
+                height: 35%;
+                position: absolute;
+                top:150%;
+                &.sactive {
+                    @include rowflex(flex-start,flex-start);
+                    
+                }
+    
+                &.hide {
+                    display: none;
+                }
+                .draft-grid {
+                    width: 75%;
+                    height: fit-content;
+                    display: grid;
+                    grid-template-columns:1fr 1fr;
+                    grid-template-rows: 180px 180px;
+                    column-gap: auto;
+                    row-gap: 20px;
+                    justify-items: start;
+    
+                }
+            }
+
+            
+        }
+
+        
+    }
+}

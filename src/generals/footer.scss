@@ -27,7 +27,7 @@
 
     .footer-inner-col {
         width: 90%;
-        height: 90%;
+        height: 70%;
         @include colflex(center, space-between);
 
         @include breakpoint(mobileonly) {
