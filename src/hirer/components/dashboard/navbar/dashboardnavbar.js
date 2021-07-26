@@ -1,37 +1,29 @@
-import "./dashboardnav.scss";
-import hirer from "../../talentassets/hirer.svg";
-import profile from "../../talentassets/profile_image.png";
-import notification from "../../talentassets/Notification.png";
+import "./dashboardnavbar.scss";
+import hirer from "../../../hirerassets/hirer.svg";
+import profile from "../../../hirerassets/profile.png";
+import notification from "../../../hirerassets/Notification.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function Dashboardnav() {
+function Hirerdashnav() {
   const data = useSelector((state) => state.auth.authData);
   return (
-    <div className="talent-navbar-container">
-      <div className="navbar-inner">
-        <div className="navbar-inner left">
+    <div className="hirer-dash-container">
+      <div className="hirer-dash-inner">
+        <div className="hirer-dash-inner left">
           <img src={hirer} alt="Hirer Logo" />
-          <Link
-            className="navbar-inner-nav-link"
-            to="/talent/searchjob"
-            style={{ textDecoration: "none" }}
-          >
-            Find Jobs
-          </Link>
           <span className="navbar-inner-nav-link"> Company Reviews </span>
         </div>
-        <div className="navbar-inner right">
-          {/* <Link className="navbar-inner-nav-link" to="/hirer" style={{textDecoration:'none'}}>For Hirers</Link>
-                    <Link className="navbar-inner-nav-link" to="/signin" style={{textDecoration:'none'}}>Sign in</Link> */}
+        <div className="hirer-dash-inner right">
+        
           <img src={notification} className="notification" alt="notification" />
           <div className="dashboard-profile">
             <img src={profile} alt="user profile" />
             <div className="dashboard-user">
               <p> Welcome</p>
-              <p>{data.name} </p>
+              <p>{data.name} Adewale ayomiposi </p>
             </div>
           </div>
 
@@ -49,4 +41,4 @@ function Dashboardnav() {
   );
 }
 
-export default Dashboardnav;
+export default Hirerdashnav;

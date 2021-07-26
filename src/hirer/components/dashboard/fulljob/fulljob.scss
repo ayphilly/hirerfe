@@ -1,0 +1,338 @@
+@import "../../../../variables.scss";
+
+.fulljob-container {
+    width: 100%;
+    height: 100%;
+
+    @include rowflex(center,space-around);
+
+    .fulljob-inner {
+        width: 95%;
+        height: 90%;
+        position: relative;
+        @include colflexx(flex-start);
+       
+
+        &.top {
+            width: 60%;
+            height: fit-content;
+            margin-bottom: 20px;
+            @include rowflex(flex-start, space-between);
+
+            img {
+                width: 60px;
+            }
+
+            .top-jobdetails{
+                height: 100%;
+                width: 87%;
+                @include colflexx(flex-start);
+                &.top {
+                    width: 50%;
+                    height: fit-content;
+                    margin: 0;
+                    @include colflexx(flex-start);
+
+                    p:nth-child(1) {
+                        // height: 0;
+                        margin: 0;
+                        @include fontSemiBold(1.5em,1.2em, $blue-902);
+                    }
+                    p:nth-child(2) {
+                        
+                        margin: 0;
+                        @include fontNormal(1.1em,1.4em, $blue-901);
+                    }
+                    p:nth-child(3) {
+                        // height: 0;
+                        @include fontLight(.9em,0em, $blue-901);
+                    }
+                }
+                &.bottom {
+                    margin-top: 20px;
+                    width: 45%;
+                    height: fit-content;
+                    @include rowflex(flex-start, space-between);
+
+                    button:nth-child(1) {
+                        
+                        width: 150px;
+                        height: 70px;
+                        text-align: center;
+                        border: none;
+                        background-color: $blue-700;
+                        color: #fff;
+                        border-radius: 10px;
+                        @include fontMedium(1em, 1em, #fff);
+                        transition: all 0.3s ease;
+
+                        &:hover {
+                            background-color: transparent;
+                            color: $blue-700;
+                            border: 1px solid $blue-700;
+
+                        }
+                    }
+                    button:nth-child(2) {
+                        width: 100px;
+                        height: 70px;
+                        text-align: center;
+                        border: 1px solid $blue-700;
+                        color: $blue-700;
+                        background-color: transparent;
+                        border-radius: 10px;
+                        @include fontMedium(1em, 1em, $blue-700);
+
+                        &:hover {
+                            background-color: $blue-700;
+                            color: #fff;
+                            border: 1px solid $blue-700;
+
+                        }
+                    }
+                }
+            }
+        }
+        &.bottom {
+            width: 80%;
+            height: fit-content;
+            position: relative;
+            @include rowflex(flex-start, flex-start);
+            .fulljob-nav-link {
+                width: 40%;
+                height: fit-content;
+                @include rowflexx(flex-start);
+                border-bottom: 3px solid $gray-300;
+
+                .fulljob-single:nth-child(1) {
+                    width: 40%;
+                    height: 100%;
+                    text-align: left;
+                    cursor: pointer;
+                    @include rowflexx(center);
+                    opacity: .2;
+                    margin-right: 20px;
+                    p:nth-child(1) {
+                        margin-right:20px;
+                        @include fontSemiBold(1.2em, 1em, $blue-902);
+                    }
+
+                    p:nth-child(2) {
+                        width: 0px;
+                        height: 50px;
+                        
+                        border-radius: 5px;
+                        background-color: $blue-100;
+                        @include rowflex(center, center);
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                        visibility: none;
+                    }
+
+                    &.active {
+                        width: 40%;
+                        opacity: 1 !important;
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                        border-bottom: 5px solid $blue-700;
+                    }
+
+                    &.notactive {
+                        opacity: .2;
+                        
+                    }
+                }
+                .fulljob-single:nth-child(2) {
+                    width: 50%;
+                    height: 100%;
+                    text-align: left;
+                    cursor: pointer;
+                    @include rowflexx(center);
+                    opacity: .2;
+                    p:nth-child(1) {
+                        margin-right:20px; 
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                    }
+
+                    p:nth-child(2) {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 5px;
+                        background-color: $blue-100;
+                        @include rowflex(center, center);
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                    }
+
+                    &.active {
+                        width: 50%;
+                        opacity: 1 !important;
+                        @include fontSemiBold(1em, 1em, $blue-902);
+                        border-bottom: 5px solid $blue-700;
+                    }
+
+                    &.notactive {
+                        opacity: .2;
+                        
+                    }
+                }
+            }
+            .job-info-container {
+                position: absolute;
+                top:150%;
+                background: #FFFFFF;
+                box-shadow: 0px 0px 20px #EFF1F3;
+                border-radius: 10px;
+                width: 60%;
+                height: fit-content;
+                padding: 30px;
+                &.sactive {
+                    @include rowflex(flex-start,flex-start);
+                    
+                }
+    
+                &.hide {
+                    display: none;
+                }
+
+                .job-info-inner {
+                    width: 90%;
+                    
+                    &.single-info {
+                        width: fit-content;
+                        height: fit-content;
+                        @include rowflex(flex-start, space-between);
+                        img {
+                            width: auto;
+                            margin-right: 20px;
+                        }
+                        .single-content {
+                            p:nth-child(1) {
+                                margin: 0;
+                                @include fontSemiBold(1.1em,1em, $blue-700);
+                            }
+                            p:nth-child(2) {
+                                @include fontLight(1.1em,1.5em, $blue-901);
+                            }
+                            
+                        }
+                    }
+
+                    &.single-info:not(:last-child) {
+                        margin-bottom: 30px;
+                    }
+
+                    &.single-info:nth-child(1) {
+                        margin-top: 20px;
+                    }
+                }
+            
+            }
+            .job-applicant-container {
+                position: absolute;
+                top:150%;
+                // background-color: pink;
+                width: 100%;
+                height: fit-content;
+                &.sactive {
+                    @include rowflex(flex-start,flex-start);
+                    
+                }
+    
+                &.hide {
+                    display: none;
+                }
+                .job-applicant-inner {
+                    width: 100%;
+                    background: #FFFFFF;
+                    border-radius: 10px;
+                    padding: 30px;
+                    &.styled-table {
+                        border-collapse: collapse;
+                        // margin: 25px 0;
+                        // font-size: 0.9em;
+                        // font-family: sans-serif;
+                        min-width: 400px;
+                        width: 100%;
+
+                        thead tr{
+                            @include fontNormal(1em, 1em, $blue-901);
+                            text-align: left;
+                            
+                        }
+                        th{
+                            padding: 12px 15px;
+                            border-bottom: 1px solid #EAEAEA;
+                            @include fontMedium(1em, 1em, $blue-901);
+                        }
+                        td {
+                            padding: 25px 15px;
+                            // border-bottom: 1px solid #EAEAEA;
+                            @include fontNormal(1em, 1em, $blue-901);
+
+                            a {
+                                text-decoration: underline;
+                                color: $blue-800;
+                                cursor: pointer;
+                            }
+                        }
+
+                        tbody tr {
+                            border-bottom: 1px solid #EAEAEA;
+
+                           
+                            &:hover {
+                                background-color: #F9F8F9;
+                                td:first-child {
+                                    border-top-left-radius: 15px;
+                                    border-bottom-left-radius: 15px;
+                                }
+                                td:last-child {
+                                    border-top-right-radius: 15px;
+                                    border-bottom-right-radius: 15px;
+                                } 
+                            }
+
+                            td:last-child {
+                                @include rowflex(center,space-around);
+                                .action-box {
+                                    width: 40px;
+                                    height: 40px;
+                                    border-radius: 5px;
+                                    cursor: pointer;
+                                    @include rowflex(center,center);
+                                    transition: all 0.5s ease;
+                                    &:hover {
+                                        
+                                        box-shadow: 0px 0px 20px #e0e1e2;
+                                    }
+
+                                    &.green {
+                                        color: $green-700;
+                                        border: 1px solid $green-700;
+                                        background-color: $green-100;
+                                    }
+                                    &.red {
+                                        color: $red-600;
+                                        background-color: $red-100;
+                                        border: 1px solid $red-600;
+                                    }
+                                    &.yellow {
+                                        color: #D0AA38;
+                                        border: 1px solid #F2C94C;
+                                        background-color: #FFFAED;
+                                    }
+
+                                }
+                            }
+                        }
+                        
+                        
+                        tbody tr:last-child{
+                            border-bottom:none;
+                        }
+                        
+                    }
+                }
+            }
+            
+        }
+    }
+}

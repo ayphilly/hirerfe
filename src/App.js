@@ -32,7 +32,8 @@ import { Review } from "./talent/pages/review/review";
 import { Jobresult } from "./talent/pages/searchjob/jobresults";
 import { CustomRoute } from "./customRoute";
 import Register from "./generals/createaccount/register";
-
+import { Home } from "./hirer/pages/dashboard/home";
+import Hirerdashnav from "./hirer/components/dashboard/navbar/dashboardnavbar";
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
@@ -68,6 +69,25 @@ const HirerWithNavbar = ({ exact, path, component: Component, ...rest }) => {
     />
   );
 };
+
+const HirerDashWithNavbar = ({ exact, path, component: Component, ...rest }) => {
+  return (
+    <Route
+      exact={exact}
+      path={path}
+      {...rest}
+      render={(routeProps) => {
+        return (
+          <>
+            <Hirerdashnav {...routeProps} />
+            <Component {...routeProps} />{" "}
+          </>
+        );
+      }}
+    />
+  );
+};
+
 
 const DashboardWithNavbar = ({
   exact,
@@ -148,6 +168,12 @@ function App() {
           path="/hirer/talentprofile"
           component={Talentprofile}
         />
+        <HirerDashWithNavbar
+          exact
+          path="/dashboard/hirer/:page"
+          component={Home}
+        />
+       
 
         <Route exact path="/createaccount" component={Register} />
         <Route path="/signin" component={Signin} />
@@ -204,7 +230,15 @@ function App() {
           path="/dashboard/company"
           component={Review}
         />
-       
+
+        {/* Hirer Dashboard links */}
+        {/* <CustomRoute
+          condition="hirer"
+          exact
+          path="/hirer/dashboard/:page"
+          component={Home}
+        />
+        */}
         <DashboardWithNavbar
           exact
           path="/dashboard/hirer"

@@ -44,8 +44,48 @@ export const personal = [
     }
 ];
 
+export const dashList = [
+    {
+        id:0,
+        jobtitle: 'Administrative Officer',
+        company:'Aspire Consulting',
+        days:2,
+        location: 'Lagos',
+        type: 'Contract',
+        icao: 'admin',
+    },
+    {
+        id:1,
+        jobtitle: 'Front End Dev',
+        company:'Aspire Consulting',
+        days:2,
+        location: 'Lagos',
+        type: 'Full time',
+        icao: 'frontend',
+    },
+    {
+        id:2,
+        jobtitle: 'Desktop Administrator',
+        company:'Afrinn Solution',
+        days:2,
+        location: 'Lagos',
+        type: 'Contract',
+        icao: 'admin',
+    },
+    {
+        id:3,
+        jobtitle: 'Desktop Administrator',
+        company:'Afrinn Solution',
+        days:2,
+        location: 'Lagos',
+        type: 'Contract',
+        icao: 'admin',
+    },
+];
+
 export const experience = [
     {
+        id:0,
         jobtitle: 'Administrative Officer',
         company:'Aspire Consulting',
         date:'Jun 2020 - Jul 2020',
@@ -54,6 +94,7 @@ export const experience = [
         icao: 'admin',
     },
     {
+        id:1,
         jobtitle: 'Front End Dev',
         company:'Aspire Consulting',
         date:'Jun 2019 - Jul 2020',
@@ -62,6 +103,7 @@ export const experience = [
         icao: 'frontend',
     },
     {
+        id:2,
         jobtitle: 'Desktop Administrator',
         company:'Afrinn Solution',
         date:'Jun 2020 - Jul 2020',

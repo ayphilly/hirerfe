@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Dashboardnav from "./talent/components/dashboardnavbar/dashboardnav";
+import Hirerdashnav from "./hirer/components/dashboard/navbar/dashboardnavbar";
 
 const DashboardWithNavbar = ({
     exact,
@@ -18,6 +19,24 @@ const DashboardWithNavbar = ({
           return (
             <>
               <Dashboardnav {...routeProps} />
+              <Component {...routeProps} />{" "}
+            </>
+          );
+        }}
+      />
+    );
+};
+
+const HirerDashWithNavbar = ({ exact, path, component: Component, ...rest }) => {
+    return (
+      <Route
+        exact={exact}
+        path={path}
+        {...rest}
+        render={(routeProps) => {
+          return (
+            <>
+              <Hirerdashnav {...routeProps} />
               <Component {...routeProps} />{" "}
             </>
           );
@@ -45,10 +64,15 @@ export const CustomRoute = props => {
             <Redirect to="/signin" />
           )
         );
-      case "student":
+      case "hirer":
         return setReturnedRoute(
          user.role === "hirer" ? (
-            <Route {...props} />
+            <HirerDashWithNavbar
+                exact
+                path={props.path}
+                component = {props.component}
+                // component={Dashboardhome}
+            />
           ) : (
             <Redirect to="/signin" />
           )
