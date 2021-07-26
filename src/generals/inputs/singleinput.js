@@ -9,6 +9,7 @@ const Singleinput = (props) => {
     setPasswordShown(passwordShown ? false : true);
   };
 
+
   return (
     <div className="single-form-input">
       <label className="sing-form-label"> {props.label} </label>
@@ -61,5 +62,6 @@ const Singleinput = (props) => {
 
     </div>
   )
+
 }
 export default Singleinput;
