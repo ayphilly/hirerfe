@@ -77,7 +77,7 @@ export const Verifyemail = (props) => {
             height={400}
             response= {response}
         >
-            <form onSubmit={checkMail}>
+            <form onSubmit={checkMail} className="verify-email-form">
                 <Singleinputlabel
                     type="text"
                     label =" Email Adddress"
