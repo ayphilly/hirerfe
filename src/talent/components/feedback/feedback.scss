@@ -2,36 +2,40 @@
 
 .feedback-container {
     width: 100%;
-    height: 100vh !important;
+    height: 100vh;
     @include rowflex(center,center);
     background-color: $blue-100;
+
     @include breakpoint(mobileonly) {
-        height: 50em;
+        height: 38em !important;
     }
-    @include breakpoint(tablet) {
-        height: 50em;
+    @include breakpoint(phablet) {
+        height: 45em;
     }
     @include breakpoint(laptop) {
         height: 50em;
     }
 
     .feedback-inner {
-        width: 80%;
+        width: 90%;
         height: 85%;
+        @include colflex(center, space-around);
 
         @include breakpoint(mobileonly) {
-            width: 100%;
+            width: 95% !important;
         }
         @include breakpoint(tablet) {
-            height: 75%;
+            width: 100%;
+            height: 85%;
         }
-        @include colflex(center, space-around);
+        
 
         .feedback-top {
             width: 30%;
             text-align: center;
             @include breakpoint(mobileonly) {
                 width: 80%;
+                height: fit-content;
             }
             @include breakpoint(tablet) {
                 width: 50%;
@@ -72,6 +76,13 @@
                 // @include rowflex(center,space-between);
                 position: relative;
             }
+
+            @include breakpoint(tablet) {
+                width: 100%;
+                // @include rowflex(center,space-between);
+                position: relative;
+            }
+            
             .arrow-left{
                 width: 60px;
                 height: 60px;
@@ -93,7 +104,7 @@
                     width: 30px;
                     position: absolute;
                     bottom: 25px;
-                    right: 110px;
+                    right: 105px;
                     width: 50px;
                     height: 50px;
                     border-radius: 0px;
@@ -123,7 +134,7 @@
                     width: 30px;
                     position: absolute;
                     bottom: 25px;
-                    right: 50px;
+                    right: 30px;
                     width: 50px;
                     height: 50px;
                     border-radius: 0px;
@@ -138,6 +149,11 @@
                 width: 100%;
 
                 @include breakpoint(mobileonly) {
+                    width: 100% !important;
+                    height: fit-content;
+                    margin-bottom: 60px;
+                }
+                @include breakpoint(tablet) {
                     width: 90%;
                     
                 }
@@ -154,11 +170,21 @@
                     align-items: center;
                     @include breakpoint(mobileonly) {
                         width: 350px;
+                        margin: 0 auto;
+                    }
+                    @include breakpoint(phablet) {
+                        width: 350px;
+                    }
+                    @include breakpoint(tablet) {
+                        width: 350px;
                     }
 
                     li {
                         width: 800px;
                         @include breakpoint(mobileonly) {
+                            width: 330px;
+                        }
+                        @include breakpoint(tablet) {
                             width: 330px;
                         }
                         &:nth-child(1) {

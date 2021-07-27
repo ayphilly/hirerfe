@@ -31,7 +31,7 @@ const Jobsearch = (props)=> {
                                     type="text"
                                     placeholder ="Enter Job title"
                                     label ="What ?"
-                                    subtext="Job title, keywords, or company"
+                                    subtext="Job title"
                                     name="jobtitle"
                                     value={props.formState ? props.formState.jobtitle :''}
                                     onChange={ props.handleUserInput ? (event) => props.handleUserInput(event) : ''}

@@ -3,22 +3,35 @@ import { Singlebox } from "../singlebox/singlebox";
 import Hirersinglejob from "../singlejob/hirersinglejob";
 import Box from "../../../hirerassets/dashjob.svg"
 import {dashList} from "../../../constants"
+import { useHistory } from "react-router"
+
 const DashboardHome= (props) => {
 
+    const history = useHistory();
+
+    var viewJob = (id)=> {
+        var name ='Ademola Okon';
+        history.push(`/dashboard/hirer/myjob/?name=${name}&id=${id}`);
+    }
+    var viewBox = (link)=> {
+       
+        history.push(`/dashboard/hirer/${link}`);
+    }
     var postedJobs = dashList.map ((job)=> {
         return (
             <Hirersinglejob
                 key ={job.id}
+                id={job.id}
                 title={job.jobtitle}
                 company={job.company}
                 location={job.location}
                 type={job.type}
                 days={job.days}
-            >
-
-            </Hirersinglejob>
+                view={viewJob}
+            />
         )
     })
+
     return (
       <div className="dashboard-home-container">
           <div className="dashboard-home-inner">
@@ -27,10 +40,12 @@ const DashboardHome= (props) => {
                 <div className="dashboard-home-inner top top-reports">
                     <Singlebox
                         image = {Box}
+                        link = 'myjobs'
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
                         number = "15"
                         subtext = "Total Jobs Posted"
+                        view = {viewBox}
                     ></Singlebox>
                     <Singlebox
                         image = {Box}

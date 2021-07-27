@@ -15,11 +15,15 @@
     background-size: cover;
 
     @include breakpoint(mobileonly) {
-        width: 330px;
+        width: 330px !important;
         height: 300px;
     }
     @include breakpoint(phablet) {
-        width: 90% !important;
+        width: 330px;
+        height: 300px;
+    }
+    @include breakpoint(tablet) {
+        width: 330px !important;
         height: 300px;
     }
     .singlefeed-inner {
@@ -31,6 +35,10 @@
         padding:0px;
 
         @include breakpoint(mobileonly) {
+            height: 90%;
+            width: 90%;
+        }
+        @include breakpoint(tablet) {
             height: 90%;
             width: 90%;
         }
