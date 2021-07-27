@@ -1,4 +1,4 @@
-const JobReviewForm = ({step, submitForm, setStep}) => {
+const JobReviewForm = ({step, setStep}) => {
   return (
     <div
       style={{
@@ -18,8 +18,8 @@ const JobReviewForm = ({step, submitForm, setStep}) => {
       <div>
         <label className="mb-3" htmlFor="jobTitle">
           Job Title
-          <span style={{ color: "red" }}>*</span>
         </label>
+          <span style={{color: "lightblue", cursor: "pointer", marginLeft: "1rem"}} onClick={()=>setStep(0)}>Edit</span>
       </div>
 
       <div className="d-flex justify-content-end">

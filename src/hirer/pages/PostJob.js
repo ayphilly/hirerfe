@@ -39,6 +39,11 @@ const PostJob = () => {
       type_id: formData.jobType,
       salary: formData.jobSalary,
       description: formData.jobDescription,
+      filters: {
+        experience: false,
+        location: false,
+        salary_expectation: false,
+      } 
     })
       .then(() => alert("Job Posted Successfully"))
       .catch(({ response }) => {
@@ -68,7 +73,7 @@ const PostJob = () => {
       case 2:
         return <JobFilterForm {...stepProps()} />;
       case 3:
-        return <JobReviewForm {...stepProps()}/>;
+        return <JobReviewForm {...stepProps()} setStep={setStep}/>;
       default:
         return <div>Not Found</div>;
     }

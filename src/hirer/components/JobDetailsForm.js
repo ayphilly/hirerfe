@@ -47,7 +47,7 @@ const JobDetailsForm = ({step, jobTypes, nextStep}) => {
 
       <div>
         <label className="mb-3" htmlFor="jobType">
-          Job Type
+          Job Location
           <span style={{ color: "red" }}>*</span>
         </label>
         <Field name="jobLocation" id="jobLocation" className="mb-8 classic-input w-100" type="text" />
