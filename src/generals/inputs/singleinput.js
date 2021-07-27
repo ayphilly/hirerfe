@@ -32,6 +32,7 @@ const Singleinput = (props) => {
               : props.type
           }
           name={props.name}
+          value={props.value}
           placeholder={props.placeholder}
           style={{
             width: props.width + "px",

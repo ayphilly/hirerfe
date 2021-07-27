@@ -133,7 +133,7 @@ function App() {
         <TalentWithNavbar exact path="/" component={Homepage} />
         <TalentWithNavbar
           exact
-          path="/talent/searchjob/:jobtitle/:location"
+          path="/talent/searchjob"
           component={Jobresult}
         />
         <HirerWithNavbar
