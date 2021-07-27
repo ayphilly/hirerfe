@@ -54,16 +54,18 @@ function Banner () {
                     <img src={search} alt="Job Search"></img>
 
                 </div>
-
                 <div className="banner-inner bottom">
-                    
-                    <Jobsearch
-                        myFunction={redirect}
-                        handleUserInput={handleUserInput}
-                        formState={formState}
+                    <div className="bottom-cotent">
                         
-                    ></Jobsearch>
+                        <Jobsearch
+                            myFunction={redirect}
+                            handleUserInput={handleUserInput}
+                            formState={formState}
+                            
+                        ></Jobsearch>
+                    </div>
                 </div>
+                
             </div>
           </div>
         

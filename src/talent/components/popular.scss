@@ -98,23 +98,28 @@
                 row-gap: 10px;
             }
 
-            @include breakpoint(tablet) {
-                display: grid;
-                grid-template-columns: auto auto auto;
-                grid-template-rows: 65px 65px 65px;
-                align-items: center;
-                justify-content: center;
-                column-gap: 5px;
-                row-gap: 10px;
-            }
+            
 
             @include breakpoint(phablet) {
                 display: grid;
                 grid-template-columns: auto auto;
                 grid-template-rows: 65px;
+                column-gap: 5px;
                 justify-items: center;
+                row-gap: 10px;
+            }
+
+            @include breakpoint(tablet) {
+                // width: 100%;
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows: 65px 65px 65px;
+                align-items: center;
+                justify-content: center;
+                justify-items:center;
                 column-gap: 5px;
                 row-gap: 10px;
+                align-content: center;
             }
 
         }
@@ -123,28 +128,31 @@
             @include fontNormal(1em, 1em, $blue-700);
             text-decoration: none;
             width: 20%;
-            @include rowflex(center,space-between);
+            @include rowflexx(center);
 
             @include breakpoint(mobileonly) {
-                width:50%;
+                width:100%;
                 @include fontNormal(.8em, 1em, $blue-700);
+                @include rowflex(center,center);
             }
             @include breakpoint(phablet) {
-                width:45% !important;
+                width:30%;
                 margin-top: 40px;
                 
                 @include fontNormal(1em, 1em, $blue-700);
             }
 
             @include breakpoint(tablet) {
-                width:20% !important;
+                width:30%;
                 margin-top: 40px;
-                
                 @include fontNormal(1em, 1em, $blue-700);
             }
 
             .direction-icon {
                 margin-left: 20px;
+                @include breakpoint(tablet) {
+                    margin-left: 20px;
+                }
             }
 
         }

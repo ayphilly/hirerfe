@@ -3,7 +3,7 @@ import Box from "../../../hirerassets/dashjob.svg"
 export const Singlebox = (props) => {
 
     return (
-        <div className="singlebox-container">
+        <div className="singlebox-container" onClick={() => props.view && props.view(props.link)}>
             <div className="singlebox-inner">
                 <div className="singlebox-inner top">
                     <img src={props.image} alt="Box dashboard"></img>

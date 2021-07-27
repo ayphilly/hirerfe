@@ -15,13 +15,14 @@
         @include rowflex(flex-start, center);
     }
 
-    @include breakpoint(tablet) {
-        width: 100%;
-        height: 50em !important;
-    }
+    
     @include breakpoint(phablet) {
         width: 100% !important;
         height: 80em;
+    }
+    @include breakpoint(tablet) {
+        width: 100%;
+        height: 40em !important;
     }
 
     @include breakpoint(laptop) {
@@ -75,7 +76,7 @@
                 width: 70%;
                 height: 65% !important;
                 margin: 0;
-                @include colflex(flex-start, space-around);
+                @include colflex(flex-start, space-between);
             }
             @include breakpoint(phablet) {
                 width: 100%;
@@ -107,7 +108,7 @@
                     @include colflex(flex-start, center);
                 }
                 @include breakpoint(tablet) {
-                    width: 60%;
+                    width: 100%;
                     height: 50%;
                     @include colflex(flex-start, flex-start);
                 }
@@ -189,7 +190,7 @@
                         width: 90% !important;
                     }
                     @include breakpoint(tablet) {
-                        width: 60% !important;
+                        width: 100% !important;
                     }
                     img {
                         width: auto;
@@ -254,9 +255,9 @@
                 }
 
                 @include breakpoint(tablet) {
-                    width: 500px  !important;
-                    top: -20px !important;
-                    right: -90px;
+                    width: 450px  !important;
+                    top: 0px !important;
+                    right: -50px;
                 }
 
                 
@@ -273,7 +274,7 @@
         }
 
         &.bottom {
-            
+
             width: 80%;
             height: 200px;
             border-radius: 20px;
@@ -281,10 +282,9 @@
             bottom: -100px;
             margin: 0 auto;
             left: 135px;
-            // top: 100px;
             background-color: #fff;
             box-shadow: 0px 5px 15px #F3F2F1;
-            @include rowflex(center, center);
+            @include rowflex(center,center);
 
             @include breakpoint(mobileonly) {
                 width: 90%;
@@ -296,23 +296,24 @@
                 @include rowflex(center, center);
             }
 
+            
+
+            @include breakpoint(phablet) {
+                width: 90% !important;
+                height: 200px;
+                left: 25px;
+                // margin: 0 auto;
+                // overflow: hidden;
+                @include rowflex(center, center);
+            }
+
             @include breakpoint(tablet) {
                 width: 90%;
                 height: 200px;
                 left: 50px;
                 bottom: -150px;
                 margin: 0 auto;
-                
                 @include colflex(center,center);
-            }
-
-            @include breakpoint(phablet) {
-                width: 90% !important;
-                height: 450px;
-                left: 25px;
-                // margin: 0 auto;
-                // overflow: hidden;
-                @include rowflex(center, center);
             }
 
             @include breakpoint(laptop) {
@@ -322,6 +323,30 @@
                 margin: 0 auto;
                 
                 overflow: hidden;
+            }
+
+            .bottom-cotent {
+                width: 90%;
+                height: 100px;
+
+                @include breakpoint(mobileonly) {
+                    width: 90%;
+                    height: 450px;
+                    @include rowflex(center, center);
+                }
+    
+                
+    
+                @include breakpoint(phablet) {
+                    width: 90% !important;
+                    height: 85%;
+                    @include rowflex(center, center);
+                }
+                @include breakpoint(tablet) {
+                    width: 100% !important;
+                    height: 85%;
+                    @include rowflex(center, center);
+                }
             }
 
             
