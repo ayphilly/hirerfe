@@ -7,7 +7,7 @@
     @include rowflex(center, center);
 
     @include breakpoint(mobileonly) {
-        @include rowflex(flex-start, center);
+        @include rowflex(center, center);
         height: 60em;
     }
 
@@ -21,17 +21,18 @@
     @include breakpoint(tablet) {
         @include rowflex(center, center);
         width: 100%;
+        height: 30em;
     
 
     }
 
     .footer-inner-col {
         width: 90%;
-        height: 70%;
+        height: 80%;
         @include colflex(center, space-between);
 
         @include breakpoint(mobileonly) {
-            @include rowflex(center, center);
+            @include colflex(center, center);
             height: 100%;
         }
 
@@ -41,7 +42,8 @@
         }
 
         @include breakpoint(tablet) {
-            @include rowflex(center, center);
+            @include colflex(center, center);
+            width: 95%;
             height: 95%;
         }
 
@@ -62,6 +64,13 @@
                 
             }
 
+            @include breakpoint(tablet) {
+                width: 100%;
+                height: 70%;
+                @include colflex(center, space-between);
+                
+            }
+
             .top-left {
                 width: 25%;
                 height: 170px;
@@ -76,18 +85,19 @@
 
                 @include breakpoint(phablet) {
                     height: 40%;
-                    width: 70%;
+                    width: 100%;
                     @include colflex(center, space-between);
+                    
                     
                 }
                 @include breakpoint(tablet) {
-                  
-                    width: 35%;
-                    @include colflex(flex-start, space-between);
+                    width: 45%;
+                    @include colflex(center, space-between);
                     
                 }
                 img {
                     width: auto;
+                    height: auto;
                     @include breakpoint(mobileonly) {
                         width: 70px;
                     }
@@ -102,6 +112,10 @@
                     @include breakpoint(mobileonly) {
                         width: 90%;
                         @include rowflex(flex-start,space-between);
+                    }
+
+                    @include breakpoint(tablet) {
+                        margin-top: 20px;
                     }
 
                     .apple-button {

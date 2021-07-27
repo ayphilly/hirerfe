@@ -11,14 +11,15 @@
         @include colflex(center,flex-start);
     }
 
-    @include breakpoint(tablet) {
-        height: 60em !important;
-        @include colflex(center,center);
-    }
+    
 
     @include breakpoint(phablet) {
         height: 55em;
         @include colflex(center,center);
+    }
+    @include breakpoint(tablet) {
+        height: 60em;
+        @include rowflex(center,center);
     }
 
     .topjobs-inner {
@@ -28,6 +29,12 @@
 
         @include breakpoint(mobileonly) {
             margin-top: 50px;
+            
+            @include colflex(center, space-around);
+        }
+        @include breakpoint(tablet) {
+            // margin-top: 50px;
+            height: 85%;
             @include colflex(center, space-around);
         }
         
@@ -38,7 +45,8 @@
                 width: 80%;
             }
             @include breakpoint(phablet) {
-                width: 60% !important;
+                width: 60%;
+                
             }
             @include breakpoint(tablet) {
                 width: 50%;
@@ -77,18 +85,22 @@
             // justify-content: stretch; 
 
             @include breakpoint(mobileonly) {
-                grid-template-columns: auto;
+                width: 100%;
+                grid-template-columns: 1fr;
                 grid-template-rows: 200px;
                 height: 90%;
             }
 
-            @include breakpoint(tablet) {
-                grid-template-columns: auto auto;
+            
+            @include breakpoint(phablet) {
+                width: 100%;
+                grid-template-columns: 1fr 1fr;
                 grid-template-rows: 200px;
                 // height: 90%;
             }
-            @include breakpoint(phablet) {
-                grid-template-columns: auto auto;
+            @include breakpoint(tablet) {
+                width: 100%;
+                grid-template-columns: 1fr 1fr;
                 grid-template-rows: 200px;
                 // height: 90%;
             }
