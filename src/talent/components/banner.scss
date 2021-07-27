@@ -327,8 +327,7 @@
 
             .bottom-cotent {
                 width: 90%;
-                height: 100px;
-
+                height: fit-content;
                 @include breakpoint(mobileonly) {
                     width: 90%;
                     height: 450px;

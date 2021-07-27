@@ -1,7 +1,8 @@
 
 import Singlejob from "../../components/singlejob/singlejob"
 import {jobSearch} from "../../constants"
-import {useParams} from "react-router-dom";
+import {useParams, useLocation} from "react-router-dom";
+
 import {useState, useEffect} from "react"
 import {accordionFunc} from "../../../helper"
 import { Empty } from "../../../generals/emptyresult/emptyresult";
@@ -142,7 +143,7 @@ export const Jobresult = () => {
         let response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${userloc.lat},${userloc.lon }&key=AIzaSyCUKKnD6wpJJHyENK1BkYSqQgM2u9i-XOM`);
 
         let commits = await response.json();
-        setAddr(commits.results[0].address_components[3].long_name)
+        // setAddr(commits.results[0].address_components[3].long_name)
         
     }
 
@@ -154,7 +155,7 @@ export const Jobresult = () => {
     useEffect(()=> {
        const timer = setTimeout(() => {
         getAddress ();
-      }, 2000);
+      }, 3000);
   
       return () => clearTimeout(timer);
     }, [userloc])

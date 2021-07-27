@@ -33,7 +33,7 @@ const Jobsearch = (props)=> {
                                     label ="What ?"
                                     subtext="Job title"
                                     name="jobtitle"
-                                    value={props.formState ? props.formState.jobtitle :''}
+                                    value={props.formState ? props.formState.jobtitle :'dsfsdfs'}
                                     onChange={ props.handleUserInput ? (event) => props.handleUserInput(event) : ''}
                                     width={400}
                                 
