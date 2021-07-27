@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { get, post } from "../../requests";
 import * as yup from "yup";
-import { useFormik } from "formik";
+import { Formik, Form } from "formik";
 import JobDetailsForm from "../components/JobDetailsForm";
 import JobDescForm from "../components/JobDescForm";
+import JobFilterForm from "../components/JobFilterForm";
+import JobReviewForm from "../components/JobReviewForm";
 
 const initialValues = {
   jobTitle: "",
@@ -26,22 +28,23 @@ const PostJob = () => {
   const [step, setStep] = useState(0);
   const [jobTypes, setJobTypes] = useState([]);
 
-  const submitForm = () => {
+  const submitForm = (formData) => {
+    console.log(formData);
     // Check Valid, then post
-    // post("/v1/job/create", {
-    //   title: formData.jobTitle,
-    //   location: formData.jobLocation,
-    //   latitude: "45.49494949",
-    //   longitude: "33.030303",
-    //   type_id: formData.jobType,
-    //   salary: formData.jobSalary,
-    //   description: formData.jobDescription,
-    // })
-    //   .then(() => alert("Job Posted Successfully"))
-    //   .catch(({ response }) => {
-    //     console.log(response);
-    //     alert("Error, check console!");
-    //   });
+    post("/v1/job/create", {
+      title: formData.jobTitle,
+      location: formData.jobLocation,
+      latitude: "45.49494949",
+      longitude: "33.030303",
+      type_id: formData.jobType,
+      salary: formData.jobSalary,
+      description: formData.jobDescription,
+    })
+      .then(() => alert("Job Posted Successfully"))
+      .catch(({ response }) => {
+        console.log(response);
+        alert("Error, check console!");
+      });
   };
 
   const previousStep = () => setStep(step - 1);
@@ -62,6 +65,10 @@ const PostJob = () => {
         return <JobDetailsForm {...stepProps()} jobTypes={jobTypes} />;
       case 1:
         return <JobDescForm {...stepProps()} />;
+      case 2:
+        return <JobFilterForm {...stepProps()} />;
+      case 3:
+        return <JobReviewForm {...stepProps()}/>;
       default:
         return <div>Not Found</div>;
     }
@@ -72,7 +79,12 @@ const PostJob = () => {
       style={{ width: "100%", padding: "100px 0" }}
       className="d-flex flex-column align-items-center"
     >
+      <Formik initialValues={initialValues} onSubmit={values => submitForm(values)}>
+        <Form>
+
       {_renderStepContent(step)}
+        </Form>
+      </Formik>
     </div>
   );
 };

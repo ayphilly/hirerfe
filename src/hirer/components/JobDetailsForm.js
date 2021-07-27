@@ -1,15 +1,17 @@
+import { Field } from "formik";
+
 const JobDetailsForm = ({step, jobTypes, nextStep}) => {
   return (
     <div
       style={{
-        "--width": `${(step + 1) * 20}%`,
+        "--width": `${(step + 1) * 25}%`,
         width: "90%",
         maxWidth: "500px",
       }}
       className="plain-card progress d-flex flex-column "
     >
       <div className="f-24 fw-700">
-        Step {step + 1} of 5 &bull; Job Details
+        Step {step + 1} of 4 &bull; Job Details
       </div>
       <p className="mb-8">
         Enter your details to join The #1 Mastermind On Global Communities - No
@@ -20,7 +22,7 @@ const JobDetailsForm = ({step, jobTypes, nextStep}) => {
           Job Title
           <span style={{ color: "red" }}>*</span>
         </label>
-        <input
+        <Field
           id="jobTitle"
           name="jobTitle"
           className="mb-8 classic-input w-100"
@@ -33,14 +35,14 @@ const JobDetailsForm = ({step, jobTypes, nextStep}) => {
           Job Type
           <span style={{ color: "red" }}>*</span>
         </label>
-        <select className="mb-8 classic-input w-100" type="text">
+        <Field name="jobType" className="mb-8 classic-input w-100" as="select">
           <option value="" hidden disabled></option>
           {jobTypes.map(({ id, type }, idx) => (
             <option key={idx} value={id}>
               {type}
             </option>
           ))}
-        </select>
+        </Field>
       </div>
 
       <div>
@@ -48,7 +50,7 @@ const JobDetailsForm = ({step, jobTypes, nextStep}) => {
           Job Type
           <span style={{ color: "red" }}>*</span>
         </label>
-        <input className="mb-8 classic-input w-100" type="text" />
+        <Field name="jobLocation" id="jobLocation" className="mb-8 classic-input w-100" type="text" />
       </div>
 
       <div className="d-flex justify-content-end">
