@@ -1,0 +1,13 @@
+.review {
+  margin-bottom: 1.5rem;
+  .review-mini {
+    color: $blue-600;
+    font-weight: 600;
+  }
+  .review-edit {
+    color: $blue-600;
+    cursor: pointer;
+    margin-left: 1rem;
+    font-weight: 600;
+  }
+}

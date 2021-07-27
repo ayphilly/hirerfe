@@ -36,14 +36,19 @@ const PostJob = () => {
       location: formData.jobLocation,
       latitude: "45.49494949",
       longitude: "33.030303",
-      type_id: formData.jobType,
+      type_id: parseInt(formData.jobType),
       salary: formData.jobSalary,
       description: formData.jobDescription,
       filters: {
         experience: false,
         location: false,
         salary_expectation: false,
-      } 
+      },
+      filter_values: {
+        experience: "4 years",
+        location: "Some Where",
+        salary_expectation: 100000,
+      },
     })
       .then(() => alert("Job Posted Successfully"))
       .catch(({ response }) => {
@@ -73,7 +78,7 @@ const PostJob = () => {
       case 2:
         return <JobFilterForm {...stepProps()} />;
       case 3:
-        return <JobReviewForm {...stepProps()} setStep={setStep}/>;
+        return <JobReviewForm {...stepProps()} setStep={setStep} />;
       default:
         return <div>Not Found</div>;
     }
@@ -84,11 +89,11 @@ const PostJob = () => {
       style={{ width: "100%", padding: "100px 0" }}
       className="d-flex flex-column align-items-center"
     >
-      <Formik initialValues={initialValues} onSubmit={values => submitForm(values)}>
-        <Form>
-
-      {_renderStepContent(step)}
-        </Form>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values) => submitForm(values)}
+      >
+        <Form>{_renderStepContent(step)}</Form>
       </Formik>
     </div>
   );
