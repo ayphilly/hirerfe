@@ -2,7 +2,8 @@
 
 .jobdescription-container{
     width: 100%;
-    height: 100em;
+    height: fit-content;
+    padding:30px ;
     background-color: #FAFCFF;
     // background-color: red;
     @include rowflex(center,center);
@@ -119,6 +120,7 @@
                 @include rowflex(flex-start, space-between);
                 width: 50%;
                 height: 15%;
+                margin-bottom: 50px;
                 img {
                     width: 100px;
                 }

@@ -13,8 +13,11 @@ import { faUserCheck, faUserTimes, faQuestionCircle} from '@fortawesome/free-sol
 import { Emptystate } from "../../../../talent/components/emptystate/emptystate"
 import { Empty } from "../../../../generals/emptyresult/emptyresult"
 import { Applicantprofile } from "../applicantprofile/applicantprofile"
+import { post, get } from "../../../../requests"
+import { useSelector } from "react-redux";
 export const Fulljob = () => {
 
+    const info = useSelector((state) => state.auth.authData);
     const { search } = useLocation()
     const values = queryString.parse(search)
     const [active, setActive] = useState({
@@ -23,11 +26,7 @@ export const Fulljob = () => {
     })
 
     const [viewtalent, setView] = useState(false)
-
-    const [response, setResponse] = useState({
-        status: true,
-        message:'Nothing to show'
-    })
+    const [response, setResponse] = useState({})
 
     var jobSelect = () => {
         setActive({
@@ -45,20 +44,46 @@ export const Fulljob = () => {
     var Talentview = ()=> {
         setView (!viewtalent)
     }
-    useEffect(()=> {
-        if (values.id > 4) {
-            setResponse({
-                status:false,
-                message:'Nothing to show'
-            })
-        } else {
-            setResponse({
-                status:true,
-                message:'job available'
-            })
-        }
-    },[])
 
+    var getJob = ()=> {
+
+        get(`api/v1/employer/dashboard/job/${values.id}`)
+          .then((response) => {
+              if (response.status) {
+                  setResponse(response.data);
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+            setResponse(error.response.data);
+              console.log("Somethign went wrong");
+          });
+
+
+    }
+
+    useEffect(()=> {
+        getJob();
+        
+    },[])
+    // useEffect(()=> {
+    //     if (values.id > 4) {
+    //         setResponse({
+    //             status:false,
+    //             message:'Nothing to show'
+    //         })
+    //     } else {
+    //         setResponse({
+    //             status:true,
+    //             message:'job available'
+    //         })
+    //     }
+    // },[])
+    
     if (!response.status) {
 
         return (
@@ -86,9 +111,9 @@ export const Fulljob = () => {
                         <img src={profile} alt="company-profile"/>
                         <div className="top-jobdetails">
                             <div className="top-jobdetails top">
-                                <p>{values.name} {values.id}</p>
-                                <p>Excis Compliance LTD</p>
-                                <p>Lagos, Nigeria • Fulltime</p>
+                                <p>{response.data ? response.data.title : ''}</p>
+                                <p>{info.company_name}</p>
+                                <p>{response.data ? response.data.location + ' • ' + response.data.job_type : ''}</p>
                             </div>
                             <div className="top-jobdetails bottom">
                                 <button>Promote Job</button>
@@ -105,11 +130,13 @@ export const Fulljob = () => {
                             </div>
                             <div className={`fulljob-single applicant ${active.applicant ? ' active' : ' notactive'}`} onClick={ applicantSelect}>
                                 <p>Applicants</p>
-                                <p>20</p>
+                                <p>{response.data  ? response.data.applied_count : '0'}</p>
                             </div>
                         </div>
                         <div className={`job-info-container ${active.info ? ' sactive' : ' hide'} `}>
-                            <Jobinfo></Jobinfo>
+                            <Jobinfo
+                                data= {response ? response.data : ''}
+                            />
                         </div>
                         <div className={`job-applicant-container ${active.applicant ? ' sactive' : ' hide'}`}>
                             <Applicanttable 
@@ -132,24 +159,24 @@ export const Fulljob = () => {
     }
 }
 
-const Jobinfo = () => {
+const Jobinfo = (props) => {
     return (
         <div className="job-info-inner">
             
             <SingleInfo
                 image= {title}
                 title="Job Title"
-                subtitle="Front End Developer"
+                subtitle={props.data && props.data.title}
             />
             <SingleInfo
                 image= {type}
                 title="Job Type"
-                subtitle="Full Time • Lagos"
+                subtitle={props.data && props.data.job_type}
             />
             <SingleInfo
                 image= {salary}
                 title="Job Salary"
-                subtitle="Up to ₦100,000.00 per month"
+                subtitle={'Up to 100,000 Per Month'}
             />
             <SingleInfo
                 image= {description}

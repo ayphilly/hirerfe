@@ -5,17 +5,20 @@ import { faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
 import {Companyinfo} from "../../companyinfo/companyinfo"
 import {Jobapplication} from "../../jobapplication/jobapplication"
 import {useEffect, useState} from "react"
-import {useParams} from "react-router-dom";
+// import {useParams} from "react-router-dom";
+import { useParams,useLocation } from "react-router";
+import queryString from 'query-string'
 import {closeApplication, openApplication} from "../../../helper"
 import { get } from "../../../requests"
 export const Jobdescription = ()=> {
 
-    let { id } = useParams();
+    const { search } = useLocation()
+    const values = queryString.parse(search)
     const [job, setJob] = useState()
     const [error, setError] = useState({})
     
     const getJob = () => {
-        get(`api/v1/job/${id}`)
+        get(`api/v1/job/${values.id}`)
           .then((response) => {
   
               if (response.status) {
@@ -44,6 +47,10 @@ export const Jobdescription = ()=> {
         
     })
 
+    useEffect(()=> {
+
+    }, [])
+
      return(
         <div className="jobdescription-container">
             <div className="jobdescription-inner-col">
@@ -56,7 +63,7 @@ export const Jobdescription = ()=> {
                             <p>Administrative Officer</p>
                             <p>Aspire Consulting</p>
                             <p>Lagos <strong>• Fulltime</strong></p>
-                            <button className="apply-job"> Apply Now {id} </button>
+                            <button className="apply-job"> Apply Now {values.id} </button>
 
                         </div>
 

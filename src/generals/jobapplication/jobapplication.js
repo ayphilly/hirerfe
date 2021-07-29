@@ -13,10 +13,12 @@ export const Jobapplication = (props) => {
     const [optionValue, setOptionValue] = useState("");
 
     const handleSelect = (e) => {
+        e.preventDefault();
         console.log(e.target.value);
         setOptionValue(e.target.value);
     };
     var handleCheckboxChange = (event) => {
+        // event.preventDefault();
         setCheck(event.checkState)
     }
 
@@ -37,7 +39,7 @@ export const Jobapplication = (props) => {
 
                 </div>
                 <form>
-                    <Singleinputlabel
+                    {/* <Singleinputlabel
                         type="text"
                         label ="Full Name"
                         name="fullname"
@@ -52,19 +54,19 @@ export const Jobapplication = (props) => {
                         value=""
                         disabled= {false}
                         // onChange={props.setInput}
-                    />
+                    /> */}
                     <div className="form-cv">
                         <p>CV</p>
                         <div className="cv-choose-file">
                             <button className="file">Choose File</button>
                             <p>No File Chosen Yet</p>
                         </div>
-                        <div className="form-drag-drop">
+                        {/* <div className="form-drag-drop">
                             <div className="drag-drop-inner">
                                 <p>Drag and Drop To Attach Files</p>
                                 <p>Attach additional documents</p>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="form-cover-letter">
                         <p>Cover Letter </p>
