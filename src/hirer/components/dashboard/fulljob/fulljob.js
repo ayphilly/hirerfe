@@ -47,7 +47,7 @@ export const Fulljob = () => {
 
     var getJob = ()=> {
 
-        get(`api/v1/employer/dashboard/job/${values.id}`)
+        get(`/v1/employer/dashboard/job/${values.id}`)
           .then((response) => {
               if (response.status) {
                   setResponse(response.data);
