@@ -39,7 +39,7 @@ export const Dashboardjobs = () => {
         history.push(`/dashboard/hirer/myjob/?name=${title}&id=${id}`);
     }
     var getData = ()=> {
-        get(`api/v1/employer/dashboard`)
+        get(`/v1/employer/dashboard`)
           .then((response) => {
   
               if (response.status) {
@@ -60,7 +60,7 @@ export const Dashboardjobs = () => {
 
     }
     // var getData = ()=> {
-    //     get(`api/v1/employer/dashboard/jobs`)
+    //     get(`/v1/employer/dashboard/jobs`)
     //       .then((response) => {
   
     //           if (response.status) {
@@ -84,7 +84,7 @@ export const Dashboardjobs = () => {
         getData();
     }, [])
     
-    var postJobs = data.status ? data.recent_jobs.map ((job)=> {
+    var postJobs = data.status ? data.data.recent_jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 id={job.id}

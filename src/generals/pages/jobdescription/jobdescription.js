@@ -18,7 +18,7 @@ export const Jobdescription = ()=> {
     const [error, setError] = useState({})
     
     const getJob = () => {
-        get(`api/v1/job/${values.id}`)
+        get(`/v1/job/${values.id}`)
           .then((response) => {
   
               if (response.status) {

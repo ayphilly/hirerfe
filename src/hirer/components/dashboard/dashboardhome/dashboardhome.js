@@ -37,7 +37,7 @@ const DashboardHome= (props) => {
     }): 0;
 
     var getDashboardData = ()=> {
-        get(`api/v1/employer/dashboard`)
+        get(`/v1/employer/dashboard`)
           .then((response) => {
   
               if (response.status) {
@@ -73,7 +73,7 @@ const DashboardHome= (props) => {
                         link = 'myjobs'
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
-                        number = {data.data ?data.data.total_jobs: 0 }
+                        number = {data.data ? data.data.total_jobs: 0 }
                         subtext = "Total Jobs Posted"
                         view = {viewBox}
                     ></Singlebox>
@@ -95,7 +95,7 @@ const DashboardHome= (props) => {
                         image = {Box}
                         title = "Candidates"
                         subtitle = "Check the total amount of talents received"
-                        number = {data.data ?data.data.applicants_count: 0 }
+                        number = {data.data ? data.data.applicants_count: 0 }
                         subtext = "Total Number of Candidates"
                     ></Singlebox>
 
