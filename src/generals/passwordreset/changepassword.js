@@ -113,7 +113,7 @@ export const Changepassword = (props) => {
             response= {response}
             height={650}
         >
-            <form onSubmit={changePassword}>
+            <form onSubmit={changePassword} className="changepassword-form">
                 <Singleinputlabel
                     type="password"
                     label ="Password"

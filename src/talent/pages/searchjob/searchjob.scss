@@ -151,7 +151,7 @@
                     }
                     
                     .search-input {
-                        @include rowflex(flex-end, space-between);
+                        @include rowflex(center, space-between);
                         width: 95%;
 
                         @include breakpoint(mobileonly) {

@@ -78,14 +78,14 @@
                 @include fontBold(2em, 1.4em, $blue-902);
                 height: 20px;
                 @include breakpoint(mobileonly) {
-                    @include fontBold(1.5em, 1em, $blue-300);
+                    @include fontBold(1.5em, 1em, $blue-902);
                 }
 
             }
             p:nth-child(2) {
                 @include fontNormal(1em, 1em, $blue-901);
                 @include breakpoint(mobileonly) {
-                    @include fontNormal(.8em, 1em, $blue-300);
+                    @include fontNormal(.8em, 1em, $blue-901);
                 }
 
             }

@@ -3,17 +3,20 @@ import  { Dropdown, Option }  from "../../../generals/inputs/dropdown/dropdown"
 import  MapContainer  from "../../../generals/map/googlemap"
 import {Creatjobalert} from "../../components/jobalert/createjobalert"
 import {Jobfilter} from "../../components/jobfilter/jobfilter"
-import {useParams} from "react-router-dom";
+import {useParams, useLocation} from "react-router-dom";
+import queryString from 'query-string'
 import {useState, useEffect} from "react"
 import Jobsearch from "../../components/jobsearch/jobsearch";
 import { get } from "../../../requests";
 export const Searchcontainer = (props) => {
   
     let { jobtitle, location } = useParams();
+    const { search } = useLocation()
+    const values = queryString.parse(search)
 
     const [formState, setForm ] = useState({
-        jobtitle: jobtitle,
-        location: location
+        jobtitle: values.title,
+        location: values.location
        
     })
     const [optionValue, setOptionValue] = useState("");
@@ -118,7 +121,6 @@ export const Searchcontainer = (props) => {
                                     <div className="single-filter">
                                         <button className="accordion">
                                             Employment Type
-                                            
                                         </button>
                                         <ul className="panel">
                                             

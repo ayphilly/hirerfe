@@ -3,7 +3,7 @@
 .popular-container {
     width: 100%;
     height: 50vh;
-    @include rowflex(flex-start, center);
+    @include rowflex(flex-end, center);
     position: relative;
     // z-index: -2;
     @include breakpoint(mobileonly) {
@@ -24,7 +24,7 @@
 
     @include breakpoint(laptop) {
         height: 35em;
-        @include rowflex(flex-start,center);
+        @include rowflex(flex-end,center);
     }
     .inner {
         @include colflex(center, space-between);
@@ -58,7 +58,6 @@
 
         
         .popular-headline {
-            
             p:nth-child(1) {
                 @include fontBold(2em, 1.4em, $blue-902);
                 height: 20px;
@@ -84,7 +83,7 @@
             grid-template-rows: 65px;
             column-gap: 15px;
             row-gap: 20px;
-            width: 100%;
+            width: fit-content;
             align-items: space-between;
             cursor: pointer;
 
@@ -127,8 +126,8 @@
         .popular-search-link {
             @include fontNormal(1em, 1em, $blue-700);
             text-decoration: none;
-            width: 20%;
-            @include rowflexx(center);
+            width: fit-content;
+            @include rowflex(center,center);
 
             @include breakpoint(mobileonly) {
                 width:100%;

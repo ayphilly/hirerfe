@@ -5,12 +5,21 @@ import verizon from "../talentassets/logo-verizon.svg"
 import search from "../talentassets/searching.svg"
 import Jobsearch from "./jobsearch/jobsearch"
 import { useParams, useHistory, useLocation } from "react-router";
+import queryString from 'query-string'
 import {useState,useEffect} from "react"
 import {slideUp} from "../../helper.js"
 function Banner () {
     let history = useHistory();
+    
+
     var redirect = (jobtitle,location)=> {
-        history.push(`/talent/searchjob/${jobtitle}/${location}`);
+        if (jobtitle || location) {
+            history.push(`/talent/searchjob/?title=${jobtitle}&location=${location}`);
+        }
+        else {
+            alert("type in something")
+        }
+        
     }
     const [formState, setForm ] = useState({
         jobtitle: '',
