@@ -14,6 +14,16 @@ const initialValues = {
   jobType: "",
   jobDescription: "",
   jobSalary: 0,
+  filters: {
+    experience: false,
+    location: false,
+    salary_expectation: false,
+  },
+  filter_values: {
+    experience: "",
+    location: "",
+    salary_expectation: "",
+  },
 };
 
 let schema = yup.object().shape({
@@ -30,6 +40,10 @@ const PostJob = () => {
 
   const submitForm = (formData) => {
     console.log(formData);
+    const {
+      filters,
+      filter_values: { experience, location, salary_expectation },
+    } = formData;
     // Check Valid, then post
     post("/v1/job/create", {
       title: formData.jobTitle,
@@ -40,14 +54,16 @@ const PostJob = () => {
       salary: "" + formData.jobSalary,
       description: formData.jobDescription,
       filters: {
-        experience: false,
-        location: false,
-        salary_expectation: false,
+        experience,
+        location,
+        salary_expectation,
       },
       filter_values: {
-        experience: "4 years",
-        location: "Some Where",
-        salary_expectation: 100000,
+        ...(filters.experience && { experience }),
+        ...(filters.location && { location }),
+        ...(filters.salary_expectation && {
+          salary_expectation: "" + salary_expectation,
+        }),
       },
     })
       .then(() => alert("Job Posted Successfully"))

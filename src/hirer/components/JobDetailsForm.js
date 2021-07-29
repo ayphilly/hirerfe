@@ -1,6 +1,6 @@
 import { Field } from "formik";
 
-const JobDetailsForm = ({step, jobTypes, nextStep}) => {
+const JobDetailsForm = ({ step, jobTypes, nextStep }) => {
   return (
     <div
       style={{
@@ -10,9 +10,7 @@ const JobDetailsForm = ({step, jobTypes, nextStep}) => {
       }}
       className="plain-card progress d-flex flex-column "
     >
-      <div className="f-24 fw-700">
-        Step {step + 1} of 4 &bull; Job Details
-      </div>
+      <div className="f-24 fw-700">Step {step + 1} of 4 &bull; Job Details</div>
       <p className="mb-8">
         Enter your details to join The #1 Mastermind On Global Communities - No
         Catch - Pay Once, get twelve months full access.
@@ -50,11 +48,18 @@ const JobDetailsForm = ({step, jobTypes, nextStep}) => {
           Job Location
           <span style={{ color: "red" }}>*</span>
         </label>
-        <Field name="jobLocation" id="jobLocation" className="mb-8 classic-input w-100" type="text" />
+        <Field
+          name="jobLocation"
+          id="jobLocation"
+          className="mb-8 classic-input w-100"
+          type="text"
+        />
       </div>
 
       <div className="d-flex justify-content-end">
-        <button onClick={()=>nextStep()} className="btn btn-primary w-100">Continue</button>
+        <button onClick={() => nextStep()} className="btn btn-primary w-100">
+          Continue
+        </button>
       </div>
     </div>
   );
