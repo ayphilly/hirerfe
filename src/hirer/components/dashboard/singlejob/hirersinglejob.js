@@ -11,7 +11,7 @@ function Hirersinglejob  (props) {
 
 
     return (
-        <div className="hirer-job-container" onClick={() => props.view && props.view(props.id)}>
+        <div className="hirer-job-container" onClick={() => props.view && props.view(props.title,props.id)}>
             <div className="hirer-job-inner-col">
                 <div className="hirer-job-inner-top">
                     <div className="hirer-job-profile">

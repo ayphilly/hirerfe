@@ -3,6 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import DashboardHome from "./dashboardhome/dashboardhome"
 import { Dashboardjobs } from "./dashboardjobs/dashboardjobs";
 import { Fulljob } from "./fulljob/fulljob";
+import { Applicantprofile } from "./applicantprofile/applicantprofile";
 const steps = [
     {id: 'dashboard'},
     {id: 'jobposts'},
@@ -30,7 +31,7 @@ const Show = (props) => {
             case "home":
                 return <DashboardHome  {...props} ></DashboardHome>;
             case "postjob":
-                return <DashboardHome  {...props} ></DashboardHome>;
+                return <Applicantprofile  {...props} ></Applicantprofile >;
             case "myjobs":
                 return <Dashboardjobs {...props} ></Dashboardjobs>;
             case `myjob`:

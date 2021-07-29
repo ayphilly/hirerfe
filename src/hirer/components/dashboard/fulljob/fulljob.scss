@@ -3,9 +3,50 @@
 .fulljob-container {
     width: 100%;
     height: 100%;
-
+    position: relative;
     @include rowflex(center,space-around);
+    .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        background: rgba(112, 184, 255, 0.15);
+        backdrop-filter: blur(10px);
+        transition: all 1s ease-in;
+        &.active {
+          // display: none;
+          // display: flex;
+          // visibility: hidden;
+          z-index: 7;
+          display: flex;
+          transition: all 1s ease-in;
+        }
+        &.hidden {
+            display: none;
+            transition: all 1s ease-in;
+        }
+    }
+    .show-talent-profile {
+        box-shadow: 0px 0px 15px #F5F5F5;
+        position: absolute;
+        top: 7%;
+        right: 20%;
+        z-index:9;
+        width: fit-content;
+        height: fit-content;
+        // @include rowflex(center,center);
 
+        &.active {
+            // display: none;
+            // display: flex;
+            // visibility: hidden;
+            @include rowflex(center,center);
+        }
+        &.hidden {
+            display: none;
+        }
+    }
     .fulljob-inner {
         width: 95%;
         height: 90%;
