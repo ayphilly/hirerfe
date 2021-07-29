@@ -54,9 +54,7 @@ const PostJob = () => {
       salary: "" + formData.jobSalary,
       description: formData.jobDescription,
       filters: {
-        experience,
-        location,
-        salary_expectation,
+        ...filters,
       },
       filter_values: {
         ...(filters.experience && { experience }),

@@ -11,6 +11,7 @@ const JobReviewForm = ({ step, setStep }) => {
         "--width": `${(step + 1) * 25}%`,
         width: "90%",
         maxWidth: "500px",
+        margin: "auto",
       }}
       className="plain-card progress d-flex flex-column "
     >
