@@ -1,8 +1,7 @@
 
 import Singlejob from "../../components/singlejob/singlejob"
 import {jobSearch} from "../../constants"
-import {useParams, useLocation} from "react-router-dom";
-
+import {useParams, useLocation, useHistory} from "react-router-dom";
 import {useState, useEffect} from "react"
 import {accordionFunc} from "../../../helper"
 import { Empty } from "../../../generals/emptyresult/emptyresult";
@@ -11,6 +10,7 @@ import { post,get} from "../../../requests";
 import "./jobresults.scss"
 export const Jobresult = () => {
 
+    var history = useHistory();
     const [myjobs, setJobs]= useState()
     const [status, setStatus] = useState(null);
     const [response, setResponse] = useState({
@@ -48,6 +48,10 @@ export const Jobresult = () => {
         
     }
 
+    var goToJob = (id)=> {
+        history.push(`/talent/jobdescription?id=${id}`);
+    }
+
     var jobs = jobSearch.map (job=> {
         return (
             <Singlejob
@@ -60,6 +64,7 @@ export const Jobresult = () => {
                 type={job.type}
                 click ={openAction}
                 save = {saveJob}
+                goto = {goToJob}
             >
 
             </Singlejob>

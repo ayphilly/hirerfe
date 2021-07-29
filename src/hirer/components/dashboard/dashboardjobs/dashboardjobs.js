@@ -7,9 +7,11 @@ import { useState, useEffect } from "react"
 import { Emptystate } from "../../../../talent/components/emptystate/emptystate"
 import applicationsimage from "../../../hirerassets/Archived.svg"
 import { useHistory } from "react-router"
+import { post, get } from "../../../../requests"
 export const Dashboardjobs = () => {
 
     const history = useHistory();
+    const [data, setData] = useState({})
     const [active, setActive] = useState({
         post: true,
         draft: false
@@ -36,12 +38,53 @@ export const Dashboardjobs = () => {
         // var name ='Ademola Okon';
         history.push(`/dashboard/hirer/myjob/?name=${title}&id=${id}`);
     }
+    var getData = ()=> {
+        get(`api/v1/employer/dashboard`)
+          .then((response) => {
+  
+              if (response.status) {
+  
+                  setData(response.data)
+                  
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+            setData(error.response.data)
+              console.log("Somethign went wrong")
+          });
+
+    }
+    // var getData = ()=> {
+    //     get(`api/v1/employer/dashboard/jobs`)
+    //       .then((response) => {
+  
+    //           if (response.status) {
+  
+    //               setData(response.data.data)
+                  
+    //           } else {
+    //             //  setError({
+    //             //       status: response.data.status,
+    //             //       message: response.data.message
+    //             //   })
+    //           }
+              
+    //       }, (error) => {
+    //           console.log("Somethign went wrong"+ error.reponse.data.message)
+    //       });
+
+    // }
 
     useEffect(()=> {
-        
-    })
+        getData();
+    }, [])
     
-    var postJobs = dashList.map ((job)=> {
+    var postJobs = data.status ? data.recent_jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 id={job.id}
@@ -56,7 +99,7 @@ export const Dashboardjobs = () => {
 
             </Hirersinglejob>
         )
-    })
+    }): 0;
 
     
     useEffect(()=> {
@@ -73,7 +116,7 @@ export const Dashboardjobs = () => {
                         image = {Box}
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
-                        number = "15"
+                        number = {data.data ? data.data.total_jobs: 0}
                         subtext = "Total Jobs Posted"
                     ></Singlebox>
                 </div>
@@ -81,7 +124,7 @@ export const Dashboardjobs = () => {
                     <div className="dash-jobs-nav-link" id="dash-jobs-nav-link">
                         <div className={`dash-jobs-single postedjob ${active.post ? ' active' : ' notactive'}`} onClick={ postSelect}>
                             <p>Posted Jobs</p>
-                            <p>{postedJobs}</p>
+                            <p>{data.data? data.data.count : 0}</p>
                         </div>
                         <div className={`dash-jobs-single draft ${active.draft ? ' active' : ' notactive'}`} onClick={ draftSelect}>
                             <p>Drafts</p>
@@ -89,7 +132,14 @@ export const Dashboardjobs = () => {
                         </div>
                     </div>
                     <div className={`postedjob-container ${active.post ? ' sactive' : ' hide'} `}>
-                    {postJobs}
+                        { postJobs == 0 ? 
+                            <Emptystate
+                                image= {applicationsimage}
+                                title = "Nothing To Show"
+                                subtitle=" Nothing to show here, folder seems empty"
+                            />
+                            
+                        : postJobs}
                     </div>
                     <div className={`draft-container ${active.draft ? ' sactive' : ' hide'}`}>
                         <Drafts jobs={postJobs}></Drafts>

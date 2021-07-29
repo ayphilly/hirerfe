@@ -13,7 +13,7 @@ function Singlejob  (props) {
 
 
     return (
-        <div className="resultjob-container">
+        <div className="resultjob-container" onClick={()=> props.goto(props.id)}>
             <div className="singlejob-inner-col">
                 <div className="single-inner-top">
                     <div className="single-job-profile">

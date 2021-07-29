@@ -20,7 +20,9 @@ export default  class CheckBox extends React.Component {
   }
 
   onCheckChanged(event) {
+    event.preventDefault();
     const { checked } = this.props;
+    
     event.stopPropagation();
 
     if (this.props.onChange !== null && this.props.onChange !== undefined) {

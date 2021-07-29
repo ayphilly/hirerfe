@@ -3,7 +3,7 @@
 .jobapplication-container{
 
     width: 70%;
-    height: 100em;
+    height: 75em;
     background: #FFFFFF;
     box-shadow: 0px 0px 15px #EBEBEB;
     border-radius: 15px;
@@ -126,8 +126,7 @@
             }
             .form-cv {
                 width: 100%;
-                height: 25%;
-                
+                height: 150px;
                 @include colflex(flex-start, space-between);
 
                 @include breakpoint (mobileonly) {
@@ -144,7 +143,7 @@
                 }
 
                 @include breakpoint (laptop) {
-                    height: 35%;
+                    height: 150px;
                     @include colflex(flex-start, space-around);
                 }
                 p:nth-child(1) {
@@ -162,7 +161,7 @@
                     }
                 }
                 .cv-choose-file {
-                    width: 40%;
+                    width: fit-content;
                     height: 10%;
                     @include rowflex(center, space-between);
 
@@ -185,7 +184,7 @@
                     }
 
                     @include breakpoint (laptop) {
-                        width: 45%;
+                        width: fit-content;
                         height: 10%;
                         @include rowflex(center, space-between);
                     }
@@ -193,9 +192,11 @@
                     button {
                         width: 150px;
                         height: 60px;
+                        border-radius: 10px;
                         background-color: transparent;
                         border: 1px solid $blue-700;
                         @include fontMedium(1em, 1em, $blue-700);
+                        margin-right: 20px;
                     }
                     p:nth-child(2) {
                         @include fontMedium(1.2em, 1em, $gray-500);
@@ -244,7 +245,7 @@
 
             .form-cover-letter {
                 width: 100%;
-                height: 35%;
+                height: 400px;
                 @include colflex(flex-start,space-between);
 
 
@@ -262,7 +263,7 @@
                 }
 
                 @include breakpoint (laptop) {
-                    height: 45%;
+                    height: 400px;
                     @include colflex(flex-start, space-around);
                 }
 

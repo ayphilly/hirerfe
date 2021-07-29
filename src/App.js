@@ -143,7 +143,7 @@ function App() {
         />
         <TalentWithNavbar
           exact
-          path="/talent/jobdescription/:id"
+          path="/talent/jobdescription"
           component={Jobdescription}
         />
         <TalentWithNavbar
