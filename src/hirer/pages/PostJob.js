@@ -37,7 +37,7 @@ const PostJob = () => {
       latitude: "45.49494949",
       longitude: "33.030303",
       type_id: parseInt(formData.jobType),
-      salary: formData.jobSalary,
+      salary: "" + formData.jobSalary,
       description: formData.jobDescription,
       filters: {
         experience: false,
