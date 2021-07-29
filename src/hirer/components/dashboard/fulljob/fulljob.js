@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCheck, faUserTimes, faQuestionCircle} from '@fortawesome/free-solid-svg-icons'
 import { Emptystate } from "../../../../talent/components/emptystate/emptystate"
 import { Empty } from "../../../../generals/emptyresult/emptyresult"
+import { Applicantprofile } from "../applicantprofile/applicantprofile"
 export const Fulljob = () => {
 
     const { search } = useLocation()
@@ -20,6 +21,8 @@ export const Fulljob = () => {
         info: true,
         applicant: false
     })
+
+    const [viewtalent, setView] = useState(false)
 
     const [response, setResponse] = useState({
         status: true,
@@ -39,9 +42,11 @@ export const Fulljob = () => {
             applicant: true
         })
     }
-
+    var Talentview = ()=> {
+        setView (!viewtalent)
+    }
     useEffect(()=> {
-        if (values.id != 1) {
+        if (values.id > 4) {
             setResponse({
                 status:false,
                 message:'Nothing to show'
@@ -107,11 +112,21 @@ export const Fulljob = () => {
                             <Jobinfo></Jobinfo>
                         </div>
                         <div className={`job-applicant-container ${active.applicant ? ' sactive' : ' hide'}`}>
-                            <Applicanttable></Applicanttable>
+                            <Applicanttable 
+                                view={Talentview}
+                            ></Applicanttable>
                         </div>
                         
                     </div>
                 </div>
+                <div className={`show-talent-profile ${viewtalent ? 'active': 'hidden'}`}>
+                    <Applicantprofile
+                        name="Ademola Okon"
+                        close = {Talentview}
+                    />
+                </div>
+                <div className={`overlay ${viewtalent ? 'active': 'hidden'}`}></div>
+                
             </div>
         )
     }
@@ -164,7 +179,7 @@ const SingleInfo = (props)=> {
     )
 }
 
-const Applicanttable = ()=> {
+const Applicanttable = (props)=> {
 
     return (
         <div className="job-applicant-inner">
@@ -184,7 +199,7 @@ const Applicanttable = ()=> {
                         <td>Test Name</td>
                         <td>Awaiting review</td>
                         <td>Dom</td>
-                        <td> <a>View</a></td>
+                        <td> <a onClick={props.view}>View</a></td>
                         <td>12/120/2021</td>
                         <td>
                             <div className="action-box green">

@@ -32,9 +32,9 @@ export const Dashboardjobs = () => {
     const [postedJobs, setPostedjobs] = useState();
     const [draftJobs, setDraftjobs] = useState();
     
-    var viewJob = (id)=> {
-        var name ='Ademola Okon';
-        history.push(`/dashboard/hirer/myjob/?name=${name}&id=${id}`);
+    var viewJob = (title,id)=> {
+        // var name ='Ademola Okon';
+        history.push(`/dashboard/hirer/myjob/?name=${title}&id=${id}`);
     }
 
     useEffect(()=> {
