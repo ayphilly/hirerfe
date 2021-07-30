@@ -86,7 +86,7 @@ export const Signin =()=> {
                 role:data.data.role
             })
             setTimeout(()=> {
-                data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
+                data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
             }, 1000)
             return data;
         } catch (err) {
