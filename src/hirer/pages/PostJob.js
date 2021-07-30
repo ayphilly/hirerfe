@@ -109,7 +109,7 @@ const PostJob = () => {
       case 1:
         return <JobDescForm {...stepProps()} />;
       case 2:
-        return <JobFilterForm {...stepProps()} jobtitle={formData.jobTitle}/>;
+        return <JobFilterForm {...stepProps()} />;
       case 3:
         return <JobReviewForm {...stepProps()} setStep={setStep} />;
       default:
