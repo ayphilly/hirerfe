@@ -14,8 +14,8 @@ const DashboardHome= (props) => {
     const dashData = useSelector((state) => state.company.dashboard);
     const [data, setData] = useState({})
 
-    var viewJob = (id)=> {
-        history.push(`/dashboard/hirer/myjob/?id=${id}`);
+    var viewJob = (title,id)=> {
+        history.push(`/dashboard/hirer/myjob/?title=${title}id=${id}`);
     }
     var viewBox = (link)=> {
        

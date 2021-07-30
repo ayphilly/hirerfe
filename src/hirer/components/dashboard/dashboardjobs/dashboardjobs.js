@@ -38,7 +38,7 @@ export const Dashboardjobs = () => {
     
     var viewJob = (title,id)=> {
         // var name ='Ademola Okon';
-        history.push(`/dashboard/hirer/myjob/?name=${title}&id=${id}`);
+        history.push(`/dashboard/hirer/myjob/?title=${title}&id=${id}`);
     }
     var getData = ()=> {
         get(`/v1/employer/dashboard`)

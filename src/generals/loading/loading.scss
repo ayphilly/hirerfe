@@ -23,7 +23,7 @@
 
 
 .loading-container {
-    width: 150px;
+    width: 200px;
     height: 150px;
     @include rowflex(center,center);
 
@@ -34,7 +34,7 @@
         img {
             width: 60px;
 
-            animation: rotate 1.5s linear forwards infinite;
+            animation: rotate 1s linear forwards infinite;
         }
 
         p{
