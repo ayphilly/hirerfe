@@ -27,7 +27,7 @@ const DashboardHome= (props) => {
             <Hirersinglejob
                 key ={job.id}
                 id={job.id}
-                title={job.jobtitle}
+                title={job.title}
                 company={job.company}
                 location={job.location}
                 type={job.type}
