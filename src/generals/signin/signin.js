@@ -76,7 +76,7 @@ export const Signin =()=> {
     //     })
     // }
 
-    getUserData = async () => {
+    var getUserData = async () => {
         try {
             const {data} = await post('/v1/auth/login', formState);
             dispatch(setAuthData(data.data));
@@ -92,7 +92,7 @@ export const Signin =()=> {
             console.log(err.message);
         }
     }
-    getEmpData = async () => {
+    var getEmpData = async () => {
         try {
             const {data} = await get(`/v1/employer/dashboard`);
             dispatch(setDashboard(data.data));
