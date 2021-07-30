@@ -15,7 +15,7 @@ const DashboardHome= (props) => {
     const [data, setData] = useState({})
 
     var viewJob = (title,id)=> {
-        history.push(`/dashboard/hirer/myjob/?title=${title}id=${id}`);
+        history.push(`/dashboard/hirer/myjob/?title=${title}&id=${id}`);
     }
     var viewBox = (link)=> {
        
