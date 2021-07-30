@@ -8,6 +8,7 @@ import JobDescForm from "../components/JobDescForm";
 import JobFilterForm from "../components/JobFilterForm";
 import JobReviewForm from "../components/JobReviewForm";
 import { setDashboard } from "../../slices/companySlice"
+import {useDispatch } from 'react-redux'
 const initialValues = {
   jobTitle: "",
   jobLocation: "",
@@ -35,6 +36,7 @@ let schema = yup.object().shape({
 });
 
 const PostJob = () => {
+  const dispatch = useDispatch()
   const [step, setStep] = useState(0);
   const [jobTypes, setJobTypes] = useState([]);
 
