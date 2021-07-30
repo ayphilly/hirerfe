@@ -8,8 +8,10 @@ import { Emptystate } from "../../../../talent/components/emptystate/emptystate"
 import applicationsimage from "../../../hirerassets/Archived.svg"
 import { useHistory } from "react-router"
 import { post, get } from "../../../../requests"
+import { useSelector } from "react-redux";
 export const Dashboardjobs = () => {
 
+    const dashData = useSelector((state) => state.company.dashboard);
     const history = useHistory();
     const [data, setData] = useState({})
     const [active, setActive] = useState({
@@ -84,7 +86,7 @@ export const Dashboardjobs = () => {
         getData();
     }, [])
     
-    var postJobs = data.status ? data.data.recent_jobs.map ((job)=> {
+    var postJobs = dashData.recent_jobs.length < 1 ?  dashData.recent_jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 id={job.id}
@@ -116,7 +118,7 @@ export const Dashboardjobs = () => {
                         image = {Box}
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
-                        number = {data.data ? data.data.total_jobs: 0}
+                        number = { dashData.recent_jobs.length < 1 ?  dashData.data.total_jobs: 0}
                         subtext = "Total Jobs Posted"
                     ></Singlebox>
                 </div>
@@ -124,7 +126,7 @@ export const Dashboardjobs = () => {
                     <div className="dash-jobs-nav-link" id="dash-jobs-nav-link">
                         <div className={`dash-jobs-single postedjob ${active.post ? ' active' : ' notactive'}`} onClick={ postSelect}>
                             <p>Posted Jobs</p>
-                            <p>{data.data? data.data.count : 0}</p>
+                            <p>{dashData.recent_jobs.length < 1? dashData.total_jobs : 0}</p>
                         </div>
                         <div className={`dash-jobs-single draft ${active.draft ? ' active' : ' notactive'}`} onClick={ draftSelect}>
                             <p>Drafts</p>

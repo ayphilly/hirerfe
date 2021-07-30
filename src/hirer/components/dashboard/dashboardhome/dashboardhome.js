@@ -7,10 +7,11 @@ import { useHistory } from "react-router"
 import {useState, useEffect} from "react"
 import { post, get } from "../../../../requests";
 import { Empty } from "../../../../generals/emptyresult/emptyresult";
+import { useSelector } from "react-redux";
 const DashboardHome= (props) => {
 
     const history = useHistory();
-
+    const dashData = useSelector((state) => state.company.dashboard);
     const [data, setData] = useState({})
 
     var viewJob = (id)=> {
@@ -21,7 +22,7 @@ const DashboardHome= (props) => {
        
         history.push(`/dashboard/hirer/${link}`);
     }
-    var postedJobs = data.status ? data.data.recent_jobs.map ((job)=> {
+    var postedJobs = dashData.recent_jobs.length < 1 ? dashData.recent_jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 key ={job.id}
@@ -73,7 +74,7 @@ const DashboardHome= (props) => {
                         link = 'myjobs'
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
-                        number = {data.data ? data.data.total_jobs: 0 }
+                        number = {dashData.total_jobs.length < 1 ? dashData.total_jobs: 0 }
                         subtext = "Total Jobs Posted"
                         view = {viewBox}
                     ></Singlebox>
@@ -95,7 +96,7 @@ const DashboardHome= (props) => {
                         image = {Box}
                         title = "Candidates"
                         subtitle = "Check the total amount of talents received"
-                        number = {data.data ? data.data.applicants_count: 0 }
+                        number = {dashData.applicant_count.length < 1 ? dashData.applicant_count: 0 }
                         subtext = "Total Number of Candidates"
                     ></Singlebox>
 

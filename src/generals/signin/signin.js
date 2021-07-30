@@ -7,12 +7,15 @@ import axios from "axios"
 import {post, get} from "../../requests"
 import {useDispatch } from 'react-redux'
 import { setAuthData } from "../../slices/authSlice"
+import { setDashboard } from "../../slices/companySlice"
 import {useHistory} from "react-router";
 import { Link } from 'react-router-dom';
 import {Socialoption} from "../createaccount/socialsoption"
+import { useSelector } from "react-redux";
 export const Signin =()=> {
 
     const dispatch = useDispatch()
+    const authdata = useSelector((state) => state.auth.authData);
     let history = useHistory();
     const [formState, setFormstate] = useState({
         email: '',
@@ -30,48 +33,87 @@ export const Signin =()=> {
 
        setFormstate({...formState, [name]: value});
     }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     // alert(JSON.stringify(formState))
+    //     post('/v1/auth/login', formState)
+    //     .then((response) => {
+    //         // console.log(response);
+
+    //         if (response.status) {
+    //             // console.log(response.data.status);
+    //             // console.log(response.data.data.name);
+    //             dispatch(setAuthData(response.data.data));
+                
+    //             setResponse({
+    //                 status: response.data.status,
+    //                 message: response.data.message
+    //             })
+
+    //             setTimeout(()=> {
+    //                 response.data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
+    //             }, 2000)
+                
+                
+                
+
+    //         } else {
+
+    //             console.log(response);
+    //             setResponse({
+    //                 status: response.status,
+    //                 message: response.message
+    //             })
+    //         }
+            
+    //     }, (error) => {
+    //         // console.log(error.response.data.status)
+    //         setResponse({
+    //             status: error.response.data.status,
+    //             message: error.response.data.message
+    //         })
+           
+    //     })
+    // }
+
+    getUserData = async () => {
+        try {
+            const {data} = await post('/v1/auth/login', formState);
+            dispatch(setAuthData(data.data));
+            setResponse({
+                status: data.status,
+                message: data.message
+            })
+            setTimeout(()=> {
+                data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
+            }, 2000)
+            // return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+    getEmpData = async () => {
+        try {
+            const {data} = await get(`/v1/employer/dashboard`);
+            dispatch(setDashboard(data.data));
+            // return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // alert(JSON.stringify(formState))
-        post('/v1/auth/login', formState)
-        .then((response) => {
-            // console.log(response);
+        getUserData();
+        if (authdata.role === "company") {
+            getEmpData();
+        }
+        
 
-            if (response.status) {
-                // console.log(response.data.status);
-                // console.log(response.data.data.name);
-                dispatch(setAuthData(response.data.data));
-                
-                setResponse({
-                    status: response.data.status,
-                    message: response.data.message
-                })
-
-                setTimeout(()=> {
-                    response.data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
-                }, 2000)
-                
-                
-                
-
-            } else {
-
-                console.log(response);
-                setResponse({
-                    status: response.status,
-                    message: response.message
-                })
-            }
-            
-        }, (error) => {
-            // console.log(error.response.data.status)
-            setResponse({
-                status: error.response.data.status,
-                message: error.response.data.message
-            })
-           
-        });
     }
+    
+
     const socials = (event) => {
         event.preventDefault();
       
