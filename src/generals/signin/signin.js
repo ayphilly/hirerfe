@@ -107,11 +107,10 @@ export const Signin =()=> {
         event.preventDefault();
         // alert(JSON.stringify(formState))
         getUserData();
-        if (response.role === "company") {
-            return getEmpData();
-        }
+        setTimeout(()=> {
+            response.role === "company" ? getEmpData() : console.log('welcome back')
+        }, 2000)
         
-
     }
     
 
