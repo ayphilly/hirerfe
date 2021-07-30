@@ -22,7 +22,7 @@ const DashboardHome= (props) => {
        
         history.push(`/dashboard/hirer/${link}`);
     }
-    var postedJobs = dashData.data ? dashData.recent_jobs.map ((job)=> {
+    var postedJobs = dashData.data ? dashData.data.recent_jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 key ={job.id}
@@ -74,7 +74,7 @@ const DashboardHome= (props) => {
                         link = 'myjobs'
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
-                        number = {dashData.data ? dashData.total_jobs: 0 }
+                        number = {dashData.data ? dashData.data.total_jobs: 0 }
                         subtext = "Total Jobs Posted"
                         view = {viewBox}
                     ></Singlebox>
@@ -96,7 +96,7 @@ const DashboardHome= (props) => {
                         image = {Box}
                         title = "Candidates"
                         subtitle = "Check the total amount of talents received"
-                        number = {dashData.data ? dashData.applicant_count: 0 }
+                        number = {dashData.data ? dashData.data.applicant_count: 0 }
                         subtext = "Total Number of Candidates"
                     ></Singlebox>
 
