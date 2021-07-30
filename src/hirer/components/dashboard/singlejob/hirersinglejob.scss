@@ -140,8 +140,9 @@
                     width: 45%;
                 }
                 p{
-                    width: 80px;
+                    width: fit-content;
                     height: 40px;
+                    padding: 5px;
                     border-radius: 5px;
                     background-color: $green-100;
                     @include fontNormal(1em, 0em, $green-901);

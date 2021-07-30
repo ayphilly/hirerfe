@@ -91,7 +91,7 @@ export const Dashboardjobs = () => {
             <Hirersinglejob
                 id={job.id}
                 key ={job.id}
-                title={job.jobtitle}
+                title={job.title}
                 company={job.company}
                 location={job.location}
                 type={job.type}

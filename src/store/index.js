@@ -7,7 +7,7 @@ import avatarReducer from "../slices/avatarSlice";
 
 function saveToLocalStorage({ auth,company }) {
   try {
-    const serialisedState = JSON.stringify({ auth, company});
+    const serialisedState = JSON.stringify({ auth});
     localStorage.setItem("hirer-redux-state", serialisedState);
   } catch (e) {
     console.warn(e);
