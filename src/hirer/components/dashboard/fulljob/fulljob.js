@@ -90,7 +90,12 @@ export const Fulljob = () => {
     if (load) {
 
         return (
-            <Loading></Loading>
+            <div className="fulljob-container">
+                <div className="fulljob-inner">
+                    <Loading></Loading>
+                </div>
+            </div>
+            
         )
 
     } 
