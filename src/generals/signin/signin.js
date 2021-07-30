@@ -107,7 +107,7 @@ export const Signin =()=> {
         // alert(JSON.stringify(formState))
         getUserData();
         if (authdata.role === "company") {
-            return getEmpData();
+            getEmpData();
         }
         
 
