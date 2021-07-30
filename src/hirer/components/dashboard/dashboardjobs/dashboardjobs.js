@@ -86,7 +86,7 @@ export const Dashboardjobs = () => {
         getData();
     }, [])
     
-    var postJobs = dashData.recent_jobs.length < 1 ?  dashData.recent_jobs.map ((job)=> {
+    var postJobs = dashData.data?  dashData.recent_jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 id={job.id}
@@ -118,7 +118,7 @@ export const Dashboardjobs = () => {
                         image = {Box}
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
-                        number = { dashData.recent_jobs.length < 1 ?  dashData.data.total_jobs: 0}
+                        number = { dashData.data ?  dashData.data.total_jobs: 0}
                         subtext = "Total Jobs Posted"
                     ></Singlebox>
                 </div>
@@ -126,7 +126,7 @@ export const Dashboardjobs = () => {
                     <div className="dash-jobs-nav-link" id="dash-jobs-nav-link">
                         <div className={`dash-jobs-single postedjob ${active.post ? ' active' : ' notactive'}`} onClick={ postSelect}>
                             <p>Posted Jobs</p>
-                            <p>{dashData.recent_jobs.length < 1? dashData.total_jobs : 0}</p>
+                            <p>{dashData.data? dashData.total_jobs : 0}</p>
                         </div>
                         <div className={`dash-jobs-single draft ${active.draft ? ' active' : ' notactive'}`} onClick={ draftSelect}>
                             <p>Drafts</p>

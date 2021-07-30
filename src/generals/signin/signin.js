@@ -95,7 +95,7 @@ export const Signin =()=> {
     var getEmpData = async () => {
         try {
             const {data} = await get(`/v1/employer/dashboard`);
-            dispatch(setDashboard(data.data));
+            dispatch(setDashboard(data));
             // return data;
         } catch (err) {
             console.log(err.message);
@@ -107,7 +107,7 @@ export const Signin =()=> {
         // alert(JSON.stringify(formState))
         getUserData();
         if (authdata.role === "company") {
-            getEmpData();
+            return getEmpData();
         }
         
 
