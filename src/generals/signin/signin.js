@@ -11,11 +11,10 @@ import { setDashboard } from "../../slices/companySlice"
 import {useHistory} from "react-router";
 import { Link } from 'react-router-dom';
 import {Socialoption} from "../createaccount/socialsoption"
-import { useSelector } from "react-redux";
 export const Signin =()=> {
 
     const dispatch = useDispatch()
-    const authdata = useSelector((state) => state.auth.authData);
+    
     let history = useHistory();
     const [formState, setFormstate] = useState({
         email: '',
@@ -24,7 +23,8 @@ export const Signin =()=> {
 
     const [response, setResponse] = useState({
         status: null,
-        message: ''
+        message: '',
+        role:''
     })
 
     const handleUserInput = (e) =>{
@@ -82,7 +82,8 @@ export const Signin =()=> {
             dispatch(setAuthData(data.data));
             setResponse({
                 status: data.status,
-                message: data.message
+                message: data.message,
+                role=data.data.role
             })
             setTimeout(()=> {
                 data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
@@ -106,8 +107,8 @@ export const Signin =()=> {
         event.preventDefault();
         // alert(JSON.stringify(formState))
         getUserData();
-        if (authdata.role === "company") {
-            getEmpData();
+        if (response.role === "company") {
+            return getEmpData();
         }
         
 
