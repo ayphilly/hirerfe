@@ -35,7 +35,7 @@ function Hirersinglejob  (props) {
                         <p>
                             New
                             <FontAwesomeIcon icon={faClock} className="clock-icon" />
-                            {props.days}d
+                            1d
 
                         </p>
 

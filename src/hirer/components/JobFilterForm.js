@@ -74,7 +74,7 @@ const JobFilterForm = ({ step, previousStep, nextStep }) => {
         <div>
           <label className="mb-3" htmlFor="yearsExperience">
             How many years experience in{" "}
-            <span style={{ color: "#4385c6" }}>Accounting</span>?
+            <span style={{ color: "#4385c6" }}>{props.jobtitle}</span>?
           </label>
           <Field
             id="yearsExperience"

@@ -51,7 +51,7 @@ const PostJob = () => {
   }
 
   const submitForm = (formData) => {
-    console.log(formData);
+    // console.log(formData);
     const {
       filters,
       filter_values: { experience, location, salary_expectation },
@@ -109,7 +109,7 @@ const PostJob = () => {
       case 1:
         return <JobDescForm {...stepProps()} />;
       case 2:
-        return <JobFilterForm {...stepProps()} />;
+        return <JobFilterForm {...stepProps()} jobtitle={formData.jobTitle}/>;
       case 3:
         return <JobReviewForm {...stepProps()} setStep={setStep} />;
       default:
