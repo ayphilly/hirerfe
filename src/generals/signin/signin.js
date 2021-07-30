@@ -86,7 +86,7 @@ export const Signin =()=> {
             })
             setTimeout(()=> {
                 data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
-            }, 2000)
+            }, 1000)
             // return data;
         } catch (err) {
             console.log(err.message);

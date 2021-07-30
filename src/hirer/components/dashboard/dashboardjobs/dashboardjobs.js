@@ -82,11 +82,11 @@ export const Dashboardjobs = () => {
 
     // }
 
-    useEffect(()=> {
-        getData();
-    }, [])
+    // useEffect(()=> {
+    //     getData();
+    // }, [])
     
-    var postJobs = dashData.data?  dashData.recent_jobs.map ((job)=> {
+    var postJobs = dashData.data ?  dashData.data.recent_jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 id={job.id}
@@ -126,7 +126,7 @@ export const Dashboardjobs = () => {
                     <div className="dash-jobs-nav-link" id="dash-jobs-nav-link">
                         <div className={`dash-jobs-single postedjob ${active.post ? ' active' : ' notactive'}`} onClick={ postSelect}>
                             <p>Posted Jobs</p>
-                            <p>{dashData.data? dashData.total_jobs : 0}</p>
+                            <p>{dashData.data? dashData.data.total_jobs : 0}</p>
                         </div>
                         <div className={`dash-jobs-single draft ${active.draft ? ' active' : ' notactive'}`} onClick={ draftSelect}>
                             <p>Drafts</p>

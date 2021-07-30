@@ -5,9 +5,9 @@ import talentReducer from "../slices/talentSlice";
 import resetpasswordReducer from "../slices/resetpasswordSlice";
 import avatarReducer from "../slices/avatarSlice";
 
-function saveToLocalStorage({ auth }) {
+function saveToLocalStorage({ auth,company }) {
   try {
-    const serialisedState = JSON.stringify({ auth });
+    const serialisedState = JSON.stringify({ auth, company});
     localStorage.setItem("hirer-redux-state", serialisedState);
   } catch (e) {
     console.warn(e);
