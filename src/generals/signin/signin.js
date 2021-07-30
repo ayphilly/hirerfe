@@ -83,7 +83,7 @@ export const Signin =()=> {
             setResponse({
                 status: data.status,
                 message: data.message,
-                role=data.data.role
+                role:data.data.role
             })
             setTimeout(()=> {
                 data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
