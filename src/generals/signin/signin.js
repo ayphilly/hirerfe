@@ -88,7 +88,7 @@ export const Signin =()=> {
             setTimeout(()=> {
                 data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
             }, 1000)
-            // return data;
+            return data;
         } catch (err) {
             console.log(err.message);
         }
@@ -97,7 +97,7 @@ export const Signin =()=> {
         try {
             const {data} = await get(`/v1/employer/dashboard`);
             dispatch(setDashboard(data));
-            // return data;
+            return data;
         } catch (err) {
             console.log(err.message);
         }
@@ -106,10 +106,9 @@ export const Signin =()=> {
     const handleSubmit = (event) => {
         event.preventDefault();
         // alert(JSON.stringify(formState))
-        getUserData();
-        setTimeout(()=> {
-            response.role === "company" ? getEmpData() : console.log('welcome back')
-        }, 2000)
+        getUserData().then((response) => {
+            response.data.role === "company" ? getEmpData() : console.log('welcome back')
+        })
         
     }
     
