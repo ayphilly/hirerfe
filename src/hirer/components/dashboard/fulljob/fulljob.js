@@ -15,6 +15,7 @@ import { Empty } from "../../../../generals/emptyresult/emptyresult"
 import { Applicantprofile } from "../applicantprofile/applicantprofile"
 import { post, get } from "../../../../requests"
 import { useSelector } from "react-redux";
+import { Loading } from "../../../../generals/loading/loading"
 export const Fulljob = () => {
 
     const info = useSelector((state) => state.auth.authData);
@@ -24,7 +25,7 @@ export const Fulljob = () => {
         info: true,
         applicant: false
     })
-
+    const [load, setLoad] = useState(true)
     const [viewtalent, setView] = useState(false)
     const [response, setResponse] = useState({})
 
@@ -51,6 +52,7 @@ export const Fulljob = () => {
           .then((response) => {
               if (response.status) {
                   setResponse(response.data);
+                  setLoad(false)
               } else {
                 //  setError({
                 //       status: response.data.status,
@@ -59,7 +61,8 @@ export const Fulljob = () => {
               }
               
           }, (error) => {
-            setResponse(error.response.data);
+                setResponse(error.response.data);
+                setLoad(false)
               console.log("Somethign went wrong");
           });
 
@@ -84,9 +87,16 @@ export const Fulljob = () => {
     //     }
     // },[])
     
-    if (!response.status) {
+    if (load) {
 
         return (
+            <Loading></Loading>
+        )
+
+    } 
+    else if (!response.status) {
+        return (
+            
             <div className="fulljob-container">
                 <div className="fulljob-inner">
                     <Empty
@@ -96,10 +106,8 @@ export const Fulljob = () => {
                 </div>
                 
             </div>
-            
         )
-
-    } 
+    }
     
     else {
 
