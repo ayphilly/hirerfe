@@ -6,12 +6,14 @@ import { useState, useEffect } from "react";
 import queryString from 'query-string'
 import apiClient from "../../api"
 import {post, get} from "../../requests"
+import { Loading } from "../loading/loading";
 const Accountverification = () => {
 
     let history = useHistory();
 
     const { search } = useLocation()
     const values = queryString.parse(search)
+    const [load, setLoad] = useState(true)
     // alert(JSON.stringify(values))
     
     const [message, setMessage] = useState({
@@ -54,6 +56,7 @@ const Accountverification = () => {
                 status: true,
                 text: "Your email has been successfully verified"
             })
+            setLoad(false)
             
         }, (error) => {
             console.log(values)
@@ -61,6 +64,7 @@ const Accountverification = () => {
                 status: false,
                 text: "Your email could not be verified, Verification token is expired/invalid"
             })
+            setLoad(false)
             console.log(error);
             
         });
@@ -76,33 +80,49 @@ const Accountverification = () => {
 
     }, [])
 
-    
 
-    
-    return (
-        <div className="account-verification-container">
-           
-            <div className="account-verification-box">
-                <div className={` account-verification-rect  + ${message.status ? '' : ' error'} ` }></div>
+    if (load) {
+
+        return (
+            <div className="account-verification-container">
                 
-                <div className="box-inner">
-
-                    { message.status ? <img src={Check} alt="Check-icon"/> : <img src={Errorclose} alt="error-icon"/>}
-
-                    <p className={`${message.status ? '' : ' error'} ` }>
-                        {message.text}
-                    </p>
-                    <button className="verify-btn" onClick={ message.status ? goToSignin : resendVerification }> 
-                        {message.status ? "Go To Sign In" : "Resend Verification "}
-                    </button>
-
-                </div>
-                
-
+                    <Loading></Loading>
             </div>
+            
+        )
 
-        </div>
-    )
+    } else {
+        return (
+            <div className="account-verification-container">
+               
+                <div className="account-verification-box">
+                    <div className={` account-verification-rect  + ${message.status ? '' : ' error'} ` }></div>
+                    
+                    <div className="box-inner">
+    
+                        { message.status ? <img src={Check} alt="Check-icon"/> : <img src={Errorclose} alt="error-icon"/>}
+    
+                        <p className={`${message.status ? '' : ' error'} ` }>
+                            {message.text}
+                        </p>
+                        <button className="verify-btn" onClick={ message.status ? goToSignin : resendVerification }> 
+                            {message.status ? "Go To Sign In" : "Resend Verification "}
+                        </button>
+    
+                    </div>
+                    
+    
+                </div>
+    
+            </div>
+        )
+
+    }
+
+    
+
+    
+    
 
 }
 

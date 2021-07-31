@@ -33,6 +33,11 @@ export const Searchcontainer = (props) => {
        setForm({...formState,[name]:value});
        
     }
+    
+
+    useEffect(()=> {
+        props.jobsearch(formState.title, formState.location);
+    })
 
     
     
@@ -49,6 +54,7 @@ export const Searchcontainer = (props) => {
                                     handleUserInput={handleUserInput}
                                     formState={formState}
                                     address = {props.address}
+                                    myFunction={props.jobsearch}
                                 />
                             </div>
                             

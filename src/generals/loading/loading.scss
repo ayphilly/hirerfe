@@ -30,6 +30,7 @@
     .loading-inner {
         width: 90%;
         height: 90%;
+        @include colflex(center, space-around);
 
         img {
             width: 60px;

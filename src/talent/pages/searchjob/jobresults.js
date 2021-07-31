@@ -8,15 +8,19 @@ import { Empty } from "../../../generals/emptyresult/emptyresult";
 import { Searchcontainer } from "./searchcontainer"
 import { post,get} from "../../../requests";
 import "./jobresults.scss"
+import { Loading } from "../../../generals/loading/loading";
 export const Jobresult = () => {
 
     var history = useHistory();
-    const [myjobs, setJobs]= useState()
+    const [myjobs, setJobs]= useState({})
     const [status, setStatus] = useState(null);
+
+    const [load, setLoad] = useState(true)
     const [response, setResponse] = useState({
         status: null,
         message: ''
     })
+    
     const [error, setError] = useState({
         status: null,
         message: ''
@@ -52,7 +56,7 @@ export const Jobresult = () => {
         history.push(`/talent/jobdescription?id=${id}`);
     }
 
-    var jobs = jobSearch.map (job=> {
+    var jobs = myjobs.data ? myjobs.data.jobs.map (job=> {
         return (
             <Singlejob
                 key={job.id}
@@ -69,21 +73,23 @@ export const Jobresult = () => {
 
             </Singlejob>
         )
-    })
+    }):{}
 
-    const searchJobs = () => {
-        get('/v1/talent/job/')
+    const searchJobs = (title,location) => {
+        get(`/v1/job/search?title=${title}&location=${location}`)
           .then((response) => {
   
               if (response.status) {
   
-                  setJobs(response.data.data.jobs)
+                  setJobs(response.data)
+                  setLoad(false);
                   
               } else {
                  setResponse({
                       status: response.data.status,
                       message: response.data.message
                   })
+                  setLoad(false);
               }
               
           }, (error) => {
@@ -91,6 +97,7 @@ export const Jobresult = () => {
                   status: error.response.data.status,
                   message: error.response.data.message
               })
+              setLoad(false);
           });
  
     }
@@ -165,13 +172,35 @@ export const Jobresult = () => {
       return () => clearTimeout(timer);
     }, [userloc])
 
-    if (jobs.length < 1 ) {
+    useEffect(()=> {
+
+    })
+
+
+    if (load) {
         return(
             <div className="job-results-container">
                 <div className="job-results-inner">
                     <Searchcontainer
                         userloc={userloc}
                         address={addr}
+                        jobsearch={searchJobs}
+                    >
+                        <Loading></Loading>
+                    </Searchcontainer>
+                </div>
+    
+            </div>
+        )
+    }
+    else if (jobs.length < 1 ) {
+        return(
+            <div className="job-results-container">
+                <div className="job-results-inner">
+                    <Searchcontainer
+                        userloc={userloc}
+                        address={addr}
+                        jobsearch={searchJobs}
                     >
                         <Empty></Empty>
                     </Searchcontainer>
@@ -188,6 +217,7 @@ export const Jobresult = () => {
                     <Searchcontainer
                         userloc={userloc}
                         address={addr}
+                        jobsearch={searchJobs}
                     >
                        { jobs}
                     </Searchcontainer>

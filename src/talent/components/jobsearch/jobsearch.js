@@ -18,7 +18,7 @@ const Jobsearch = (props)=> {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.myFunction(props.formState.jobtitle, props.formState.location);
-       
+        
     }
     return (
             <div className="jobsearch-container">
@@ -33,7 +33,7 @@ const Jobsearch = (props)=> {
                                     label ="What ?"
                                     subtext="Job title"
                                     name="jobtitle"
-                                    value={props.formState ? props.formState.jobtitle :'dsfsdfs'}
+                                    value={props.formState ? props.formState.jobtitle :''}
                                     onChange={ props.handleUserInput ? (event) => props.handleUserInput(event) : ''}
                                     width={400}
                                 
