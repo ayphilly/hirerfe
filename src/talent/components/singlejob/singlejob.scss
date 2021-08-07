@@ -2,7 +2,7 @@
 
 
 .resultjob-container {
-    width: 430px;
+    width: 90%;
     height: 270px;
     background-color: #fff;
     border: 1px solid $gray-300;
@@ -43,8 +43,7 @@
         @include breakpoint(mobileonly) {
             width: 90%;
             height: 90%;
-            @include rowflex(center, space-evenly);
-            
+            @include colflex(center, space-evenly);
         }
         
         .single-inner-top {
@@ -117,6 +116,10 @@
             .vertical-icon {
                 color: $gray-500;
             }
+            .heart-icon {
+                color: $blue-700;
+                
+            }
             .job-action {
                 width: 200px;
                 height: fit-content;
@@ -187,76 +190,47 @@
                 height: 30px;
                 
             }
-            .bottom-left-details{
-                width: 45%;
+
+            
+
+            p:nth-child(1){
+                width: 80px;
                 height: 40px;
-                text-align: left;
-                @include rowflex(center,space-between);
+                border-radius: 5px;
+                background-color: $green-100;
+                @include fontNormal(1em, 0em, $green-901);
+                @include rowflex(center, center);
 
                 @include breakpoint(mobileonly) {
-                    width: 45%;
+                    @include fontNormal(1em, 0em, $blue-901);
                 }
 
                 @include breakpoint(phablet) {
-                    width: 45%;
-                }
-                p{
-                    width: 80px;
-                    height: 40px;
-                    border-radius: 5px;
-                    background-color: $green-100;
-                    @include fontNormal(1em, 0em, $green-901);
-                    @include rowflex(center, center);
-
-                    @include breakpoint(mobileonly) {
-                        @include fontNormal(1em, 0em, $blue-901);
-                    }
-
-                    @include breakpoint(phablet) {
-                        @include fontNormal(1em, 0em, $blue-901);
-                        
-                    }
-
-                    @include breakpoint(mobileonly) {
-                        @include fontNormal(1em, 0em, $blue-901);
-                    }
-                }
-
-                .level{
-                    width: 80px;
-                    background-color: $blue-100;
                     @include fontNormal(1em, 0em, $blue-901);
-                    // @include rowflex(center, center);
-                    @include breakpoint(mobileonly) {
-                        @include fontNormal(.8em, 0em, $blue-901);
-                    }
+                    
+                }
 
-                    @include breakpoint(phablet) {
-                        @include fontNormal(1em, 0em, $blue-901);
-                        
-                    }
+                @include breakpoint(mobileonly) {
+                    @include fontNormal(1em, 0em, $blue-901);
+                }
+            }
+
+            p:nth-child(2){
+                width: 90px;
+                @include fontNormal(1em, 1em, $blue-901);
+                @include rowflex(center, space-around);
+                @include breakpoint(mobileonly) {
+                    width: 100px;
+                    @include fontNormal(1em, 0em, $blue-901);
+                }
+
+                @include breakpoint(phablet) {
+                    @include fontNormal(1em, 0em, $blue-901);
+                    
                 }
 
             }
-            .bottom-right{
-                width: 25%;
-                p{
-                    @include fontNormal(1em, 1em, $blue-901);
-                    @include rowflex(center, space-around);
-                    @include breakpoint(mobileonly) {
-                        width: 100px;
-                        @include fontNormal(1em, 0em, $blue-901);
-                    }
-
-                    @include breakpoint(phablet) {
-                        @include fontNormal(1em, 0em, $blue-901);
-                        
-                    }
-
-                }
-
-            }
-
+            
         }
 
     }

@@ -53,7 +53,7 @@ export const Jobresult = () => {
     }
 
     var goToJob = (id)=> {
-        history.push(`/talent/jobdescription?id=${id}`);
+        history.push(`/talent/jobdescription?name=${id}&id=${id}`);
     }
 
     var jobs = myjobs.data ? myjobs.data.jobs.map (job=> {
@@ -74,6 +74,7 @@ export const Jobresult = () => {
             </Singlejob>
         )
     }):{}
+
 
     const searchJobs = (title,location) => {
         get(`/v1/job/search?title=${title}&location=${location}`)
@@ -107,7 +108,7 @@ export const Jobresult = () => {
        
        
        post('/v1/talent/job/', {
-           id :1
+           id : id
        })
         .then((response) => {
 
@@ -180,11 +181,15 @@ export const Jobresult = () => {
     if (load) {
         return(
             <div className="job-results-container">
+                { response.message && <div className= {`job-results-message ${response.status ? 'success' : 'error'}`}>
+                        <p>{response.message}</p>
+                </div>}
                 <div className="job-results-inner">
                     <Searchcontainer
                         userloc={userloc}
                         address={addr}
                         jobsearch={searchJobs}
+                        totalResults = {myjobs.link && myjobs.links.total}
                     >
                         <Loading></Loading>
                     </Searchcontainer>

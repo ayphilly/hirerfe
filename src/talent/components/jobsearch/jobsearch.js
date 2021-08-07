@@ -1,6 +1,7 @@
 import "./jobsearch.scss"
 import Singleinput from "../../../generals/inputs/singleinput"
 import { useState} from "react";
+import Singleinputlocation from "../../../generals/location/location";
 const Jobsearch = (props)=> {
     
     const [formState, setForm ] = useState({
@@ -18,13 +19,12 @@ const Jobsearch = (props)=> {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.myFunction(props.formState.jobtitle, props.formState.location);
-        
     }
     return (
             <div className="jobsearch-container">
 
                 <div className="jobsearch-inner">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="job-search-form">
                         <div className="form-details-search">
                             <div className="search-title">
                                 <Singleinput
@@ -39,10 +39,8 @@ const Jobsearch = (props)=> {
                                 
                                 ></Singleinput>
                             </div>
-                            
-
                             <div className="search-location">
-                                <Singleinput
+                                {/* <Singleinput
                                     type="text"
                                     placeholder ="enter city name"
                                     label ="Where ?"
@@ -51,10 +49,18 @@ const Jobsearch = (props)=> {
                                     value={props.formState ? props.formState.location :''}
                                     onChange={ props.handleUserInput ? (event) => props.handleUserInput(event) : ''}
                                 
-                                ></Singleinput>
+                                ></Singleinput> */}
+                                <Singleinputlocation
+
+                                    label ="Where ?"
+                                    subtext="Enter State"
+                                    name="location"
+                                    value={props.formState ? props.formState.location :''}
+                                    handleUserLocation ={props.handleUserLocation }
+
+                                />
 
                             </div>
-
                         </div>
                         <button type="submit" className="job-search-submit" > Search {props.address} </button>
                     </form>

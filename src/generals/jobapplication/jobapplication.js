@@ -7,10 +7,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import {useState, useEffect} from "react"
+import Singleinputlocation from "../location/location";
 export const Jobapplication = (props) => {
 
     const [checked, setCheck] = useState(true);
     const [optionValue, setOptionValue] = useState("");
+
+    const [formState, setFormstate] = useState({
+        salary: null,
+        experience: null,
+        location: ''
+    })
+
+    const [response, setResponse] = useState({
+        status: null,
+        message: '',
+    })
+
+    const handleUserInput = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+
+       setFormstate({...formState, [name]: value});
+    }
+
+    const handleUserLocation = (location) => {
+        setFormstate({...formState, location});
+    }
 
     const handleSelect = (e) => {
         e.preventDefault();
@@ -27,9 +50,9 @@ export const Jobapplication = (props) => {
     },[])
 
     return (
-        <div className="jobapplication-container hidden">
+        <div className={`jobapplication-container ${props.open ?' ' : ' hidden'  }`}>
             <div className="jobapplication-inner-col">
-            <div className="jobapplication-close">
+            <div className="jobapplication-close" onClick={e=> props.openApp()}>
                 <FontAwesomeIcon icon={faTimes} className="asterisk-icon"/>
             </div>
                 <div className="jobapplication-inner-top">
@@ -94,42 +117,40 @@ export const Jobapplication = (props) => {
                     
                 
                     <div className="form-experience">
-                        <div className="form-qualifications">
-                            <Dropdown
-                                formLabel="Qualification"
-                                buttonText="Send form"
-                                onChange={handleSelect}
-                                // action="https://jsonplaceholder.typicode.com/posts"
-                            >
-                                <Option selected value="Click to see options" />
-                                <Option value="Degree" />
-                                <Option value="B-Tech" />
-                                <Option value="BSC" />
-                            </Dropdown>
-                            <Dropdown
-                                formLabel="Monthly Salary Expectation"
-                                buttonText="Send form"
-                                onChange={handleSelect}
-                                
-                            >
-                                <Option selected value="Click to see options" />
-                                <Option value="Degree" />
-                                <Option value="B-Tech" />
-                                <Option value="BSC" />
-                            </Dropdown>
-
-                        </div>
-                        <Dropdown
-                            formLabel="Monthly Salary Expectation"
-                            buttonText="Send form"
-                            onChange={handleSelect}
-                            
-                        >
-                            <Option selected value="Click to see options" />
-                            <Option value="Degree" />
-                            <Option value="B-Tech" />
-                            <Option value="BSC" />
-                        </Dropdown>
+                        {/* <div className="form-qualifications">
+                            <Singleinputlocation
+                                label ="Where ?"
+                                subtext="Enter State"
+                                name="location"
+                                value={props.formState ? props.formState.location :''}
+                                handleUserLocation ={props.handleUserLocation }
+                            ></Singleinputlocation>
+                            <Singleinputlabel></Singleinputlabel>
+                            <Singleinputlabel></Singleinputlabel>
+                        </div> */}
+                        {props.filters.location && <Singleinputlocation
+                            label ="Where ?"
+                            subtext="Enter State"
+                            name="location"
+                            value={formState.location}
+                            handleUserLocation ={handleUserLocation }
+                        />}
+                        {props.filters.experience && <Singleinputlabel
+                            type="integer"
+                            placeholder ="How many years of Desktop support experience do you have"
+                            label ="How many years of Desktop support experience do you have"
+                            name="experience"
+                            value={formState.experience}
+                            onChange={(event) => handleUserInput(event)}
+                        />}
+                        {props.filters.salary && <Singleinputlabel
+                            type="integer"
+                            placeholder ="What is your Monthly Salary Expectation ?"
+                            label ="What is your Monthly Salary Expectation ?"
+                            name="salary"
+                            value={formState.salary}
+                            onChange={(event) => handleUserInput(event)}
+                        />}
 
                     </div>
                     <div className="form-apply-button">
