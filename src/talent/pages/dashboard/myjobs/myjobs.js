@@ -24,7 +24,7 @@ export const Myjobs = (props) => {
         event.preventDefault();
        
        
-        del('/v1/talent/jobs/', { data: { id: id} })
+        del(`/v1/talent/jobs/${id}`)
         .then((response) => {
 
             if (response.status) {

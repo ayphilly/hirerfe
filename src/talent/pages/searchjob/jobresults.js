@@ -86,11 +86,11 @@ export const Jobresult = () => {
  
     }
 
-    var saveJob = (event, id)=> {
+    var saveJob = (id)=> {
         // event.preventDefault();
-       post('/v1/talent/job/', {
-           id : id
-       })
+       
+       
+       post(`/v1/talent/job/${id}`)
         .then((response) => {
 
             if (response.status) {
@@ -173,11 +173,7 @@ export const Jobresult = () => {
       return () => clearTimeout(timer);
     }, [userloc])
 
-    useEffect(()=> {
-
-    })
-
-
+  
     if (load) {
         return(
             <div className="job-results-container">
