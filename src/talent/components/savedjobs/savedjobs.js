@@ -1,37 +1,55 @@
 import "./savedjobs.scss"
 import {useEffect, useState} from "react"
-import savedjobimage from "../../talentassets/savedjobs.svg";
+import savedjobimage from "../../talentassets/Empty.svg";
 import {Emptystate} from "../emptystate/emptystate"
 import Singlejob from "../singlejob/singlejob"
 import {savedList} from "../../constants"
 import {openAction} from "../../../helper"
-
+import {useHistory} from "react-router-dom";
+import { Loading } from "../../../generals/loading/loading";
 export const Savedjobs = (props) => {
 
-    const [savedjobs, setSavedjobs] = useState([]);
+    var history = useHistory();
+    const saved = true;
+    
+    var goToJob = (name,id)=> {
+        history.push(`/talent/jobdescription?name=${name}&id=${id}`);
+    }
 
-    useEffect(()=> {
-        setSavedjobs(savedList);
-    },[])
-
-    var jobs = savedjobs.map (job=> {
+  
+    var jobs = props.savedJobs.data ? props.savedJobs.data.saved_jobs.map (job=> {
         return (
 
             <Singlejob
+                id={job.id}
                 key={job.icao}
                 title={job.title}
                 company={job.company}
-                days={job.days}
+                days={""}
                 location={job.location}
                 type={job.type}
                 click ={openAction}
+                saved = {saved}
+                goto = {goToJob}
+                delete={props.delete}
+
             >
 
             </Singlejob>
         )
-    })
+    }):""
 
-    if (savedjobs.length < 1 ) {
+
+    if (props.load) {
+        return(
+            <div className="saved-jobs-container">
+                <div className="saved-jobs-inner">
+                    <Loading></Loading>
+                </div>
+            </div>
+        )
+    }
+    else if (jobs.length < 1 ) {
         return (
             <Emptystate
                 image= {savedjobimage}

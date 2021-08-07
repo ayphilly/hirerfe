@@ -182,17 +182,17 @@ function App() {
 
         {/* Dashboard Talent */}
 
-        {/* <DashboardWithNavbar
+        <DashboardWithNavbar
           exact
-          path="/dashboard/talent"
+          path="/dashboard/talent/home"
           component={Dashboardhome}
-        /> */}
+        />
        
-        {/* <DashboardWithNavbar
+       <DashboardWithNavbar
           exact
-          path="/dashboard/myjobs"
+          path="/dashboard/talent/myjobs"
           component={Myjobs}
-        /> */}
+        />
          {/* <DashboardWithNavbar
           exact
           path="/dashboard/talent/account"
@@ -205,7 +205,7 @@ function App() {
         /> */}
 
         {/* Only logged in talent can access routes */}
-         <CustomRoute
+         {/* <CustomRoute
           condition="talent"
           exact
           path="/dashboard/talent/home"
@@ -216,7 +216,7 @@ function App() {
           exact
           path="/dashboard/talent/myjobs/:id"
           component={Myjobs}
-        />
+        /> */}
         
         <CustomRoute
           condition="talent"

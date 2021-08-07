@@ -33,11 +33,14 @@ export const Searchcontainer = (props) => {
        setForm({...formState,[name]:value});
        
     }
-    
+    const handleUserLocation = (location) => {
+        // setForm({...formState, location:location});
+        alert("Hi");
+    }
 
     useEffect(()=> {
         props.jobsearch(formState.title, formState.location);
-    })
+    },[])
 
     
     
@@ -48,13 +51,14 @@ export const Searchcontainer = (props) => {
                 <div className="searchjob-left">
                     <div className="searchjob-left-top">
                         
-                        <form>
+                        <form className="searchjob-form">
                             <div className="search-input">
                                 <Jobsearch
                                     handleUserInput={handleUserInput}
                                     formState={formState}
                                     address = {props.address}
                                     myFunction={props.jobsearch}
+                                    handleUserLocation ={handleUserLocation }
                                 />
                             </div>
                             
@@ -167,6 +171,7 @@ export const Searchcontainer = (props) => {
 
                         </div>
                         <div className="right">
+                            <p className="search-text">Showing results for <strong>{formState.location} </strong>• <strong>{props.totalResults ? props.totalResults : 0}</strong> jobs</p>
                             <div className="right-inner">
                                 {
                                     props.children

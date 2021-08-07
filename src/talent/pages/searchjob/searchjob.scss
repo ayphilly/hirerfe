@@ -47,7 +47,10 @@
             grid-template-columns: 100%;
             grid-template-rows: 20% 75% ;
             row-gap: 5%;
-            grid-auto-flow: dense;
+            // grid-auto-flow: dense;
+            align-items: flex-start;
+            justify-content: space-between;
+            justify-items: space-between;
         }
 
         @include breakpoint(phablet) {
@@ -81,12 +84,14 @@
         .searchjob-left {
             height: 100%;
             width: 100%;
-            @include colflex(flex-start, space-around);
+            @include colflex(flex-start, space-between);
 
             @include breakpoint(mobileonly) {
                 width: 100%;
-                height: auto;
+                height: fit-content;
+
                 @include colflex(flex-start,space-between);
+                padding: 10px;
             }
             @include breakpoint(phablet) {
                 width: 100%;
@@ -103,7 +108,7 @@
 
             .searchjob-left-top {
                 width: 100%;
-                height: 20%;
+                height: 400px;
                 @include colflex(flex-start,space-around);
 
                 @include breakpoint(mobileonly) {
@@ -127,7 +132,7 @@
 
                 
 
-                form {
+                .searchjob-form {
                     width: 100%;
                     height: 170px;
                     // @include colflex(flex-start,space-around);
@@ -136,7 +141,7 @@
                         width: 100%;
                         height: 100%;
                         // background-color: pink;
-                        @include rowflex(center, center);
+                        @include colflex(center, center);
                     }
                     @include breakpoint(phablet) {
                         width: 100%;
@@ -158,7 +163,7 @@
                             width: 90%;
                             height: 300px;
                             // background-color: red;
-                            @include colflex(flex-start, space-between);
+                            // @include colflex(flex-start, space-between);
                         }
                         @include breakpoint(phablet) {
                             width: 90%;
@@ -214,7 +219,8 @@
                         @include rowflex(flex-end, space-between);
 
                         @include breakpoint(mobileonly) {
-                            display: none;
+                            height: 200px;
+                            @include rowflex(flex-end, space-between);
                         }
 
                         @include breakpoint(laptop) {
@@ -259,7 +265,7 @@
 
             .searchjob-left-bottom {
                 width: 100%;
-                height: 75%;
+                height: 100%;
                 display: grid;
                 grid-template-columns: 30% 65%;
                 grid-template-rows: 100%;
@@ -377,12 +383,14 @@
 
                 .right {
                     width: 100%;
-                    height: 100%;
+                    height: fit-content;
+                    @include colflex(flex-start,space-evenly);
                     
                     @include breakpoint(mobileonly) {
-                        width: 90%;
+                        width: 100%;
                         height: 100%;
-                        @include rowflex(flex-start,center);
+                        padding: 20px;
+                        @include colflex(flex-start,space-evenly);
                     }
 
                     @include breakpoint(phablet) {
@@ -397,11 +405,15 @@
                         @include rowflex(flex-start,center);
                     }
 
+                    .search-text{
+                        @include fontMedium(1em, 1em, $gray-600);
+                    }
+
                     .right-inner {
                         width: 90%;
                         height: auto;
+                        // padding: 20px;
                         @include colflex(flex-start, space-between);
-
                         @include breakpoint(mobileonly) {
                             width: 100%;
                             height: 100%;
