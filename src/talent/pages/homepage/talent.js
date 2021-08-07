@@ -11,7 +11,7 @@ import job from "../../talentassets/jobs.svg";
 import review from "../../talentassets/review.svg";
 import boost from "../../talentassets/boost.svg";
 import suitcase from "../../talentassets/suitcase.svg";
-import { useEffect } from "react";
+import {useEffect } from "react";
 import { openPage } from "../../../helper";
 
 const Homepage = (props) => {

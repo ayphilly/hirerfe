@@ -49,18 +49,23 @@ export const openAction = () => {
   var mor = document.querySelectorAll(".vertical-icon");
   var action = document.querySelectorAll(".job-action");
   for (var i = 0; i < mor.length; i++) {
-    mor[i].addEventListener("click", function () {
-      if (this.nextSibling.style.display) {
-        this.nextSibling.style.display = "none";
-        // this.style.color ="red";
-      } else {
-        // this.nextSibling.style.display = "flex"
-        this.nextSibling.className += " moreactive";
-        // action[i].className+= ' moreractive';
-        // this.nextSibling.classList.toggle("moreactive");
-        this.style.color = "black";
-      }
-    });
+
+    if (mor[i]) {
+      return mor[i].addEventListener("click", function () {
+        if (this.nextSibling.style.display) {
+          this.nextSibling.style.display = "none";
+          // this.style.color ="red";
+        } else {
+          // this.nextSibling.style.display = "flex"
+          this.nextSibling.className += " moreactive";
+          // action[i].className+= ' moreractive';
+          // this.nextSibling.classList.toggle("moreactive");
+          this.style.color = "black";
+        }
+      });
+
+    }
+    
   }
 };
 
