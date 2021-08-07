@@ -75,6 +75,7 @@ export const Fulljob = () => {
         get(`/v1/employer/dashboard/job/${values.id}/applicants`)
           .then((response) => {
               if (response.status) {
+                  console.log(response.data)
                   setApplicants(response.data);
                 //   setLoad(false)
               } else {
@@ -258,7 +259,7 @@ const Applicanttable = (props)=> {
         )
     })
 
-    if (!props.applicants.status) {
+    if (!props.applicants.status  || props.applicants.data.length < 1) {
         return (
             <div>
                 <Empty

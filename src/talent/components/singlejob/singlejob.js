@@ -26,7 +26,7 @@ function Singlejob  (props) {
                     <FontAwesomeIcon icon={faHeart} className="heart-icon" size="2x" onClick={(event) => props.delete(event, props.id)}/>}
 
                     <div className="job-action">
-                        <div className="save" onClick={(event) => props.save(event, props.id)}>
+                        <div className="save" onClick={() => props.save(props.id)}>
                             <FontAwesomeIcon icon={faHeart} className="send-icon" />
                             <p> Save Job </p>
                         </div>
