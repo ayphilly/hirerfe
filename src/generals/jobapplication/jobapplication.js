@@ -45,9 +45,9 @@ export const Jobapplication = (props) => {
         setCheck(event.checkState)
     }
 
-    useEffect(()=> {
-        props.closeApplication();
-    },[])
+    // useEffect(()=> {
+    //     props.closeApplication();
+    // },[])
 
     return (
         <div className={`jobapplication-container ${props.open ?' ' : ' hidden'  }`}>

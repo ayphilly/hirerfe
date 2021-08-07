@@ -49,7 +49,7 @@ export const Jobdescription = ()=> {
     useEffect(()=> {
         getJob();
     }, [])
-    if (job.length > 0) {
+    if (job.status) {
         return(
             <div className="jobdescription-container">
                 <div className="jobdescription-inner-col">
