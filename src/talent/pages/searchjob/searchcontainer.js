@@ -38,7 +38,7 @@ export const Searchcontainer = (props) => {
     }
 
     useEffect(()=> {
-        props.jobsearch(formState.title, formState.location);
+        props.jobsearch(formState.jobtitle, formState.location);
     },[])
 
     
