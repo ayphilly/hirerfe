@@ -28,7 +28,7 @@ export const Savedjobs = (props) => {
                 days={""}
                 location={job.location}
                 type={job.type}
-                click ={openAction}
+                // click ={openAction}
                 saved = {saved}
                 goto = {goToJob}
                 delete={props.delete}
