@@ -52,7 +52,7 @@ export const Myjobs = (props) => {
 
     var getSavedJobs = ()=> {
        
-        get('/v1/talent/jobs/')
+        get('/v1/talent/jobs')
         .then((response) => {
 
             if (response.status) {

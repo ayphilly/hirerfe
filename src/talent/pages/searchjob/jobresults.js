@@ -185,7 +185,7 @@ export const Jobresult = () => {
                         userloc={userloc}
                         address={addr}
                         jobsearch={searchJobs}
-                        totalResults = {myjobs.link && myjobs.links.total}
+                        totalResults = {myjobs.links && myjobs.links.total}
                     >
                         <Loading></Loading>
                     </Searchcontainer>
@@ -202,7 +202,7 @@ export const Jobresult = () => {
                         userloc={userloc}
                         address={addr}
                         jobsearch={searchJobs}
-                        totalResults = {myjobs.link && myjobs.links.total}
+                        totalResults = {myjobs.links ? myjobs.links.total : 0}
                     >
                         <Empty></Empty>
                     </Searchcontainer>
@@ -220,7 +220,7 @@ export const Jobresult = () => {
                         userloc={userloc}
                         address={addr}
                         jobsearch={searchJobs}
-                        totalResults = {myjobs.link && myjobs.links.total}
+                        totalResults = {myjobs.links ? myjobs.links.total : 0}
                     >
                        { jobs}
                     </Searchcontainer>
