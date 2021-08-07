@@ -5,9 +5,9 @@ import { faEllipsisV, faClock, faBan, faExclamationCircle, faHeart} from '@forta
 import {useEffect} from "react"
 function Singlejob  (props) {
 
-    useEffect( () => {
-        props.click()
-    },[])
+    // useEffect( () => {
+    //     props.click()
+    // },[])
 
 
     return (
@@ -22,7 +22,7 @@ function Singlejob  (props) {
                             <p> {props.location} <strong> • {props.type} </strong> </p>
                         </div>
                     </div>
-                    {!props.saved ? <FontAwesomeIcon icon={faEllipsisV} className="vertical-icon" /> :
+                    {!props.saved ? <FontAwesomeIcon icon={faEllipsisV} className="vertical-icon" onClick={(e) => props.click()}/> :
                     <FontAwesomeIcon icon={faHeart} className="heart-icon" size="2x" onClick={(event) => props.delete(event, props.id)}/>}
 
                     <div className="job-action">
