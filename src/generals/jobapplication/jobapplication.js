@@ -128,14 +128,14 @@ export const Jobapplication = (props) => {
                             <Singleinputlabel></Singleinputlabel>
                             <Singleinputlabel></Singleinputlabel>
                         </div> */}
-                        {props.filters.location && <Singleinputlocation
+                        {props.filters.location > 0 && <Singleinputlocation
                             label ="Where ?"
                             subtext="Enter State"
                             name="location"
                             value={formState.location}
                             handleUserLocation ={handleUserLocation }
                         />}
-                        {props.filters.experience && <Singleinputlabel
+                        {props.filters.experience > 0 && <Singleinputlabel
                             type="integer"
                             placeholder ="How many years of Desktop support experience do you have"
                             label ="How many years of Desktop support experience do you have"
@@ -143,7 +143,7 @@ export const Jobapplication = (props) => {
                             value={formState.experience}
                             onChange={(event) => handleUserInput(event)}
                         />}
-                        {props.filters.salary && <Singleinputlabel
+                        {props.filters.salary > 0 && <Singleinputlabel
                             type="integer"
                             placeholder ="What is your Monthly Salary Expectation ?"
                             label ="What is your Monthly Salary Expectation ?"
