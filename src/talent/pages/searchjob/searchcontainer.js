@@ -34,8 +34,7 @@ export const Searchcontainer = (props) => {
        
     }
     const handleUserLocation = (location) => {
-        // setForm({...formState, location:location});
-        alert("Hi");
+        setForm({...formState, location:location});
     }
 
     useEffect(()=> {

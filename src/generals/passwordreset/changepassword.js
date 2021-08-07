@@ -68,7 +68,7 @@ export const Changepassword = (props) => {
        
        
         post('/v1/auth/reset-password', { 
-                email: data,
+                email: hash,
                 token:token,
                 password: password.password,
                 password_confirmation: cpassword.confirm_password

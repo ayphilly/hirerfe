@@ -91,6 +91,10 @@ export const Signin =()=> {
             return data;
         } catch (err) {
             console.log(err.message);
+            setResponse({
+                status: err.data.status,
+                message: err.data.message,
+            })
         }
     }
     var getEmpData = async () => {

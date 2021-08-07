@@ -32,7 +32,7 @@ const Singleinputlocation = (props) => {
           showSuggestions: true,
           userInput: e.currentTarget.value
         });
-        // props.handleUserLocation(userInput);
+        props.handleUserLocation(userInput);
         
     };
     var onClick = e => {
