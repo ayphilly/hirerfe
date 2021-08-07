@@ -18,7 +18,7 @@ export const Jobdescription = ()=> {
     const values = queryString.parse(search)
     const [job, setJob] = useState({})
     const [open, setOpen] = useState(false)
-    const [load, setOpen] = useState(true)
+    const [load, setLoad] = useState(true)
     const [error, setError] = useState({})
     const openApp = () => {
         setOpen(!open)
@@ -30,6 +30,7 @@ export const Jobdescription = ()=> {
               if (response.status) {
   
                   setJob(response.data)
+                  setLoad(false)
                   
               } else {
                  setError({
@@ -43,6 +44,7 @@ export const Jobdescription = ()=> {
                   status: error.response.data.status,
                   message: error.response.data.message
               })
+              setLoad(false)
           });
  
     }
