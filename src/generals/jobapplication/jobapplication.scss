@@ -298,7 +298,9 @@
             }
             .form-experience {
                 width: 100%;
-                height: 20%;
+                height: fit-content;
+                padding-top: 10px;
+                padding-bottom: 10px;
                 @include colflex(flex-start, space-between);
 
                 
@@ -332,6 +334,10 @@
                     @include breakpoint(tablet){
                         @include rowflex(center,space-between);
                     }
+                }
+
+                input{
+                    margin-top: 20px;
                 }
 
             }

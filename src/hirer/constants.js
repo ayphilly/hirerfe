@@ -191,5 +191,21 @@ export const certifications = [
 
 
 
-
+export const matches = [
+    {
+      status: false,
+      filter: "salary_expectation",
+      users_value: "70,000"
+    },
+    {
+      status: false,
+      filter: "location",
+      users_value: "Lagos, Nigeria"
+    },
+    {
+      status: false,
+      filter: "experience",
+      users_value: "1 years"
+    }
+  ]
 

@@ -16,7 +16,8 @@ export const Jobapplication = (props) => {
     const [formState, setFormstate] = useState({
         salary: null,
         experience: null,
-        location: ''
+        location: '',
+        cv:''
     })
 
     const [response, setResponse] = useState({
@@ -56,9 +57,9 @@ export const Jobapplication = (props) => {
                 <FontAwesomeIcon icon={faTimes} className="asterisk-icon"/>
             </div>
                 <div className="jobapplication-inner-top">
-                    <p>Application for the role of <strong>Desktop Technician</strong></p>
-                    <p> for <strong>Zik LTD</strong> Located in <strong> Ikeja,</strong> </p>
-                    <p><strong>Lagos</strong>  • Fulltime </p>
+                    <p>Application for the role of <strong>{props.job.data ? props.job.data.job[0].title: ''}</strong></p>
+                    <p> for <strong>{props.job.data ? props.job.data.job[0].company : ''}</strong> </p>
+                    <p><strong>{props.job.data ? props.job.data.job[0].location : ''}</strong>  • {props.job.data ? props.job.data.job[0].type : ''} </p>
 
                 </div>
                 <form>
@@ -80,10 +81,18 @@ export const Jobapplication = (props) => {
                     /> */}
                     <div className="form-cv">
                         <p>CV</p>
-                        <div className="cv-choose-file">
+                        {/* <div className="cv-choose-file">
                             <button className="file">Choose File</button>
                             <p>No File Chosen Yet</p>
-                        </div>
+                        </div> */}
+                        <Singleinputlabel
+                            type="text"
+                            placeholder ="Link to your CV"
+                            label ="Link to CV"
+                            name="cv"
+                            value={formState.cv}
+                            onChange={(event) => handleUserInput(event)}
+                        />
                         {/* <div className="form-drag-drop">
                             <div className="drag-drop-inner">
                                 <p>Drag and Drop To Attach Files</p>
@@ -143,7 +152,7 @@ export const Jobapplication = (props) => {
                             value={formState.experience}
                             onChange={(event) => handleUserInput(event)}
                         />}
-                        {props.filters.salary > 0 && <Singleinputlabel
+                        {props.filters.salary_expectation > 0 && <Singleinputlabel
                             type="integer"
                             placeholder ="What is your Monthly Salary Expectation ?"
                             label ="What is your Monthly Salary Expectation ?"

@@ -21,10 +21,10 @@ export const Savedjobs = (props) => {
         return (
 
             <Singlejob
-                id={job.id}
-                key={job.icao}
-                title={job.title}
-                company={job.company}
+                id={job.job.id}
+                key={job.job.id}
+                title={job.job.title}
+                company={job.job.company}
                 days={""}
                 location={job.location}
                 type={job.type}
@@ -37,7 +37,7 @@ export const Savedjobs = (props) => {
 
             </Singlejob>
         )
-    }):""
+    }):{}
 
 
     if (props.load) {
