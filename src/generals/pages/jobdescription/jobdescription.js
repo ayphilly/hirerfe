@@ -11,13 +11,14 @@ import queryString from 'query-string'
 import {closeApplication, openApplication} from "../../../helper"
 import { get } from "../../../requests"
 import { Emptystate } from "../../../talent/components/emptystate/emptystate"
-
+import { Loading } from "../../loading/loading"
 export const Jobdescription = ()=> {
 
     const { search } = useLocation()
     const values = queryString.parse(search)
     const [job, setJob] = useState({})
     const [open, setOpen] = useState(false)
+    const [load, setOpen] = useState(true)
     const [error, setError] = useState({})
     const openApp = () => {
         setOpen(!open)
@@ -49,7 +50,19 @@ export const Jobdescription = ()=> {
     useEffect(()=> {
         getJob();
     }, [])
-    if (job.status) {
+
+    if (load) {
+        return (
+            <div className="jobdescription-container">
+                <div className="jobdescription-inner-col">
+                    <Loading></Loading>
+
+                </div>
+            </div>
+
+        )
+    }
+    else if (job.status) {
         return(
             <div className="jobdescription-container">
                 <div className="jobdescription-inner-col">
@@ -123,7 +136,7 @@ export const Jobdescription = ()=> {
     
                 </div>
     
-                <div className="overlay hidden"></div> 
+                <div className={`overlay ${open ? ' active': ' hidden'}`}></div> 
                 <Jobapplication 
                     open = {open}
                     openApp= {openApp}

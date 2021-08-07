@@ -212,7 +212,9 @@
 
             .Jobdescription-left-overview{
                 width: 85%;
-                height: 300px;
+                height: fit-content;
+                padding-top: 20px;
+                padding-bottom: 20px;
                 background: #FFFFFF;
                 border: 1px solid $gray-300;
                 box-sizing: border-box;
