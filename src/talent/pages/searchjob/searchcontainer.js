@@ -15,7 +15,7 @@ export const Searchcontainer = (props) => {
     const values = queryString.parse(search)
 
     const [formState, setForm ] = useState({
-        jobtitle: values.title,
+        jobtitle: values.jobtitle,
         location: values.location
        
     })

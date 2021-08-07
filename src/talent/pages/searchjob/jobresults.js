@@ -52,8 +52,8 @@ export const Jobresult = () => {
         
     }
 
-    var goToJob = (id)=> {
-        history.push(`/talent/jobdescription?name=${id}&id=${id}`);
+    var goToJob = (name, id)=> {
+        history.push(`/talent/jobdescription?name=${name}&id=${id}`);
     }
 
     var jobs = myjobs.data ? myjobs.data.jobs.map (job=> {
@@ -76,8 +76,8 @@ export const Jobresult = () => {
     }):{}
 
 
-    const searchJobs = (title,location) => {
-        get(`/v1/job/search?title=${title}&location=${location}`)
+    const searchJobs = (jobtitle,location) => {
+        get(`/v1/job/search?title=${jobtitle}&location=${location}`)
           .then((response) => {
   
               if (response.status) {
