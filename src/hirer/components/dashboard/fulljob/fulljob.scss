@@ -313,6 +313,33 @@
                                 color: $blue-800;
                                 cursor: pointer;
                             }
+
+                            .table-matches {
+                                &.match {
+                                    color: $green-900;
+                                    border: 1px solid $green-500;
+                                    background-color: $green-100;
+                                    width: fit-content;
+                                    height: fit-content;
+                                    padding: 5px;
+                                    @include fontNormal(1em, 1em, $green-900);
+                                    p {
+                                        margin-left: 5px;
+                                    }
+                                }
+                                &.no-match {
+                                    color: $red-900;
+                                    border: 1px solid $red-500;
+                                    background-color: $red-100;
+                                    width: fit-content;
+                                    height: fit-content;
+                                    padding: 5px;
+                                    @include fontNormal(1em, 1em, $red-900);
+                                    p {
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
                         }
 
                         tbody tr {

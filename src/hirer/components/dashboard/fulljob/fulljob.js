@@ -9,7 +9,7 @@ import { useParams, useHistory, useLocation } from "react-router";
 import { useState, useEffect } from "react"
 import queryString from 'query-string'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCheck, faUserTimes, faQuestionCircle} from '@fortawesome/free-solid-svg-icons'
+import { faUserCheck, faUserTimes, faQuestionCircle, faCheck, faTimes} from '@fortawesome/free-solid-svg-icons'
 import { Emptystate } from "../../../../talent/components/emptystate/emptystate"
 import { Empty } from "../../../../generals/emptyresult/emptyresult"
 import { Applicantprofile } from "../applicantprofile/applicantprofile"
@@ -28,6 +28,7 @@ export const Fulljob = () => {
     const [load, setLoad] = useState(true)
     const [viewtalent, setView] = useState(false)
     const [response, setResponse] = useState({})
+    const [applicants, setApplicants] = useState({})
 
     var jobSelect = () => {
         setActive({
@@ -69,8 +70,32 @@ export const Fulljob = () => {
 
     }
 
+    var getApplicants = ()=> {
+
+        get(`/v1/employer/dashboard/job/${values.id}/applicants`)
+          .then((response) => {
+              if (response.status) {
+                  setApplicants(response.data);
+                //   setLoad(false)
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+                setApplicants(error.response.data);
+                // setLoad(false)
+              console.log("Somethign went wrong");
+          });
+
+
+    }
+
     useEffect(()=> {
         getJob();
+        getApplicants();
         
     },[])
     // useEffect(()=> {
@@ -154,6 +179,7 @@ export const Fulljob = () => {
                         <div className={`job-applicant-container ${active.applicant ? ' sactive' : ' hide'}`}>
                             <Applicanttable 
                                 view={Talentview}
+                                applicants ={applicants}
                             ></Applicanttable>
                         </div>
                         
@@ -221,60 +247,92 @@ const SingleInfo = (props)=> {
 
 const Applicanttable = (props)=> {
 
-    return (
-        <div className="job-applicant-inner">
-            <table class="job-applicant-inner styled-table">
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Status</th>
-                        <th>Matches</th>
-                        <th>cv</th>
-                        <th>Date</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Test Name</td>
-                        <td>Awaiting review</td>
-                        <td>Dom</td>
-                        <td> <a onClick={props.view}>View</a></td>
-                        <td>12/120/2021</td>
-                        <td>
-                            <div className="action-box green">
-                                <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
-                            </div>
-                            <div className="action-box yellow">
-                                <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
-                            </div>
-                            <div className="action-box red">
-                                <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Test Name</td>
-                        <td>Awaiting review</td>
-                        <td>Dom</td>
-                        <td> <a>View</a></td>
-                        <td>12/120/2021</td>
-                        <td>
-                            <div className="action-box green">
-                                <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
-                            </div>
-                            <div className="action-box yellow">
-                                <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
-                            </div>
-                            <div className="action-box red">
-                                <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
+    var myapplicants = props.applicants.data.map((applicant, index) => {
+        return (
+            <Tablerow
+                key={index}
+                view={props.view}
+                data = {applicant}
+            ></Tablerow>
 
-        </div>
+        )
+    })
+
+    if (!props.applicants.status) {
+        return (
+            <div>
+                <Empty
+                    text="No Applicants yet"
+                ></Empty>
+            </div>
+        )
+    }
+    else {
+        return (
+            <div className="job-applicant-inner">
+                <table class="job-applicant-inner styled-table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Status</th>
+                            <th>Matches</th>
+                            <th>cv</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {myapplicants}
+                    </tbody>
+                </table>
+    
+            </div>
+        )
+
+    }
+
+    
+}
+const Tablerow = (props) => {
+
+    var mymatch = props.data ? props.data.matches.map ((match, index) => {
+        return (
+            <Match
+                key= {index}
+                match={match}
+            />
+        )
+    }): {}
+    return (
+        <tr>
+            <td>{props.data ? props.data.user_name : ''}</td>
+            <td>{props.data ? props.data.status : ''}</td>
+            <td>
+                {mymatch}
+            </td>
+            <td> <a onClick={props.view}>View</a></td>
+            <td>{props.data ? props.data.applied_on : ''}</td>
+            <td>
+                <div className="action-box green">
+                    <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
+                </div>
+                <div className="action-box yellow">
+                    <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
+                </div>
+                <div className="action-box red">
+                    <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
+                </div>
+            </td>
+        </tr>
+    )
+}
+const Match = (props) => {
+    return (
+        <span className={`table-matches ${props.match.status ? ' match' : ' no-match'}`}>
+            { props.match.status ? <FontAwesomeIcon icon={faCheck} className="check-icon" size="lg"/> :
+                <FontAwesomeIcon icon={faTimes} className="times-icon" size="lg"/>
+            }
+            <p>{props.match.filter} {props.match.users_value}  </p>
+        </span>
     )
 }

@@ -56,24 +56,7 @@ export const Jobresult = () => {
         history.push(`/talent/jobdescription?name=${name}&id=${id}`);
     }
 
-    var jobs = myjobs.data ? myjobs.data.jobs.map (job=> {
-        return (
-            <Singlejob
-                key={job.id}
-                id={job.id}
-                title={job.title}
-                company={job.company}
-                days={job.days}
-                location={job.location}
-                type={job.type}
-                click ={openAction}
-                save = {saveJob}
-                goto = {goToJob}
-            >
-
-            </Singlejob>
-        )
-    }):{}
+    
 
 
     const searchJobs = (jobtitle,location) => {
@@ -104,9 +87,7 @@ export const Jobresult = () => {
     }
 
     var saveJob = (event, id)=> {
-        event.preventDefault();
-       
-       
+        // event.preventDefault();
        post('/v1/talent/job/', {
            id : id
        })
@@ -160,6 +141,25 @@ export const Jobresult = () => {
         
     }
 
+    var jobs = myjobs.data ? myjobs.data.jobs.map (job=> {
+        return (
+            <Singlejob
+                key={job.id}
+                id={job.id}
+                title={job.title}
+                company={job.company}
+                days={job.days}
+                location={job.location}
+                type={job.type}
+                click ={openAction}
+                save = {saveJob}
+                goto = {goToJob}
+            >
+
+            </Singlejob>
+        )
+    }):{}
+
     useEffect(()=> {
        
         accordionFunc();
@@ -206,6 +206,7 @@ export const Jobresult = () => {
                         userloc={userloc}
                         address={addr}
                         jobsearch={searchJobs}
+                        totalResults = {myjobs.link && myjobs.links.total}
                     >
                         <Empty></Empty>
                     </Searchcontainer>
@@ -223,6 +224,7 @@ export const Jobresult = () => {
                         userloc={userloc}
                         address={addr}
                         jobsearch={searchJobs}
+                        totalResults = {myjobs.link && myjobs.links.total}
                     >
                        { jobs}
                     </Searchcontainer>
