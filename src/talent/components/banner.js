@@ -75,6 +75,7 @@ function Banner () {
                             formState={formState}
                             handleUserLocation ={handleUserLocation }
                             
+                            
                         ></Jobsearch>
                     </div>
                 </div>
