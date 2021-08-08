@@ -18,10 +18,9 @@ export const Profiletalent =(props) => {
         get(`/v1/talent/profile`)
           .then((response) => {
               if (response.status) {
-                  
+                console.log(response.data.data)
+                console.log(response.data.data.profile.education)
                   setProfile(response.data);
-                  console.log(profile)
-
                   setLoad(false)
                 //   setLoad(false)
               } else {

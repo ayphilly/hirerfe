@@ -80,7 +80,7 @@ export const Jobapplication = (props) => {
         // var loc = myStates[location];
         const filteredResults = myStates.filter(
             suggestion => {
-                return suggestion.name.toLowerCase().indexOf(location.toLowerCase() ) > -1
+                return suggestion.name.toLowerCase() === location
               }
         );
         var loc = filteredResults[location];
