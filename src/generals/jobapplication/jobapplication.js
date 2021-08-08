@@ -8,6 +8,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useSelector,useDispatch } from 'react-redux'
 import {useState, useEffect} from "react"
 import Singleinputlocation from "../location/location";
+import { post } from "../../requests";
 export const Jobapplication = (props) => {
 
     const [checked, setCheck] = useState(true);
@@ -34,7 +35,7 @@ export const Jobapplication = (props) => {
                 message: 'You cannot apply without an Hirer Profile, kindly go create one.'
             });
         } else {
-            get(`/v1/talent/apply/job`, {
+            post(`/v1/talent/apply/job`, {
                 job_id:props.id,
                 filters : {
                     salary_expectation: formState.salary,
@@ -45,7 +46,7 @@ export const Jobapplication = (props) => {
               .then((response) => {
                   if (response.status) {
                       setResponse(response.data);
-                      setLoad(false)
+                    //   setLoad(false)
                   } else {
                     //  setError({
                     //       status: response.data.status,
@@ -55,7 +56,7 @@ export const Jobapplication = (props) => {
                   
               }, (error) => {
                     setResponse(error.response.data);
-                    setLoad(false)
+                    // setLoad(false)
                   console.log("Something went wrong");
             });
 
