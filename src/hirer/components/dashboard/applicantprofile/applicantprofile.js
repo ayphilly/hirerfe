@@ -7,9 +7,11 @@ import mailbox from "../../../hirerassets/mailbox.svg"
 import license from "../../../hirerassets/license.svg"
 import {useState, useEffect} from "react"
 import { get } from "../../../../requests"
+import { Loading } from "../../../../generals/loading/loading"
+import { Empty } from "../../../../generals/emptyresult/emptyresult"
 export const Applicantprofile=(props) => {
     const [profile, setProfile] = useState({})
-    // const [load, setLoad] =useState({})
+    const [load, setLoad] =useState(true)
     var getApplicants = ()=> {
 
         get(`/v1/employer/talent-profile/${props.id}`)
@@ -17,7 +19,7 @@ export const Applicantprofile=(props) => {
               if (response.status) {
                   console.log(response.data)
                   setProfile(response.data);
-                //   setLoad(false)
+                  setLoad(false)
               } else {
                 //  setError({
                 //       status: response.data.status,
@@ -27,7 +29,7 @@ export const Applicantprofile=(props) => {
               
           }, (error) => {
                 setProfile(error.response.data);
-                // setLoad(false)
+                setLoad(false)
               console.log("Somethign went wrong");
           });
     }
@@ -36,36 +38,50 @@ export const Applicantprofile=(props) => {
     useEffect(()=> {
         getApplicants();
     }, [])
-    return (
-        <div className="applicant-profile-container">
-            <div className="applicant-profile-inner">
-                <div className="applicant-profile-inner top">
-                    <p>{profile.data ? profile.data.profile.name : ''}</p>
-                    <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
+
+    if (load) {
+        <Loading></Loading>
+    } else if (profile.data.profile.education.length <1 || profile.data.profile.experience.length <1 ) {
+        <Empty
+            text="Talent Profile Not Available"
+        >
+        </Empty>
+
+    } else {
+
+        return (
+            <div className="applicant-profile-container">
+                <div className="applicant-profile-inner">
+                    <div className="applicant-profile-inner top">
+                        <p>{profile.data ? profile.data.profile.name : ''}</p>
+                        <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
+                    </div>
+                    <div className="applicant-profile-inner bottom">
+                        <Applicantsingle
+                            title="Education"
+                            data = {profile.data.profile.education}
+                        />
+                        <Applicantsingle
+                
+                            title="Experience"
+                            data = {profile.data.profile.experience}
+                        />
+                        <Applicantsingle
+                            title="Licenses & Certificates"
+                        />
+                    </div>
+                    <Skillset
+                        title="Skillset"
+                        data = {profile.data.profile.skills.skill}
+                    />
+                    <Contactdetals/>
+                    <button className="applicant-profile-inner button" onClick={props.close}>Close</button>
                 </div>
-                <div className="applicant-profile-inner bottom">
-                    <Applicantsingle
-                        title="Education"
-                        data = {profile.data.profile.education}
-                    />
-                    <Applicantsingle
-            
-                        title="Experience"
-                        data = {profile.data.profile.experience}
-                    />
-                    <Applicantsingle
-                        title="Licenses & Certificates"
-                    />
-                </div>
-                <Skillset
-                    title="Skillset"
-                    data = {profile.data.profile.skills.skill}
-                />
-                <Contactdetals/>
-                <button className="applicant-profile-inner button" onClick={props.close}>Close</button>
             </div>
-        </div>
-    )
+        )
+
+    }
+    
 }
 
 const Applicantsingle = (props)=> {
