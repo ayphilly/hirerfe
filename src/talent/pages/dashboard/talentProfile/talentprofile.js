@@ -85,9 +85,9 @@ export const Profiletalent =(props) => {
                             title="Experience"
                             data = {profile.data ? profile.data.profile.experience : ''}
                         />
-                        <Applicantsingle
+                        {/* <Applicantsingle
                             title="Licenses & Certificates"
-                        />
+                        /> */}
                     </div>
                     <Skillset
                         title="Skillset"
