@@ -55,10 +55,10 @@ export const Applicantprofile=(props) => {
         
     }, [talent])
 
-    if (props.load) {
+    if (load) {
         <Loading></Loading>
     }
-    else if (talent === "empty") {
+    else if (props.id === null) {
         <Empty
             text="Talent Profile Not Available"
         >
@@ -78,7 +78,7 @@ export const Applicantprofile=(props) => {
                 <div className="applicant-profile-inner">
                     <div className="applicant-profile-inner top">
                         <p>{profile.data ? profile.data.profile.name : ''}</p>
-                        <p>Available to work immediately • {props.data ? props.data.profile.location : ''}</p>
+                        <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
                     </div>
                     <div className="applicant-profile-inner bottom">
                         <Applicantsingle
