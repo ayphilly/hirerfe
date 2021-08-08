@@ -1,5 +1,6 @@
 import { Form, Formik } from "formik";
 import React, { useState } from "react";
+import { useRef } from "react";
 import { post } from "../requests";
 import EducationFields from "./components/EducationFields";
 import ExperienceFields from "./components/ExperienceFields";
@@ -38,7 +39,7 @@ const initialValues = {
     location: "",
     from_month: "",
     from_year: "",
-    currently: true,
+    currently: false,
     to_month: "",
     to_year: "",
   },
@@ -50,16 +51,17 @@ const initialValues = {
     from_month: "",
     from_year: "",
     no_experience: false,
-    currently: false,
+    currently: true,
     to_month: "",
     to_year: "",
   },
   skills: {
-    skill: [],
+    skill: [""],
   },
 };
 
 const CreateProfile = () => {
+  const ref = useRef();
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({});
   const setField = (field) => {
@@ -71,8 +73,12 @@ const CreateProfile = () => {
   const { title } = formSteps[step];
 
   const handleSubmit = (values) => {
-    console.log("Values", values);
-    // post("/v1/talent/profile", formData);
+    post("/v1/talent/profile", formData)
+      .then(() => alert("Profile Created Successfully"))
+      .catch(({ response }) => {
+        console.log(response.data.message, "Check the console");
+        alert("Error, check console!");
+      });
   };
 
   return (
@@ -84,7 +90,7 @@ const CreateProfile = () => {
         style={{
           paddingTop: "65px",
           paddingBottom: "65px",
-          "--width": `${(step + 1) * 20}%`,
+          "--width": `${(step + 1) * 25}%`,
         }}
         className="plain-card progress progress-bottom d-flex flex-column mb-8"
       >
@@ -94,7 +100,7 @@ const CreateProfile = () => {
             <p>Tell us about yourself.</p>
           </div>
           <div style={{ color: "gray" }} className="f-18">
-            Step {step + 1} / 5
+            Step {step + 1} / 4
           </div>
         </div>
       </div>
@@ -107,6 +113,7 @@ const CreateProfile = () => {
           {step === 1 && <EducationFields />}
           {step === 2 && <ExperienceFields />}
           {step === 3 && <SkillsFields />}
+          <button ref={ref} type="submit" className="d-none"></button>
         </Form>
       </Formik>
 
@@ -121,9 +128,18 @@ const CreateProfile = () => {
         >
           Back
         </button>
-        <button onClick={() => nextStep()} className="btn btn-primary">
-          Continue
-        </button>
+        {step === 3 ? (
+          <button
+            onClick={() => ref.current.click()}
+            className="btn btn-primary"
+          >
+            Submit
+          </button>
+        ) : (
+          <button onClick={() => nextStep()} className="btn btn-primary">
+            Continue
+          </button>
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ const ExperienceFields = () => {
           <span style={{ color: "red" }}>*</span>
         </label>
         <Field
+          name="experience.title"
           type="text"
           placeholder="Enter your job title"
           className="classic-input w-100"
@@ -21,6 +22,7 @@ const ExperienceFields = () => {
           <span style={{ color: "red" }}>*</span>
         </label>
         <Field
+          name="experience.company"
           type="text"
           placeholder="Enter the name of the company you worked at"
           className="classic-input w-100"
@@ -31,7 +33,12 @@ const ExperienceFields = () => {
           Location - Nigeria
           <span style={{ color: "red" }}>*</span>
         </label>
-        <Field as="select" className="classic-input w-100" type="text">
+        <Field
+          as="select"
+          name="experience.location"
+          className="classic-input w-100"
+          type="text"
+        >
           <option selected disabled hidden>
             Select the state you schooled in
           </option>
@@ -46,7 +53,12 @@ const ExperienceFields = () => {
               Month
               <span style={{ color: "red" }}>*</span>
             </label>
-            <Field as="select" className="classic-input w-100" type="text">
+            <Field
+              name="experience.from_month"
+              as="select"
+              className="classic-input w-100"
+              type="text"
+            >
               <option selected disabled hidden>
                 Select your month
               </option>
@@ -60,7 +72,12 @@ const ExperienceFields = () => {
               Year
               <span style={{ color: "red" }}>*</span>
             </label>
-            <Field as="select" className="classic-input w-100" type="text">
+            <Field
+              as="select"
+              name="experience.from_year"
+              className="classic-input w-100"
+              type="text"
+            >
               <option selected disabled hidden>
                 Select your year
               </option>
@@ -75,6 +92,7 @@ const ExperienceFields = () => {
           <span style={{ color: "red" }}>*</span>
         </label>
         <Field
+          name="experience.description"
           as="textarea"
           rows={10}
           className="mb-8 classic-input w-100"

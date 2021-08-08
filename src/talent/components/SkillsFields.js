@@ -14,6 +14,7 @@ const SkillsFields = () => {
           Add Skill
         </label>
         <Field
+          name="skills.skill[0]"
           type="text"
           placeholder="e.g. Microsoft Word"
           className="classic-input w-100"
