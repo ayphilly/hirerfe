@@ -13,7 +13,7 @@ import { get } from "../../../requests"
 import { Emptystate } from "../../../talent/components/emptystate/emptystate"
 import { Loading } from "../../loading/loading"
 import {useDispatch } from 'react-redux'
-import { setTalentProfile } from "../../slices/talentSlice"
+import { setTalentProfile } from "../../../slices/talentSlice"
 export const Jobdescription = ()=> {
     const dispatch = useDispatch()
     const { search } = useLocation()
