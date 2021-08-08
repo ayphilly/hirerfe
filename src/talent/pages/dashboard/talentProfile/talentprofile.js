@@ -18,8 +18,10 @@ export const Profiletalent =(props) => {
         get(`/v1/talent/profile`)
           .then((response) => {
               if (response.status) {
-                  console.log(response.data)
+                  
                   setProfile(response.data);
+                  console.log(profile)
+
                   setLoad(false)
                 //   setLoad(false)
               } else {
@@ -79,11 +81,11 @@ export const Profiletalent =(props) => {
                     <div className="applicant-profile-inner bottom">
                         <Applicantsingle
                             title="Education"
-                            data = {profile.data ? profile.data.profile.education:''}
+                            data = {profile.data.profile ? profile.data.profile.education:''}
                         />
                         <Applicantsingle
                             title="Experience"
-                            data = {profile.data ? profile.data.profile.experience : ''}
+                            data = {profile.data.profile ? profile.data.profile.experience : ''}
                         />
                         {/* <Applicantsingle
                             title="Licenses & Certificates"

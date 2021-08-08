@@ -10,6 +10,7 @@ import {useState, useEffect} from "react"
 import Singleinputlocation from "../location/location";
 import { post } from "../../requests";
 import { Redirect, Route } from "react-router-dom";
+import { myStates } from "../../constants";
 export const Jobapplication = (props) => {
 
     const [checked, setCheck] = useState(true);
@@ -76,7 +77,15 @@ export const Jobapplication = (props) => {
     }
 
     const handleUserLocation = (location) => {
-        setFormstate({...formState, location});
+        // var loc = myStates[location];
+        const filteredResults = myStates.filter(
+            suggestion => {
+                return suggestion.name.toLowerCase().indexOf(location.toLowerCase() ) > -1
+              }
+        );
+        var loc = filteredResults[location];
+
+        setFormstate({...formState, location:loc.id});
     }
 
     const handleSelect = (e) => {
