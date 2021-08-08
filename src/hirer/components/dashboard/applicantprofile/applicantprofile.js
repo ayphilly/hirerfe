@@ -11,10 +11,61 @@ import { Loading } from "../../../../generals/loading/loading"
 import { Empty } from "../../../../generals/emptyresult/emptyresult"
 export const Applicantprofile=(props) => {
 
-    
+    const [profile, setProfile] = useState({})
+    const [load, setLoad] = useState(true)
+    const [talent, setTalent] = useState(null)
+
+    var getApplicant = ()=> {
+
+        get(`/v1/employer/talent-profile/${talent}`)
+          .then((response) => {
+              if (response.status) {
+                  console.log(response.data)
+                  setProfile(response.data);
+                  setLoad(false)
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+                setProfile(error.response.data);
+                setLoad(false)
+              console.log("Somethign went wrong");
+          });
+    }
+
+    var setTalentId = () => {
+        setTalent(props.id)
+    }
+    useEffect(()=> {
+        setTalentId();
+    })
+    useEffect(() => {
+
+        if (props.id > 0) {
+            getApplicant();
+        } else {
+            setTalent("empty")
+            console.log('nothing to show')
+        }
+
+        
+    }, [talent])
+
     if (props.load) {
         <Loading></Loading>
-    } else if (Object.keys(props.data.profile.education).length < 1 || Object.keys(props.data.profile.experience).length < 1) {
+    }
+    else if (talent === "empty") {
+        <Empty
+            text="Talent Profile Not Available"
+        >
+        </Empty>
+
+    }
+    else if (Object.keys(profile.data.profile.education).length < 1 || Object.keys(profile.data.profile.experience).length < 1) {
         <Empty
             text="Talent Profile Not Available"
         >
@@ -26,18 +77,18 @@ export const Applicantprofile=(props) => {
             <div className="applicant-profile-container">
                 <div className="applicant-profile-inner">
                     <div className="applicant-profile-inner top">
-                        <p>{props.data ? props.data.profile.name : ''}</p>
+                        <p>{profile.data ? profile.data.profile.name : ''}</p>
                         <p>Available to work immediately • {props.data ? props.data.profile.location : ''}</p>
                     </div>
                     <div className="applicant-profile-inner bottom">
                         <Applicantsingle
                             title="Education"
-                            data = {props.data.profile.education}
+                            data = {profile.data.profile.education}
                         />
                         <Applicantsingle
                 
                             title="Experience"
-                            data = {props.data.profile.experience}
+                            data = {profile.data.profile.experience}
                         />
                         <Applicantsingle
                             title="Licenses & Certificates"
@@ -45,7 +96,7 @@ export const Applicantprofile=(props) => {
                     </div>
                     <Skillset
                         title="Skillset"
-                        data = {props.data.profile.skills.skill}
+                        data = {profile.data.profile.skills.skill}
                     />
                     <Contactdetals/>
                     <button className="applicant-profile-inner button" onClick={props.close}>Close</button>
