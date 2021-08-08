@@ -55,7 +55,7 @@ export const Profiletalent =(props) => {
     else if (!profile.status) {
         return (
             <div className="applicant-profile-container">
-                <div className="applicant-profile-inner">
+                <div className="applicant-profile-nothing">
                     <Empty
                         text="you do not have a profile"
                     ></Empty>
