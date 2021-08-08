@@ -15,7 +15,7 @@ export const Jobapplication = (props) => {
 
     const [checked, setCheck] = useState(true);
     const [optionValue, setOptionValue] = useState("");
-    const [locid, setLocId] = useState('')
+    const [locid, setLocId] = useState(null)
     const [formState, setFormstate] = useState({
         salary: null,
         experience: null,
@@ -83,7 +83,7 @@ export const Jobapplication = (props) => {
                 return suggestion.name.toLowerCase() === location
             }
         );
-        var loc = filteredResults[location];
+        var loc = filteredResults[0].id;
         console.log(loc);
         setLocId(loc)
         setFormstate({...formState, location});
