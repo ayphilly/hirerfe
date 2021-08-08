@@ -158,7 +158,7 @@
                     .search-input {
                         @include rowflex(center, space-between);
                         width: 95%;
-
+                        height: fit-content;
                         @include breakpoint(mobileonly) {
                             width: 90%;
                             height: 300px;
@@ -191,7 +191,7 @@
                             transition: all 0.3s ease-in;
                             text-decoration: none;
                             @include rowflex(center, center);
-            
+                            background-color: red;
                             @include breakpoint(mobileonly) {
                                 width: 100%;
                                 height: 50px;
