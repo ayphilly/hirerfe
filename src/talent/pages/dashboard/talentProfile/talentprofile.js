@@ -79,10 +79,12 @@ export const Profiletalent =(props) => {
                     </div>
                     {profile.data.profile && <div className="applicant-profile-inner bottom">
                         <Applicantsingle
+                            image={education}
                             title="Education"
                             data = {profile.data.profile.education}
                         />
                         <Applicantsingle
+                            image={experience}
                             title="Experience"
                             data = {profile.data.profile.experience}
                         />
@@ -113,9 +115,8 @@ const Applicantsingle = (props)=> {
                 <Applicantdetail
                     data = {props.data}
                     title={props.title}
+                    image={props.image}
                 />
-                <Applicantdetail/>
-                
             </div>
             
         </div>
@@ -126,7 +127,7 @@ const Applicantdetail = (props)=> {
 
     return (
         <div className="detail-contents single-detail">
-            <img src={experience} alt="cv-image"/>
+            <img src={props.image} alt="cv-image"/>
             <div className="single-detail-content">
                 {props.title === "Experience" ? <p>{props.data.title}</p> : props.title === "Education" ?<p>{props.data.field}</p>: '' }
                 {props.title === "Experience" ? <p>{props.data.company}</p> : props.title === "Education" ? <p>{props.data.school}</p> : '' }

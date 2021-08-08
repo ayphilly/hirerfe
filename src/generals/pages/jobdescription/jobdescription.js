@@ -72,7 +72,7 @@ export const Jobdescription = ()=> {
     if (load) {
         return (
             <div className="jobdescription-container">
-                <div className="jobdescription-inner-col">
+                <div className="jobdescription-load">
                     <Loading></Loading>
 
                 </div>
