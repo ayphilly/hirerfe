@@ -13,7 +13,7 @@ import { Link } from "react-router-dom"
 export const Profiletalent =(props) => {
     const [profile, setProfile] = useState({})
     const [load, setLoad] = useState(true)
-    var getApplicants = ()=> {
+    var getApplicant = ()=> {
 
         get(`/v1/talent/profile`)
           .then((response) => {
@@ -33,14 +33,14 @@ export const Profiletalent =(props) => {
           }, (error) => {
                 setProfile(error.response.data);
                 setLoad(false)
-              console.log("Somethign went wrong");
+              console.log("Something went wrong");
           });
     }
 
     
     var skills = ['adobe','microsoft', 'figma', 'reactjs']
     useEffect(()=> {
-        getApplicants();
+        getApplicant();
     }, [])
 
     if (load) {
@@ -77,7 +77,7 @@ export const Profiletalent =(props) => {
                         <p>{profile.data ? profile.data.profile.name : ''}</p>
                         <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
                     </div>
-                    <div className="applicant-profile-inner bottom">
+                    {profile.data.profile && <div className="applicant-profile-inner bottom">
                         <Applicantsingle
                             title="Education"
                             data = {profile.data.profile.education}
@@ -89,7 +89,7 @@ export const Profiletalent =(props) => {
                         {/* <Applicantsingle
                             title="Licenses & Certificates"
                         /> */}
-                    </div>
+                    </div>}
                     <Skillset
                         title="Skillset"
                         // data = {profile.data ? profile.data.profile.skills.skill === null ? ['empty', 'skills']: profile.data.profile.skills.skill: ''}
@@ -128,8 +128,8 @@ const Applicantdetail = (props)=> {
         <div className="detail-contents single-detail">
             <img src={experience} alt="cv-image"/>
             <div className="single-detail-content">
-                {props.title === "Experience" ? <p>{props.data.title}</p> : props.title === "Education" ?<p>{props.data.field}</p>: '' }
-                {props.title === "Experience" ? <p>{props.data.company}</p> : props.title === "Education" ? <p>{props.data.school}</p> : '' }
+                {props.title === "Experience" ? <p>{props.data.title}</p> :<p>{props.data.field}</p> }
+                {props.title === "Experience" ? <p>{props.data.company}</p> :<p>{props.data.school}</p>}
                 <p>{props.data.month_from},{props.data.year_from} - {props.data.month_to},{props.data.year_to} • {props.data.location}</p>
                 {props.title === "Experience" && <p>{props.data.description}</p>}
                 <hr/>
