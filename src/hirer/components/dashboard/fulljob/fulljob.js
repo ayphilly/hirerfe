@@ -181,7 +181,7 @@ export const Fulljob = () => {
                         <div className={`job-applicant-container ${active.applicant ? ' sactive' : ' hide'}`}>
                             <Applicanttable 
                                 view={Talentview}
-                                applicants ={applicants}
+                                applicants ={applicants.data}
                             ></Applicanttable>
                         </div>
                         
