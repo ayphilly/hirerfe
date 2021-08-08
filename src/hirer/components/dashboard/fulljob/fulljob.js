@@ -216,12 +216,12 @@ export const Fulljob = () => {
                     </div>
                 </div>
                 <div className={`show-talent-profile ${viewtalent ? 'active': 'hidden'}`}>
-                    <Applicantprofile
+                    {talent && <Applicantprofile
                         // name="Ademola Okon"
                         id={talent}
                         close = {Talentview}
                         
-                    />
+                    />}
                 </div>
                 <div className={`overlay ${viewtalent ? 'active': 'hidden'}`}></div>
                 
