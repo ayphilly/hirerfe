@@ -1,22 +1,26 @@
-import "./applicantprofile.scss"
-import experience from "../../../hirerassets/experience.svg"
-import education from "../../../hirerassets/education.svg"
-import skill from "../../../hirerassets/skill.svg"
-import contact from "../../../hirerassets/contact.svg"
-import mailbox from "../../../hirerassets/mailbox.svg"
-import license from "../../../hirerassets/license.svg"
+import "./talentprofile.scss"
+import experience from "../../../../hirer/hirerassets/experience.svg"
+import education from "../../../../hirer/hirerassets/education.svg"
+import skill from "../../../../hirer/hirerassets/skill.svg"
+import contact from "../../../../hirer/hirerassets/contact.svg"
+import mailbox from "../../../../hirer/hirerassets/mailbox.svg"
+import license from "../../../../hirer/hirerassets/license.svg"
 import {useState, useEffect} from "react"
 import { get } from "../../../../requests"
-export const Applicantprofile=(props) => {
+import { Loading } from "../../../../generals/loading/loading"
+import { Empty } from "../../../../generals/emptyresult/emptyresult"
+import { Link } from "react-router-dom"
+export const Profiletalent =(props) => {
     const [profile, setProfile] = useState({})
-
+    const [load, setLoad] = useState(true)
     var getApplicants = ()=> {
 
-        get(`/v1/employer/talent-profile/${props.id}`)
+        get(`/v1/talent/profile`)
           .then((response) => {
               if (response.status) {
                   console.log(response.data)
                   setProfile(response.data);
+                  setLoad(false)
                 //   setLoad(false)
               } else {
                 //  setError({
@@ -27,45 +31,76 @@ export const Applicantprofile=(props) => {
               
           }, (error) => {
                 setProfile(error.response.data);
-                // setLoad(false)
+                setLoad(false)
               console.log("Somethign went wrong");
           });
     }
 
+    
 
     useEffect(()=> {
         getApplicants();
     }, [])
-    return (
-        <div className="applicant-profile-container">
-            <div className="applicant-profile-inner">
-                <div className="applicant-profile-inner top">
-                    <p>{profile.data ? profile.data.profile.name : ''}</p>
-                    <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
+
+    if (load) {
+        return (
+            <div className="applicant-profile-container">
+                <div className="applicant-profile-inner">
+                    <Loading></Loading>
+
                 </div>
-                <div className="applicant-profile-inner bottom">
-                    <Applicantsingle
-                        title="Education"
-                        data = {profile.data.profile.education}
-                    />
-                    <Applicantsingle
-            
-                        title="Experience"
-                        data = {profile.data.profile.experience}
-                    />
-                    <Applicantsingle
-                        title="Licenses & Certificates"
-                    />
+             </div>
+        )
+    }
+    else if (!profile.status) {
+        return (
+            <div className="applicant-profile-container">
+                <div className="applicant-profile-inner">
+                    <Empty
+                        text="you do not have a profile"
+                    ></Empty>
+                    <Link className="go-to-create" to="/talent/createprofile" style={{textDecoration:'none'}}> Create a Profile </Link>
+
                 </div>
-                <Skillset
-                    title="Skillset"
-                    data = {profile.data.profile.skills.skill}
-                />
-                <Contactdetals/>
-                <button className="applicant-profile-inner button" onClick={props.close}>Close</button>
             </div>
-        </div>
-    )
+            
+        )
+        
+
+    } 
+    else {
+        return (
+            <div className="applicant-profile-container">
+                <div className="applicant-profile-inner">
+                    <div className="applicant-profile-inner top">
+                        <p>{profile.data ? profile.data.profile.name : ''}</p>
+                        <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
+                    </div>
+                    <div className="applicant-profile-inner bottom">
+                        <Applicantsingle
+                            title="Education"
+                            data = {profile.data ? profile.data.profile.education:''}
+                        />
+                        <Applicantsingle
+                            title="Education"
+                            data = {profile.data ? profile.data.profile.education : ''}
+                        />
+                        <Applicantsingle
+                            title="Licenses & Certificates"
+                        />
+                    </div>
+                    <Skillset
+                        title="Skillset"
+                        data = {profile.data ? profile.data.profile.skills.skill : ''}
+                    />
+                    <Contactdetals/>
+                    <button className="applicant-profile-inner button" onClick={props.close}>Close</button>
+                </div>
+            </div>
+        )
+
+    }
+    
 }
 
 const Applicantsingle = (props)=> {

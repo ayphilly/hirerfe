@@ -3,8 +3,10 @@ import redirect from "../../../hirer/hirerassets/redirecting.svg"
 import { useSelector } from 'react-redux'
 import {useEffect, useState} from "react"
 import { useParams, useHistory, useLocation } from "react-router";
+import { setTalentProfile } from "../../../slices/talentSlice";
+import { setDashboard } from "../../../slices/companySlice";
 import queryString from 'query-string'
-import { post } from "../../../requests";
+import { post,get } from "../../../requests";
 import {useDispatch } from 'react-redux'
 
 import { setToken, setAuthData } from "../../../slices/authSlice"
@@ -18,6 +20,25 @@ export const Auth = () => {
     })
 
     const dispatch = useDispatch()
+
+    var getEmpData = async () => {
+        try {
+            const {data} = await get(`/v1/employer/dashboard`);
+            dispatch(setDashboard(data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+    var getTalentData = async () => {
+        try {
+            const {data} = await get(`/v1/talent/profile`);
+            dispatch(setTalentProfile(data.data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
     
     const socialAuth = ()=> {
         
@@ -34,7 +55,7 @@ export const Auth = () => {
                 text: response.data.message
             })
             setTimeout(()=> {
-                response.data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
+                response.data.data.role === "company" ? getEmpData() :getTalentData();
             }, 2000)
             
             

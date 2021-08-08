@@ -34,6 +34,7 @@ import { CustomRoute } from "./customRoute";
 import Register from "./generals/createaccount/register";
 import { Home } from "./hirer/pages/dashboard/home";
 import Hirerdashnav from "./hirer/components/dashboard/navbar/dashboardnavbar";
+import { Profiletalent } from "./talent/pages/dashboard/talentProfile/talentprofile";
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
@@ -142,6 +143,7 @@ function App() {
           path="/talent/createprofile"
           component={CreateProfile}
         />
+
         <TalentWithNavbar
           exact
           path="/talent/jobdescription"
@@ -194,6 +196,12 @@ function App() {
           path="/dashboard/talent/myjobs"
           component={Myjobs}
         />
+        <DashboardWithNavbar
+          exact
+          path="/dashboard/talent/profile"
+          component={Profiletalent}
+        />
+        
          {/* <DashboardWithNavbar
           exact
           path="/dashboard/talent/account"

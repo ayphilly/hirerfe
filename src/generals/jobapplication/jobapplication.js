@@ -29,7 +29,7 @@ export const Jobapplication = (props) => {
 
     var applyJob = ()=> {
 
-        if (talentProfile.length < 1) {
+        if (Object.keys(talentProfile).length < 1) {
             setResponse({
                 status:false,
                 message: 'You cannot apply without an Hirer Profile, kindly go create one.'
