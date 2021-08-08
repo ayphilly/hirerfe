@@ -18,7 +18,7 @@ const EducationFields = () => {
           <option value="" selected disabled hidden>
             Select your level of Education
           </option>
-          <option value="BEL">Basic Education Level</option>
+          <option value="BEL">B-tech</option>
         </Field>
       </div>
       <div className="form-group mb-8">
@@ -35,7 +35,7 @@ const EducationFields = () => {
           <option value="" selected disabled hidden>
             Select your field of study
           </option>
-          <option value="B">Basic Field</option>
+          <option value="B">Computer Science</option>
         </Field>
       </div>
       <div className="form-group mb-8">
@@ -64,7 +64,7 @@ const EducationFields = () => {
           <option selected disabled hidden>
             Select the state you schooled in
           </option>
-          <option value="B">Basic Location</option>
+          <option value="B">Lagos</option>
         </Field>
       </div>
       <div className="fw-600 f-24 py-4">From</div>
@@ -103,7 +103,7 @@ const EducationFields = () => {
               <option selected disabled hidden>
                 Select your year
               </option>
-              <option value="2021">2021</option>
+              <option value="2021">2014</option>
             </Field>
           </div>
         </div>
@@ -144,7 +144,7 @@ const EducationFields = () => {
               <option selected disabled hidden>
                 Select your year
               </option>
-              <option value="2021">2021</option>
+              <option value="2021">2019</option>
             </Field>
           </div>
         </div>
