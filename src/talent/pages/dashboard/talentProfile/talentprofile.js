@@ -80,11 +80,11 @@ export const Profiletalent =(props) => {
                     <div className="applicant-profile-inner bottom">
                         <Applicantsingle
                             title="Education"
-                            data = {profile.data.profile && profile.data.profile.education}
+                            data = {profile.data.profile.education}
                         />
                         <Applicantsingle
                             title="Experience"
-                            data = {profile.data.profile && profile.data.profile.experience}
+                            data = {profile.data.profile.experience}
                         />
                         {/* <Applicantsingle
                             title="Licenses & Certificates"
