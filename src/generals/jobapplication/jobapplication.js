@@ -150,7 +150,7 @@ export const Jobapplication = (props) => {
                     
                 
                     <div className="form-experience">
-                        {props.filters.location > 0 && <Singleinputlocation
+                        {props.filters.location >= 0 && <Singleinputlocation
                             label ="Where ?"
                             subtext="Enter State"
                             name="location"
