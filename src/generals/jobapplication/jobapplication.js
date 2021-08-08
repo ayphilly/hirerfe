@@ -20,7 +20,8 @@ export const Jobapplication = (props) => {
         salary: null,
         experience: null,
         location: '',
-        cv:''
+        cv:'',
+        id: null
     })
 
     const [response, setResponse] = useState({
@@ -84,9 +85,7 @@ export const Jobapplication = (props) => {
             }
         );
         var loc = filteredResults[0].id;
-        console.log(loc);
-        setLocId(loc)
-        setFormstate({...formState, location});
+        setFormstate({...formState, location, id : loc});
     }
 
     const handleSelect = (e) => {

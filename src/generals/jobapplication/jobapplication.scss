@@ -342,10 +342,10 @@
 
 
                 @include breakpoint (laptop) {
-                    height: fit-content;
+                    // height: fit-content;
                     padding-top: 10px;
                     padding-bottom: 10px;
-                    @include colflex(flex-start, space-around);
+                    @include colflex(flex-start, space-between);
                 }
                 
                 p:nth-child(1) {
