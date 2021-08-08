@@ -64,7 +64,7 @@ const EducationFields = () => {
           <option selected disabled hidden>
             Select the state you schooled in
           </option>
-          <option value="B">Lagos</option>
+          <option value="B">Akure</option>
         </Field>
       </div>
       <div className="fw-600 f-24 py-4">From</div>
@@ -103,7 +103,7 @@ const EducationFields = () => {
               <option selected disabled hidden>
                 Select your year
               </option>
-              <option value="2021">2014</option>
+              <option value="2014">2014</option>
             </Field>
           </div>
         </div>
@@ -144,7 +144,7 @@ const EducationFields = () => {
               <option selected disabled hidden>
                 Select your year
               </option>
-              <option value="2021">2019</option>
+              <option value="2019">2019</option>
             </Field>
           </div>
         </div>

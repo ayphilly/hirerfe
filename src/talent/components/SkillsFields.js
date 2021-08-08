@@ -16,6 +16,7 @@ const SkillsFields = () => {
         <Field
           type="text"
           placeholder="e.g. Microsoft Word"
+          name="skills.skill"
           className="classic-input w-100"
         />
       </div>
