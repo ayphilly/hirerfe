@@ -144,6 +144,7 @@ export const Jobdescription = ()=> {
                     openApp= {openApp}
                     filters = {job.data ? job.data.job[0].filters : ""}
                     job = {job}
+                    id = {values.id}
                 ></Jobapplication>
             </div>
         )

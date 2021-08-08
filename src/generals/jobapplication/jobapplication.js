@@ -5,7 +5,7 @@ import {Dropdown, Option} from "../inputs/dropdown/dropdown"
 import CheckBox from "../inputs/checkbox"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-
+import { useSelector,useDispatch } from 'react-redux'
 import {useState, useEffect} from "react"
 import Singleinputlocation from "../location/location";
 export const Jobapplication = (props) => {
@@ -24,6 +24,46 @@ export const Jobapplication = (props) => {
         status: null,
         message: '',
     })
+    const talentProfile = useSelector((state) => state.talent.talentProfile);
+
+    var applyJob = ()=> {
+
+        if (talentProfile.length < 1) {
+            setResponse({
+                status:false,
+                message: 'You cannot apply without an Hirer Profile, kindly go create one.'
+            });
+        } else {
+            get(`/v1/talent/apply/job`, {
+                job_id:props.id,
+                filters : {
+                    salary_expectation: formState.salary,
+                    location: formState.location,
+                    experience: formState.experience
+                }
+            })
+              .then((response) => {
+                  if (response.status) {
+                      setResponse(response.data);
+                      setLoad(false)
+                  } else {
+                    //  setError({
+                    //       status: response.data.status,
+                    //       message: response.data.message
+                    //   })
+                  }
+                  
+              }, (error) => {
+                    setResponse(error.response.data);
+                    setLoad(false)
+                  console.log("Something went wrong");
+            });
+
+        }
+        
+
+
+    }
 
     const handleUserInput = (e) =>{
         const name = e.target.name;
@@ -52,6 +92,9 @@ export const Jobapplication = (props) => {
 
     return (
         <div className={`jobapplication-container ${props.open ?' ' : ' hidden'  }`}>
+            { response.message && <div className= {`application-message ${response.status ? 'success' : 'error'}`}>
+                        <p>{response.message}</p>
+                </div>}
             <div className="jobapplication-inner-col">
             <div className="jobapplication-close" onClick={e=> props.openApp()}>
                 <FontAwesomeIcon icon={faTimes} className="asterisk-icon"/>
@@ -62,23 +105,7 @@ export const Jobapplication = (props) => {
                     <p><strong>{props.job.data ? props.job.data.job[0].location : ''}</strong>  • {props.job.data ? props.job.data.job[0].type : ''} </p>
 
                 </div>
-                <form>
-                    {/* <Singleinputlabel
-                        type="text"
-                        label ="Full Name"
-                        name="fullname"
-                        value=""
-                        disabled= {false}
-                        // onChange={props.setInput}
-                    />
-                    <Singleinputlabel
-                        type="text"
-                        label ="Your Personal Email Address"
-                        name="email"
-                        value=""
-                        disabled= {false}
-                        // onChange={props.setInput}
-                    /> */}
+                <form onSubmit={applyJob}>
                     <div className="form-cv">
                         <p>CV</p>
                         {/* <div className="cv-choose-file">
@@ -93,12 +120,6 @@ export const Jobapplication = (props) => {
                             value={formState.cv}
                             onChange={(event) => handleUserInput(event)}
                         />
-                        {/* <div className="form-drag-drop">
-                            <div className="drag-drop-inner">
-                                <p>Drag and Drop To Attach Files</p>
-                                <p>Attach additional documents</p>
-                            </div>
-                        </div> */}
                     </div>
                     <div className="form-cover-letter">
                         <p>Cover Letter </p>
@@ -126,28 +147,18 @@ export const Jobapplication = (props) => {
                     
                 
                     <div className="form-experience">
-                        {/* <div className="form-qualifications">
-                            <Singleinputlocation
-                                label ="Where ?"
-                                subtext="Enter State"
-                                name="location"
-                                value={props.formState ? props.formState.location :''}
-                                handleUserLocation ={props.handleUserLocation }
-                            ></Singleinputlocation>
-                            <Singleinputlabel></Singleinputlabel>
-                            <Singleinputlabel></Singleinputlabel>
-                        </div> */}
                         {props.filters.location > 0 && <Singleinputlocation
                             label ="Where ?"
                             subtext="Enter State"
                             name="location"
+                            placeholder="Enter your location"
                             value={formState.location}
                             handleUserLocation ={handleUserLocation }
                         />}
                         {props.filters.experience > 0 && <Singleinputlabel
                             type="integer"
-                            placeholder ="How many years of Desktop support experience do you have"
-                            label ="How many years of Desktop support experience do you have"
+                            placeholder ={`How many years of ${props.job.data ? props.job.data.job[0].title: ''} working experience do you have ?`}
+                            label ={`How many years of ${props.job.data ? props.job.data.job[0].title: ''} working experience do you have ?`}
                             name="experience"
                             value={formState.experience}
                             onChange={(event) => handleUserInput(event)}
@@ -163,7 +174,7 @@ export const Jobapplication = (props) => {
 
                     </div>
                     <div className="form-apply-button">
-                        <button className="apply-button">Apply Now!</button>
+                        <button type="submit" className="apply-button">Apply Now!</button>
                         <p>By clicking "Apply Now", you agree to our <span>Terms & Conditions </span> and <span>Privacy Policy</span></p>
 
                     </div>

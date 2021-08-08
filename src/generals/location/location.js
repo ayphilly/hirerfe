@@ -132,6 +132,7 @@ const Singleinputlocation = (props) => {
             onChange={(e) => onChange(e)}
             onKeyDown={(e) => onKeyDown(e)}
             value={props.value}
+            placeholder={props.placeholder}
         />
         {suggestionsListComponent}
         
