@@ -250,7 +250,7 @@ const SingleInfo = (props)=> {
 
 const Applicanttable = (props)=> {
 
-    var myapplicants = props.applicants.data.map((applicant, index) => {
+    var myapplicants = props.applicants.data.length > 0?  props.applicants.data.map((applicant, index) => {
         return (
             <Tablerow
                 key={index}
@@ -259,7 +259,7 @@ const Applicanttable = (props)=> {
             ></Tablerow>
 
         )
-    })
+    }) : {}
 
     if (!props.applicants.status  || props.applicants.data.length < 1) {
         return (
