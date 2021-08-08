@@ -54,7 +54,7 @@ export const Fulljob = () => {
           .then((response) => {
               if (response.status) {
                   setResponse(response.data);
-                  setLoad(false)
+                //   setLoad(false)
               } else {
                 //  setError({
                 //       status: response.data.status,
@@ -78,7 +78,7 @@ export const Fulljob = () => {
               if (response.status) {
                   console.log(response.data)
                   setApplicants(response.data);
-                //   setLoad(false)
+                  setLoad(false)
               } else {
                 //  setError({
                 //       status: response.data.status,
@@ -88,7 +88,7 @@ export const Fulljob = () => {
               
           }, (error) => {
                 setApplicants(error.response.data);
-                // setLoad(false)
+                setLoad(false)
               console.log("Somethign went wrong");
           });
 
