@@ -1,0 +1,45 @@
+@import "../../variables.scss";
+
+
+@keyframes rotate {
+
+    0% {
+
+        transform: rotate(0deg);
+        
+    }
+    25% { 
+        transform: rotate(90deg);
+    }
+  
+    75% { 
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.loading-container {
+    width: 200px;
+    height: 150px;
+    @include rowflex(center,center);
+
+    .loading-inner {
+        width: 90%;
+        height: 90%;
+        @include colflex(center, space-around);
+
+        img {
+            width: 60px;
+
+            animation: rotate 1s linear forwards infinite;
+        }
+
+        p{
+            @include fontMedium(1em, 1em, $blue-901);
+        }
+    }
+}

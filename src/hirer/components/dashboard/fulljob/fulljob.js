@@ -9,23 +9,27 @@ import { useParams, useHistory, useLocation } from "react-router";
 import { useState, useEffect } from "react"
 import queryString from 'query-string'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserCheck, faUserTimes, faQuestionCircle} from '@fortawesome/free-solid-svg-icons'
+import { faUserCheck, faUserTimes, faQuestionCircle, faCheck, faTimes} from '@fortawesome/free-solid-svg-icons'
 import { Emptystate } from "../../../../talent/components/emptystate/emptystate"
 import { Empty } from "../../../../generals/emptyresult/emptyresult"
+import { Applicantprofile } from "../applicantprofile/applicantprofile"
+import { post, get } from "../../../../requests"
+import { useSelector } from "react-redux";
+import { Loading } from "../../../../generals/loading/loading"
 export const Fulljob = () => {
 
+    const info = useSelector((state) => state.auth.authData);
     const { search } = useLocation()
     const values = queryString.parse(search)
     const [active, setActive] = useState({
         info: true,
         applicant: false
     })
-
-    const [response, setResponse] = useState({
-        status: true,
-        message:'Nothing to show'
-    })
-
+    const [load, setLoad] = useState(true)
+    const [viewtalent, setView] = useState(false)
+    const [response, setResponse] = useState({})
+    const [applicants, setApplicants] = useState({})
+    const [talent, setTalent] = useState(null)
     var jobSelect = () => {
         setActive({
             info: true,
@@ -39,24 +43,92 @@ export const Fulljob = () => {
             applicant: true
         })
     }
+    var Talentview = (id)=> {
+        setView (!viewtalent);
+        setTalent(id)
+    }
+
+    var getJob = ()=> {
+
+        get(`/v1/employer/dashboard/job/${values.id}`)
+          .then((response) => {
+              if (response.status) {
+                  setResponse(response.data);
+                //   setLoad(false)
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+                setResponse(error.response.data);
+                setLoad(false)
+              console.log("Somethign went wrong");
+          });
+
+
+    }
+
+    var getApplicants = ()=> {
+
+        get(`/v1/employer/dashboard/job/${values.id}/applicants`)
+          .then((response) => {
+              if (response.status) {
+                  console.log(response.data)
+                  setApplicants(response.data);
+                  setLoad(false)
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+                setApplicants(error.response.data);
+                setLoad(false)
+              console.log("Somethign went wrong");
+          });
+
+
+    }
 
     useEffect(()=> {
-        if (values.id != 1) {
-            setResponse({
-                status:false,
-                message:'Nothing to show'
-            })
-        } else {
-            setResponse({
-                status:true,
-                message:'job available'
-            })
-        }
+        getJob();
+        getApplicants();
+        
     },[])
-
-    if (!response.status) {
+    // useEffect(()=> {
+    //     if (values.id > 4) {
+    //         setResponse({
+    //             status:false,
+    //             message:'Nothing to show'
+    //         })
+    //     } else {
+    //         setResponse({
+    //             status:true,
+    //             message:'job available'
+    //         })
+    //     }
+    // },[])
+    
+    if (load) {
 
         return (
+            <div className="fulljob-container">
+                <div className="fulljob-inner">
+                    <Loading></Loading>
+                </div>
+            </div>
+            
+        )
+
+    } 
+    else if (!response.status) {
+        return (
+            
             <div className="fulljob-container">
                 <div className="fulljob-inner">
                     <Empty
@@ -66,10 +138,8 @@ export const Fulljob = () => {
                 </div>
                 
             </div>
-            
         )
-
-    } 
+    }
     
     else {
 
@@ -81,9 +151,9 @@ export const Fulljob = () => {
                         <img src={profile} alt="company-profile"/>
                         <div className="top-jobdetails">
                             <div className="top-jobdetails top">
-                                <p>{values.name} {values.id}</p>
-                                <p>Excis Compliance LTD</p>
-                                <p>Lagos, Nigeria • Fulltime</p>
+                                <p>{response.data ? response.data.title : ''}</p>
+                                <p>{info.company_name}</p>
+                                <p>{response.data ? response.data.location + ' • ' + response.data.job_type : ''}</p>
                             </div>
                             <div className="top-jobdetails bottom">
                                 <button>Promote Job</button>
@@ -100,41 +170,55 @@ export const Fulljob = () => {
                             </div>
                             <div className={`fulljob-single applicant ${active.applicant ? ' active' : ' notactive'}`} onClick={ applicantSelect}>
                                 <p>Applicants</p>
-                                <p>20</p>
+                                <p>{response.data  ? response.data.applied_count : '0'}</p>
                             </div>
                         </div>
                         <div className={`job-info-container ${active.info ? ' sactive' : ' hide'} `}>
-                            <Jobinfo></Jobinfo>
+                            <Jobinfo
+                                data= {response ? response.data : ''}
+                            />
                         </div>
                         <div className={`job-applicant-container ${active.applicant ? ' sactive' : ' hide'}`}>
-                            <Applicanttable></Applicanttable>
+                            <Applicanttable 
+                                view={Talentview}
+                                applicants ={applicants.data}
+                            ></Applicanttable>
                         </div>
                         
                     </div>
                 </div>
+                <div className={`show-talent-profile ${viewtalent ? 'active': 'hidden'}`}>
+                    {/* <Applicantprofile
+                        // name="Ademola Okon"
+                        id={talent}
+                        close = {Talentview}
+                    /> */}
+                </div>
+                <div className={`overlay ${viewtalent ? 'active': 'hidden'}`}></div>
+                
             </div>
         )
     }
 }
 
-const Jobinfo = () => {
+const Jobinfo = (props) => {
     return (
         <div className="job-info-inner">
             
             <SingleInfo
                 image= {title}
                 title="Job Title"
-                subtitle="Front End Developer"
+                subtitle={props.data && props.data.title}
             />
             <SingleInfo
                 image= {type}
                 title="Job Type"
-                subtitle="Full Time • Lagos"
+                subtitle={props.data && props.data.job_type}
             />
             <SingleInfo
                 image= {salary}
                 title="Job Salary"
-                subtitle="Up to ₦100,000.00 per month"
+                subtitle={'Up to 100,000 Per Month'}
             />
             <SingleInfo
                 image= {description}
@@ -164,62 +248,94 @@ const SingleInfo = (props)=> {
     )
 }
 
-const Applicanttable = ()=> {
+const Applicanttable = (props)=> {
 
+    var myapplicants = props.applicants.data.map((applicant, index) => {
+        return (
+            <Tablerow
+                key={index}
+                view={props.view}
+                data = {applicant}
+            ></Tablerow>
+
+        )
+    })
+
+    if (!props.applicants.status  || props.applicants.data.length < 1) {
+        return (
+            <div>
+                <Empty
+                    text="No Applicants yet"
+                ></Empty>
+            </div>
+        )
+    }
+    else {
+        return (
+            <div className="job-applicant-inner">
+                <table class="job-applicant-inner styled-table">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Status</th>
+                            <th>Matches</th>
+                            <th>cv</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       {myapplicants}
+                    </tbody>
+                </table>
+    
+            </div>
+        )
+
+    }
+
+    
+}
+const Tablerow = (props) => {
+
+    var mymatch = props.data ? props.data.matches.map ((match, index) => {
+        return (
+            <Match
+                key= {index}
+                match={match}
+            />
+        )
+    }): {}
     return (
-        <div className="job-applicant-inner">
-            <table class="job-applicant-inner styled-table">
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Status</th>
-                        <th>Matches</th>
-                        <th>cv</th>
-                        <th>Date</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Test Name</td>
-                        <td>Awaiting review</td>
-                        <td>Dom</td>
-                        <td> <a>View</a></td>
-                        <td>12/120/2021</td>
-                        <td>
-                            <div className="action-box green">
-                                <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
-                            </div>
-                            <div className="action-box yellow">
-                                <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
-                            </div>
-                            <div className="action-box red">
-                                <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Test Name</td>
-                        <td>Awaiting review</td>
-                        <td>Dom</td>
-                        <td> <a>View</a></td>
-                        <td>12/120/2021</td>
-                        <td>
-                            <div className="action-box green">
-                                <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
-                            </div>
-                            <div className="action-box yellow">
-                                <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
-                            </div>
-                            <div className="action-box red">
-                                <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-
-        </div>
+        <tr>
+            <td>{props.data ? props.data.user_name : ''}</td>
+            <td>{props.data ? props.data.status : ''}</td>
+            <td>
+                {mymatch}
+            </td>
+            <td> <a onClick={() => props.view(props.data.id)}>View Profile</a></td>
+            <td>{props.data ? props.data.applied_on : ''}</td>
+            <td>
+                <div className="action-box green">
+                    <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
+                </div>
+                <div className="action-box yellow">
+                    <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
+                </div>
+                <div className="action-box red">
+                    <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
+                </div>
+            </td>
+        </tr>
+    )
+}
+const Match = (props) => {
+    return (
+        <span className={`table-matches ${props.match.status ? ' match' : ' no-match'}`}>
+            { props.match.status ? <FontAwesomeIcon icon={faCheck} className="check-icon" size="lg"/> :
+                <FontAwesomeIcon icon={faTimes} className="times-icon" size="lg"/>
+            }
+            <p>{props.match.filter} {props.match.users_value}  </p>
+        </span>
     )
 }

@@ -12,6 +12,35 @@
         position: relative;
        
         @include colflex(flex-start, space-between);
+        .saved-job-message {
+            width: fit-content;
+            padding:10px;
+            height: fit-content;
+            position: absolute;
+            border-radius: 10px;
+            border:  1px solid #35B86D;
+            background-color: #F0FFF6;
+            @include rowflex(center,center);
+            right: 35%;
+            top: 20px;
+            color: #075227;
+            transition: all 0.3s ease-in;
+            box-shadow: 0px 0px 15px #F5F5F5;
+    
+            &.error {
+                border:  1px solid #BB1414;
+                background-color: #FFEBEB;
+                color: #550000;
+    
+            }
+    
+            &.success {
+                border:  1px solid #35B86D;
+                background-color: #F0FFF6;
+                color: #075227;
+    
+            }
+        }
 
         .myjobs-inner-top{
             width: 90%;

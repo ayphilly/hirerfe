@@ -34,6 +34,7 @@ import { CustomRoute } from "./customRoute";
 import Register from "./generals/createaccount/register";
 import { Home } from "./hirer/pages/dashboard/home";
 import Hirerdashnav from "./hirer/components/dashboard/navbar/dashboardnavbar";
+import { Profiletalent } from "./talent/pages/dashboard/talentProfile/talentprofile";
 const TalentWithNavbar = ({ exact, path, component: Component, ...rest }) => {
   return (
     <Route
@@ -113,6 +114,7 @@ const DashboardWithNavbar = ({
 };
 
 function App() {
+  
   return (
     <div className="App">
       <Switch>
@@ -141,9 +143,10 @@ function App() {
           path="/talent/createprofile"
           component={CreateProfile}
         />
+
         <TalentWithNavbar
           exact
-          path="/talent/jobdescription/:id"
+          path="/talent/jobdescription"
           component={Jobdescription}
         />
         <TalentWithNavbar
@@ -182,17 +185,23 @@ function App() {
 
         {/* Dashboard Talent */}
 
-        {/* <DashboardWithNavbar
+        <DashboardWithNavbar
           exact
-          path="/dashboard/talent"
+          path="/dashboard/talent/home"
           component={Dashboardhome}
-        /> */}
+        />
        
-        {/* <DashboardWithNavbar
+       <DashboardWithNavbar
           exact
-          path="/dashboard/myjobs"
+          path="/dashboard/talent/myjobs"
           component={Myjobs}
-        /> */}
+        />
+        <DashboardWithNavbar
+          exact
+          path="/dashboard/talent/profile"
+          component={Profiletalent}
+        />
+        
          {/* <DashboardWithNavbar
           exact
           path="/dashboard/talent/account"
@@ -205,7 +214,7 @@ function App() {
         /> */}
 
         {/* Only logged in talent can access routes */}
-         <CustomRoute
+         {/* <CustomRoute
           condition="talent"
           exact
           path="/dashboard/talent/home"
@@ -216,18 +225,18 @@ function App() {
           exact
           path="/dashboard/talent/myjobs/:id"
           component={Myjobs}
-        />
+        /> */}
         
         <CustomRoute
           condition="talent"
           exact
-          path="/dashboard/talent/account/:id"
+          path="/dashboard/talent/account"
           component={Account}
         />
         <CustomRoute
           condition="talent"
           exact
-          path="/dashboard/company"
+          path="/dashboard/talent/company"
           component={Review}
         />
 

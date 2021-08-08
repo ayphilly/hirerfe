@@ -12,15 +12,9 @@ export const Myjobs = (props) => {
         status: null,
         message: ''
     })
-    const [savedJobs, setSavedjobs] = useState([]);
-    const [activeJobs, setActivejobs] = useState([]);
-
-    useEffect(()=> {
-        setSavedjobs(savedList.length);
-        setActivejobs(activeList.length)
-    }, [])
-
-  
+    const [load, setLoad] = useState(true)
+    const [savedJobs, setSavedJobs] = useState({});
+    const [activeJobs, setActiveJobs] = useState([]);
 
     useEffect(()=>{
         jobUnveil();
@@ -30,7 +24,7 @@ export const Myjobs = (props) => {
         event.preventDefault();
        
        
-        del('/v1/talent/jobs/', { data: { id: id} })
+        del(`/v1/talent/jobs/${id}`)
         .then((response) => {
 
             if (response.status) {
@@ -58,11 +52,12 @@ export const Myjobs = (props) => {
 
     var getSavedJobs = ()=> {
        
-        get('/v1/talent/jobs/')
+        get('/v1/talent/jobs')
         .then((response) => {
 
             if (response.status) {
-                setSavedjobs(response.data.data.saved_jobs)
+                setSavedJobs(response.data)
+                setLoad(false)
                 
             } else {
                 setResponse({
@@ -73,28 +68,36 @@ export const Myjobs = (props) => {
             
         }, (error) => {
             setResponse({
-                status: error.response.data.status,
-                message: error.response.data.message
+                status: error.response ? error.response.data.status : '',
+                message: error.response ?  error.response.data.message: ''
             })
+            setLoad(false)
         });
 
     }
+
+    useEffect(()=> {
+        getSavedJobs()
+    }, [])
 
 
     return (
         <div className="myjobs-container">
             <div className="myjobs-inner" id="myjobs-inner">
+                { response.message && <div className= {`saved-job-message ${response.status ? 'success' : 'error'}`}>
+                        <p>{response.message}</p>
+                </div>}
 
                 <div className="myjobs-inner-top">
                     <p>My Jobs</p>
                     <div className="myjobs-nav-link" id="myjobs-nav-link">
                         <div className="myjobs-single savedjob active">
                             <p>Saved</p>
-                            <p>{savedJobs}</p>
+                            <p>{savedJobs.links ? savedJobs.links.total : 0}</p>
                         </div>
                         <div className="myjobs-single application">
                             <p>Active</p>
-                            <p>{activeJobs}</p>
+                            <p>{0}</p>
                         </div>
                         <div className="myjobs-single archive">
                             <p>Archive</p>
@@ -107,6 +110,8 @@ export const Myjobs = (props) => {
                 <div className="savedjobss sactive">
                    <Savedjobs
                         delete = {delSavedjob}
+                        savedJobs={savedJobs}
+                        load={load}
                    ></Savedjobs>
                 </div>
 

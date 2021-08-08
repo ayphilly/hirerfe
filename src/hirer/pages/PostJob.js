@@ -7,7 +7,8 @@ import JobDetailsForm from "../components/JobDetailsForm";
 import JobDescForm from "../components/JobDescForm";
 import JobFilterForm from "../components/JobFilterForm";
 import JobReviewForm from "../components/JobReviewForm";
-
+import { setDashboard } from "../../slices/companySlice"
+import {useDispatch } from 'react-redux'
 const initialValues = {
   jobTitle: "",
   jobLocation: "",
@@ -35,11 +36,22 @@ let schema = yup.object().shape({
 });
 
 const PostJob = () => {
+  const dispatch = useDispatch()
   const [step, setStep] = useState(0);
   const [jobTypes, setJobTypes] = useState([]);
 
+  var getEmpData = async () => {
+    try {
+        const {data} = await get(`/v1/employer/dashboard`);
+        dispatch(setDashboard(data));
+        return data;
+    } catch (err) {
+        console.log(err.message);
+    }
+  }
+
   const submitForm = (formData) => {
-    console.log(formData);
+    // console.log(formData);
     const {
       filters,
       filter_values: { experience, location, salary_expectation },
@@ -64,12 +76,19 @@ const PostJob = () => {
         }),
       },
     })
-      .then(() => alert("Job Posted Successfully"))
+      .then(() => 
+        {
+          alert("Job Posted Successfully")
+          getEmpData();
+        })
       .catch(({ response }) => {
         console.log(response);
         alert("Error, check console!");
       });
   };
+
+  
+  
 
   const previousStep = () => setStep(step - 1);
   const nextStep = () => setStep(step + 1);

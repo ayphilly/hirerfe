@@ -21,7 +21,13 @@ function Dashboardnav() {
           >
             Find Jobs
           </Link>
-          <span className="navbar-inner-nav-link"> Company Reviews </span>
+          <Link
+            className="navbar-inner-nav-link"
+            to="/dashboard/talent/company"
+            style={{ textDecoration: "none" }}
+          >
+            Company Review
+          </Link>
         </div>
         <div className="navbar-inner right">
           {/* <Link className="navbar-inner-nav-link" to="/hirer" style={{textDecoration:'none'}}>For Hirers</Link>

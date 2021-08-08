@@ -46,7 +46,8 @@ export const activeList = [
 ];
 
 export const savedList = [
-    {
+    {   
+        id:1,
         title: 'FrontEnd Dev',
         company: 'Aspire Consulting',
         location: 'Lagos',
@@ -56,6 +57,7 @@ export const savedList = [
         icao: 'admin',
     },
     {
+        id:2,
         title: 'UI/UX Designer',
         company: 'Ezra Consulting',
         location: 'Lagos',

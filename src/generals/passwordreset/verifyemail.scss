@@ -2,9 +2,9 @@
 
 .verify-email-form {
     width: 100%;
-    height: 30%;
+    height: 70%;
     
-    @include colflex(flex-start, space-around);
+    @include colflex(flex-start, space-between);
     p {
         color: red;
     }

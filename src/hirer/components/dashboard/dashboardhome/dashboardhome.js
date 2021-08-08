@@ -4,33 +4,63 @@ import Hirersinglejob from "../singlejob/hirersinglejob";
 import Box from "../../../hirerassets/dashjob.svg"
 import {dashList} from "../../../constants"
 import { useHistory } from "react-router"
-
+import {useState, useEffect} from "react"
+import { post, get } from "../../../../requests";
+import { Empty } from "../../../../generals/emptyresult/emptyresult";
+import { useSelector } from "react-redux";
 const DashboardHome= (props) => {
 
     const history = useHistory();
+    const dashData = useSelector((state) => state.company.dashboard);
+    const [data, setData] = useState({})
 
-    var viewJob = (id)=> {
-        var name ='Ademola Okon';
-        history.push(`/dashboard/hirer/myjob/?name=${name}&id=${id}`);
+    var viewJob = (title,id)=> {
+        history.push(`/dashboard/hirer/myjob/?title=${title}&id=${id}`);
     }
     var viewBox = (link)=> {
        
         history.push(`/dashboard/hirer/${link}`);
     }
-    var postedJobs = dashList.map ((job)=> {
+    var postedJobs = dashData.data ? dashData.data.recent_jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 key ={job.id}
                 id={job.id}
-                title={job.jobtitle}
+                title={job.title}
                 company={job.company}
                 location={job.location}
                 type={job.type}
-                days={job.days}
+                days={job.id}
                 view={viewJob}
             />
         )
-    })
+    }): 0;
+
+    var getDashboardData = ()=> {
+        get(`/v1/employer/dashboard`)
+          .then((response) => {
+  
+              if (response.status) {
+  
+                  setData(response.data)
+                  
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+                setData(error.response.data)
+              console.log("Something went wrong")
+          });
+
+    }
+
+    useEffect(()=> {
+        getDashboardData();
+    }, [])
 
     return (
       <div className="dashboard-home-container">
@@ -43,7 +73,7 @@ const DashboardHome= (props) => {
                         link = 'myjobs'
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
-                        number = "15"
+                        number = {dashData.data ? dashData.data.total_jobs: 0 }
                         subtext = "Total Jobs Posted"
                         view = {viewBox}
                     ></Singlebox>
@@ -65,7 +95,7 @@ const DashboardHome= (props) => {
                         image = {Box}
                         title = "Candidates"
                         subtitle = "Check the total amount of talents received"
-                        number = "15"
+                        number = {dashData.data ? dashData.data.applicant_count: 0 }
                         subtext = "Total Number of Candidates"
                     ></Singlebox>
 
@@ -80,7 +110,11 @@ const DashboardHome= (props) => {
                     <p>You can view the list of your most recent job adverts.</p>
                 </div>
                 <div className="bottom-content">
-                    {postedJobs}
+                    {postedJobs == 0 ?
+                        <Empty
+                            text="You are yet to create a job Post"
+                        />
+                    : postedJobs}
                 </div>
 
             </div>

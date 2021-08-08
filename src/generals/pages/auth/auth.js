@@ -3,8 +3,10 @@ import redirect from "../../../hirer/hirerassets/redirecting.svg"
 import { useSelector } from 'react-redux'
 import {useEffect, useState} from "react"
 import { useParams, useHistory, useLocation } from "react-router";
+import { setTalentProfile } from "../../../slices/talentSlice";
+import { setDashboard } from "../../../slices/companySlice";
 import queryString from 'query-string'
-import { post } from "../../../requests";
+import { post,get } from "../../../requests";
 import {useDispatch } from 'react-redux'
 
 import { setToken, setAuthData } from "../../../slices/authSlice"
@@ -18,41 +20,94 @@ export const Auth = () => {
     })
 
     const dispatch = useDispatch()
+
+    var getEmpData = async () => {
+        try {
+            const {data} = await get(`/v1/employer/dashboard`);
+            dispatch(setDashboard(data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+    var getTalentData = async () => {
+        try {
+            const {data} = await get(`/v1/talent/profile`);
+            dispatch(setTalentProfile(data.data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
     
-    const socialAuth = ()=> {
+    // const socialAuth = ()=> {
         
 
-        post('/v1/auth/login/in/google/callback', {
-            state: values.state,
-            code: values.code
-        })
-        .then((response) => {
-            console.log(response);
-            dispatch(setAuthData(response.data.data));
+    //     post('/v1/auth/login/in/google/callback', {
+    //         state: values.state,
+    //         code: values.code
+    //     })
+    //     .then((response) => {
+    //         console.log(response);
+    //         dispatch(setAuthData(response.data.data));
+    //         setMessage({
+    //             status: true,
+    //             text: response.data.message
+    //         })
+    //         setTimeout(()=> {
+    //             response.data.data.role === "company" ? getEmpData() :getTalentData();
+    //         }, 2000)
+            
+            
+    //     }, (error) => {
+    //         console.log(values)
+    //         setMessage({
+    //             status: false,
+    //             text: error.response.data.message
+    //         })
+    //         console.log(error);
+            
+    //     });
+
+        
+    // }
+
+    var socialAuth = async () => {
+        try {
+            const {data} = await post('/v1/auth/login/in/google/callback', {
+                state: values.state,
+                code: values.code
+            })
+            dispatch(setAuthData(data.data));
             setMessage({
                 status: true,
-                text: response.data.message
+                message: data.message,
+                role:data.data.role
             })
             setTimeout(()=> {
-                response.data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
-            }, 2000)
-            
-            
-        }, (error) => {
-            console.log(values)
+                data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
+            }, 1000)
+            return data;
+        } catch (err) {
+            console.log(err.message);
             setMessage({
                 status: false,
-                text: error.response.data.message
+                message: "Wrong combination,please try again",
             })
-            console.log(error);
-            
-        });
-
-        
+        }
     }
 
+    const getAuthData = () => {
+        // event.preventDefault();
+        // alert(JSON.stringify(formState))
+        socialAuth().then((response) => {
+            response.data.role === "company" ? getEmpData() : getTalentData();
+        })
+        
+    }
     useEffect(()=> {
-        socialAuth();
+        // socialAuth();
+        getAuthData();
     },[])
     return (
         <div className="auth-container">

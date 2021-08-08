@@ -7,12 +7,15 @@ import axios from "axios"
 import {post, get} from "../../requests"
 import {useDispatch } from 'react-redux'
 import { setAuthData } from "../../slices/authSlice"
+import { setTalentProfile } from "../../slices/talentSlice"
+import { setDashboard } from "../../slices/companySlice"
 import {useHistory} from "react-router";
 import { Link } from 'react-router-dom';
 import {Socialoption} from "../createaccount/socialsoption"
 export const Signin =()=> {
 
     const dispatch = useDispatch()
+    
     let history = useHistory();
     const [formState, setFormstate] = useState({
         email: '',
@@ -21,7 +24,8 @@ export const Signin =()=> {
 
     const [response, setResponse] = useState({
         status: null,
-        message: ''
+        message: '',
+        role:''
     })
 
     const handleUserInput = (e) =>{
@@ -30,48 +34,99 @@ export const Signin =()=> {
 
        setFormstate({...formState, [name]: value});
     }
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     // alert(JSON.stringify(formState))
+    //     post('/v1/auth/login', formState)
+    //     .then((response) => {
+    //         // console.log(response);
+
+    //         if (response.status) {
+    //             // console.log(response.data.status);
+    //             // console.log(response.data.data.name);
+    //             dispatch(setAuthData(response.data.data));
+                
+    //             setResponse({
+    //                 status: response.data.status,
+    //                 message: response.data.message
+    //             })
+
+    //             setTimeout(()=> {
+    //                 response.data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
+    //             }, 2000)
+                
+                
+                
+
+    //         } else {
+
+    //             console.log(response);
+    //             setResponse({
+    //                 status: response.status,
+    //                 message: response.message
+    //             })
+    //         }
+            
+    //     }, (error) => {
+    //         // console.log(error.response.data.status)
+    //         setResponse({
+    //             status: error.response.data.status,
+    //             message: error.response.data.message
+    //         })
+           
+    //     })
+    // }
+
+    var getUserData = async () => {
+        try {
+            const {data} = await post('/v1/auth/login', formState);
+            dispatch(setAuthData(data.data));
+            setResponse({
+                status: data.status,
+                message: data.message,
+                role:data.data.role
+            })
+            setTimeout(()=> {
+                data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
+            }, 1000)
+            return data;
+        } catch (err) {
+            console.log(err.message);
+            setResponse({
+                status: false,
+                message: "Wrong combination,please try again",
+            })
+        }
+    }
+    var getEmpData = async () => {
+        try {
+            const {data} = await get(`/v1/employer/dashboard`);
+            dispatch(setDashboard(data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+    var getTalentData = async () => {
+        try {
+            const {data} = await get(`/v1/talent/profile`);
+            dispatch(setTalentProfile(data.data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // alert(JSON.stringify(formState))
-        post('/v1/auth/login', formState)
-        .then((response) => {
-            // console.log(response);
-
-            if (response.status) {
-                // console.log(response.data.status);
-                // console.log(response.data.data.name);
-                dispatch(setAuthData(response.data.data));
-                
-                setResponse({
-                    status: response.data.status,
-                    message: response.data.message
-                })
-
-                setTimeout(()=> {
-                    response.data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent");
-                }, 2000)
-                
-                
-                
-
-            } else {
-
-                console.log(response);
-                setResponse({
-                    status: response.status,
-                    message: response.message
-                })
-            }
-            
-        }, (error) => {
-            // console.log(error.response.data.status)
-            setResponse({
-                status: error.response.data.status,
-                message: error.response.data.message
-            })
-           
-        });
+        getUserData().then((response) => {
+            response.data.role === "company" ? getEmpData() : getTalentData();
+        })
+        
     }
+    
+
     const socials = (event) => {
         event.preventDefault();
       

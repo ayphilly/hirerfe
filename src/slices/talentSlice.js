@@ -36,7 +36,8 @@ export const talentSlice = createSlice({
       },
     },
     talentData: {},
-    avatar: ''
+    avatar: '',
+    talentProfile:{}
   },
   reducers: {
     setProfileField: (state, action) => {
@@ -45,6 +46,9 @@ export const talentSlice = createSlice({
     },
     setTalentData: (state, action) => {
       state.talentData = action.payload;
+    },
+    setTalentProfile: (state, action) => {
+      state.talentProfile = action.payload;
     },
     setAvatar: (state, action) => {
       state.avatar = action.payload;
@@ -61,6 +65,6 @@ export const talentSlice = createSlice({
   },
 });
 
-export const { setProfileField, setTalentData,updateTalent, setAvatar,updateTalentAvailability } = talentSlice.actions;
+export const { setProfileField, setTalentData,setTalentProfile,updateTalent, setAvatar,updateTalentAvailability } = talentSlice.actions;
 
 export default talentSlice.reducer;

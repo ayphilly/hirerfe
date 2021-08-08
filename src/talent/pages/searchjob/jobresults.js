@@ -1,22 +1,26 @@
 
 import Singlejob from "../../components/singlejob/singlejob"
 import {jobSearch} from "../../constants"
-import {useParams, useLocation} from "react-router-dom";
-
+import {useParams, useLocation, useHistory} from "react-router-dom";
 import {useState, useEffect} from "react"
 import {accordionFunc} from "../../../helper"
 import { Empty } from "../../../generals/emptyresult/emptyresult";
 import { Searchcontainer } from "./searchcontainer"
 import { post,get} from "../../../requests";
 import "./jobresults.scss"
+import { Loading } from "../../../generals/loading/loading";
 export const Jobresult = () => {
 
-    const [myjobs, setJobs]= useState()
+    var history = useHistory();
+    const [myjobs, setJobs]= useState({})
     const [status, setStatus] = useState(null);
+
+    const [load, setLoad] = useState(true)
     const [response, setResponse] = useState({
         status: null,
         message: ''
     })
+    
     const [error, setError] = useState({
         status: null,
         message: ''
@@ -48,37 +52,29 @@ export const Jobresult = () => {
         
     }
 
-    var jobs = jobSearch.map (job=> {
-        return (
-            <Singlejob
-                key={job.id}
-                id={job.id}
-                title={job.title}
-                company={job.company}
-                days={job.days}
-                location={job.location}
-                type={job.type}
-                click ={openAction}
-                save = {saveJob}
-            >
+    var goToJob = (name, id)=> {
+        history.push(`/talent/jobdescription?name=${name}&id=${id}`);
+    }
 
-            </Singlejob>
-        )
-    })
+    
 
-    const searchJobs = () => {
-        get('/v1/talent/job/')
+
+    const searchJobs = (jobtitle,location) => {
+        get(`/v1/job/search?title=${jobtitle}&location=${location}`)
           .then((response) => {
   
               if (response.status) {
   
-                  setJobs(response.data.data.jobs)
+                  setJobs(response.data)
+                  console.log(response.data)
+                  setLoad(false);
                   
               } else {
                  setResponse({
                       status: response.data.status,
                       message: response.data.message
                   })
+                  setLoad(false);
               }
               
           }, (error) => {
@@ -86,17 +82,16 @@ export const Jobresult = () => {
                   status: error.response.data.status,
                   message: error.response.data.message
               })
+              setLoad(false);
           });
  
     }
 
-    var saveJob = (event, id)=> {
-        event.preventDefault();
+    var saveJob = (id)=> {
+        // event.preventDefault();
        
        
-       post('/v1/talent/job/', {
-           id :1
-       })
+       post(`/v1/talent/job/${id}`)
         .then((response) => {
 
             if (response.status) {
@@ -147,6 +142,25 @@ export const Jobresult = () => {
         
     }
 
+    var jobs = myjobs.data ? myjobs.data.jobs.map (job=> {
+        return (
+            <Singlejob
+                key={job.id}
+                id={job.id}
+                title={job.title}
+                company={job.company}
+                days={job.days}
+                location={job.location}
+                type={job.type}
+                click ={openAction}
+                save = {saveJob}
+                goto = {goToJob}
+            >
+
+            </Singlejob>
+        )
+    }):{}
+
     useEffect(()=> {
        
         accordionFunc();
@@ -160,13 +174,36 @@ export const Jobresult = () => {
       return () => clearTimeout(timer);
     }, [userloc])
 
-    if (jobs.length < 1 ) {
+  
+    if (load) {
+        return(
+            <div className="job-results-container">
+                { response.message && <div className= {`job-results-message ${response.status ? 'success' : 'error'}`}>
+                        <p>{response.message}</p>
+                </div>}
+                <div className="job-results-inner">
+                    <Searchcontainer
+                        userloc={userloc}
+                        address={addr}
+                        jobsearch={searchJobs}
+                        totalResults = {myjobs.links && myjobs.links.total}
+                    >
+                        <Loading></Loading>
+                    </Searchcontainer>
+                </div>
+    
+            </div>
+        )
+    }
+    else if (jobs.length < 1 ) {
         return(
             <div className="job-results-container">
                 <div className="job-results-inner">
                     <Searchcontainer
                         userloc={userloc}
                         address={addr}
+                        jobsearch={searchJobs}
+                        totalResults = {myjobs.links ? myjobs.links.total : 0}
                     >
                         <Empty></Empty>
                     </Searchcontainer>
@@ -179,10 +216,15 @@ export const Jobresult = () => {
 
         return(
             <div className="job-results-container">
+                { response.message && <div className= {`job-results-message ${response.status ? 'success' : 'error'}`}>
+                        <p>{response.message}</p>
+                </div>}
                 <div className="job-results-inner">
                     <Searchcontainer
                         userloc={userloc}
                         address={addr}
+                        jobsearch={searchJobs}
+                        totalResults = {myjobs.links ? myjobs.links.total : 0}
                     >
                        { jobs}
                     </Searchcontainer>

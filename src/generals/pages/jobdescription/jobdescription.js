@@ -5,22 +5,32 @@ import { faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
 import {Companyinfo} from "../../companyinfo/companyinfo"
 import {Jobapplication} from "../../jobapplication/jobapplication"
 import {useEffect, useState} from "react"
-import {useParams} from "react-router-dom";
+import savedjobimage from "../../../talent/talentassets/Empty.svg";
+import { useParams,useLocation } from "react-router";
+import queryString from 'query-string'
 import {closeApplication, openApplication} from "../../../helper"
 import { get } from "../../../requests"
+import { Emptystate } from "../../../talent/components/emptystate/emptystate"
+import { Loading } from "../../loading/loading"
 export const Jobdescription = ()=> {
 
-    let { id } = useParams();
-    const [job, setJob] = useState()
+    const { search } = useLocation()
+    const values = queryString.parse(search)
+    const [job, setJob] = useState({})
+    const [open, setOpen] = useState(false)
+    const [load, setLoad] = useState(true)
     const [error, setError] = useState({})
-    
+    const openApp = () => {
+        setOpen(!open)
+    }
     const getJob = () => {
-        get(`api/v1/job/${id}`)
+        get(`/v1/job/${values.id}`)
           .then((response) => {
   
               if (response.status) {
   
-                  setJob(response.data.data.job)
+                  setJob(response.data)
+                  setLoad(false)
                   
               } else {
                  setError({
@@ -34,125 +44,125 @@ export const Jobdescription = ()=> {
                   status: error.response.data.status,
                   message: error.response.data.message
               })
+              setLoad(false)
           });
  
     }
 
     useEffect(()=> {
-        openApplication();
-        // closeApplication();
-        
-    })
+        getJob();
+    }, [])
 
-     return(
-        <div className="jobdescription-container">
-            <div className="jobdescription-inner-col">
-                <div className="jobdescription-left">
-                    
-                    <div className="jobdescription-left-top">
-
-                        <img src={Aspire} className="company-img" alt="Company Profile Image"/>
-                        <div className="jobdescription-top-right">
-                            <p>Administrative Officer</p>
-                            <p>Aspire Consulting</p>
-                            <p>Lagos <strong>• Fulltime</strong></p>
-                            <button className="apply-job"> Apply Now {id} </button>
-
-                        </div>
-
-                    </div>
-
-                    <div className="Jobdescription-left-overview">
-                        <div className="Jobdescription-overview-inner">
-                            <div className="job-overview">
-                                <p>Experience</p>
-                                <p>Minimum 1 Year</p>
-                            </div>
-                            <hr/>
-                            <div className="job-overview">
-                                <p>Level</p>
-                                <p>Senior Level</p>
-                            </div>
-                            <hr/>
-                            <div className="job-overview">
-                                <p>Employment Type</p>
-                                <p>Full Time</p>
-                            </div>
-                            <hr/>
-                            <div className="job-overview">
-                                <p>Offer Salary</p>
-                                <p>$2,500 / Month</p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="jobdescription-left-details">
-                        <div className="details-overview">
-                            <p>Overview</p>
-                            <p>
-                                Desktop Technician will provide day to day local\remote desktop support, 
-                                receive inbound calls, answer questions, troubleshoot and document steps 
-                                performed to resolve challenges with hardware, software and application 
-                                issues in a ticketing system. The candidate will also need to facilitate 
-                                customer resolution for calls and engage their supervisors and managers 
-                                to ensure operational consistency across all shifts within the IT Support Center. 
-                                Desktop Support Engineer provides Break Fix, fault diagnosis and resolution. 
-                                Providing fault analysis to customer’s various core operating systems and platforms, 
-                                Ideal candidate should have 2-3 years’ experience.
-                            </p>
-
-                        </div>
-                        <div className="details-functions">
-                            <p>Functions & Responsibilities</p>
-                            <ul>
-                                <li>Provide first/second level contact and problem resolution for customer issues.</li>
-                                <li>Work with Third Party Vendors to remediate complex AV issues as needed.</li>
-                                <li>Provide timely communication on issue status and resolution.</li>
-                                <li>Maintain ticket updates for all reported incidents.</li>
-                                <li>Install, upgrade, support and troubleshoot XP, Windows 7, Windows 8.1, Windows 10 
-                                    and Microsoft Office 2010, Cisco Jabber, another authorized desktop application.
-                                </li>
-                            </ul>
-                            
-
-                        </div>
-
-                        <div className="details-requirements">
-                            <p>Candidate Required Mininmum Qualifications</p>
-                            <ul>
-                                <li>Bachelor’s Degree or equivalent in Computer Science or related field.</li>
-                                <li>CompTIA A+, Microsoft Certified Professional (MCP) or better.</li>
-                                <li>Minimum of 18 months years of IT experience.</li>
-                                <li>Mobile device management including IOS and Android devices, Enterprise encryption solutions, Windows PC/laptop management via Active Directory.</li>
-                                <li>
-                                    Proven analytical, troubleshooting and problem- solving skills.
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                    <div className="jobdescription-left-bottom">
-                        <p>Posted 2days Ago</p>
-                        <button className="report-job">
-                            <FontAwesomeIcon icon={faExclamationCircle} className="hamburger-icon" size="lg"/>
-                            Report Job
-                        </button>
-                    </div>
-                    
-                </div>
-                
-                <div className="jobdescription-right">
-                    <Companyinfo></Companyinfo>
+    if (load) {
+        return (
+            <div className="jobdescription-container">
+                <div className="jobdescription-inner-col">
+                    <Loading></Loading>
 
                 </div>
-
             </div>
 
-            <div className="overlay hidden"></div> 
-            <Jobapplication closeApplication = {closeApplication}></Jobapplication>
-        </div>
-    )
+        )
+    }
+    else if (job.status) {
+        return(
+            <div className="jobdescription-container">
+                <div className="jobdescription-inner-col">
+                    <div className="jobdescription-left">
+                        
+                        <div className="jobdescription-left-top">
+    
+                            <img src={Aspire} className="company-img" alt="Company Profile Image"/>
+                            <div className="jobdescription-top-right">
+                                <p> {job.data ? job.data.job[0].title : ''} </p>
+                                <p>{job.data ? job.data.job[0].company : ''}</p>
+                                <p>{job.data ? job.data.job[0].location : ''} <strong>• {job.data ? job.data.job[0].type : ''}</strong></p>
+                                <button className="apply-job" onClick={e=>openApp() }> Apply Now</button>
+    
+                            </div>
+    
+                        </div>
+    
+                        <div className="Jobdescription-left-overview">
+                            <div className="Jobdescription-overview-inner">
+                                <div className="job-overview">
+                                    <p>Experience</p>
+                                    <p>Minimum 1 Year</p>
+                                </div>
+                                <hr/>
+                                {/* <div className="job-overview">
+                                    <p>Level</p>
+                                    <p>Senior Level</p>
+                                </div>
+                                <hr/> */}
+                                <div className="job-overview">
+                                    <p>Employment Type</p>
+                                    <p>{job.data ? job.data.job[0].type : ''}</p>
+                                </div>
+                                <hr/>
+                                <div className="job-overview">
+                                    <p>Offer Salary</p>
+                                    <p>{job.data ? job.data.job[0].salary : ''} / Month</p>
+                                </div>
+    
+                            </div>
+    
+                        </div>
+    
+                        <div className="jobdescription-left-details">
+                            <div className="details-overview">
+                                <p>Overview</p>
+                                <p>
+                                    {job.data ? job.data.job[0].description : ''}
+                                </p>
+    
+                            </div>
+                            
+    
+                        </div>
+    
+                        <div className="jobdescription-left-bottom">
+                            <p>Posted 2days Ago</p>
+                            <button className="report-job">
+                                <FontAwesomeIcon icon={faExclamationCircle} className="hamburger-icon" size="lg"/>
+                                Report Job
+                            </button>
+                        </div>
+                        
+                    </div>
+                    
+                    <div className="jobdescription-right">
+                        <Companyinfo></Companyinfo>
+    
+                    </div>
+    
+                </div>
+    
+                <div className={`overlay ${open ? ' active': ' hidden'}`}></div> 
+                <Jobapplication 
+                    open = {open}
+                    openApp= {openApp}
+                    filters = {job.data ? job.data.job[0].filters : ""}
+                    job = {job}
+                    id = {values.id}
+                ></Jobapplication>
+            </div>
+        )
+        
+    } else {
+        return (
+            <div className="jobdescription-error">
+                <div className="jobdescription-error-col">
+
+                    <Emptystate
+                        image= {savedjobimage}
+                        title = "Nothing to show"
+                        subtitle=" The job you are looking for is not available "
+                    />
+                </div>
+            </div>
+            
+        )
+    }
+     
 }

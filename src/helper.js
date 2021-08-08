@@ -24,16 +24,20 @@ export const slideDown = () => {
 
 export const openPage = () => {
   var mine = document.querySelector(".creation");
-  mine.addEventListener("click", function () {
-    // alert("work")
-    var container = document.getElementsByClassName("create-account-container");
-    var overlay = document.getElementsByClassName("overlay");
-    overlay[0].className = overlay[0].className.replace(" hidden", " active");
-    container[0].className = container[0].className.replace(
-      " hidden",
-      " active"
-    );
-  });
+  if (mine) {
+    return mine.addEventListener("click", function () {
+      // alert("work")
+      var container = document.getElementsByClassName("create-account-container");
+      var overlay = document.getElementsByClassName("overlay");
+      overlay[0].className = overlay[0].className.replace(" hidden", " active");
+      container[0].className = container[0].className.replace(
+        " hidden",
+        " active"
+      );
+    });
+
+  }
+  
 };
 
 export const closePage = () => {
@@ -49,6 +53,7 @@ export const openAction = () => {
   var mor = document.querySelectorAll(".vertical-icon");
   var action = document.querySelectorAll(".job-action");
   for (var i = 0; i < mor.length; i++) {
+    
     mor[i].addEventListener("click", function () {
       if (this.nextSibling.style.display) {
         this.nextSibling.style.display = "none";

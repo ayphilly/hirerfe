@@ -59,7 +59,7 @@ const Singleinputlabel = (props) => {
           />
         )}
       </div>
-      <p style={{ color: "red", height: 5, width: 100 + "%" }}>
+      <p style={{ color: "red", height: 5, width: 100 + "%", margin: 0+"px" }}>
         
         {props.error ? props.error : " "}
       </p>

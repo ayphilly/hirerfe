@@ -136,7 +136,7 @@ export const Searchjob = (props) => {
       <div className="searchjo-inner-col">
         <div className="searchjob-left">
           <div className="searchjob-left-top">
-            <form>
+            <form className="searchjob-form">
               <div className="search-input">
                 <Singleinput
                   type="text"

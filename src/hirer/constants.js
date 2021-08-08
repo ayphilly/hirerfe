@@ -191,5 +191,61 @@ export const certifications = [
 
 
 
+export const matches = [
+    {
+      status: false,
+      filter: "salary_expectation",
+      users_value: "70,000"
+    },
+    {
+      status: false,
+      filter: "location",
+      users_value: "Lagos, Nigeria"
+    },
+    {
+      status: false,
+      filter: "experience",
+      users_value: "1 years"
+    }
+  ]
 
+  var statues = {
+    "status": true,
+    "message": "Talent Profile",
+    "data": {
+      "profile": {
+        "name": "Toni",
+        "location": "Lagos Nigeria",
+        "education": {
+          "level": "400",
+          "field": "Civil Engineering",
+          "school": "Harvard University",
+          "location": "Lagos, Nigeria",
+          "month_from": "December",
+          "year_from": "2010",
+          "month_to": "Janaury",
+          "year_to": "2027",
+          "current_education": 1
+        },
+        "experience": {
+          "title": "Senior Software Engineer",
+          "company": "Apple",
+          "location": "SA, California",
+          "month_from": "January",
+          "year_from": "2020",
+          "month_to": "Janaury",
+          "year_to": "2027",
+          "currently_working": 0,
+          "have_experience": 0,
+          "description": "Doing Golang things"
+        },
+        "skills": {
+          "skill": [
+            "Microsoft Word",
+            "Laravel"
+          ]
+        }
+      }
+    }
+  }
 

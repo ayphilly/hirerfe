@@ -32,6 +32,9 @@ function Banner () {
        setForm({...formState,[name]:value});
        
     }
+    const handleUserLocation = (location) => {
+        setForm({...formState, location:location});
+    }
     useEffect(()=>{
         slideUp();
     }, [])
@@ -70,6 +73,8 @@ function Banner () {
                             myFunction={redirect}
                             handleUserInput={handleUserInput}
                             formState={formState}
+                            handleUserLocation ={handleUserLocation }
+                            
                             
                         ></Jobsearch>
                     </div>
