@@ -40,40 +40,74 @@ export const Auth = () => {
         }
     }
     
-    const socialAuth = ()=> {
+    // const socialAuth = ()=> {
         
 
-        post('/v1/auth/login/in/google/callback', {
-            state: values.state,
-            code: values.code
-        })
-        .then((response) => {
-            console.log(response);
-            dispatch(setAuthData(response.data.data));
+    //     post('/v1/auth/login/in/google/callback', {
+    //         state: values.state,
+    //         code: values.code
+    //     })
+    //     .then((response) => {
+    //         console.log(response);
+    //         dispatch(setAuthData(response.data.data));
+    //         setMessage({
+    //             status: true,
+    //             text: response.data.message
+    //         })
+    //         setTimeout(()=> {
+    //             response.data.data.role === "company" ? getEmpData() :getTalentData();
+    //         }, 2000)
+            
+            
+    //     }, (error) => {
+    //         console.log(values)
+    //         setMessage({
+    //             status: false,
+    //             text: error.response.data.message
+    //         })
+    //         console.log(error);
+            
+    //     });
+
+        
+    // }
+
+    var socialAuth = async () => {
+        try {
+            const {data} = await postpost('/v1/auth/login/in/google/callback', {
+                state: values.state,
+                code: values.code
+            })
+            dispatch(setAuthData(data.data));
             setMessage({
                 status: true,
-                text: response.data.message
+                message: data.message,
+                role:data.data.role
             })
             setTimeout(()=> {
-                response.data.data.role === "company" ? getEmpData() :getTalentData();
-            }, 2000)
-            
-            
-        }, (error) => {
-            console.log(values)
+                data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
+            }, 1000)
+            return data;
+        } catch (err) {
+            console.log(err.message);
             setMessage({
                 status: false,
-                text: error.response.data.message
+                message: "Wrong combination,please try again",
             })
-            console.log(error);
-            
-        });
-
-        
+        }
     }
 
+    const getAuthData = (event) => {
+        event.preventDefault();
+        // alert(JSON.stringify(formState))
+        socialAuth().then((response) => {
+            response.data.role === "company" ? getEmpData() : getTalentData();
+        })
+        
+    }
     useEffect(()=> {
-        socialAuth();
+        // socialAuth();
+        getAuthData();
     },[])
     return (
         <div className="auth-container">

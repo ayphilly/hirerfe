@@ -27,8 +27,8 @@ export const Jobapplication = (props) => {
     })
     const talentProfile = useSelector((state) => state.talent.talentProfile);
 
-    var applyJob = ()=> {
-
+    var applyJob = (event)=> {
+        event.preventDefault();
         if (Object.keys(talentProfile).length < 1) {
             setResponse({
                 status:false,
@@ -106,7 +106,7 @@ export const Jobapplication = (props) => {
                     <p><strong>{props.job.data ? props.job.data.job[0].location : ''}</strong>  • {props.job.data ? props.job.data.job[0].type : ''} </p>
 
                 </div>
-                <form onSubmit={applyJob}>
+                <form onSubmit={applyJob }>
                     <div className="form-cv">
                         <p>CV</p>
                         {/* <div className="cv-choose-file">

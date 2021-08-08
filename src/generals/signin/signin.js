@@ -93,8 +93,8 @@ export const Signin =()=> {
         } catch (err) {
             console.log(err.message);
             setResponse({
-                status: err.status,
-                message: err.message,
+                status: false,
+                message: "Wrong combination,please try again",
             })
         }
     }
