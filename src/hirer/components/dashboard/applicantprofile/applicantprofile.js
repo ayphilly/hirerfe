@@ -9,7 +9,7 @@ import {useState, useEffect} from "react"
 import { get } from "../../../../requests"
 export const Applicantprofile=(props) => {
     const [profile, setProfile] = useState({})
-
+    // const [load, setLoad] =useState({})
     var getApplicants = ()=> {
 
         get(`/v1/employer/talent-profile/${props.id}`)
