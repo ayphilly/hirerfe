@@ -11,7 +11,7 @@ const SkillsFields = () => {
       </div>
       <div className="form-group mb-8">
         <label className="d-block mb-2 f-16" htmlFor="firstName">
-          Add Skill
+          Add Your Skills
         </label>
         <Field
           name="skills.skill[0]"
