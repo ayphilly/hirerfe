@@ -26,7 +26,8 @@ const EducationFields = () => {
           Field of Study
           <span style={{ color: "red" }}>*</span>
         </label>
-        <select
+        <Field
+          as="select"
           name="education.field"
           className="classic-input w-100"
           type="text"
@@ -34,14 +35,15 @@ const EducationFields = () => {
           <option value="" selected disabled hidden>
             Select your field of study
           </option>
-        </select>
+          <option value="B">Basic Field</option>
+        </Field>
       </div>
       <div className="form-group mb-8">
         <label className="d-block mb-2 f-16" htmlFor="firstName">
           School
           <span style={{ color: "red" }}>*</span>
         </label>
-        <input
+        <Field
           name="education.school"
           type="text"
           placeholder="Enter the name of your school"
@@ -53,7 +55,8 @@ const EducationFields = () => {
           Location - Nigeria
           <span style={{ color: "red" }}>*</span>
         </label>
-        <select
+        <Field
+          as="select"
           name="education.location"
           className="classic-input w-100"
           type="text"
@@ -61,7 +64,8 @@ const EducationFields = () => {
           <option selected disabled hidden>
             Select the state you schooled in
           </option>
-        </select>
+          <option value="B">Basic Location</option>
+        </Field>
       </div>
       <div className="fw-600 f-24 py-4">From</div>
       <div className="d-flex">
@@ -71,7 +75,8 @@ const EducationFields = () => {
               Month
               <span style={{ color: "red" }}>*</span>
             </label>
-            <select
+            <Field
+              as="select"
               name="education.from_month"
               className="classic-input w-100"
               type="text"
@@ -79,7 +84,8 @@ const EducationFields = () => {
               <option selected disabled hidden>
                 Select your month
               </option>
-            </select>
+              <option value="January">January</option>
+            </Field>
           </div>
         </div>
         <div className="ml-4 w-100">
@@ -88,7 +94,8 @@ const EducationFields = () => {
               Year
               <span style={{ color: "red" }}>*</span>
             </label>
-            <select
+            <Field
+              as="select"
               name="education.from_year"
               className="classic-input w-100"
               type="text"
@@ -96,7 +103,8 @@ const EducationFields = () => {
               <option selected disabled hidden>
                 Select your year
               </option>
-            </select>
+              <option value="2021">2021</option>
+            </Field>
           </div>
         </div>
       </div>
@@ -108,7 +116,8 @@ const EducationFields = () => {
               Month
               <span style={{ color: "red" }}>*</span>
             </label>
-            <select
+            <Field
+              as="select"
               name="education.to_month"
               className="classic-input w-100"
               type="text"
@@ -116,7 +125,8 @@ const EducationFields = () => {
               <option selected disabled hidden>
                 Select your month
               </option>
-            </select>
+              <option value="January">January</option>
+            </Field>
           </div>
         </div>
         <div className="ml-4 w-100">
@@ -125,7 +135,8 @@ const EducationFields = () => {
               Year
               <span style={{ color: "red" }}>*</span>
             </label>
-            <select
+            <Field
+              as="select"
               name="education.to_year"
               className="classic-input w-100"
               type="text"
@@ -133,7 +144,8 @@ const EducationFields = () => {
               <option selected disabled hidden>
                 Select your year
               </option>
-            </select>
+              <option value="2021">2021</option>
+            </Field>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { Field } from "formik";
 import React from "react";
 
 const ExperienceFields = () => {
@@ -8,7 +9,7 @@ const ExperienceFields = () => {
           Job Title
           <span style={{ color: "red" }}>*</span>
         </label>
-        <input
+        <Field
           type="text"
           placeholder="Enter your job title"
           className="classic-input w-100"
@@ -19,7 +20,7 @@ const ExperienceFields = () => {
           Company
           <span style={{ color: "red" }}>*</span>
         </label>
-        <input
+        <Field
           type="text"
           placeholder="Enter the name of the company you worked at"
           className="classic-input w-100"
@@ -30,11 +31,12 @@ const ExperienceFields = () => {
           Location - Nigeria
           <span style={{ color: "red" }}>*</span>
         </label>
-        <select className="classic-input w-100" type="text">
+        <Field as="select" className="classic-input w-100" type="text">
           <option selected disabled hidden>
             Select the state you schooled in
           </option>
-        </select>
+          <option value="Lagos">Lagos</option>
+        </Field>
       </div>
       <div className="fw-600 f-24 py-4">From</div>
       <div className="d-flex">
@@ -44,11 +46,12 @@ const ExperienceFields = () => {
               Month
               <span style={{ color: "red" }}>*</span>
             </label>
-            <select className="classic-input w-100" type="text">
+            <Field as="select" className="classic-input w-100" type="text">
               <option selected disabled hidden>
                 Select your month
               </option>
-            </select>
+              <option value="January">January</option>
+            </Field>
           </div>
         </div>
         <div className="ml-4 w-100">
@@ -57,11 +60,12 @@ const ExperienceFields = () => {
               Year
               <span style={{ color: "red" }}>*</span>
             </label>
-            <select className="classic-input w-100" type="text">
+            <Field as="select" className="classic-input w-100" type="text">
               <option selected disabled hidden>
                 Select your year
               </option>
-            </select>
+              <option value="2021">2021</option>
+            </Field>
           </div>
         </div>
       </div>
@@ -70,7 +74,12 @@ const ExperienceFields = () => {
           Job Description
           <span style={{ color: "red" }}>*</span>
         </label>
-        <textarea rows={10} className="mb-8 classic-input w-100" type="text" />
+        <Field
+          as="textarea"
+          rows={10}
+          className="mb-8 classic-input w-100"
+          type="text"
+        />
       </div>
     </>
   );
