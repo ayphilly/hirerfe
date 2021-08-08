@@ -222,13 +222,13 @@ function App() {
         <CustomRoute
           condition="talent"
           exact
-          path="/dashboard/talent/account/:id"
+          path="/dashboard/talent/account"
           component={Account}
         />
         <CustomRoute
           condition="talent"
           exact
-          path="/dashboard/company"
+          path="/dashboard/talent/company"
           component={Review}
         />
 

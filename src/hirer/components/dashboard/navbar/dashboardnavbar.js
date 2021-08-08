@@ -14,7 +14,7 @@ function Hirerdashnav() {
       <div className="hirer-dash-inner">
         <div className="hirer-dash-inner left">
           <img src={hirer} alt="Hirer Logo" />
-          <span className="navbar-inner-nav-link"> Company Reviews </span>
+          <span className="navbar-inner-nav-link"> Find Talents </span>
         </div>
         <div className="hirer-dash-inner right">
         
@@ -23,7 +23,7 @@ function Hirerdashnav() {
             <img src={profile} alt="user profile" />
             <div className="dashboard-user">
               <p> Welcome</p>
-              <p>{data.name} Adewale ayomiposi </p>
+              <p>{data.name}</p>
             </div>
           </div>
 

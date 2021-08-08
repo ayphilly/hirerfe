@@ -29,7 +29,7 @@ export const Fulljob = () => {
     const [viewtalent, setView] = useState(false)
     const [response, setResponse] = useState({})
     const [applicants, setApplicants] = useState({})
-
+    const [talent, setTalent] = useState(null)
     var jobSelect = () => {
         setActive({
             info: true,
@@ -43,8 +43,9 @@ export const Fulljob = () => {
             applicant: true
         })
     }
-    var Talentview = ()=> {
-        setView (!viewtalent)
+    var Talentview = (id)=> {
+        setView (!viewtalent);
+        setTalent(id)
     }
 
     var getJob = ()=> {
@@ -188,7 +189,8 @@ export const Fulljob = () => {
                 </div>
                 <div className={`show-talent-profile ${viewtalent ? 'active': 'hidden'}`}>
                     <Applicantprofile
-                        name="Ademola Okon"
+                        // name="Ademola Okon"
+                        id={talent}
                         close = {Talentview}
                     />
                 </div>
@@ -311,7 +313,7 @@ const Tablerow = (props) => {
             <td>
                 {mymatch}
             </td>
-            <td> <a onClick={props.view}>View</a></td>
+            <td> <a onClick={() => props.view(props.data.id)}>View Profile</a></td>
             <td>{props.data ? props.data.applied_on : ''}</td>
             <td>
                 <div className="action-box green">

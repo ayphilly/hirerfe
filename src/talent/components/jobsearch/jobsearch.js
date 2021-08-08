@@ -62,7 +62,10 @@ const Jobsearch = (props)=> {
 
                             </div>
                         </div>
-                        <button type="submit" className="job-search-submit" > Search {props.address} </button>
+                        <div className="search-job-box">
+                            <button type="submit" className="job-search-submit" > Search {props.address} </button>
+                        </div>
+                        
                     </form>
 
                 </div>
@@ -72,15 +75,3 @@ const Jobsearch = (props)=> {
 }
 
 export default Jobsearch;
-
-//  <div className="form-job">
-//                         <label> What ? </label>
-//                         <p>Job title, keywords, or company</p>
-//                         <input type="text" id="title" name="title"  placeholder="Job title, keywords, or company"></input>
-//                     </div>
-
-//                     <div className="form-location">
-//                         <label> Where ? </label>
-//                         <p>city or postcode</p>
-//                         <input type="text" name="location" id="location" placeholder="city or postcode"></input>
-//                     </div>

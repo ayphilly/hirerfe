@@ -13,12 +13,11 @@ export const Dashboardhome = () => {
     <div className="dashboard-homepage-container">
       <div className="dashboard-homepage-inner">
         <div className="dashboard-search">
-          <p>Hello, what would you like to explore today?</p>
-          <p>Search for Job Titles, Companies and Keywords</p>
-          <div className="dashboard-jobsearch">
-            <Jobsearch></Jobsearch>
-          </div>
+          <p className="dashboard-search search-title">Hello, what would you like to explore today?</p>
+          <p className="dashboard-search search-subtext">Search for Job Titles, Companies and Keywords</p>
+          <Jobsearch></Jobsearch>
         </div>
+        {/* <Jobsearch></Jobsearch> */}
 
         <div className="dashboard-recommend">
           <p className="recommend-headline">Jobs Recommended for You</p>

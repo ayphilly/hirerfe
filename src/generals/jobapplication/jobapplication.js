@@ -157,7 +157,7 @@ export const Jobapplication = (props) => {
                             handleUserLocation ={handleUserLocation }
                         />}
                         {props.filters.experience > 0 && <Singleinputlabel
-                            type="integer"
+                            type="number"
                             placeholder ={`How many years of ${props.job.data ? props.job.data.job[0].title: ''} working experience do you have ?`}
                             label ={`How many years of ${props.job.data ? props.job.data.job[0].title: ''} working experience do you have ?`}
                             name="experience"
@@ -165,7 +165,7 @@ export const Jobapplication = (props) => {
                             onChange={(event) => handleUserInput(event)}
                         />}
                         {props.filters.salary_expectation > 0 && <Singleinputlabel
-                            type="integer"
+                            type="number"
                             placeholder ="What is your Monthly Salary Expectation ?"
                             label ="What is your Monthly Salary Expectation ?"
                             name="salary"
