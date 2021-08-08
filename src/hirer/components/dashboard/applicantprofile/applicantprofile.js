@@ -41,7 +41,7 @@ export const Applicantprofile=(props) => {
 
     if (load) {
         <Loading></Loading>
-    } else if (profile.data.profile.education.length <1 || profile.data.profile.experience.length <1 ) {
+    } else if (profile.data.profile.education.length < 1 || profile.data.profile.experience.length < 1 ) {
         <Empty
             text="Talent Profile Not Available"
         >
