@@ -14,7 +14,7 @@ const ExperienceFields = () => {
           type="text"
           placeholder="Enter your job title"
           className="classic-input w-100"
-          name="experience.title"
+          
         />
       </div>
       <div className="form-group mb-8">
@@ -41,7 +41,7 @@ const ExperienceFields = () => {
           className="classic-input w-100"
           type="text"
         >
-          <option selected disabled hidden>
+          <option value="" selected disabled hidden>
             Select the state you schooled in
           </option>
           <option value="Lagos">Lagos</option>
@@ -61,7 +61,7 @@ const ExperienceFields = () => {
               className="classic-input w-100"
               type="text"
             >
-              <option selected disabled hidden>
+              <option value="" selected disabled hidden>
                 Select your month
               </option>
               <option value="January">January</option>
@@ -80,7 +80,7 @@ const ExperienceFields = () => {
               className="classic-input w-100"
               type="text"
             >
-              <option selected disabled hidden>
+              <option value="" selected disabled hidden>
                 Select your year
               </option>
               <option value="2019">2019</option>
@@ -102,7 +102,7 @@ const ExperienceFields = () => {
               className="classic-input w-100"
               type="text"
             >
-              <option selected disabled hidden>
+              <option value="" selected disabled hidden>
                 Select your month
               </option>
               <option value="January">January</option>
@@ -121,7 +121,7 @@ const ExperienceFields = () => {
               className="classic-input w-100"
               type="text"
             >
-              <option selected disabled hidden>
+              <option value="" selected disabled hidden>
                 Select your year
               </option>
               <option value="2019">2019</option>
