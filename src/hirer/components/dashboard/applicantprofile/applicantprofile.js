@@ -12,7 +12,7 @@ import { Empty } from "../../../../generals/emptyresult/emptyresult"
 export const Applicantprofile=(props) => {
 
     
-    if (load) {
+    if (props.load) {
         <Loading></Loading>
     } else if (Object.keys(props.data.profile.education).length < 1 || Object.keys(props.data.profile.experience).length < 1) {
         <Empty
