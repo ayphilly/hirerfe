@@ -130,7 +130,7 @@ const Applicantdetail = (props)=> {
             <div className="single-detail-content">
                 {props.title === "Experience" ? <p>{props.data.title}</p> : props.title === "Education" ?<p>{props.data.field}</p>: '' }
                 {props.title === "Experience" ? <p>{props.data.company}</p> : props.title === "Education" ? <p>{props.data.school}</p> : '' }
-                <p>{props.data && props.data.month_from},{props.data && props.data.year_from} - { props.data && props.data.month_to},{props.data && props.data.year_to} • { props.data && props.data.location}</p>
+                <p> {props.data && props.data.month_from + ','}{props.data && props.data.year_from + '-'}  { props.data && props.data.month_to + ',' }{props.data && props.data.year_to + '•'}{ props.data && props.data.location}</p>
                 {props.title === "Experience" && <p>{props.data.description}</p>}
                 <hr/>
             </div>
