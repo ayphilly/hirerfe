@@ -9,6 +9,7 @@ import { useSelector,useDispatch } from 'react-redux'
 import {useState, useEffect} from "react"
 import Singleinputlocation from "../location/location";
 import { post } from "../../requests";
+import { Redirect, Route } from "react-router-dom";
 export const Jobapplication = (props) => {
 
     const [checked, setCheck] = useState(true);
@@ -34,6 +35,7 @@ export const Jobapplication = (props) => {
                 status:false,
                 message: 'You cannot apply without an Hirer Profile, kindly go create one.'
             });
+            <Redirect to="/talent/createprofile" />
         } else {
             post(`/v1/talent/apply/job`, {
                 job_id:props.id,
