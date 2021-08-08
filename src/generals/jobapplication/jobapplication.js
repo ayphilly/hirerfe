@@ -43,7 +43,7 @@ export const Jobapplication = (props) => {
                 job_id:props.id,
                 filters : {
                     salary_expectation: formState.salary,
-                    location: formState.loc,
+                    location: formState.id,
                     experience: formState.experience
                 }
             })
@@ -81,7 +81,7 @@ export const Jobapplication = (props) => {
         // var loc = myStates[location];
         const filteredResults = myStates.filter(
             suggestion => {
-                return suggestion.name.toLowerCase() === location
+                return suggestion.name === location
             }
         );
         var loc = filteredResults[0].id;
