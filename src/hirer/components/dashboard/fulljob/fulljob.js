@@ -118,10 +118,10 @@ export const Fulljob = () => {
           });
     }
 
-    useEffect(() => {
-        getApplicant();
+    // useEffect(() => {
+    //     getApplicant();
 
-    }, [talent])
+    // }, [talent])
 
     useEffect(()=> {
         getJob();
@@ -220,8 +220,7 @@ export const Fulljob = () => {
                         // name="Ademola Okon"
                         id={talent}
                         close = {Talentview}
-                        data={profile.data}
-                        load={load}
+                        
                     />
                 </div>
                 <div className={`overlay ${viewtalent ? 'active': 'hidden'}`}></div>
