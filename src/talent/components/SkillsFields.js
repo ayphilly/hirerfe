@@ -1,3 +1,4 @@
+import { Field } from "formik";
 import React from "react";
 
 const SkillsFields = () => {
@@ -12,7 +13,7 @@ const SkillsFields = () => {
         <label className="d-block mb-2 f-16" htmlFor="firstName">
           Add Skill
         </label>
-        <input
+        <Field
           type="text"
           placeholder="e.g. Microsoft Word"
           className="classic-input w-100"
