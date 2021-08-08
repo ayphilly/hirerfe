@@ -215,6 +215,9 @@ export const Jobresult = () => {
 
         return(
             <div className="job-results-container">
+                { response.message && <div className= {`job-results-message ${response.status ? 'success' : 'error'}`}>
+                        <p>{response.message}</p>
+                </div>}
                 <div className="job-results-inner">
                     <Searchcontainer
                         userloc={userloc}

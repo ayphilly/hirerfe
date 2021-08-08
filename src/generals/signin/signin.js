@@ -7,6 +7,7 @@ import axios from "axios"
 import {post, get} from "../../requests"
 import {useDispatch } from 'react-redux'
 import { setAuthData } from "../../slices/authSlice"
+import { setTalentProfile } from "../../slices/talentSlice"
 import { setDashboard } from "../../slices/companySlice"
 import {useHistory} from "react-router";
 import { Link } from 'react-router-dom';
@@ -92,8 +93,8 @@ export const Signin =()=> {
         } catch (err) {
             console.log(err.message);
             setResponse({
-                status: err.data.status,
-                message: err.data.message,
+                status: err.status,
+                message: err.message,
             })
         }
     }
@@ -106,12 +107,21 @@ export const Signin =()=> {
             console.log(err.message);
         }
     }
+    var getTalentData = async () => {
+        try {
+            const {data} = await get(`/v1/talent/profile`);
+            dispatch(setTalentProfile(data.data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         // alert(JSON.stringify(formState))
         getUserData().then((response) => {
-            response.data.role === "company" ? getEmpData() : console.log('welcome back')
+            response.data.role === "company" ? getEmpData() : getTalentData();
         })
         
     }
