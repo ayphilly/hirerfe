@@ -128,8 +128,8 @@ const Applicantdetail = (props)=> {
         <div className="detail-contents single-detail">
             <img src={experience} alt="cv-image"/>
             <div className="single-detail-content">
-                {props.title === "Experience" ? <p>{props.data.title}</p> : <p>{props.data.field}</p> }
-                {props.title === "Experience" ? <p>{props.data.company}</p> : <p>{props.data.school}</p> }
+                {props.title === "Experience" ? <p>{props.data.title}</p> : props.title === "Education" ?<p>{props.data.field}</p>: '' }
+                {props.title === "Experience" ? <p>{props.data.company}</p> : props.title === "Education" ? <p>{props.data.school}</p> : '' }
                 <p>{props.data.month_from},{props.data.year_from} - {props.data.month_to},{props.data.year_to} • {props.data.location}</p>
                 {props.title === "Experience" && <p>{props.data.description}</p>}
                 <hr/>
