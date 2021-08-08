@@ -66,6 +66,7 @@ export const Jobresult = () => {
               if (response.status) {
   
                   setJobs(response.data)
+                  console.log(response.data)
                   setLoad(false);
                   
               } else {
