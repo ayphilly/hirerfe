@@ -5,9 +5,36 @@ import { Scoutjobs } from "../../../components/dashboardscout/scoutjobs";
 import { Dashboardalert } from "../../../components/dashboardalert/dashboardalert";
 import Tryhirer from "../../../components/tryhirer/tryhirer";
 import { useSelector } from "react-redux";
-
+import { useParams, useHistory, useLocation } from "react-router";
+import { post, get } from "../../../../requests";
+import { useState, useEffect } from "react";
 export const Dashboardhome = () => {
   const data = useSelector((state) => state.auth.authData);
+
+  let history = useHistory();
+  var redirect = (jobtitle,location)=> {
+    if (jobtitle || location) {
+        history.push(`/talent/searchjob/?title=${jobtitle}&location=${location}`);
+    }
+    else {
+        alert("type in something")
+    }
+    
+  }
+  const [formState, setForm ] = useState({
+      jobtitle: '',
+      location: ''
+    
+  })
+  const handleUserInput = (e) =>{
+      const name = e.target.name;
+      const value = e.target.value;
+    setForm({...formState,[name]:value});
+    
+  }
+  const handleUserLocation = (location) => {
+      setForm({...formState, location:location});
+  }
   console.log(data); // TODO: Use data variable
   return (
     <div className="dashboard-homepage-container">
@@ -15,7 +42,12 @@ export const Dashboardhome = () => {
         <div className="dashboard-search">
           <p className="dashboard-search search-title">Hello, what would you like to explore today?</p>
           <p className="dashboard-search search-subtext">Search for Job Titles, Companies and Keywords</p>
-          <Jobsearch></Jobsearch>
+          <Jobsearch
+            myFunction={redirect}
+            handleUserInput={handleUserInput}
+            formState={formState}
+            handleUserLocation ={handleUserLocation }
+          ></Jobsearch>
         </div>
         {/* <Jobsearch></Jobsearch> */}
 

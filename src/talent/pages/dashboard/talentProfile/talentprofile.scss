@@ -12,19 +12,26 @@
     padding: 50px;
     @include rowflex(center,center);
     
-    
+    .applicant-profile-nothing {
+        width: 50%;
+        height: 500px;
+        @include colflex(center, space-evenly);
+        .go-to-create {
+            background-color: $blue-700;
+            border-radius: 10px;
+            height: 55px;
+            width: 150px;
+            @include fontMedium(1em,1em, #fff);
+            @include rowflex(center,center);
+        }
+    }
 
     .applicant-profile-inner {
         width: 90%;
         height: 90%;
 
         @include colflex(flex-start, space-between);
-        .go-to-create {
-            background-color: $blue-700;
-            border-radius: 10px;
-            @include fontMedium(1em,1em, #fff);
-            @include rowflex(center,center);
-        }
+        
         &.top {
             width: 100%;
             height: 60px;

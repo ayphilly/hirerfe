@@ -170,7 +170,7 @@ export const Searchcontainer = (props) => {
 
                         </div>
                         <div className="right">
-                            <p className="search-text">Showing results for <strong>{formState.location} </strong>• <strong>{props.totalResults ? props.totalResults : 0}</strong> jobs</p>
+                            <p className="search-text">Showing results for <strong>{formState.location} </strong>• <strong>{props.totalResults ? props.totalResults : 1}</strong> jobs</p>
                             <div className="right-inner">
                                 {
                                     props.children
