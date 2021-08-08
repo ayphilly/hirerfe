@@ -221,6 +221,7 @@ export const Fulljob = () => {
                         id={talent}
                         close = {Talentview}
                         data={profile.data}
+                        load={load}
                     />
                 </div>
                 <div className={`overlay ${viewtalent ? 'active': 'hidden'}`}></div>
