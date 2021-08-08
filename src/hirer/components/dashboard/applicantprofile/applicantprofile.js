@@ -55,10 +55,10 @@ export const Applicantprofile=(props) => {
         
     }, [talent])
 
-    if (load) {
+    if (props.load) {
         <Loading></Loading>
     }
-    else if (props.id === null) {
+    else if (!talent) {
         <Empty
             text="Talent Profile Not Available"
         >
