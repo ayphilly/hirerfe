@@ -13,6 +13,7 @@ const ExperienceFields = () => {
           type="text"
           placeholder="Enter your job title"
           className="classic-input w-100"
+          name="experience.title"
         />
       </div>
       <div className="form-group mb-8">
@@ -24,6 +25,7 @@ const ExperienceFields = () => {
           type="text"
           placeholder="Enter the name of the company you worked at"
           className="classic-input w-100"
+          name="experience.company"
         />
       </div>
       <div className="form-group mb-8">
@@ -46,7 +48,7 @@ const ExperienceFields = () => {
               Month
               <span style={{ color: "red" }}>*</span>
             </label>
-            <Field as="select" className="classic-input w-100" type="text">
+            <Field as="select" className="classic-input w-100" type="text" name="experience.from_month">
               <option selected disabled hidden>
                 Select your month
               </option>
@@ -60,11 +62,52 @@ const ExperienceFields = () => {
               Year
               <span style={{ color: "red" }}>*</span>
             </label>
-            <Field as="select" className="classic-input w-100" type="text">
+            <Field as="select" className="classic-input w-100" type="text" name="experience.from_year">
               <option selected disabled hidden>
                 Select your year
               </option>
-              <option value="2021">2021</option>
+              <option value="2019">2019</option>
+            </Field>
+          </div>
+        </div>
+      </div>
+      <div className="fw-600 f-24 py-4">To</div>
+      <div className="d-flex">
+        <div className="mr-4 w-100">
+          <div className="form-group mb-8">
+            <label className="d-block mb-2 f-18 fw-600">
+              Month
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <Field
+              as="select"
+              name="experience.to_month"
+              className="classic-input w-100"
+              type="text"
+            >
+              <option selected disabled hidden>
+                Select your month
+              </option>
+              <option value="January">January</option>
+            </Field>
+          </div>
+        </div>
+        <div className="ml-4 w-100">
+          <div className="form-group mb-8">
+            <label className="d-block mb-2 f-18 fw-600">
+              Year
+              <span style={{ color: "red" }}>*</span>
+            </label>
+            <Field
+              as="select"
+              name="experience.to_year"
+              className="classic-input w-100"
+              type="text"
+            >
+              <option selected disabled hidden>
+                Select your year
+              </option>
+              <option value="2019">2019</option>
             </Field>
           </div>
         </div>
@@ -79,6 +122,7 @@ const ExperienceFields = () => {
           rows={10}
           className="mb-8 classic-input w-100"
           type="text"
+          name="experience.description"
         />
       </div>
     </>
