@@ -12,8 +12,10 @@ import {closeApplication, openApplication} from "../../../helper"
 import { get } from "../../../requests"
 import { Emptystate } from "../../../talent/components/emptystate/emptystate"
 import { Loading } from "../../loading/loading"
+import {useDispatch } from 'react-redux'
+import { setTalentProfile } from "../../slices/talentSlice"
 export const Jobdescription = ()=> {
-
+    const dispatch = useDispatch()
     const { search } = useLocation()
     const values = queryString.parse(search)
     const [job, setJob] = useState({})
@@ -49,9 +51,23 @@ export const Jobdescription = ()=> {
  
     }
 
+    var getTalentData = async () => {
+        try {
+            const {data} = await get(`/v1/talent/profile`);
+            dispatch(setTalentProfile(data.data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
     useEffect(()=> {
         getJob();
+        getTalentData();
+       
     }, [])
+
+
 
     if (load) {
         return (
