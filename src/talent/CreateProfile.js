@@ -1,3 +1,4 @@
+import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import { post } from "../requests";
 import EducationFields from "./components/EducationFields";
@@ -23,6 +24,41 @@ const formSteps = [
   },
 ];
 
+const initialValues = {
+  user: {
+    name: "",
+    email: "",
+    location: "",
+    send_text: false,
+  },
+  education: {
+    level: "",
+    field: "",
+    school: "",
+    location: "",
+    from_month: "",
+    from_year: "",
+    currently: true,
+    to_month: "",
+    to_year: "",
+  },
+  experience: {
+    title: "",
+    company: "",
+    location: "",
+    description: "",
+    from_month: "",
+    from_year: "",
+    no_experience: false,
+    currently: false,
+    to_month: "",
+    to_year: "",
+  },
+  skills: {
+    skill: [],
+  },
+};
+
 const CreateProfile = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({});
@@ -34,9 +70,9 @@ const CreateProfile = () => {
 
   const { title } = formSteps[step];
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    post("/v1/talent/profile", formData);
+  const handleSubmit = (values) => {
+    console.log("Values", values);
+    // post("/v1/talent/profile", formData);
   };
 
   return (
@@ -62,15 +98,18 @@ const CreateProfile = () => {
           </div>
         </div>
       </div>
-      <form
-        onSubmit={handleSubmit}
-        className="plain-card mb-8 align-items-stretch"
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values) => handleSubmit(values)}
       >
-        {step === 0 && <UserProfileFields setField={setField} />}
-        {step === 1 && <EducationFields />}
-        {step === 2 && <ExperienceFields />}
-        {step === 3 && <SkillsFields />}
-      </form>
+        <Form className="plain-card mb-8 align-items-stretch">
+          {step === 0 && <UserProfileFields setField={setField} />}
+          {step === 1 && <EducationFields />}
+          {step === 2 && <ExperienceFields />}
+          {step === 3 && <SkillsFields />}
+        </Form>
+      </Formik>
+
       {/* Form Nav */}
       <div
         style={{ paddingTop: "20px", paddingBottom: "20px" }}
