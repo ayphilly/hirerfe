@@ -6,6 +6,7 @@
     height:100px;
     width: 100%;
     position: relative;
+    z-index: 10;
     @include breakpoint(mobileonly) {
         height:100px;
         @include colflex(flex-start, space-between);

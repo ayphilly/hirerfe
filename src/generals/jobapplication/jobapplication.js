@@ -43,7 +43,7 @@ export const Jobapplication = (props) => {
                 job_id:props.id,
                 filters : {
                     salary_expectation: formState.salary,
-                    location: locid,
+                    location: formState.loc,
                     experience: formState.experience
                 }
             })
@@ -85,6 +85,7 @@ export const Jobapplication = (props) => {
             }
         );
         var loc = filteredResults[0].id;
+        console.log(loc);
         setFormstate({...formState, location, id : loc});
     }
 
