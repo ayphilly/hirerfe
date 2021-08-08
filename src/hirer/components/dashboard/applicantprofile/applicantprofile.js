@@ -11,41 +11,10 @@ import { Loading } from "../../../../generals/loading/loading"
 import { Empty } from "../../../../generals/emptyresult/emptyresult"
 export const Applicantprofile=(props) => {
 
-    const [id, setId] = useState(null)
-    const [profile, setProfile] = useState({})
-    const [load, setLoad] =useState(true)
-    var getApplicants = ()=> {
-
-        get(`/v1/employer/talent-profile/${id}`)
-          .then((response) => {
-              if (response.status) {
-                  console.log(response.data)
-                  setProfile(response.data);
-                  setLoad(false)
-              } else {
-                //  setError({
-                //       status: response.data.status,
-                //       message: response.data.message
-                //   })
-              }
-              
-          }, (error) => {
-                setProfile(error.response.data);
-                setLoad(false)
-              console.log("Somethign went wrong");
-          });
-    }
-
-    useEffect(()=> {
-        setId(props.id)
-    })
-    useEffect(()=> {
-        getApplicants();
-    }, [id])
-
+    
     if (load) {
         <Loading></Loading>
-    } else if (Object.keys(profile.data.profile.education).length < 1 || Object.keys(profile.data.profile.experience).length < 1) {
+    } else if (Object.keys(props.data.profile.education).length < 1 || Object.keys(props.data.profile.experience).length < 1) {
         <Empty
             text="Talent Profile Not Available"
         >
@@ -57,18 +26,18 @@ export const Applicantprofile=(props) => {
             <div className="applicant-profile-container">
                 <div className="applicant-profile-inner">
                     <div className="applicant-profile-inner top">
-                        <p>{profile.data ? profile.data.profile.name : ''}</p>
-                        <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
+                        <p>{props.data ? props.data.profile.name : ''}</p>
+                        <p>Available to work immediately • {props.data ? props.data.profile.location : ''}</p>
                     </div>
                     <div className="applicant-profile-inner bottom">
                         <Applicantsingle
                             title="Education"
-                            data = {profile.data.profile.education}
+                            data = {props.data.profile.education}
                         />
                         <Applicantsingle
                 
                             title="Experience"
-                            data = {profile.data.profile.experience}
+                            data = {props.data.profile.experience}
                         />
                         <Applicantsingle
                             title="Licenses & Certificates"
@@ -76,7 +45,7 @@ export const Applicantprofile=(props) => {
                     </div>
                     <Skillset
                         title="Skillset"
-                        data = {profile.data.profile.skills.skill}
+                        data = {props.data.profile.skills.skill}
                     />
                     <Contactdetals/>
                     <button className="applicant-profile-inner button" onClick={props.close}>Close</button>

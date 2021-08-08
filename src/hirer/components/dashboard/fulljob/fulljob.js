@@ -25,6 +25,7 @@ export const Fulljob = () => {
         info: true,
         applicant: false
     })
+    const [profile, setProfile] = useState({})
     const [load, setLoad] = useState(true)
     const [viewtalent, setView] = useState(false)
     const [response, setResponse] = useState({})
@@ -94,6 +95,33 @@ export const Fulljob = () => {
 
 
     }
+
+    var getApplicant = ()=> {
+
+        get(`/v1/employer/talent-profile/${talent}`)
+          .then((response) => {
+              if (response.status) {
+                  console.log(response.data)
+                  setProfile(response.data);
+                  setLoad(false)
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+                setProfile(error.response.data);
+                setLoad(false)
+              console.log("Somethign went wrong");
+          });
+    }
+
+    useEffect(() => {
+        getApplicant();
+
+    }, [talent])
 
     useEffect(()=> {
         getJob();
@@ -192,6 +220,7 @@ export const Fulljob = () => {
                         // name="Ademola Okon"
                         id={talent}
                         close = {Talentview}
+                        data={profile.data}
                     />
                 </div>
                 <div className={`overlay ${viewtalent ? 'active': 'hidden'}`}></div>
