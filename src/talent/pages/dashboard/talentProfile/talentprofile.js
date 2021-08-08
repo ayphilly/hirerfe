@@ -37,7 +37,7 @@ export const Profiletalent =(props) => {
     }
 
     
-
+    var skills = ['adobe','microsoft', 'figma', 'reactjs']
     useEffect(()=> {
         getApplicants();
     }, [])
@@ -91,7 +91,8 @@ export const Profiletalent =(props) => {
                     </div>
                     <Skillset
                         title="Skillset"
-                        data = {profile.data ? profile.data.profile.skills.skill === null ? ['empty', 'skills']: profile.data.profile.skills.skill: ''}
+                        // data = {profile.data ? profile.data.profile.skills.skill === null ? ['empty', 'skills']: profile.data.profile.skills.skill: ''}
+                        data={skills}
                     />
                     <Contactdetals/>
                     <button className="applicant-profile-inner button" onClick={props.close}>Close</button>
