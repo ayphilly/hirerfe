@@ -99,6 +99,9 @@
                             p:nth-child(3) {
                                 @include fontNormal(.94em, .8em, #8B8C8C);
                             }
+                            p:nth-child(4) {
+                                @include fontNormal(.94em, .8em, $blue-902);
+                            }
                             hr {
                                 width: 165%;
                                 border: 1px solid #F9F8F9;

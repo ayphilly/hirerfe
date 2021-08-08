@@ -79,14 +79,17 @@ export const Jobapplication = (props) => {
 
     const handleUserLocation = (location) => {
         // var loc = myStates[location];
+        
+        console.log(loc);
+        setFormstate({...formState, location});
+        
         const filteredResults = myStates.filter(
             suggestion => {
                 return suggestion.name === location
             }
         );
         var loc = filteredResults[0].id;
-        console.log(loc);
-        setFormstate({...formState, location, id : loc});
+        setFormstate({...formState, id:loc})
     }
 
     const handleSelect = (e) => {
