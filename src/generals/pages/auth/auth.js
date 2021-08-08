@@ -74,7 +74,7 @@ export const Auth = () => {
 
     var socialAuth = async () => {
         try {
-            const {data} = await postpost('/v1/auth/login/in/google/callback', {
+            const {data} = await post('/v1/auth/login/in/google/callback', {
                 state: values.state,
                 code: values.code
             })
