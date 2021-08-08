@@ -97,8 +97,8 @@ export const Auth = () => {
         }
     }
 
-    const getAuthData = (event) => {
-        event.preventDefault();
+    const getAuthData = () => {
+        // event.preventDefault();
         // alert(JSON.stringify(formState))
         socialAuth().then((response) => {
             response.data.role === "company" ? getEmpData() : getTalentData();
