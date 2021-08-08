@@ -26,7 +26,7 @@ const SkillsFields = () => {
           style={{ width: "auto", height: "auto" }}
           className="btn btn-primary"
         >
-          Add Skill
+          Add A Skill
         </button>
       </div>
       <p style={{ color: "gray" }}>
