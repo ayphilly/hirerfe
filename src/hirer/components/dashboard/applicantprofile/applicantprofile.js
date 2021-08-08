@@ -10,11 +10,13 @@ import { get } from "../../../../requests"
 import { Loading } from "../../../../generals/loading/loading"
 import { Empty } from "../../../../generals/emptyresult/emptyresult"
 export const Applicantprofile=(props) => {
+
+    const [id, setId] = useState(null)
     const [profile, setProfile] = useState({})
     const [load, setLoad] =useState(true)
     var getApplicants = ()=> {
 
-        get(`/v1/employer/talent-profile/${props.id}`)
+        get(`/v1/employer/talent-profile/${id}`)
           .then((response) => {
               if (response.status) {
                   console.log(response.data)
@@ -34,14 +36,16 @@ export const Applicantprofile=(props) => {
           });
     }
 
-
+    useEffect(()=> {
+        setId(props.id)
+    })
     useEffect(()=> {
         getApplicants();
-    }, [])
+    }, [id])
 
     if (load) {
         <Loading></Loading>
-    } else if (profile.data.profile.education.length < 1 || profile.data.profile.experience.length < 1 ) {
+    } else if (Object.keys(profile.data.profile.education).length < 1 || Object.keys(profile.data.profile.experience).length < 1) {
         <Empty
             text="Talent Profile Not Available"
         >
