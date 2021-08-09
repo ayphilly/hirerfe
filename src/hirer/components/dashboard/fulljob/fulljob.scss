@@ -135,7 +135,7 @@
             }
         }
         &.bottom {
-            width: 80%;
+            width: 100%;
             height: fit-content;
             position: relative;
             @include rowflex(flex-start, flex-start);
