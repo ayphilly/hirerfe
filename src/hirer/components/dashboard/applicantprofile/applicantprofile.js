@@ -43,11 +43,9 @@ export const Applicantprofile=(props) => {
     useEffect(()=> {
         if (props.id) {
             setTalentId();
-        } else {
-            setTalent("empty")
         }
         
-    },[talent])
+    },[props.id])
     useEffect(() => {
 
         if (props.id > 0) {
@@ -58,7 +56,7 @@ export const Applicantprofile=(props) => {
         }
 
         
-    }, [talent])
+    }, [props.id])
 
     var skills = ['adobe','microsoft', 'figma', 'reactjs']
     
@@ -116,7 +114,7 @@ export const Applicantprofile=(props) => {
                     />
                     <Contactdetals/>
 
-                    <button type="button" onClick={props.close()}>Close</button>
+                    <button type="button" className="button" onClick={props.close()}>Close</button>
                 </div>
             </div>
         )
