@@ -45,7 +45,7 @@ export const Applicantprofile=(props) => {
             setTalentId();
         }
         
-    },[props.id])
+    },[])
     useEffect(() => {
 
         if (props.id > 0) {
