@@ -98,7 +98,6 @@ export const Profiletalent =(props) => {
                         data={skills}
                     />
                     <Contactdetals/>
-                    <button className="applicant-profile-inner button" onClick={props.close}>Close</button>
                 </div>
             </div>
         )
