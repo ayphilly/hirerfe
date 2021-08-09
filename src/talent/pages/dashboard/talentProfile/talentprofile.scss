@@ -131,7 +131,7 @@
             .skill-content {
                 width: 80%;
                 height: 70px;
-                @include rowflexx(flex-start);
+                @include rowflexx(center);
                 img {
                     width: 60px;
                     margin-right: 20px;

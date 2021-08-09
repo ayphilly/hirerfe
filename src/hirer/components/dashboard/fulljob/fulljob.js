@@ -300,14 +300,14 @@ const Applicanttable = (props)=> {
 }
 const Tablerow = (props) => {
 
-    var mymatch = props.data ? props.data.matches.map ((match, index) => {
+    var mymatch = props.data.matches ? props.data.matches.map ((match, index) => {
         return (
             <Match
                 key= {index}
                 match={match}
             />
         )
-    }): {}
+    }): "zero matches"
     return (
         <tr>
             <td>{props.data ? props.data.user_name : ''}</td>
