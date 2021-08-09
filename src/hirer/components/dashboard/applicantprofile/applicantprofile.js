@@ -67,7 +67,7 @@ export const Applicantprofile=(props) => {
     
     if (load) {
         return (
-            <div className="applicant-profile-container">
+            <div className="single-applicant-profile-container">
                 <div className="applicant-profile-inner">
                     <Loading></Loading>
 
@@ -75,9 +75,9 @@ export const Applicantprofile=(props) => {
              </div>
         )
     }
-    else if (talent === "empty") {
+    else if (talent === null) {
         return (
-            <div className="applicant-profile-container">
+            <div className="single-applicant-profile-container">
                 <div className="applicant-profile-nothing">
                     <Empty
                         text="Talent does not have a profile"
@@ -119,7 +119,7 @@ export const Applicantprofile=(props) => {
                     />
                     <Contactdetals/>
 
-                    <button type="button" className="button" onClick={props.close()}>Close</button>
+                    <button type="button" className="button" onClick={() => props.close()}>Close</button>
                 </div>
             </div>
         )
