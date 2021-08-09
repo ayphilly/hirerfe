@@ -17,7 +17,7 @@ export const Applicantprofile=(props) => {
 
     var getApplicant = ()=> {
 
-        get(`/v1/employer/talent-profile/${talent}`)
+        get(`/v1/employer/talent-profile/${props.id}`)
           .then((response) => {
               if (response.status) {
                   console.log(response.data)
@@ -48,7 +48,7 @@ export const Applicantprofile=(props) => {
         // }
         setTalentId();
         
-    })
+    },[])
     useEffect(() => {
 
         // if (talent) {
