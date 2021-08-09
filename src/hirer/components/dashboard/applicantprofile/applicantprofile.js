@@ -56,7 +56,7 @@ export const Applicantprofile=(props) => {
         }
 
         
-    }, [props.id])
+    }, [talent])
 
     var skills = ['adobe','microsoft', 'figma', 'reactjs']
     
