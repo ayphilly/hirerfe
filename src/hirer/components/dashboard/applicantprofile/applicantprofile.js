@@ -43,15 +43,17 @@ export const Applicantprofile=(props) => {
     useEffect(()=> {
         if (props.id) {
             setTalentId();
+        } else {
+            console.log('nothing to show')
         }
         
-    },[])
+    })
     useEffect(() => {
 
-        if (props.id > 0) {
+        if (talent) {
             getApplicant();
         } else {
-            setTalent("empty")
+            // setTalent(null)
             console.log('nothing to show')
         }
 
