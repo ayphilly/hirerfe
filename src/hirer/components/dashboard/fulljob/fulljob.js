@@ -192,6 +192,7 @@ export const Fulljob = () => {
                     {talent && <Applicantprofile
                         // name="Ademola Okon"
                         id={talent}
+                        
                         close = {Talentview}
                         
                     />}
