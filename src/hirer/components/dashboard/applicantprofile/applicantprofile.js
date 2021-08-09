@@ -41,7 +41,10 @@ export const Applicantprofile=(props) => {
         setTalent(props.id)
     }
     useEffect(()=> {
-        setTalentId();
+        if (props.id) {
+            setTalentId();
+        }
+        
     })
     useEffect(() => {
 
@@ -55,24 +58,33 @@ export const Applicantprofile=(props) => {
         
     }, [talent])
 
-    if (props.load) {
-        <Loading></Loading>
+    var skills = ['adobe','microsoft', 'figma', 'reactjs']
+    
+    if (load) {
+        return (
+            <div className="applicant-profile-container">
+                <div className="applicant-profile-inner">
+                    <Loading></Loading>
+
+                </div>
+             </div>
+        )
     }
-    else if (!talent) {
-        <Empty
-            text="Talent Profile Not Available"
-        >
-        </Empty>
+    else if (!profile.status) {
+        return (
+            <div className="applicant-profile-container">
+                <div className="applicant-profile-nothing">
+                    <Empty
+                        text="Talent does not have a profile"
+                    ></Empty>
+                </div>
+            </div>
+            
+        )
+        
 
-    }
-    else if (Object.keys(profile.data.profile.education).length < 1 || Object.keys(profile.data.profile.experience).length < 1) {
-        <Empty
-            text="Talent Profile Not Available"
-        >
-        </Empty>
-
-    } else {
-
+    } 
+    else {
         return (
             <div className="applicant-profile-container">
                 <div className="applicant-profile-inner">
@@ -80,26 +92,27 @@ export const Applicantprofile=(props) => {
                         <p>{profile.data ? profile.data.profile.name : ''}</p>
                         <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
                     </div>
-                    <div className="applicant-profile-inner bottom">
+                    {profile.data.profile && <div className="applicant-profile-inner bottom">
                         <Applicantsingle
+                            image={education}
                             title="Education"
                             data = {profile.data.profile.education}
                         />
                         <Applicantsingle
-                
+                            image={experience}
                             title="Experience"
                             data = {profile.data.profile.experience}
                         />
-                        <Applicantsingle
+                        {/* <Applicantsingle
                             title="Licenses & Certificates"
-                        />
-                    </div>
+                        /> */}
+                    </div>}
                     <Skillset
                         title="Skillset"
-                        data = {profile.data.profile.skills.skill}
+                        // data = {profile.data ? profile.data.profile.skills.skill === null ? ['empty', 'skills']: profile.data.profile.skills.skill: ''}
+                        data={skills}
                     />
                     <Contactdetals/>
-                    <button className="applicant-profile-inner button" onClick={props.close}>Close</button>
                 </div>
             </div>
         )
@@ -116,9 +129,8 @@ const Applicantsingle = (props)=> {
                 <Applicantdetail
                     data = {props.data}
                     title={props.title}
+                    image={props.image}
                 />
-                <Applicantdetail/>
-                
             </div>
             
         </div>
@@ -129,11 +141,11 @@ const Applicantdetail = (props)=> {
 
     return (
         <div className="detail-contents single-detail">
-            <img src={experience} alt="cv-image"/>
+            <img src={props.image} alt="cv-image"/>
             <div className="single-detail-content">
-                {props.title === "Experience" ? <p>{props.data.title}</p> : <p>{props.data.field}</p> }
-                {props.title === "Experience" ? <p>{props.data.company}</p> : <p>{props.data.school}</p> }
-                <p>{props.data.month_from},{props.data.year_from} - {props.data.month_to},{props.data.year_to} • {props.data.location}</p>
+                {props.title === "Experience" ? <p>{props.data.title}</p> : props.title === "Education" ?<p>{props.data.field}</p>: '' }
+                {props.title === "Experience" ? <p>{props.data.company}</p> : props.title === "Education" ? <p>{props.data.school}</p> : '' }
+                <p> {props.data && props.data.month_from + ','}{props.data && props.data.year_from + '-'}  { props.data && props.data.month_to + ',' }{props.data && props.data.year_to + '•'}{ props.data && props.data.location}</p>
                 {props.title === "Experience" && <p>{props.data.description}</p>}
                 <hr/>
             </div>
