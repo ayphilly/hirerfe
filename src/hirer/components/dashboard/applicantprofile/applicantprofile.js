@@ -70,7 +70,7 @@ export const Applicantprofile=(props) => {
              </div>
         )
     }
-    else if (!profile.status) {
+    else if (!profile.data.profile.length < 1) {
         return (
             <div className="applicant-profile-container">
                 <div className="applicant-profile-nothing">
