@@ -311,12 +311,12 @@ const Tablerow = (props) => {
     return (
         <tr>
             <td>{props.data ? props.data.user_name : ''}</td>
-            <td>{props.data ? props.data.status : ''}</td>
+            <td>{props.data.status ? props.data.status : 'no status'}</td>
             <td>
                 {mymatch}
             </td>
             <td> <a onClick={() => props.view(props.data.id)}>View Profile</a></td>
-            <td>{props.data ? props.data.applied_on : ''}</td>
+            <td>{props.data ? props.data.applied_on.toDateString() : ''}</td>
             <td>
                 <div className="action-box green">
                     <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
