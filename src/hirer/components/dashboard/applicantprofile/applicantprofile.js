@@ -41,22 +41,10 @@ export const Applicantprofile=(props) => {
         setTalent(props.id)
     }
     useEffect(()=> {
-        // if (props.id) {
-        //     setTalentId();
-        // } else {
-        //     console.log('nothing to show')
-        // }
         setTalentId();
         
     },[])
     useEffect(() => {
-
-        // if (talent) {
-        //     getApplicant();
-        // } else {
-        //     // setTalent(null)
-        //     console.log('nothing to show')
-        // }
 
         getApplicant();
 
@@ -119,7 +107,7 @@ export const Applicantprofile=(props) => {
                     />
                     <Contactdetals/>
 
-                    <button type="button" className="button" onClick={() => props.close()}>Close</button>
+                    <button type="button" className="applicant-profile-inner button" onClick={() => props.close()}>Close</button>
                 </div>
             </div>
         )
