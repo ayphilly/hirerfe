@@ -43,9 +43,11 @@ export const Applicantprofile=(props) => {
     useEffect(()=> {
         if (props.id) {
             setTalentId();
+        } else {
+            setTalent("empty")
         }
         
-    })
+    },[talent])
     useEffect(() => {
 
         if (props.id > 0) {
@@ -70,7 +72,7 @@ export const Applicantprofile=(props) => {
              </div>
         )
     }
-    else if (!profile.data.profile.length < 1) {
+    else if (talent === "empty") {
         return (
             <div className="applicant-profile-container">
                 <div className="applicant-profile-nothing">
@@ -86,7 +88,7 @@ export const Applicantprofile=(props) => {
     } 
     else {
         return (
-            <div className="applicant-profile-container">
+            <div className="single-applicant-profile-container">
                 <div className="applicant-profile-inner">
                     <div className="applicant-profile-inner top">
                         <p>{profile.data ? profile.data.profile.name : ''}</p>
@@ -113,6 +115,8 @@ export const Applicantprofile=(props) => {
                         data={skills}
                     />
                     <Contactdetals/>
+
+                    <button type="button" onClick={props.close()}>Close</button>
                 </div>
             </div>
         )
