@@ -308,6 +308,9 @@ const Tablerow = (props) => {
             />
         )
     }): "zero matches"
+
+    let date = new Date(props.data.applied_on)
+    var applicationDate = date.toDateString() ;
     return (
         <tr>
             <td>{props.data ? props.data.user_name : ''}</td>
@@ -316,7 +319,7 @@ const Tablerow = (props) => {
                 {mymatch}
             </td>
             <td> <a onClick={() => props.view(props.data.id)}>View Profile</a></td>
-            <td>{props.data ? props.data.applied_on.toDateString() : ''}</td>
+            <td>{props.data ? applicationDate : ''}</td>
             <td>
                 <div className="action-box green">
                     <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
