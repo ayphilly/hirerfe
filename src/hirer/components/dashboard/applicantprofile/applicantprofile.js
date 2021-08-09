@@ -13,7 +13,7 @@ export const Applicantprofile=(props) => {
 
     const [profile, setProfile] = useState({})
     const [load, setLoad] = useState(true)
-    const [talent, setTalent] = useState(null)
+    const [talent, setTalent] = useState(props.id)
 
     var getApplicant = ()=> {
 
@@ -41,21 +41,24 @@ export const Applicantprofile=(props) => {
         setTalent(props.id)
     }
     useEffect(()=> {
-        if (props.id) {
-            setTalentId();
-        } else {
-            console.log('nothing to show')
-        }
+        // if (props.id) {
+        //     setTalentId();
+        // } else {
+        //     console.log('nothing to show')
+        // }
+        setTalentId();
         
     })
     useEffect(() => {
 
-        if (talent) {
-            getApplicant();
-        } else {
-            // setTalent(null)
-            console.log('nothing to show')
-        }
+        // if (talent) {
+        //     getApplicant();
+        // } else {
+        //     // setTalent(null)
+        //     console.log('nothing to show')
+        // }
+
+        getApplicant();
 
         
     }, [talent])
