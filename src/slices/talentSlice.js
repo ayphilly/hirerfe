@@ -72,6 +72,6 @@ export const talentSlice = createSlice({
   },
 });
 
-export const { setProfileField, setTalentData,setTalentProfile,updateTalent, setAvatar,updateTalentAvailability,updateTalentSchedule } = talentSlice.actions;
+export const { setProfileField, setTalentData,setTalentProfile,updateTalent, setAvatar,updateTalentAvailability,updateTalentSchedule, updateTalentScheduleDays } = talentSlice.actions;
 
 export default talentSlice.reducer;

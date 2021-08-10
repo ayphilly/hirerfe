@@ -12,7 +12,7 @@ import { useEffect, useState } from "react"
 import { post, get } from "../../../../requests"
 import { useSelector,useDispatch } from 'react-redux'
 // import { setAvatar } from "../../../../slices/avatarSlice"
-import { setTalentData, updateTalent, setAvatar,updateTalentAvailability, updateTalentSchedule } from "../../../../slices/talentSlice"
+import { setTalentData, updateTalent, setAvatar,updateTalentAvailability, updateTalentSchedule, updateTalentScheduleDays } from "../../../../slices/talentSlice"
 export const Account = () => {
     
     const talentAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
