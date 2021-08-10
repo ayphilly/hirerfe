@@ -17,12 +17,12 @@ export const Savedjobs = (props) => {
     }
 
   
-    var jobs = props.savedJobs.data ? props.savedJobs.data.saved_jobs.map (job=> {
+    var jobs = props.savedJobs.data ? props.savedJobs.data.saved_jobs.map ((job, index)=> {
         return (
 
             <Singlejob
-                id={job.job.id}
-                key={job.job.id}
+                // id={job.job.id}
+                key={index}
                 title={job.job.title}
                 company={job.job.company}
                 days={""}
