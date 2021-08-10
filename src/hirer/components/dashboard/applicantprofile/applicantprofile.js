@@ -83,7 +83,7 @@ export const Applicantprofile=(props) => {
                 <div className="applicant-profile-inner">
                     <div className="applicant-profile-inner top">
                         <p>{profile.data ? profile.data.profile.name : ''}</p>
-                        <p>Available to work immediately • {profile.data ? profile.data.profile.location : ''}</p>
+                        <p>{profile.data ? profile.data.profile.availability : 'I am available to work'} • {profile.data ? profile.data.profile.location : ''}</p>
                     </div>
                     {profile.data.profile && <div className="applicant-profile-inner bottom">
                         <Applicantsingle
