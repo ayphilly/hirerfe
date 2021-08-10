@@ -251,28 +251,33 @@ export const jobSearch = [
 
 export const checkboxes = [
     {
+        id:1,
         name: "monday",
-        key: "monday",
+        key: 1,
         label: "Monday"
     },
     {
+        id:2,
         name: "tuesday",
-        key: "tuesday",
+        key: 2,
         label: "Tuesday"
     },
     {
+        id:3,
         name: "wednesday",
-        key: "wednesday",
+        key: 3,
         label: "Wednesday"
     },
     {
+        id:4,
         name: "thursday",
-        key: "thursday",
+        key: 4,
         label: "Thursday"
     },
     {
+        id:5,
         name: "friday",
-        key: "friday",
+        key: 5,
         label: "Friday"
     }
 ];

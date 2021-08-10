@@ -18,7 +18,7 @@ const EducationFields = () => {
           <option value="" selected disabled hidden>
             Select your level of Education
           </option>
-          <option value="BEL">B-tech</option>
+          <option value="B-tech">B-tech</option>
         </Field>
       </div>
       <div className="form-group mb-8">
@@ -35,7 +35,7 @@ const EducationFields = () => {
           <option value="" selected disabled hidden>
             Select your field of study
           </option>
-          <option value="B">Computer Science</option>
+          <option value="computer science">Computer Science</option>
         </Field>
       </div>
       <div className="form-group mb-8">
@@ -61,10 +61,10 @@ const EducationFields = () => {
           className="classic-input w-100"
           type="text"
         >
-          <option selected disabled hidden>
+          <option value="" selected disabled hidden>
             Select the state you schooled in
           </option>
-          <option value="B">Akure</option>
+          <option value="Akure">Akure</option>
         </Field>
       </div>
       <div className="fw-600 f-24 py-4">From</div>
@@ -81,7 +81,7 @@ const EducationFields = () => {
               className="classic-input w-100"
               type="text"
             >
-              <option selected disabled hidden>
+              <option value="" selected disabled hidden>
                 Select your month
               </option>
               <option value="January">January</option>
@@ -100,7 +100,7 @@ const EducationFields = () => {
               className="classic-input w-100"
               type="text"
             >
-              <option selected disabled hidden>
+              <option value="" selected disabled hidden>
                 Select your year
               </option>
               <option value="2014">2014</option>
@@ -122,7 +122,7 @@ const EducationFields = () => {
               className="classic-input w-100"
               type="text"
             >
-              <option selected disabled hidden>
+              <option value="" selected disabled hidden>
                 Select your month
               </option>
               <option value="January">January</option>
@@ -141,7 +141,7 @@ const EducationFields = () => {
               className="classic-input w-100"
               type="text"
             >
-              <option selected disabled hidden>
+              <option value="" selected disabled hidden>
                 Select your year
               </option>
               <option value="2019">2019</option>

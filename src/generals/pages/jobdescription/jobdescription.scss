@@ -36,7 +36,11 @@
     @include  breakpoint (laptop) {
         margin-bottom: 100px;
     }
-
+    .jobdescription-load{
+        width: 50%;
+        height: 400px;
+        @include rowflex(center,center);
+    }
     .jobdescription-inner-col {
         width: 95%;
         height: 90%;

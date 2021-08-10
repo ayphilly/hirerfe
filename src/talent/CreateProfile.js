@@ -73,7 +73,7 @@ const CreateProfile = () => {
   const { title } = formSteps[step];
 
   const handleSubmit = (values) => {
-    post("/v1/talent/profile", formData)
+    post("/v1/talent/profile", values)
       .then(() => alert("Profile Created Successfully"))
       .catch(({ response }) => {
         console.log(response.data.message, "Check the console");

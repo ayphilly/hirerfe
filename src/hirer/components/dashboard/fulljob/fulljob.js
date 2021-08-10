@@ -25,6 +25,7 @@ export const Fulljob = () => {
         info: true,
         applicant: false
     })
+    // const [profile, setProfile] = useState({})
     const [load, setLoad] = useState(true)
     const [viewtalent, setView] = useState(false)
     const [response, setResponse] = useState({})
@@ -188,11 +189,13 @@ export const Fulljob = () => {
                     </div>
                 </div>
                 <div className={`show-talent-profile ${viewtalent ? 'active': 'hidden'}`}>
-                    {/* <Applicantprofile
+                    {talent && <Applicantprofile
                         // name="Ademola Okon"
                         id={talent}
+                        
                         close = {Talentview}
-                    /> */}
+                        
+                    />}
                 </div>
                 <div className={`overlay ${viewtalent ? 'active': 'hidden'}`}></div>
                 
@@ -250,7 +253,7 @@ const SingleInfo = (props)=> {
 
 const Applicanttable = (props)=> {
 
-    var myapplicants = props.applicants.data.length > 0?  props.applicants.data.map((applicant, index) => {
+    var myapplicants = props.applicants.length > 0?  props.applicants.map((applicant, index) => {
         return (
             <Tablerow
                 key={index}
@@ -261,7 +264,7 @@ const Applicanttable = (props)=> {
         )
     }) : {}
 
-    if (!props.applicants.status  || props.applicants.data.length < 1) {
+    if (props.applicants.length < 1) {
         return (
             <div>
                 <Empty
@@ -298,23 +301,26 @@ const Applicanttable = (props)=> {
 }
 const Tablerow = (props) => {
 
-    var mymatch = props.data ? props.data.matches.map ((match, index) => {
+    var mymatch = props.data.matches ? props.data.matches.map ((match, index) => {
         return (
             <Match
                 key= {index}
                 match={match}
             />
         )
-    }): {}
+    }): "zero matches"
+
+    let date = new Date(props.data.applied_on)
+    var applicationDate = date.toDateString() ;
     return (
         <tr>
             <td>{props.data ? props.data.user_name : ''}</td>
-            <td>{props.data ? props.data.status : ''}</td>
+            <td>{props.data.status ? props.data.status : 'no status'}</td>
             <td>
                 {mymatch}
             </td>
             <td> <a onClick={() => props.view(props.data.id)}>View Profile</a></td>
-            <td>{props.data ? props.data.applied_on : ''}</td>
+            <td>{props.data ? applicationDate : ''}</td>
             <td>
                 <div className="action-box green">
                     <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>

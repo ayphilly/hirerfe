@@ -10,16 +10,18 @@ import {useState, useEffect} from "react"
 import Singleinputlocation from "../location/location";
 import { post } from "../../requests";
 import { Redirect, Route } from "react-router-dom";
+import { myStates } from "../../constants";
 export const Jobapplication = (props) => {
 
     const [checked, setCheck] = useState(true);
     const [optionValue, setOptionValue] = useState("");
-
+    const [locid, setLocId] = useState(null)
     const [formState, setFormstate] = useState({
         salary: null,
         experience: null,
         location: '',
-        cv:''
+        cv:'',
+        id: null
     })
 
     const [response, setResponse] = useState({
@@ -41,7 +43,7 @@ export const Jobapplication = (props) => {
                 job_id:props.id,
                 filters : {
                     salary_expectation: formState.salary,
-                    location: formState.location,
+                    location: formState.id,
                     experience: formState.experience
                 }
             })
@@ -76,7 +78,18 @@ export const Jobapplication = (props) => {
     }
 
     const handleUserLocation = (location) => {
+        // var loc = myStates[location];
+        
+        console.log(loc);
         setFormstate({...formState, location});
+        
+        const filteredResults = myStates.filter(
+            suggestion => {
+                return suggestion.name === location
+            }
+        );
+        var loc = filteredResults[0].id;
+        setFormstate({...formState, id:loc})
     }
 
     const handleSelect = (e) => {
@@ -150,7 +163,7 @@ export const Jobapplication = (props) => {
                     
                 
                     <div className="form-experience">
-                        {props.filters.location > 0 && <Singleinputlocation
+                        {props.filters.location >= 0 && <Singleinputlocation
                             label ="Where ?"
                             subtext="Enter State"
                             name="location"

@@ -19,7 +19,7 @@ const SkillsFields = () => {
       </div>
       <div className="form-group mb-8">
         <label className="d-block mb-2 f-16" htmlFor="firstName">
-          Add Skill
+          Add Your Skills
         </label>
         <div className="d-flex flex-wrap py-2">
           {skills.map((skill, idx) => (
@@ -68,7 +68,7 @@ const SkillsFields = () => {
           type="button"
           className="btn btn-primary"
         >
-          Add Skill
+          Add A Skill
         </button>
       </div>
       <p style={{ color: "gray" }}>

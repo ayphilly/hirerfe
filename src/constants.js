@@ -1,7 +1,7 @@
 export const myStates = [
     {
       id: 1,
-    name: "Abia"
+      name: "Abia"
     },
     {
       id: 2,

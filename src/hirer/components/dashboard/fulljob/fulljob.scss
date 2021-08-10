@@ -31,9 +31,9 @@
         box-shadow: 0px 0px 15px #F5F5F5;
         position: absolute;
         top: 7%;
-        right: 20%;
+        right: 10%;
         z-index:9;
-        width: fit-content;
+        width: 80%;
         height: fit-content;
         // @include rowflex(center,center);
 
@@ -135,7 +135,7 @@
             }
         }
         &.bottom {
-            width: 80%;
+            width: 100%;
             height: fit-content;
             position: relative;
             @include rowflex(flex-start, flex-start);

@@ -27,6 +27,7 @@ export default  class CheckBox extends React.Component {
 
     if (this.props.onChange !== null && this.props.onChange !== undefined) {
       this.props.onChange({
+        id: this.props.id,
         name: this.props.name,
         checkState: !checked
       });
@@ -35,7 +36,7 @@ export default  class CheckBox extends React.Component {
   }
 
   render() {
-    const { checked, name, label, classNames, size } = this.props;
+    const { checked, name, label, classNames, size, id, value } = this.props;
 
     const icon = checked ? faCheckSquare  : faSquare;
     const classes = Object.assign({}, defaultCssClasses, classNames);
@@ -45,13 +46,13 @@ export default  class CheckBox extends React.Component {
         <FontAwesomeIcon
           className={classes.checkBoxClass}
           icon={icon}
-          onClick={this.onCheckChanged}
+          onClick={(e)=>this.onCheckChanged(e)}
           size={size}
         />
         {label && (
           <label
             className={classes.labelClass}
-            onClick={this.onCheckChanged}
+            onClick={(e)=>this.onCheckChanged(e)}
             dangerouslySetInnerHTML={{ __html: label }}
           />
         )}
@@ -59,8 +60,10 @@ export default  class CheckBox extends React.Component {
         <input
           type="checkbox"
           name={name}
+          value={id}
           checked={checked || false}
           readOnly
+          id={id}
         />
       </div>
     );

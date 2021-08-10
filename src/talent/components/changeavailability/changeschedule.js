@@ -3,12 +3,16 @@ import {Dropdown, Option} from "../../../generals/inputs/dropdown/dropdown"
 import CheckBox from "../../../generals/inputs/checkbox"
 import {useState, useEffect} from "react"
 import {checkboxes} from "../../constants"
+import { useSelector,useDispatch } from 'react-redux'
+
+import { updateTalentSchedule} from "../../../slices/talentSlice"
 export const Changeschedule = (props)=> {
 
-    const [checked, setCheck] = useState("Talent");
+    const [checked, setCheck] = useState("");
     const [checkedItems, setCheckedItems] = useState({});
     const [optionValue, setOptionValue] = useState("");
-
+    const userAccount = useSelector((state) => state.talent.talentSchedule);
+    const dispatch = useDispatch();
     var closeBox = (event)=> {
         event.preventDefault();
         props.close();
@@ -23,6 +27,10 @@ export const Changeschedule = (props)=> {
         [event.name]: event.checkState
         },[event.checkState]);
         
+        if (event.checkState) {
+            props.setDate(event.id);
+        }
+        
         
     };
 
@@ -30,6 +38,8 @@ export const Changeschedule = (props)=> {
     const handleSelect = (e) => {
        
         setOptionValue(e.target.value);
+        props.setTime(e);
+        // dispatch(updateTalentSchedule({name:e.target.name,value:e.target.value}))
        
     };
 
@@ -47,14 +57,20 @@ export const Changeschedule = (props)=> {
                                 buttonText="Send form"
                                 onChange={handleSelect}
                                 width= {150}
-                                name = "starttime"
-                            
-                                id="starttime"
+                                name = "from"
+                                value={ userAccount.from ? userAccount.from : ''}
+                                id="from"
                             >
                                 <Option defaultValue value="Select Range" />
-                                <Option value="9" />
-                                <Option value="10" />
-                                <Option value="11" />
+                                <Option value="9am" />
+                                <Option value="10am" />
+                                <Option value="11am" />
+                                <Option value="12pm" />
+                                <Option value="1pm" />
+                                <Option value="2pm" />
+                                <Option value="3pm" />
+                                <Option value="4pm" />
+                                <Option value="5pm" />
                             </Dropdown>
                             
                         </div>
@@ -65,14 +81,20 @@ export const Changeschedule = (props)=> {
                                 buttonText="Send form"
                                 onChange={handleSelect}
                                 width= {150}
-                                name = "endtime"
-                            
-                                id="endtime"
+                                name = "to"
+                                value={ userAccount.to ? userAccount.to : ''}
+                                id="to"
                             >
                                 <Option defaultValue value="Select Range" />
-                                <Option value="9" />
-                                <Option value="10" />
-                                <Option value="11" />
+                                <Option value="9am" />
+                                <Option value="10am" />
+                                <Option value="11am" />
+                                <Option value="12pm" />
+                                <Option value="1pm" />
+                                <Option value="2pm" />
+                                <Option value="3pm" />
+                                <Option value="4pm" />
+                                <Option value="5pm" />
                             </Dropdown>
 
                         </div>    
@@ -88,6 +110,7 @@ export const Changeschedule = (props)=> {
                             {checkboxes.map((item, key )=> (
                                 <CheckBox
                                     key={key}
+                                    id={item.id}
                                     name={item.name}
                                     label={item.label}
                                     checked={checkedItems[item.name]}
@@ -103,7 +126,7 @@ export const Changeschedule = (props)=> {
 
                    <div className="form-buttons">
                        <button type="cancel" onClick={ closeBox}> Cancel </button>
-                       <button> Change Schedule </button>
+                       <button onClick={ closeBox} > Change Schedule </button>
                    </div>    
                         
                 </form>
