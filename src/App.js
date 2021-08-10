@@ -202,11 +202,11 @@ function App() {
           component={Profiletalent}
         />
         
-         {/* <DashboardWithNavbar
+         <DashboardWithNavbar
           exact
           path="/dashboard/talent/account"
           component={Account}
-        /> */}
+        />
         {/* <DashboardWithNavbar
           exact
           path="/dashboard/company"
@@ -227,12 +227,12 @@ function App() {
           component={Myjobs}
         /> */}
         
-        <CustomRoute
+        {/* <CustomRoute
           condition="talent"
           exact
           path="/dashboard/talent/account"
           component={Account}
-        />
+        /> */}
         <CustomRoute
           condition="talent"
           exact
