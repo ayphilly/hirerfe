@@ -57,6 +57,7 @@ export const Myjobs = (props) => {
 
             if (response.status) {
                 setSavedJobs(response.data)
+                console.log(response.data)
                 setLoad(false)
                 
             } else {
