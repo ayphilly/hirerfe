@@ -61,10 +61,17 @@ export const talentSlice = createSlice({
       const {id, value} = action.payload;
       state.talentData.profile.availability.id = id;
       state.talentData.profile.availability.value = value;
+    },
+    updateTalentSchedule(state, action) {
+      const {name, value} = action.payload;
+      state.talentData.profile.schedule.name = value;
+    },
+    updateTalentScheduleDays(state, action) {
+      state.talentData.profile.schedule.days=(action.payload);
     }
   },
 });
 
-export const { setProfileField, setTalentData,setTalentProfile,updateTalent, setAvatar,updateTalentAvailability } = talentSlice.actions;
+export const { setProfileField, setTalentData,setTalentProfile,updateTalent, setAvatar,updateTalentAvailability,updateTalentSchedule } = talentSlice.actions;
 
 export default talentSlice.reducer;

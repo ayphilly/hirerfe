@@ -12,7 +12,7 @@ import { useEffect, useState } from "react"
 import { post, get } from "../../../../requests"
 import { useSelector,useDispatch } from 'react-redux'
 // import { setAvatar } from "../../../../slices/avatarSlice"
-import { setTalentData, updateTalent, setAvatar,updateTalentAvailability } from "../../../../slices/talentSlice"
+import { setTalentData, updateTalent, setAvatar,updateTalentAvailability, updateTalentSchedule } from "../../../../slices/talentSlice"
 export const Account = () => {
     
     const talentAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
@@ -27,6 +27,11 @@ export const Account = () => {
         availability: {
             id:'',
             value:''
+        },
+        schedule: {
+            from:'',
+            to:'',
+            days:[]
         },
         gender: userAccount.profile ? userAccount.profile.gender : ''
     });
@@ -59,7 +64,28 @@ export const Account = () => {
         const index = e.target.selectedIndex;
         dispatch(updateTalentAvailability({id:index,value:e.target.value}))
        
-   }
+    }
+    var setScheduleTime= (e) => {
+        setInputs({...inputs, schedule:{
+            ...inputs.schedule,
+            [e.target.name] : [e.target.value]
+        }
+        })
+        dispatch(updateTalentSchedule({name:e.target.name,value:e.target.value}))
+        console.log(e.target.name, e.target.value)
+    }
+    var dd = [];
+    var setScheduleDate= (e) => {
+        let filteredId = inputs.schedule.days.filter(id => id !== e);
+        setInputs({...inputs, schedule:{
+            ...inputs.schedule,
+            days : [...filteredId, e]
+        }
+        },[inputs.schedule.days])
+        // dd.push(e);
+        dispatch(updateTalentScheduleDays(inputs.schedule.days))
+        console.log(inputs.schedule.days)
+    }
 
     const imageHandler = (e) => {
         const reader = new FileReader();
@@ -350,7 +376,7 @@ export const Account = () => {
                 <Changeaccount close={closeProfile}></Changeaccount>
             </div>
             <div className="c-schedulediv hidden">
-                <Changeschedule close={closeProfile}></Changeschedule>
+                <Changeschedule close={closeProfile} setTime={setScheduleTime} setDate={setScheduleDate}></Changeschedule>
             </div>
             <div className="overlay hidden"></div>
            

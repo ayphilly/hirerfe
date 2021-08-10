@@ -29,19 +29,19 @@ instance.interceptors.request.use((config) => {
 
 
 // when token expires return user to login page
-instance.interceptors.response.use(
-  function (response) {
-    return response;
-  }, 
-  function (error) {
-    let res = error.response;
-    if (res.status == 401) {
-      window.location.href = "https://covenhirer.netlify.app/signin" ;
-    }
-    console.error('Looks like there was a problem. Status Code: ' + res.status);
-    return Promise.reject(error);
-  }
-);
+// instance.interceptors.response.use(
+//   function (response) {
+//     return response;
+//   }, 
+//   function (error) {
+//     let res = error.response;
+//     if (res.status == 401) {
+//       window.location.href = "https://covenhirer.netlify.app/signin" ;
+//     }
+//     console.error('Looks like there was a problem. Status Code: ' + res.status);
+//     return Promise.reject(error);
+//   }
+// );
 // Retry failed requests
 axiosRetry(instance, {
   retries: 3,
