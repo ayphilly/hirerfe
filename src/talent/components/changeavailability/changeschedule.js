@@ -3,12 +3,16 @@ import {Dropdown, Option} from "../../../generals/inputs/dropdown/dropdown"
 import CheckBox from "../../../generals/inputs/checkbox"
 import {useState, useEffect} from "react"
 import {checkboxes} from "../../constants"
+import { useSelector,useDispatch } from 'react-redux'
+
+import { updateTalentSchedule} from "../../../slices/talentSlice"
 export const Changeschedule = (props)=> {
 
     const [checked, setCheck] = useState("");
     const [checkedItems, setCheckedItems] = useState({});
     const [optionValue, setOptionValue] = useState("");
-
+    const userAccount = useSelector((state) => state.talent.talentSchedule);
+    const dispatch = useDispatch();
     var closeBox = (event)=> {
         event.preventDefault();
         props.close();
@@ -35,6 +39,7 @@ export const Changeschedule = (props)=> {
        
         setOptionValue(e.target.value);
         props.setTime(e);
+        // dispatch(updateTalentSchedule({name:e.target.name,value:e.target.value}))
        
     };
 
@@ -53,19 +58,19 @@ export const Changeschedule = (props)=> {
                                 onChange={handleSelect}
                                 width= {150}
                                 name = "from"
-                            
+                                value={ userAccount.from ? userAccount.from : ''}
                                 id="from"
                             >
                                 <Option defaultValue value="Select Range" />
-                                <Option value="9" />
-                                <Option value="10" />
-                                <Option value="11" />
-                                <Option value="12" />
-                                <Option value="1" />
-                                <Option value="2" />
-                                <Option value="3" />
-                                <Option value="14" />
-                                <Option value="5" />
+                                <Option value="9am" />
+                                <Option value="10am" />
+                                <Option value="11am" />
+                                <Option value="12pm" />
+                                <Option value="1pm" />
+                                <Option value="2pm" />
+                                <Option value="3pm" />
+                                <Option value="4pm" />
+                                <Option value="5pm" />
                             </Dropdown>
                             
                         </div>
@@ -77,19 +82,19 @@ export const Changeschedule = (props)=> {
                                 onChange={handleSelect}
                                 width= {150}
                                 name = "to"
-                            
+                                value={ userAccount.to ? userAccount.to : ''}
                                 id="to"
                             >
                                 <Option defaultValue value="Select Range" />
-                                <Option value="9" />
-                                <Option value="10" />
-                                <Option value="11" />
-                                <Option value="12" />
-                                <Option value="1" />
-                                <Option value="2" />
-                                <Option value="3" />
-                                <Option value="14" />
-                                <Option value="5" />
+                                <Option value="9am" />
+                                <Option value="10am" />
+                                <Option value="11am" />
+                                <Option value="12pm" />
+                                <Option value="1pm" />
+                                <Option value="2pm" />
+                                <Option value="3pm" />
+                                <Option value="4pm" />
+                                <Option value="5pm" />
                             </Dropdown>
 
                         </div>    

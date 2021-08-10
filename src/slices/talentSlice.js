@@ -36,6 +36,13 @@ export const talentSlice = createSlice({
       },
     },
     talentData: {},
+    talentSchedule: {
+      
+        from:"",
+        to: "",
+        days:[]
+   
+    },
     avatar: '',
     talentProfile:{}
   },
@@ -64,10 +71,10 @@ export const talentSlice = createSlice({
     },
     updateTalentSchedule(state, action) {
       const {name, value} = action.payload;
-      state.talentData.profile.schedule.name = value;
+      state.talentSchedule[name] = value;
     },
     updateTalentScheduleDays(state, action) {
-      state.talentData.profile.schedule.days=(action.payload);
+      state.talentSchedule.days=(action.payload);
     }
   },
 });
