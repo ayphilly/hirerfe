@@ -330,8 +330,8 @@
             .form-experience {
                 width: 100%;
                 height: fit-content;
-                padding-top: 10px;
-                padding-bottom: 10px;
+                // padding-top: 10px;
+                // padding-bottom: 10px;
                 @include colflex(flex-start, space-between);
 
                 
@@ -343,8 +343,8 @@
 
                 @include breakpoint (laptop) {
                     // height: fit-content;
-                    padding-top: 10px;
-                    padding-bottom: 10px;
+                    // padding-top: 10px;
+                    // padding-bottom: 10px;
                     @include colflex(flex-start, space-between);
                 }
                 
@@ -368,14 +368,17 @@
                         @include rowflex(center,space-between);
                     }
                 }
-
-                input{
-                    margin-bottom: 50px;
+                .filter-input-location {
+                    margin-top: 20px;
+                    z-index: 1;
                 }
-
-                input:last-child(){
-                    margin-bottom: 0px;
+                .filter-input-salary {
+                    margin-top: 50px;
                 }
+                .filter-input-years {
+                    margin-top: 50px;
+                }
+                
 
             }
 
