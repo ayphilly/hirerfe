@@ -49,6 +49,7 @@ const Hirercreate = (props) =>  {
                 setTimeout(()=> {
                     props.clearAlert();
                 }, 3000)
+                
 
             } else {
                 // props.setUpCreated(response)
@@ -92,7 +93,17 @@ const Hirercreate = (props) =>  {
                     setTimeout(()=> {
                         props.clearAlert();
 
-                    }, 10000)
+                    }, 2000)
+                    setForm(
+                        {
+                            email: '',
+                            name: '',
+                            company_name: '',
+                            password: '',
+                            password_confirmation: '',
+                            errors: { email: '', name: '', company_name: '', password: ''}
+                        }
+                    )
 
                 } else {
 

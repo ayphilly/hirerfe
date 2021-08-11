@@ -54,6 +54,16 @@ const Talentcreate = (props) => {
                         props.clearAlert();
 
                     }, 10000)
+                    setForm(
+                        {
+                            email: '',
+                            name: '',
+                            phone: '',
+                            password: '',
+                            password_confirmation: '',
+                            errors: { email: '', name: '', phone: '', password: ''}
+                        }
+                    )
 
                 } else {
                     props.setUpCreated(response)

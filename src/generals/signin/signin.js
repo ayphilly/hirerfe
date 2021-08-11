@@ -123,6 +123,13 @@ export const Signin =()=> {
         getUserData().then((response) => {
             response.data.role === "company" ? getEmpData() : getTalentData();
         })
+        setFormstate(
+            {
+                email: '',
+                password: ''
+            }
+        )
+        
         
     }
     
