@@ -163,30 +163,33 @@ export const Jobapplication = (props) => {
                     
                 
                     <div className="form-experience">
-                        {props.filters.location > 0 && <Singleinputlocation
+                        {props.filters.location >= 0 && <div className="filter-input-location"><Singleinputlocation
                             label ="Where ?"
                             subtext="Enter State"
                             name="location"
                             placeholder="Enter your location"
                             value={formState.location}
                             handleUserLocation ={handleUserLocation }
-                        />}
-                        {props.filters.experience > 0 && <Singleinputlabel
+                        />
+                        </div>}
+                        {props.filters.experience > 0 && <div className="filter-input-years"> <Singleinputlabel
                             type="number"
                             placeholder ={`How many years of ${props.job.data ? props.job.data.job[0].title: ''} working experience do you have ?`}
                             label ={`How many years of ${props.job.data ? props.job.data.job[0].title: ''} working experience do you have ?`}
                             name="experience"
                             value={formState.experience}
                             onChange={(event) => handleUserInput(event)}
-                        />}
-                        {props.filters.salary_expectation > 0 && <Singleinputlabel
+                        />
+                        </div>}
+                        {props.filters.salary_expectation > 0 &&<div className="filter-input-salary"> <Singleinputlabel
                             type="number"
                             placeholder ="What is your Monthly Salary Expectation ?"
                             label ="What is your Monthly Salary Expectation ?"
                             name="salary"
                             value={formState.salary}
                             onChange={(event) => handleUserInput(event)}
-                        />}
+                        /> 
+                        </div>}
 
                     </div>
                     <div className="form-apply-button">

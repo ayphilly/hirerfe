@@ -368,15 +368,17 @@
                         @include rowflex(center,space-between);
                     }
                 }
-
-                input:not(:last-child){
-                    margin-bottom: 100px;
-                    background-color: red;
+                .filter-input-location {
+                    margin-top: 20px;
+                    z-index: 1;
                 }
-
-                input:last-child(){
-                    margin-bottom: 0px;
+                .filter-input-salary {
+                    margin-top: 50px;
                 }
+                .filter-input-years {
+                    margin-top: 50px;
+                }
+                
 
             }
 
