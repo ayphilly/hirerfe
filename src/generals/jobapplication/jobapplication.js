@@ -89,7 +89,7 @@ export const Jobapplication = (props) => {
             }
         );
         var loc = filteredResults[0].id;
-        setFormstate({...formState, id:loc})
+        setFormstate({...formState, id:loc, location})
     }
 
     const handleSelect = (e) => {
@@ -163,7 +163,7 @@ export const Jobapplication = (props) => {
                     
                 
                     <div className="form-experience">
-                        {props.filters.location >= 0 && <Singleinputlocation
+                        {props.filters.location > 0 && <Singleinputlocation
                             label ="Where ?"
                             subtext="Enter State"
                             name="location"
