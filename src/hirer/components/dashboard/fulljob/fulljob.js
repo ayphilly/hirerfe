@@ -301,7 +301,7 @@ const Applicanttable = (props)=> {
 }
 const Tablerow = (props) => {
 
-    var mymatch = props.data.matches.length > 0 ? props.data.matches.map((match, index) => {
+    var mymatch = props.data.matches.length? props.data.matches.map((match, index) => {
         return (
             <Match
                 key= {index}
