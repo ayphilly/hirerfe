@@ -32,7 +32,17 @@ const Singleinputlocation = (props) => {
           showSuggestions: true,
           userInput: e.currentTarget.value
         });
-        props.handleUserLocation(userInput);
+        const filteredResult = myStates.filter(
+          suggestion => {
+              return suggestion.name === userInput
+          }
+        );
+        var loc = filteredResult[0].id;
+
+        if (loc) {
+          props.handleUserLocation(userInput);
+        }
+        
         
     };
     var onClick = e => {
