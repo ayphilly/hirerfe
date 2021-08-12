@@ -8,7 +8,7 @@ import {useState, useEffect} from "react"
 import { post, get } from "../../../../requests";
 import { Empty } from "../../../../generals/emptyresult/emptyresult";
 import { useSelector, useDispatch } from "react-redux";
-import { setDashboard } from "../../slices/companySlice"
+import { setDashboard } from "../../../../slices/companySlice";
 const DashboardHome= (props) => {
 
     const history = useHistory();
