@@ -43,8 +43,8 @@ export const Jobapplication = (props) => {
                 job_id:props.id,
                 filters : {
                     salary_expectation: formState.salary,
-                    location: String(formState.id) ,
-                    experience: String(formState.experience) 
+                    location: formState.id,
+                    experience:formState.experience
                 }
             })
               .then((response) => {
