@@ -17,11 +17,11 @@ export const Jobapplication = (props) => {
     const [optionValue, setOptionValue] = useState("");
     const [locid, setLocId] = useState(null)
     const [formState, setFormstate] = useState({
-        salary: null,
-        experience: null,
+        salary: '',
+        experience: '',
         location: '',
         cv:'',
-        id: null
+        id: ''
     })
 
     const [response, setResponse] = useState({
@@ -42,9 +42,9 @@ export const Jobapplication = (props) => {
             post(`/v1/talent/apply/job`, {
                 job_id:props.id,
                 filters : {
-                    salary_expectation: formState.salary,
-                    location: formState.id,
-                    experience: String(formState.experience) 
+                    salary_expectation: String(formState.salary),
+                    location: parseInt(formState.id),
+                    experience: parseInt(formState.experience)
                 }
             })
               .then((response) => {
