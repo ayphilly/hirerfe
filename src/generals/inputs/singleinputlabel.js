@@ -29,7 +29,7 @@ const Singleinputlabel = (props) => {
                 ? passwordShown
                   ? "text"
                   : "password"
-                : "text"
+                : props.type
               : props.type
           }
           name={props.name}

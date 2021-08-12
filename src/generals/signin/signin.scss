@@ -3,28 +3,27 @@
 .signin-container {
 
     width: 100%;
-    height: 55em;
+    height: 45em;
     @include rowflex(center,center);
     margin-bottom: 200px;
     margin-top: 50px;
-    
-
+    overflow: hidden;
     @include breakpoint(mobileonly) {
         width: 100%;
-        height: 55em;
+        height: 45em;
         @include rowflex(center, center);
         margin-bottom: 500px;
     }
     @include breakpoint(tablet) {
         width: 100%;
         @include rowflex(center, center);
-        height: 55em;
+        height: 45em;
         margin-bottom: 400px;
     }
     @include breakpoint(phablet) {
         width: 100%;
         @include rowflex(center, center);
-        height: 55em;
+        height: 45em;
         margin-bottom: 400px;
     }
     
@@ -44,10 +43,10 @@
 
     .signin-inner {
         width: 40%;
-        
         height: 90%;
         
-        // margin: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
         background-color: #fff;
         box-shadow: 0px 0px 15px #F5F5F5;
         border-radius: 10px 10px 10px 10px;
@@ -56,7 +55,7 @@
 
         @include breakpoint(mobileonly) {
             width: 90%;
-            height: 85%;
+            height: 90%;
             @include colflex(center, space-between);
            
         }
@@ -137,12 +136,13 @@
 
         .socials-options {
             width: 90%;
-            height: 25%;
+            height: fit-content;
+            margin-top: 10px;
             @include rowflex(center,space-between);
             @include breakpoint(mobileonly) {
                 width: 90%;
-                height: 150px;
-                @include colflex(center,space-around);
+                height: fit-content;
+                @include colflex(center,space-between);
             }
             @include breakpoint(tablet) {
                 width: 90%;
@@ -232,6 +232,12 @@
     
                     &:hover {
                         background-color: $blue-900;
+                    }
+                    &:disabled {
+                        // border: 1px solid #999999;
+                        background-color: #cccccc;
+                        color: #666666;
+                        cursor: not-allowed;
                     }
                 }
             }
