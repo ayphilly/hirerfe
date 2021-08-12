@@ -3,19 +3,22 @@
 
 .socialoption-container {
     width: 100%;
-    height: 120px;
-    margin-top: -20px;
-    @include colflex(flex-start, space-around);
-
-
+    height: 110px;
+    // margin-top: -20px;
+    margin: 0;
+    @include colflex(flex-start, space-between);
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 150px;
+    }
     .socialoption-inner-container {
         width: 100%;
         height: 80%;
         @include rowflex(center,space-between);
         @include breakpoint(mobileonly) {
-            width: 90%;
-            height: 150px;
-            @include colflex(center,space-around);
+            width: 100%;
+            height: 80%;
+            @include colflex(center,space-between);
         }
         @include breakpoint(tablet) {
             width: 90%;
