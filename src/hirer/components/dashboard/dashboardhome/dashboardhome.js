@@ -7,12 +7,14 @@ import { useHistory } from "react-router"
 import {useState, useEffect} from "react"
 import { post, get } from "../../../../requests";
 import { Empty } from "../../../../generals/emptyresult/emptyresult";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setDashboard } from "../../slices/companySlice"
 const DashboardHome= (props) => {
 
     const history = useHistory();
     const dashData = useSelector((state) => state.company.dashboard);
     const [data, setData] = useState({})
+    const dispatch = useDispatch()
 
     var viewJob = (title,id)=> {
         history.push(`/dashboard/hirer/myjob/?title=${title}&id=${id}`);
@@ -36,6 +38,16 @@ const DashboardHome= (props) => {
         )
     }): 0;
 
+    var getEmpData = async () => {
+        try {
+            const {data} = await get(`/v1/employer/dashboard`);
+            dispatch(setDashboard(data));
+            return data;
+        } catch (err) {
+            console.log(err.message);
+        }
+      }
+
     var getDashboardData = ()=> {
         get(`/v1/employer/dashboard`)
           .then((response) => {
@@ -57,7 +69,9 @@ const DashboardHome= (props) => {
           });
 
     }
-
+    useEffect(()=> {
+        getEmpData();
+    }, [])
     useEffect(()=> {
         getDashboardData();
     }, [])
