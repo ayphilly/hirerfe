@@ -80,7 +80,7 @@ const JobFilterForm = ({ step, previousStep, nextStep }) => {
             id="yearsExperience"
             name="filter_values.experience"
             className="mb-8 classic-input w-100"
-            type="text"
+            type="number"
           />
         </div>
       )}
@@ -94,7 +94,7 @@ const JobFilterForm = ({ step, previousStep, nextStep }) => {
             id="preferredLocation"
             name="filter_values.location"
             className="mb-8 classic-input w-100"
-            type="text"
+            type="number"
           />
         </div>
       )}
