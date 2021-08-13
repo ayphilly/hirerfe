@@ -43,7 +43,7 @@ export const Jobapplication = (props) => {
                 status:false,
                 message: 'You cannot apply without an Hirer Profile, kindly go create one.'
             });
-            <Redirect to="/talent/createprofile" />
+            
         } else {
 
             // var datav = formState.
@@ -174,6 +174,11 @@ export const Jobapplication = (props) => {
                     
                 
                     <div className="form-experience">
+                        
+                        <div>
+                            <p>From Coveworks</p>
+                            <p>Answer this to see if you fit who we are looking for </p>
+                        </div>
                         {props.filters.location > 0 && <div className="filter-input-location"><Singleinputlocation
                             label ="Where ?"
                             subtext="Enter State"

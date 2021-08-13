@@ -24,7 +24,12 @@ const Forgotpassword = () => {
            step === 0 &&<Verifyemail {...props} ></Verifyemail>
         }
         {
-           step === 1 && <Checkmail {...props} ></Checkmail>
+           step === 1 && <Checkmail 
+                            {...props} 
+                            subtext =" We have sent a password recovery 
+                            instructions to your registered
+                            email address."
+            ></Checkmail>
         }
 
         </div>

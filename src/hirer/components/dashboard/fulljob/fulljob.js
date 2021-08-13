@@ -316,7 +316,7 @@ const Tablerow = (props) => {
         <tr>
             <td>{props.data ? props.data.user_name : ''}</td>
             <td>{props.data.status ? props.data.status : 'no status'}</td>
-            <td>
+            <td className="td-match">
                 {mymatch}
             </td>
             <td> <a onClick={() => props.view(props.data.id)}>View Profile</a></td>

@@ -15,9 +15,8 @@ export const Checkmail = (props)=> {
                     <img src={checkmail} alt="check-mail"/>
                     <p>Check your Mail</p>
                     <p>
-                        We have sent a password recovery 
-                        instructions to your registered
-                        email address.
+                        {props.subtext ? props.subtext : 'We have sent a mail to your registered email address, click the link to verify your account.'}
+                      
                     </p>
                     <button type="button" className="checkmail-btn" onClick={moveToHompage} >Open Email App</button>
                     <span>
