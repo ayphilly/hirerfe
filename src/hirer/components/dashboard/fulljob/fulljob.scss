@@ -313,28 +313,47 @@
                                 color: $blue-800;
                                 cursor: pointer;
                             }
+                        }
 
+                        .td-match {
+
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            grid-template-rows: 1fr 1fr;
+                            column-gap: 10px;
+                            row-gap: 10px;
+                            align-content: flex-start;
+                            justify-items: flex-start;
                             .table-matches {
                                 &.match {
-                                    color: $green-900;
-                                    border: 1px solid $green-500;
-                                    background-color: $green-100;
+                                    // border: 1px solid $green-500;
+                                    // background-color: $green-100;
                                     width: fit-content;
                                     height: fit-content;
                                     padding: 5px;
-                                    @include fontNormal(1em, 1em, $green-900);
+                                    // @include fontNormal(.8em, .8em, $green-900);
+                                    // @include fontNormal(.8em, .8em, $gray-600);
+                                    // background-color: $gray-100;
+                                    // border: 1px solid $gray-600;
+
+                                    @include fontNormal(.8em, .8em, $blue-700);
+                                    background-color: $blue-100;
+                                    border: 1px solid $blue-700;
                                     p {
                                         margin-left: 5px;
                                     }
                                 }
                                 &.no-match {
-                                    color: $red-900;
                                     border: 1px solid $red-500;
                                     background-color: $red-100;
                                     width: fit-content;
                                     height: fit-content;
                                     padding: 5px;
-                                    @include fontNormal(1em, 1em, $red-900);
+                                    @include fontNormal(.8em, .8em, $red-900);
+
+                                    // background-color: $gray-100;
+                                    // border: 1px solid $gray-600;
+                                    // @include fontNormal(.8em, .8em, $gray-600);
                                     p {
                                         margin-left: 5px;
                                     }

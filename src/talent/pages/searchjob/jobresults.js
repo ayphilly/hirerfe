@@ -78,11 +78,12 @@ export const Jobresult = () => {
               }
               
           }, (error) => {
-              setError({
-                  status: error.response.data.status,
-                  message: error.response.data.message
-              })
               setLoad(false);
+              setError({
+                  status: error.response && error.response.data.status,
+                  message: error.response && error.response.data.message
+              })
+              
           });
  
     }

@@ -7,6 +7,7 @@ import { validateForm, validation } from "../../helper";
 import {post} from "../../requests"
 import { Socialoption } from "./socialsoption";
 import axios from "axios";
+import { useHistory } from "react-router";
 const Hirercreate = (props) =>  {
 
    
@@ -18,6 +19,7 @@ const Hirercreate = (props) =>  {
         password_confirmation: '',
         errors: { email: '', name: '', company_name: '', password: ''}
     })
+    const history = useHistory();
 
     const disableBtn = () => {
        return validateForm(formState.errors) ? (formState.email === '' || formState.name ==='' ||formState.company_name ==='' || formState.password === '') ? true: false : true;
@@ -104,6 +106,7 @@ const Hirercreate = (props) =>  {
                             errors: { email: '', name: '', company_name: '', password: ''}
                         }
                     )
+                    history.push(`/checmail`);
 
                 } else {
 

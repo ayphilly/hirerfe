@@ -27,7 +27,7 @@ import { Talentprofile } from "./hirer/pages/talentprofile/talentprofile";
 import { Notification } from "./talent/pages/notification/notification";
 import DashboardSide from "./talent/pages/DashboardSide";
 import Accountverification from "./generals/verifyaccount/accountverification";
-
+import { Checkmail } from "./generals/passwordreset/checkmail";
 import { Review } from "./talent/pages/review/review";
 import { Jobresult } from "./talent/pages/searchjob/jobresults";
 import { CustomRoute } from "./customRoute";
@@ -131,6 +131,7 @@ function App() {
           path="/resetpassword/:token/:hash"
           component={Changeoldpassword}
         />
+        <Route path="/checkmail" component={Checkmail} />
 
         <TalentWithNavbar exact path="/" component={Homepage} />
         <TalentWithNavbar
