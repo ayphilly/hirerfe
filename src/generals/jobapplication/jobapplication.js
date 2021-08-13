@@ -39,12 +39,14 @@ export const Jobapplication = (props) => {
             });
             <Redirect to="/talent/createprofile" />
         } else {
+
+            // var datav = formState.
             post(`/v1/talent/apply/job`, {
                 job_id:props.id,
                 filters : {
                     salary_expectation: String(formState.salary),
-                    location: parseInt(formState.id),
-                    experience: parseInt(formState.experience)
+                    location: String(formState.id),
+                    experience: String(formState.experience)
                 }
             })
               .then((response) => {
@@ -173,7 +175,7 @@ export const Jobapplication = (props) => {
                         />
                         </div>}
                         {props.filters.experience > 0 && <div className="filter-input-years"> <Singleinputlabel
-                            type="number"
+                            type="text"
                             placeholder ={`How many years of ${props.job.data ? props.job.data.job[0].title: ''} working experience do you have ?`}
                             label ={`How many years of ${props.job.data ? props.job.data.job[0].title: ''} working experience do you have ?`}
                             name="experience"
@@ -182,7 +184,7 @@ export const Jobapplication = (props) => {
                         />
                         </div>}
                         {props.filters.salary_expectation > 0 &&<div className="filter-input-salary"> <Singleinputlabel
-                            type="number"
+                            type="text"
                             placeholder ="What is your Monthly Salary Expectation ?"
                             label ="What is your Monthly Salary Expectation ?"
                             name="salary"
