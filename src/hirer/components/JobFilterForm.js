@@ -80,7 +80,7 @@ const JobFilterForm = ({ step, previousStep, nextStep }) => {
             id="yearsExperience"
             name="filter_values.experience"
             className="mb-8 classic-input w-100"
-            type="number"
+            type="text"
           />
         </div>
       )}
@@ -94,7 +94,7 @@ const JobFilterForm = ({ step, previousStep, nextStep }) => {
             id="preferredLocation"
             name="filter_values.location"
             className="mb-8 classic-input w-100"
-            type="number"
+            type="text"
           />
         </div>
       )}
@@ -107,7 +107,7 @@ const JobFilterForm = ({ step, previousStep, nextStep }) => {
             id="salary_expectation"
             name="filter_values.salary_expectation"
             className="mb-8 classic-input w-100"
-            type="number"
+            type="text"
           />
         </div>
       )}
