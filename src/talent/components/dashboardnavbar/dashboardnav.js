@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 
 function Dashboardnav() {
   const data = useSelector((state) => state.auth.authData);
+  const talentAvatar = useSelector((state) => state.talent.avatar);
+  const talentAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
   return (
     <div className="talent-navbar-container">
       <div className="navbar-inner">
@@ -34,7 +36,8 @@ function Dashboardnav() {
                     <Link className="navbar-inner-nav-link" to="/signin" style={{textDecoration:'none'}}>Sign in</Link> */}
           <img src={notification} className="notification" alt="notification" />
           <div className="dashboard-profile">
-            <img src={profile} alt="user profile" />
+            {/* <img src={profile} alt="user profile" /> */}
+            {talentAvatar ? <img src={talentAvatar} alt="user profile"/> :<img src={talentAvi} alt="user profile"/>  }
             <div className="dashboard-user">
               <p> Welcome</p>
               <p>{data.name} </p>
