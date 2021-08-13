@@ -32,6 +32,12 @@ export const Jobapplication = (props) => {
 
     var applyJob = (event)=> {
         event.preventDefault();
+
+        const {
+            id,
+            salary, experience
+          } = formState;
+
         if (Object.keys(talentProfile).length < 1) {
             setResponse({
                 status:false,
@@ -44,9 +50,12 @@ export const Jobapplication = (props) => {
             post(`/v1/talent/apply/job`, {
                 job_id:props.id,
                 filters : {
-                    salary_expectation: String(formState.salary),
-                    location: String(formState.id),
-                    experience: String(formState.experience)
+                    ...(props.filters.experience && {experience }),
+                    ...(props.filters.salary_expectation && {salary_expectation: salary}),
+                    ...(props.filters.location && {location: id})
+                    // salary_expectation: String(formState.salary),
+                    // location: String(formState.id),
+                    // experience: String(formState.experience)
                 }
             })
               .then((response) => {

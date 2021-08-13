@@ -148,7 +148,9 @@ export const Jobdescription = ()=> {
                     </div>
                     
                     <div className="jobdescription-right">
-                        <Companyinfo></Companyinfo>
+                        <Companyinfo
+                            name = {job.data ? job.data.job[0].company : ''}
+                        ></Companyinfo>
     
                     </div>
     
