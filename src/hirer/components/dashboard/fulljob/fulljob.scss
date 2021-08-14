@@ -320,10 +320,10 @@
                             display: grid;
                             grid-template-columns: 1fr 1fr;
                             grid-template-rows: 1fr 1fr;
-                            column-gap: 2px;
-                            row-gap: 2px;
-                            align-content: flex-start;
-                            justify-items: flex-end;
+                            column-gap: 5px;
+                            row-gap: 5px;
+                            align-content: center;
+                            justify-items: flex-start;
                             width: fit-content;
                             .table-matches {
                                 &.match {
