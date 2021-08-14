@@ -342,7 +342,7 @@
                                     // @include fontNormal(.8em, .8em, $gray-600);
                                     // background-color: $gray-100;
                                     // border: 1px solid $gray-600;
-                                    @include fontNormal(.6em, 0em, $blue-700);
+                                    @include fontNormal(.8em, 0em, $blue-700);
                                     background-color: $blue-100;
                                     border: 1px solid $blue-700;
                                     p {
@@ -356,7 +356,7 @@
                                     height: fit-content;
                                     padding: 4px;
                                     @include rowflex(center,center);
-                                    @include fontNormal(.6em, .6em, $red-900);
+                                    @include fontNormal(.8em, .6em, $red-900);
                                     border-radius: 3px;
                                     // background-color: $gray-100;
                                     // border: 1px solid $gray-600;
