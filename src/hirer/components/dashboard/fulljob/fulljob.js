@@ -341,7 +341,7 @@ const Match = (props) => {
             { props.match.status ? <FontAwesomeIcon icon={faCheck} className="check-icon" size="lg"/> :
                 <FontAwesomeIcon icon={faTimes} className="times-icon" size="lg"/>
             }
-            <p>{props.match.filter} {props.match.users_value}  </p>
+            <p>{props.match.filter ? props.match.filter === "salary_expectation" ? props.match.filter.split("_")[0] : props.match.filter : props.match.filter} {props.match.users_value}  </p>
         </span>
     )
 }
