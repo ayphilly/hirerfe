@@ -324,17 +324,16 @@
                             row-gap: 2px;
                             align-content: flex-end;
                             justify-items: flex-start;
-                            width: 320px;
+                            width: 250px;
                             height: 100px;
                             .table-matches {
-                                width: fit-content;
-                                margin: 0;
+                                
                                 &.match {
                                     // border: 1px solid $green-500;
                                     // background-color: $green-100;
                                     width: fit-content;
                                     height: fit-content;
-                                    padding: 5px;
+                                    padding: 4px;
                                     border-radius: 3px;
                                     @include rowflex(center,center);
                                     // @include fontNormal(.8em, .8em, $green-900);
@@ -353,7 +352,7 @@
                                     background-color: $red-100;
                                     width: fit-content;
                                     height: fit-content;
-                                    padding: 5px;
+                                    padding: 4px;
                                     @include rowflex(center,center);
                                     @include fontNormal(.6em, .6em, $red-900);
                                     border-radius: 3px;
