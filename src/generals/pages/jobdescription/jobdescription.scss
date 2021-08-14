@@ -2,9 +2,10 @@
 
 .jobdescription-container{
     width: 100%;
-    height: 100em;
-    padding:30px ;
-    background-color: #FAFCFF;
+    height: fit-content;
+    padding-top:50px ;
+    padding-bottom: 50px;
+    background-color: #6a6e74;
     // background-color: red;
     @include rowflex(center,center);
     position: relative;
@@ -29,7 +30,7 @@
         width: 100%;
         height:auto;
         // margin-top: 100px;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
         @include rowflex(center,center);
     }
 
@@ -319,7 +320,9 @@
 
             .jobdescription-left-details {
                 width: 85%;
-                height: 70%;
+                height: fit-content;
+                padding-top: 20px;
+                padding-bottom: 20px;
                 @include colflex(flex-start,space-between);
 
                 @include breakpoint (mobileonly) {
