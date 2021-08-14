@@ -320,27 +320,27 @@
                             display: grid;
                             grid-template-columns: 1fr 1fr;
                             grid-template-rows: 1fr 1fr;
-                            column-gap: 10px;
-                            row-gap: 10px;
+                            column-gap: 5px;
+                            row-gap: 5px;
                             align-content: flex-start;
-                            justify-items: flex-start;
+                            justify-items: center;
                             .table-matches {
                                 &.match {
                                     // border: 1px solid $green-500;
                                     // background-color: $green-100;
                                     width: fit-content;
                                     height: fit-content;
-                                    padding: 5px;
+                                    padding: 2px;
+                                    @include rowflex(center,center);
                                     // @include fontNormal(.8em, .8em, $green-900);
                                     // @include fontNormal(.8em, .8em, $gray-600);
                                     // background-color: $gray-100;
                                     // border: 1px solid $gray-600;
-
-                                    @include fontNormal(.8em, .8em, $blue-700);
+                                    @include fontNormal(.6em, 0em, $blue-700);
                                     background-color: $blue-100;
                                     border: 1px solid $blue-700;
                                     p {
-                                        margin-left: 5px;
+                                        margin-left: 2px;
                                     }
                                 }
                                 &.no-match {
@@ -348,14 +348,15 @@
                                     background-color: $red-100;
                                     width: fit-content;
                                     height: fit-content;
-                                    padding: 5px;
-                                    @include fontNormal(.8em, .8em, $red-900);
+                                    padding: 2px;
+                                    @include rowflex(center,center);
+                                    @include fontNormal(.6em, .6em, $red-900);
 
                                     // background-color: $gray-100;
                                     // border: 1px solid $gray-600;
                                     // @include fontNormal(.8em, .8em, $gray-600);
                                     p {
-                                        margin-left: 5px;
+                                        margin-left: 2px;
                                     }
                                 }
                             }
