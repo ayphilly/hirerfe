@@ -124,8 +124,8 @@
             .jobdescription-left-top {
                 @include rowflex(flex-start, space-between);
                 width: 50%;
-                height: 300px;
-                margin-bottom: 50px;
+                height: fit-content;
+                margin-bottom: 10px;
                 img {
                     width: 100px;
                 }
