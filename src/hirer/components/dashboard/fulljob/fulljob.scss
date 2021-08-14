@@ -320,12 +320,14 @@
                             display: grid;
                             grid-template-columns: 1fr 1fr;
                             grid-template-rows: 1fr 1fr;
-                            column-gap: 2px;
+                            column-gap: 1px;
                             row-gap: 2px;
                             align-content: flex-end;
                             justify-items: flex-start;
                             width: fit-content;
                             .table-matches {
+                                width: fit-content;
+                                margin: 0;
                                 &.match {
                                     // border: 1px solid $green-500;
                                     // background-color: $green-100;
