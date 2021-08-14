@@ -39,7 +39,7 @@
             }
             img {
                 width: auto;
-                border-radius: 50px;
+                
             }
             .navbar-inner-nav-link {
                 // max-height: 100%;
@@ -232,6 +232,7 @@
                 
                 img {
                     width: 50px;
+                    border-radius: 100px;
 
                     @include breakpoint(mobileonly) {
                         width: 30px;
