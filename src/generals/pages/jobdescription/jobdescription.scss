@@ -5,7 +5,7 @@
     height: fit-content;
     padding-top:50px ;
     padding-bottom: 50px;
-    background-color: #6a6e74;
+    background-color: #ffff;
     // background-color: red;
     @include rowflex(center,center);
     position: relative;
@@ -103,7 +103,7 @@
 
         .jobdescription-left {
             width: 100%;
-            height: 100%;
+            height: fit-content;
             @include colflex(flex-start, space-between);
 
             @include breakpoint(mobileonly) {
@@ -225,6 +225,7 @@
                 box-sizing: border-box;
                 border-radius: 10px;
                 @include rowflex(center,center);
+                margin-top: 30px;
 
                 @include breakpoint (mobileonly) {
                   
@@ -323,6 +324,7 @@
                 height: fit-content;
                 padding-top: 20px;
                 padding-bottom: 20px;
+                margin-top: 30px;
                 @include colflex(flex-start,space-between);
 
                 @include breakpoint (mobileonly) {
