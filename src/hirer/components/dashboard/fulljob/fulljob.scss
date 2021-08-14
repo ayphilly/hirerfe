@@ -320,11 +320,13 @@
                             display: grid;
                             grid-template-columns: 1fr 1fr;
                             grid-template-rows: 1fr;
-                            column-gap: 2px;
+                            column-gap: 0px;
                             row-gap: 2px;
-                            align-content: flex-end;
+                            align-content: center; 
                             justify-items: flex-start;
-                            width: 330px;
+                            justify-items: start;
+                            align-items: center;
+                            width: fit-content;
                             height: 100px;
                             .table-matches {
                                 
