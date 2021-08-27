@@ -28,7 +28,7 @@ function Talentnav() {
             </Link>
             <span className="navbar-inner-nav-link"> Company Reviews </span>
           </div>
-          <div className="navbar-inner right">
+          <div className="navbar-inner talent-right">
             <span className="navbar-inner-nav-link"> Help Centre </span>
             <Link
               className="navbar-inner-nav-link"

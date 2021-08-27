@@ -1,25 +1,26 @@
 @import "../../../variables.scss";
 
-.feedback-container {
+.talent-feedback-container {
     width: 100%;
-    height: 100vh;
+    height: 40em;
+    
     @include rowflex(center,center);
     background-color: $blue-100;
 
     @include breakpoint(mobileonly) {
-        height: 38em !important;
+        height: 40em !important;
     }
     @include breakpoint(phablet) {
-        height: 45em;
+        height: 55em;
     }
     @include breakpoint(laptop) {
-        height: 50em;
+        height: 40em;
     }
 
     .feedback-inner {
         width: 90%;
         height: 85%;
-        @include colflex(center, space-around);
+        @include colflex(center, space-evenly);
 
         @include breakpoint(mobileonly) {
             width: 95% !important;
@@ -31,7 +32,8 @@
         
 
         .feedback-top {
-            width: 30%;
+            width: fit-content;
+            height: 20%;
             text-align: center;
             @include breakpoint(mobileonly) {
                 width: 80%;
@@ -44,7 +46,8 @@
                 width: 75% !important;
             }
             @include breakpoint(laptop) {
-                width: 50% !important;
+                width: fit-content;
+                height: 20%;
             }
 
             p:nth-child(1) {
@@ -69,7 +72,8 @@
 
         .feedback-carousel {
             @include rowflex(center,center);
-            height: 600px;
+            height: fit-content;
+            // height: 600px;
             width: 100%;
             @include breakpoint(mobileonly) {
                 width: 100%;

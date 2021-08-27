@@ -31,6 +31,7 @@ export const Fulljob = () => {
     const [response, setResponse] = useState({})
     const [applicants, setApplicants] = useState({})
     const [talent, setTalent] = useState(null)
+    const [click, setClick] = useState(false)
     var jobSelect = () => {
         setActive({
             info: true,
@@ -96,11 +97,62 @@ export const Fulljob = () => {
 
     }
 
+    var acceptApplicant = (job_id, talent_id) => {
+        post(`/v1/employer/dashboard/accept`, {
+            job_id :job_id,
+            talent_id: talent_id
+        })
+          .then((response) => {
+              if (response.status) {
+                  console.log(response.data);
+                  setClick(true)
+                //   setLoad(false)
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+                alert(error.response.data);
+                setClick(true)
+                // setLoad(false)
+              console.log("Something went wrong");
+        });
+    }
+    var declineApplicant = (job_id, talent_id) => {
+        post(`/v1/employer/dashboard/accept`, {
+            job_id :job_id,
+            talent_id: talent_id
+        })
+          .then((response) => {
+              if (response.status) {
+                  alert(response.data);
+                //   setLoad(false)
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+                alert(error.response.data);
+                // setLoad(false)
+              console.log("Something went wrong");
+        });
+    }
+
     useEffect(()=> {
         getJob();
         getApplicants();
         
     },[])
+    useEffect(()=> {
+        getApplicants();
+        
+    },[click])
     // useEffect(()=> {
     //     if (values.id > 4) {
     //         setResponse({
@@ -183,6 +235,9 @@ export const Fulljob = () => {
                             <Applicanttable 
                                 view={Talentview}
                                 applicants ={applicants.data}
+                                acceptApplicant ={acceptApplicant}
+                                declineApplicant={declineApplicant}
+                                jobId = {response.data ? response.data.id : ''}
                             ></Applicanttable>
                         </div>
                         
@@ -259,6 +314,9 @@ const Applicanttable = (props)=> {
                 key={index}
                 view={props.view}
                 data = {applicant}
+                acceptApplicant={props.acceptApplicant}
+                declineApplicant={props.declineApplicant}
+                jobId= {props.jobId}
             ></Tablerow>
 
         )
@@ -322,13 +380,13 @@ const Tablerow = (props) => {
             <td> <a onClick={() => props.view(props.data.id)}>View Profile</a></td>
             <td>{props.data ? applicationDate : ''}</td>
             <td>
-                <div className="action-box green">
+                <div className={`action-box green ${props.data.status ==="accepted" ? 'disable' : ''}`} onClick={()=> props.acceptApplicant(props.jobId, props.data.id)}>
                     <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
                 </div>
                 <div className="action-box yellow">
                     <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
                 </div>
-                <div className="action-box red">
+                <div className="action-box red" onClick={()=> props.declineApplicant(props.jobId, props.data.id)}>
                     <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
                 </div>
             </td>

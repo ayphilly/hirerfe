@@ -88,6 +88,35 @@ export const Jobresult = () => {
  
     }
 
+    const paginateJobs = (url) => {
+        get(url)
+          .then((response) => {
+  
+              if (response.status) {
+  
+                  setJobs(response.data)
+                  console.log(response.data)
+                  setLoad(false);
+                  
+              } else {
+                 setResponse({
+                      status: response.data.status,
+                      message: response.data.message
+                  })
+                  setLoad(false);
+              }
+              
+          }, (error) => {
+              setLoad(false);
+              setError({
+                  status: error.response && error.response.data.status,
+                  message: error.response && error.response.data.message
+              })
+              
+          });
+ 
+    }
+
     var saveJob = (id)=> {
         // event.preventDefault();
        

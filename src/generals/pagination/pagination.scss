@@ -1,0 +1,30 @@
+@import "../../variables.scss";
+
+.pagination-container {
+    width: fit-content;
+    padding: 20px;
+    @include rowflex(center,center);
+
+    .pagination-inner {
+        width: 90%;
+        height: 90%;
+        @include rowflex(center,space-between);
+
+        .single-pagination-container {
+            width: fit-content;
+            height: fit-content;
+            padding: 5px;
+            border-radius: 5px;
+            &.active {
+                background-color: $blue-100;
+            }
+
+           .single-text {
+                @include fontMedium(1em, 0em, $gray-500);
+                &.active {
+                    @include fontMedium(1em, 0em, $blue-700);
+                }
+            }
+        }
+    }
+}

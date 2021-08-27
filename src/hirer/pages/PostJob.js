@@ -14,6 +14,7 @@ const initialValues = {
   jobLocation: "",
   jobType: "",
   jobDescription: "",
+  jobCalendly: "",
   jobSalary: 0,
   filters: {
     experience: false,
@@ -65,6 +66,7 @@ const PostJob = () => {
       type_id: parseInt(formData.jobType),
       salary: "" + formData.jobSalary,
       description: formData.jobDescription,
+      jobCalendly : formData.jobCalendly,
       filters: {
         ...filters,
       },
