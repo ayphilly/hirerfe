@@ -24,7 +24,7 @@ export const Savedjobs = (props) => {
                 // id={job.job.id}
                 key={index}
                 title={job.title}
-                title={job.description.substr(0, 50)}
+                description={job.description.substr(0, 60)}
                 click ={openAction}
                 saved = {saved}
                 goto = {goToJob}
