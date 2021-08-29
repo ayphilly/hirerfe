@@ -44,10 +44,7 @@ function Singlejob  (props) {
                 </div>
                 <div className="single-job-description">
                     <p className="description">
-                        Desktop Technician will provide day to day local \ 
-                        remote desktop support, receive inbound calls, answer
-                        questions, troubleshoot and document steps performed to,
-                        Desktop Technician will provide...
+                        {props.description}
                     </p>
 
                 </div>
