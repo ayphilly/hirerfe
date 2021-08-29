@@ -27,7 +27,6 @@ export const Jobresult = () => {
     })
     const [userloc, setLoc]= useState({})
     const [addr, setAddr]= useState()
-    let { jobtitle, location } = useParams();
 
     var openAction =()=> {
         var mor = document.querySelectorAll(".vertical-icon");
@@ -255,6 +254,7 @@ export const Jobresult = () => {
                         address={addr}
                         jobsearch={searchJobs}
                         totalResults = {myjobs.links ? myjobs.links.total : 0}
+                        links ={myjobs.links ? myjobs.links.links : ''}
                     >
                        { jobs}
                     </Searchcontainer>

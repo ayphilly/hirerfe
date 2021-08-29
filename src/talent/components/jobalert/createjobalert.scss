@@ -2,7 +2,7 @@
 
 .create-job-alert-container{
     width: 100%;
-    height: 250px;
+    height: 300px;
     background-color: $blue-100;
     @include rowflex(center,center);
     border-radius: 10px;
@@ -17,7 +17,7 @@
     .create-job-alert-inner {
 
         width: 90%;
-        height: 95%;
+        height: 90%;
         @include colflex(flex-start, space-around);
         // background-color: red;
         text-align: left;
@@ -27,17 +27,24 @@
             height: 95%;
         }
 
+        .job-alert-inner-content {
+            @include colflexx(flex-start);
+            height: 35%;
+            p:nth-child(1) {
+                @include fontMedium(1.3em, 0em, $blue-900);
+                // margin: 0;
+            }
+            p:nth-child(2) {
+                width: 80%;
+                @include fontLight(1em, 1.5em, $blue-900);
+                margin: 0;
+                margin-bottom: 10px;
+                
+            }
+        }
+
         
-        p:nth-child(1) {
-            @include fontMedium(1.3em, 0em, $blue-900);
-            // margin: 0;
-        }
-        p:nth-child(2) {
-            width: 80%;
-            @include fontLight(1em, 1.5em, $blue-900);
-            margin: 0;
-            
-        }
+        
         .create-job-alert-btn {
             width: 150px;
             height: 50px;
@@ -64,6 +71,12 @@
 
             &:hover {
                 background-color: $blue-900;
+            }
+            &:disabled {
+                // border: 1px solid #999999;
+                background-color: #cccccc;
+                color: #666666;
+                cursor: not-allowed;
             }
         }
 

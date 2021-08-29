@@ -1,28 +1,41 @@
 @import "../../variables.scss";
 
 .pagination-container {
-    width: fit-content;
+    width: 100%;
     padding: 20px;
     @include rowflex(center,center);
 
     .pagination-inner {
         width: 90%;
         height: 90%;
+        // background-color: red;
         @include rowflex(center,space-between);
 
         .single-pagination-container {
             width: fit-content;
             height: fit-content;
-            padding: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
             border-radius: 5px;
+            margin-right: 10px;
             &.active {
                 background-color: $blue-100;
             }
+            &:hover {
+                background-color: $blue-100;
+                cursor: pointer;
+            }
 
            .single-text {
-                @include fontMedium(1em, 0em, $gray-500);
+               width: fit-content;
+                @include fontMedium(1.4em, 0em, $gray-500);
                 &.active {
-                    @include fontMedium(1em, 0em, $blue-700);
+                    @include fontMedium(1.4em, 0em, $blue-700);
+                }
+                &:hover {
+                    @include fontMedium(1.4em, 0em, $blue-700);
                 }
             }
         }

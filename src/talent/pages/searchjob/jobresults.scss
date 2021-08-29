@@ -2,8 +2,9 @@
 
 .job-results-container{
     width: 100%;
-    height: 110em;
+    height: fit-content;
     position: relative;
+    background-color: #FAFCFF;
     @include rowflex(center,center);
 
     @include breakpoint(mobileonly) {

@@ -16,6 +16,7 @@ import { Applicantprofile } from "../applicantprofile/applicantprofile"
 import { post, get } from "../../../../requests"
 import { useSelector } from "react-redux";
 import { Loading } from "../../../../generals/loading/loading"
+import { Alert } from "../../../../generals/alert/alert"
 export const Fulljob = () => {
 
     const info = useSelector((state) => state.auth.authData);
@@ -106,6 +107,7 @@ export const Fulljob = () => {
               if (response.status) {
                   console.log(response.data);
                   setClick(true)
+                  setResponse(response.data)
                 //   setLoad(false)
               } else {
                 //  setError({
@@ -115,9 +117,7 @@ export const Fulljob = () => {
               }
               
           }, (error) => {
-                alert(error.response.data);
-                setClick(true)
-                // setLoad(false)
+                setResponse(error.response.data)
               console.log("Something went wrong");
         });
     }
@@ -128,7 +128,8 @@ export const Fulljob = () => {
         })
           .then((response) => {
               if (response.status) {
-                  alert(response.data);
+                setResponse(response.data)
+                  setClick(true)
                 //   setLoad(false)
               } else {
                 //  setError({
@@ -138,9 +139,8 @@ export const Fulljob = () => {
               }
               
           }, (error) => {
-                alert(error.response.data);
-                // setLoad(false)
-              console.log("Something went wrong");
+                setResponse(error.response.data)
+                console.log("Something went wrong");
         });
     }
 
@@ -199,7 +199,11 @@ export const Fulljob = () => {
     
         return (
             <div className="fulljob-container">
+                <Alert
+                    response={response}
+                ></Alert>
                 <div className="fulljob-inner">
+                    
                     <div className="fulljob-inner top">
                         <img src={profile} alt="company-profile"/>
                         <div className="top-jobdetails">
@@ -386,7 +390,7 @@ const Tablerow = (props) => {
                 <div className="action-box yellow">
                     <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
                 </div>
-                <div className="action-box red" onClick={()=> props.declineApplicant(props.jobId, props.data.id)}>
+                <div className={`action-box red ${props.data.status ==="declined" ? 'disable' : ''}`}  onClick={()=> props.declineApplicant(props.jobId, props.data.id)}>
                     <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
                 </div>
             </td>

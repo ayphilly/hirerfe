@@ -8,6 +8,8 @@ import queryString from 'query-string'
 import {useState, useEffect} from "react"
 import Jobsearch from "../../components/jobsearch/jobsearch";
 import { get } from "../../../requests";
+import { Pagination } from "../../../generals/pagination/pagination";
+import { Alert } from "../../../generals/alert/alert";
 export const Searchcontainer = (props) => {
   
     let { jobtitle, location } = useParams();
@@ -15,12 +17,12 @@ export const Searchcontainer = (props) => {
     const values = queryString.parse(search)
 
     const [formState, setForm ] = useState({
-        jobtitle: values.jobtitle,
+        jobtitle: values.title,
         location: values.location
        
     })
     const [optionValue, setOptionValue] = useState("");
-
+    
     const handleSelect = (e) => {
         console.log(e.target.value);
         setOptionValue(e.target.value);
@@ -41,15 +43,15 @@ export const Searchcontainer = (props) => {
         props.jobsearch(formState.jobtitle, formState.location);
     },[])
 
-    
-    
-
+   
     return (
         <div className="searchjob-container">
+             
             <div className="searchjo-inner-col">
+               
                 <div className="searchjob-left">
                     <div className="searchjob-left-top">
-                        
+                   
                         <form className="searchjob-form">
                             <div className="search-input">
                                 <Jobsearch
@@ -176,6 +178,13 @@ export const Searchcontainer = (props) => {
                                     props.children
                                 }
 
+
+                            </div>
+
+                            <div className="right-inner-pagination">
+                                <Pagination
+                                    links={props.links}
+                                ></Pagination>
 
                             </div>
 

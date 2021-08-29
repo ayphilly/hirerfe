@@ -3,7 +3,7 @@ import Singleinput from "../../../generals/inputs/singleinput"
 import { useState} from "react";
 import Singleinputlocation from "../../../generals/location/location";
 const Jobsearch = (props)=> {
-    
+
     const [formState, setForm ] = useState({
         jobtitle: '',
         location: ''

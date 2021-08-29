@@ -216,6 +216,31 @@ export const links= {
         active: true
       },
       {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "2",
+        active: false
+      },
+      {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "3",
+        active: false
+      },
+      {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "4",
+        active:false
+      },
+      {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "5",
+        active: false
+      },
+      {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "6",
+        active: false
+      },
+      {
         url: null,
         label: "Next &raquo;",
         active: false
