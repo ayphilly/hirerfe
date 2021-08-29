@@ -30,6 +30,7 @@ export const Fulljob = () => {
     const [load, setLoad] = useState(true)
     const [viewtalent, setView] = useState(false)
     const [response, setResponse] = useState({})
+    const [alertmsg, setAlert] = useState({})
     const [applicants, setApplicants] = useState({})
     const [talent, setTalent] = useState(null)
     const [click, setClick] = useState(false)
@@ -107,7 +108,7 @@ export const Fulljob = () => {
               if (response.status) {
                   console.log(response.data);
                   setClick(true)
-                  setResponse(response.data)
+                  setAlert(response.data)
                 //   setLoad(false)
               } else {
                 //  setError({
@@ -117,7 +118,7 @@ export const Fulljob = () => {
               }
               
           }, (error) => {
-                setResponse(error.response.data)
+                setAlert(error.response.data)
               console.log("Something went wrong");
         });
     }
@@ -128,7 +129,7 @@ export const Fulljob = () => {
         })
           .then((response) => {
               if (response.status) {
-                setResponse(response.data)
+                setAlert(response.data)
                   setClick(true)
                 //   setLoad(false)
               } else {
@@ -139,7 +140,7 @@ export const Fulljob = () => {
               }
               
           }, (error) => {
-                setResponse(error.response.data)
+                setAlert(error.response.data)
                 console.log("Something went wrong");
         });
     }
@@ -199,9 +200,12 @@ export const Fulljob = () => {
     
         return (
             <div className="fulljob-container">
-                <Alert
-                    response={response}
-                ></Alert>
+                <div className="alert-cont">
+                    <Alert
+                        response={alertmsg}
+                    ></Alert>
+                </div>
+                
                 <div className="fulljob-inner">
                     
                     <div className="fulljob-inner top">
