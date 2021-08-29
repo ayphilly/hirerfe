@@ -23,11 +23,11 @@ export const Savedjobs = (props) => {
             <Singlejob
                 // id={job.job.id}
                 key={index}
-                title={job.job.title}
-                company={""}
-                days={""}
-                location={""}
-                type={""}
+                // title={job.job ? job.job.title : ''}
+                // company={""}
+                // days={""}
+                // location={""}
+                // type={""}
                 // click ={openAction}
                 saved = {saved}
                 goto = {goToJob}

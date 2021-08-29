@@ -8,7 +8,7 @@ export const Pagination =(props) => {
             <SinglePagination
                 index={index}
                 link={link}
-                links={links.links}
+                links={props.links}
             />
         )
     }) : ''
