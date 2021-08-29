@@ -104,13 +104,14 @@
 
         
 
-        &.right {
-            width: 35%;
+        &.talent-right {
+            width: 40%;
             @include rowflex(center, space-between);
             
             .navbar-inner-nav-link {
                 max-height: 100%;
                 height: 99%;
+                width: fit-content;
                 position: relative;
                 @include fontNormal(1em, 1em, $blue-902);
                 @include rowflex(center, center);
@@ -207,13 +208,13 @@
             }
 
             @include breakpoint(tablet) {
-                width: 45% !important;
+                width: 45%;
                 @include rowflex(center, space-between);
                 @include fontNormal(.8em, 1em, $blue-902);
             }
 
             @include breakpoint(laptop) {
-                width: 40% !important;
+                width: 40%;
                 @include rowflex(center, space-between);
                 @include fontNormal(1em, 1em, $blue-902);
             }

@@ -17,6 +17,7 @@
     @include breakpoint(mobileonly) {
         width: 330px !important;
         height: 300px;
+        
     }
     @include breakpoint(phablet) {
         width: 330px;
@@ -26,6 +27,11 @@
         width: 330px !important;
         height: 300px;
     }
+    // @include breakpoint(laptop) {
+    //     width: 330px !important;
+    //     height: 300px;
+    //     background-color: red;
+    // }
     .singlefeed-inner {
         width: 80%;
         height: 80%;
@@ -58,6 +64,10 @@
                     width: 50px !important;
                     height: 50px !important;
                 }
+                @include breakpoint(tablet) {
+                    width: 50px !important;
+                    height: 50px !important;
+                }
             }
             margin-top: 15px;
         }
@@ -75,6 +85,11 @@
                     @include fontNormal(.8em, 1.2em, $blue-901);
                 }
                 @include breakpoint(phablet) {
+                    @include fontNormal(.1em, 1.2em, $blue-901);
+                    font-size: .8em !important;
+                    // width: 80%;
+                }
+                @include breakpoint(tablet) {
                     @include fontNormal(.1em, 1.2em, $blue-901);
                     font-size: .8em !important;
                     // width: 80%;
@@ -115,6 +130,11 @@
                     // }
 
                     @include breakpoint(phablet) {
+                        width: 70px !important;
+                       bottom: -30px !important;
+                        right: 0px;
+                    }
+                    @include breakpoint(tablet) {
                         width: 70px !important;
                        bottom: -30px !important;
                         right: 0px;

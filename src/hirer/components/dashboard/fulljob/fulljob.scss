@@ -402,16 +402,34 @@
                                         color: $green-700;
                                         border: 1px solid $green-700;
                                         background-color: $green-100;
+
+                                        &.disable {
+                                            pointer-events: none;
+                                            opacity: .6;
+                                            cursor: not-allowed;
+                                        }
                                     }
                                     &.red {
                                         color: $red-600;
                                         background-color: $red-100;
                                         border: 1px solid $red-600;
+                                        
+                                        &.disable {
+                                            pointer-events: none;
+                                            opacity: .6;
+                                            cursor: not-allowed;
+                                        }
                                     }
                                     &.yellow {
                                         color: #D0AA38;
                                         border: 1px solid #F2C94C;
                                         background-color: #FFFAED;
+
+                                        &.disable {
+                                            pointer-events: none;
+                                            opacity: .6;
+                                            cursor: not-allowed;
+                                        }
                                     }
 
                                 }

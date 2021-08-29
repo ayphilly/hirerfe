@@ -24,10 +24,10 @@ export const Savedjobs = (props) => {
                 // id={job.job.id}
                 key={index}
                 title={job.job.title}
-                company={job.job.company}
+                company={""}
                 days={""}
-                location={job.location}
-                type={job.type}
+                location={""}
+                type={""}
                 // click ={openAction}
                 saved = {saved}
                 goto = {goToJob}
@@ -37,7 +37,7 @@ export const Savedjobs = (props) => {
 
             </Singlejob>
         )
-    }):{}
+    }):'    NOthing to show '
 
 
     if (props.load) {

@@ -32,6 +32,21 @@ const JobDescForm = ({ step, previousStep, nextStep }) => {
       </div>
 
       <div>
+        <label className="mb-3" htmlFor="jobCalendly">
+          Calendly Link
+          <span style={{ color: "red" }}>*</span>
+        </label>
+        <Field
+          id="jobCalendly"
+          name="jobCalendly"
+          className="mb-8 classic-input w-100"
+          type="text"
+        />
+      </div>
+
+      
+
+      <div>
         <label className="mb-3" htmlFor="jobType">
           Job Description
           <span style={{ color: "red" }}>*</span>

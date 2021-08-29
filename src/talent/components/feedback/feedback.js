@@ -142,7 +142,7 @@ function Feedback() {
 
 
      return (
-         <div className="feedback-container">
+         <div className="talent-feedback-container">
              <div className="feedback-inner">
                  <div className="feedback-top">
                      <p>Talents Feedback</p>

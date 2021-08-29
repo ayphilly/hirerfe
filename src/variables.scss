@@ -171,8 +171,8 @@ BREAKPOINTS
     @media (min-width: 70em) { @content ; }
  }
   @else if $point == laptop {
-    @media (min-width: 64em) { @content ; }
-    // @media (max-width: 56em) { @content ; }
+    // @media (min-width: 64em) { @content ; }
+    @media (max-width: 56em) { @content ; }
  }
    @else if $point == tablet {
     // @media (min-width: 50em) { @content ; }

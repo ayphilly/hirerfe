@@ -27,7 +27,6 @@ export const Jobresult = () => {
     })
     const [userloc, setLoc]= useState({})
     const [addr, setAddr]= useState()
-    let { jobtitle, location } = useParams();
 
     var openAction =()=> {
         var mor = document.querySelectorAll(".vertical-icon");
@@ -61,6 +60,35 @@ export const Jobresult = () => {
 
     const searchJobs = (jobtitle,location) => {
         get(`/v1/job/search?title=${jobtitle}&location=${location}`)
+          .then((response) => {
+  
+              if (response.status) {
+  
+                  setJobs(response.data)
+                  console.log(response.data)
+                  setLoad(false);
+                  
+              } else {
+                 setResponse({
+                      status: response.data.status,
+                      message: response.data.message
+                  })
+                  setLoad(false);
+              }
+              
+          }, (error) => {
+              setLoad(false);
+              setError({
+                  status: error.response && error.response.data.status,
+                  message: error.response && error.response.data.message
+              })
+              
+          });
+ 
+    }
+
+    const paginateJobs = (url) => {
+        get(url)
           .then((response) => {
   
               if (response.status) {
@@ -226,6 +254,7 @@ export const Jobresult = () => {
                         address={addr}
                         jobsearch={searchJobs}
                         totalResults = {myjobs.links ? myjobs.links.total : 0}
+                        links ={myjobs.links ? myjobs.links.links : ''}
                     >
                        { jobs}
                     </Searchcontainer>

@@ -197,34 +197,59 @@ export const data = {
         "filters": null
       }
     ]
-  };
+};
 export const links= {
-    "current_page": 1,
-    "first_page_url": "http://hirer.test/api/v1/job?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "http://hirer.test/api/v1/job?page=1",
-    "links": [
+    current_page: 1,
+    first_page_url: "http://hirer.test/api/v1/job?page=1",
+    from: 1,
+    last_page: 1,
+    last_page_url: "http://hirer.test/api/v1/job?page=1",
+    links: [
       {
-        "url": null,
-        "label": "&laquo; Previous",
-        "active": false
+        url: null,
+        label: "&laquo; Previous",
+        active: false
       },
       {
-        "url": "http://hirer.test/api/v1/job?page=1",
-        "label": "1",
-        "active": true
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "1",
+        active: true
       },
       {
-        "url": null,
-        "label": "Next &raquo;",
-        "active": false
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "2",
+        active: false
+      },
+      {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "3",
+        active: false
+      },
+      {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "4",
+        active:false
+      },
+      {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "5",
+        active: false
+      },
+      {
+        url: "http://hirer.test/api/v1/job?page=1",
+        label: "6",
+        active: false
+      },
+      {
+        url: null,
+        label: "Next &raquo;",
+        active: false
       }
     ],
-    "next_page_url": null,
-    "path": "http://hirer.test/api/v1/job",
-    "per_page": 20,
-    "prev_page_url": null,
-    "to": 3,
-    "total": 3
-  }
+    next_page_url: null,
+    path: "http://hirer.test/api/v1/job",
+    per_page: 20,
+    prev_page_url: null,
+    to: 3,
+    total: 3
+}
