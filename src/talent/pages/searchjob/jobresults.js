@@ -129,19 +129,29 @@ export const Jobresult = () => {
                     status: response.data.status,
                     message: response.data.message
                 })
+
+                setTimeout(()=> {
+                    setResponse({})
+                }, 4000)
                 
             } else {
                 setResponse({
                     status: response.data.status,
                     message: response.data.message
                 })
+                setTimeout(()=> {
+                    setResponse({})
+                }, 4000)
             }
             
         }, (error) => {
-            setError({
+            setResponse({
                 status: error.response.data.status,
                 message: error.response.data.message
             })
+            setTimeout(()=> {
+                setResponse({})
+            }, 4000)
         });
 
     }

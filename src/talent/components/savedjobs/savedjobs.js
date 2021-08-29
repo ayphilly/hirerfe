@@ -23,12 +23,9 @@ export const Savedjobs = (props) => {
             <Singlejob
                 // id={job.job.id}
                 key={index}
-                // title={job.job ? job.job.title : ''}
-                // company={""}
-                // days={""}
-                // location={""}
-                // type={""}
-                // click ={openAction}
+                title={job.title}
+                title={job.description.substr(0, 50)}
+                click ={openAction}
                 saved = {saved}
                 goto = {goToJob}
                 delete={props.delete}
