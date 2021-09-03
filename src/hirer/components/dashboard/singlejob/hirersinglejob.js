@@ -3,7 +3,11 @@ import profile from "../../../hirerassets/profile.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV, faClock, faBan, faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
 import {useEffect} from "react"
+import { useSelector,useDispatch } from 'react-redux'
 function Hirersinglejob  (props) {
+
+    const empAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+    const empAvatar = useSelector((state) => state.company.dashboard.company_data.avatar);
 
     useEffect( () => {
         // props.click()
@@ -15,7 +19,8 @@ function Hirersinglejob  (props) {
             <div className="hirer-job-inner-col">
                 <div className="hirer-job-inner-top">
                     <div className="hirer-job-profile">
-                        <img src={profile} alt="job profile"></img>
+                        {/* <img src={profile} alt="job profile"></img> */}
+                        {empAvatar ? <img src={empAvatar} alt="user profile"/> :<img src={empAvi} alt="user profile"/>  }
                         <div className="hirer-job-details">
                             <p>{props.title}</p>
                             <p>{props.company}</p>

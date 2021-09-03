@@ -1,8 +1,25 @@
 import "./dashboardalert.scss";
 import notification from "../../talentassets/Notification.png"
 import Singleinput from "../../../generals/inputs/singleinput"
-
+import Singleinputlocation from "../../../generals/location/location";
+import { useState } from "react";
 export const Dashboardalert = () => {
+
+    const [formState, setForm ] = useState({
+        jobtitle: '',
+        location: ''
+       
+    })
+    const handleUserInput = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+       setForm({...formState,[name]:value});
+       
+    }
+
+    const handleUserLocation = (location) => {
+        setForm({...formState, location:location});
+    }
 
     return (
         <div className="dashboard-alert-container">
@@ -26,23 +43,22 @@ export const Dashboardalert = () => {
 
                         </div>
                         <div className="jobalert-location">
-                            <Singleinput
-                                type="text"
-                                placeholder ="city or postcode"
+                            
+                            <Singleinputlocation
+                                placeholder ="Enter city name"
                                 label ="Where ?"
-                                subtext="city or postcode"
-                                name="jobalertlocation"
-                            
-                            
-                            ></Singleinput>
+                                subtext="Enter State"
+                                name="location"
+                                value={formState.location}
+                                handleUserLocation ={handleUserLocation }
+
+                            />
                         </div>
 
                     </div>
-                    
-                    
-                    
-
-                    <button type="submit" className="dashboard-alert-btn"> Create Job Alert </button>
+                    <div className="jobalert-btn-box">
+                        <button type="submit" className="dashboard-alert-btn"> Create Job Alert </button>
+                    </div>
                 </form>
 
             </div>

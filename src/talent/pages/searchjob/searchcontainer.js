@@ -3,16 +3,15 @@ import  { Dropdown, Option }  from "../../../generals/inputs/dropdown/dropdown"
 import  MapContainer  from "../../../generals/map/googlemap"
 import {Creatjobalert} from "../../components/jobalert/createjobalert"
 import {Jobfilter} from "../../components/jobfilter/jobfilter"
-import {useParams, useLocation} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import queryString from 'query-string'
 import {useState, useEffect} from "react"
 import Jobsearch from "../../components/jobsearch/jobsearch";
-import { get } from "../../../requests";
 import { Pagination } from "../../../generals/pagination/pagination";
 import { Alert } from "../../../generals/alert/alert";
 export const Searchcontainer = (props) => {
   
-    let { jobtitle, location } = useParams();
+    
     const { search } = useLocation()
     const values = queryString.parse(search)
 

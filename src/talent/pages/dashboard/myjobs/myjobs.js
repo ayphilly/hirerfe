@@ -3,7 +3,6 @@ import {useEffect, useState} from "react"
 import {Savedjobs} from "../../../components/savedjobs/savedjobs"
 import {Applications} from "../../../components/activeapplications/applications"
 import {Archived} from "../../../components/archivedjobs/archived"
-import {activeList,savedList} from "../../../constants"
 import {jobUnveil } from "../../../../helper"
 import { del, get} from "../../../../requests"
 export const Myjobs = (props) => {
@@ -113,6 +112,7 @@ export const Myjobs = (props) => {
                         delete = {delSavedjob}
                         savedJobs={savedJobs}
                         load={load}
+                        links ={savedJobs.links ? savedJobs.links.links : ''}
                    ></Savedjobs>
                 </div>
 

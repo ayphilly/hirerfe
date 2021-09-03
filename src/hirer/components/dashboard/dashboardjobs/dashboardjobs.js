@@ -9,6 +9,7 @@ import applicationsimage from "../../../hirerassets/Archived.svg"
 import { useHistory } from "react-router"
 import { post, get } from "../../../../requests"
 import { useSelector } from "react-redux";
+import { Pagination } from "../../../../generals/pagination/pagination"
 export const Dashboardjobs = () => {
 
     const dashData = useSelector((state) => state.company.dashboard);
@@ -40,8 +41,9 @@ export const Dashboardjobs = () => {
         // var name ='Ademola Okon';
         history.push(`/dashboard/hirer/myjob/?title=${title}&id=${id}`);
     }
+    
     var getData = ()=> {
-        get(`/v1/employer/dashboard`)
+        get(`/v1/employer/dashboard/jobs`)
           .then((response) => {
   
               if (response.status) {
@@ -56,37 +58,16 @@ export const Dashboardjobs = () => {
               }
               
           }, (error) => {
-            setData(error.response.data)
-              console.log("Somethign went wrong")
+              console.log("Somethign went wrong"+ error.reponse.data.message)
           });
 
     }
-    // var getData = ()=> {
-    //     get(`/v1/employer/dashboard/jobs`)
-    //       .then((response) => {
-  
-    //           if (response.status) {
-  
-    //               setData(response.data.data)
-                  
-    //           } else {
-    //             //  setError({
-    //             //       status: response.data.status,
-    //             //       message: response.data.message
-    //             //   })
-    //           }
-              
-    //       }, (error) => {
-    //           console.log("Somethign went wrong"+ error.reponse.data.message)
-    //       });
 
-    // }
-
-    // useEffect(()=> {
-    //     getData();
-    // }, [])
+    useEffect(()=> {
+        getData();
+    }, [])
     
-    var postJobs = dashData.data ?  dashData.data.recent_jobs.map ((job)=> {
+    var postJobs = data.data ?  data.data.jobs.map ((job)=> {
         return (
             <Hirersinglejob
                 id={job.id}
@@ -118,7 +99,7 @@ export const Dashboardjobs = () => {
                         image = {Box}
                         title = "My Jobs"
                         subtitle = "View, edit and manage your job slots"
-                        number = { dashData.data ?  dashData.data.total_jobs: 0}
+                        number = { data.data ?  data.data.count: 0}
                         subtext = "Total Jobs Posted"
                     ></Singlebox>
                 </div>
@@ -126,7 +107,7 @@ export const Dashboardjobs = () => {
                     <div className="dash-jobs-nav-link" id="dash-jobs-nav-link">
                         <div className={`dash-jobs-single postedjob ${active.post ? ' active' : ' notactive'}`} onClick={ postSelect}>
                             <p>Posted Jobs</p>
-                            <p>{dashData.data? dashData.data.total_jobs : 0}</p>
+                            <p>{data.data ?  data.data.count: 0}</p>
                         </div>
                         <div className={`dash-jobs-single draft ${active.draft ? ' active' : ' notactive'}`} onClick={ draftSelect}>
                             <p>Drafts</p>
@@ -134,6 +115,7 @@ export const Dashboardjobs = () => {
                         </div>
                     </div>
                     <div className={`postedjob-container ${active.post ? ' sactive' : ' hide'} `}>
+                       
                         { postJobs == 0 ? 
                             <Emptystate
                                 image= {applicationsimage}
@@ -149,6 +131,9 @@ export const Dashboardjobs = () => {
                     </div>
                     
                 </div>
+                <Pagination
+                        links={data.links ? data.links.links : ''}
+                ></Pagination>
                
                 
 

@@ -41,6 +41,7 @@ const Singleinputlabel = (props) => {
             backgroundColor: props.error ? "#FFEBEB" : "",
           }}
           onChange={props.onChange}
+          disabled={props.disabled}
         />
         {props.type === "password" && (
           <FontAwesomeIcon

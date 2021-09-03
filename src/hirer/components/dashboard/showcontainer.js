@@ -5,6 +5,7 @@ import { Dashboardjobs } from "./dashboardjobs/dashboardjobs";
 import { Fulljob } from "./fulljob/fulljob";
 import { Applicantprofile } from "./applicantprofile/applicantprofile";
 import PostJob from "../../pages/PostJob";
+import { Account } from "./account/account";
 const steps = [
     {id: 'dashboard'},
     {id: 'jobposts'},
@@ -39,6 +40,8 @@ const Show = (props) => {
                 return <Fulljob {...props} ></Fulljob>;
             case "talents":
                 return <DashboardHome  {...props} ></DashboardHome>;
+            case "account":
+                return <Account {...props} ></Account>;
             default:
                 return <Redirect to={`/dashboard/hirer/${props.page}/notfound`}/>;
         }

@@ -5,9 +5,8 @@ import { Scoutjobs } from "../../../components/dashboardscout/scoutjobs";
 import { Dashboardalert } from "../../../components/dashboardalert/dashboardalert";
 import Tryhirer from "../../../components/tryhirer/tryhirer";
 import { useSelector } from "react-redux";
-import { useParams, useHistory, useLocation } from "react-router";
-import { post, get } from "../../../../requests";
-import { useState, useEffect } from "react";
+import { useHistory} from "react-router";
+import { useState} from "react";
 export const Dashboardhome = () => {
   const data = useSelector((state) => state.auth.authData);
 

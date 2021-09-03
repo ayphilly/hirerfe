@@ -3,6 +3,7 @@
 .pagination-container {
     width: 100%;
     padding: 20px;
+    margin-top: 50px;
     @include rowflex(center,center);
 
     .pagination-inner {

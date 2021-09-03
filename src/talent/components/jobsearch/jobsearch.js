@@ -9,13 +9,7 @@ const Jobsearch = (props)=> {
         location: ''
        
     })
-    const handleUserInput = (e) =>{
-        const name = e.target.name;
-        const value = e.target.value;
-       setForm({...formState,[name]:value});
-       
-    }
-
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         props.myFunction(props.formState.jobtitle, props.formState.location);
@@ -51,7 +45,7 @@ const Jobsearch = (props)=> {
                                 
                                 ></Singleinput> */}
                                 <Singleinputlocation
-
+                                    placeholder ="Enter city name"
                                     label ="Where ?"
                                     subtext="Enter State"
                                     name="location"

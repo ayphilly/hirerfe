@@ -1,7 +1,6 @@
 
 import Singlejob from "../../components/singlejob/singlejob"
-import {jobSearch} from "../../constants"
-import {useParams, useLocation, useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import {useState, useEffect} from "react"
 import {accordionFunc} from "../../../helper"
 import { Empty } from "../../../generals/emptyresult/emptyresult";

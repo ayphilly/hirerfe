@@ -208,7 +208,7 @@ export const Account = () => {
                 <div className="profile-picture-container">
                     <div className="profile-picture-top">
                         <p>Change Profile Picture </p>
-                        <p>Choose a new avatar to be used across Coven</p>
+                        <p>Choose a new avatar to be used across Hirer</p>
                     </div>
                     <div className="profile-picture-bottom">
                         {talentAvatar ? <img src={talentAvatar} alt="user profile"/> :<img src={talentAvi} alt="user profile"/>  }
