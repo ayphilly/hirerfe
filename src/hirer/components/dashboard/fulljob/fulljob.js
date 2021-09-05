@@ -21,7 +21,7 @@ import { Pagination } from "../../../../generals/pagination/pagination"
 export const Fulljob = () => {
 
     const empAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-    const empAvatar = useSelector((state) => state.company.dashboard.company_data.avatar);
+    // const empAvatar = useSelector((state) => state.company.dashboard.company_data.avatar);
 
     const info = useSelector((state) => state.auth.authData);
     const { search } = useLocation()
@@ -233,7 +233,8 @@ export const Fulljob = () => {
                     
                     <div className="fulljob-inner top">
                         {/* <img src={profile} alt="company-profile"/> */}
-                        {empAvatar ? <img src={empAvatar} alt="user profile"/> :<img src={empAvi} alt="company profile"/>  }
+                        {/* {empAvatar ? <img src={empAvatar} alt="user profile"/> :<img src={empAvi} alt="company profile"/>  } */}
+                        <img src={empAvi} alt="company profile"/> 
                         <div className="top-jobdetails">
                             <div className="top-jobdetails top">
                                 <p>{response.data ? response.data.title : ''}</p>
