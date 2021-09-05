@@ -358,6 +358,7 @@
                 // background-color: pink;
                 width: 100%;
                 height: fit-content;
+                @include colflex(flex-start,space-between);
                 &.sactive {
                     // @include rowflex(flex-start,flex-start);
                     @include colflex(flex-start,space-between);
@@ -556,6 +557,12 @@
                         }
                         
                     }
+                }
+
+                .table-paginate {
+                    width: fit-content;
+                    margin-top: 10px;
+
                 }
             }
             
