@@ -13,7 +13,7 @@ export const Account = () => {
     
     const empAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
     // const empAvatar = useSelector((state) => state.company.dashboard.data.company_data.avatar);
-    const userAccount = useSelector((state) => state.company.dashboard.data.company_data);
+    const userAccount = useSelector((state) => state.company.dashboard.data);
 
     const dispatch = useDispatch();
     const [inputs, setInputs] = useState({
