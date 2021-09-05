@@ -22,7 +22,7 @@ export const Fulljob = () => {
 
     const empAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
     // const empAvatar = useSelector((state) => state.company.dashboard.data.company_data.avatar);
-    const test = useSelector((state) => state.company.dashboard.data);
+    const test = useSelector((state) => state.company.dashboard);
     console.log(test)
     const info = useSelector((state) => state.auth.authData);
     const { search } = useLocation()
