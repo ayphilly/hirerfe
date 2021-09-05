@@ -149,7 +149,7 @@ export const Fulljob = () => {
         });
     }
 
-    var closeJob = (job_id, talent_id) => {
+    var closeJob = () => {
         post(`/v1/employer/dashboard/close/${response.data.id}`)
           .then((response) => {
               if (response.status) {
@@ -274,7 +274,7 @@ export const Fulljob = () => {
                             ></Applicanttable>
 
                             <Pagination
-                                links={applicants.links}
+                                links={applicants.links.links}
                             ></Pagination>
                         </div>
                         
