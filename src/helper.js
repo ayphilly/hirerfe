@@ -51,7 +51,6 @@ export const closePage = () => {
 
 export const openAction = () => {
   var mor = document.querySelectorAll(".vertical-icon");
-  var action = document.querySelectorAll(".job-action");
   for (var i = 0; i < mor.length; i++) {
     
     mor[i].addEventListener("click", function () {

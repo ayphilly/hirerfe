@@ -6,10 +6,29 @@
     background-color: transparent;
     @include rowflex(flex-start,center);
 
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 200em;
+        @include rowflex(center,center);
+    }
+    @include breakpoint(phablet) {
+        @include rowflex(center,center);
+    }
+
    .dashboard-home-inner {
         width: 95%;
         height: 70%;
         @include colflex(flex-start,space-between);
+
+        @include breakpoint(mobileonly) {
+            height: 90%;
+            width: 100%;
+            @include colflex(flex-start,space-between);
+        }
+        @include breakpoint(phablet) {
+            height: 95%;
+            @include colflex(flex-start,space-between);
+        }
 
         &.top {
             width: 100%;
@@ -18,6 +37,16 @@
             .headertext{
                 opacity: .5;
                 @include fontBold(2.25em, 1em, $blue-902);
+            }
+
+            @include breakpoint(mobileonly) {
+                height: 50%;
+                width: 100%;
+                @include colflex(flex-start,space-between);
+            }
+            @include breakpoint(phablet) {
+                height: 95%;
+                @include colflex(flex-start,space-between);
             }
             &.top-reports {
                 width: 95%;
@@ -28,6 +57,27 @@
                 column-gap: auto;
                 row-gap: 20px;
                 justify-items: start;
+
+                @include breakpoint(mobileonly) {
+                    width: 95%;
+                    height: 100%;
+                    display: grid;
+                    grid-template-columns:1fr;
+                    grid-template-rows: 1fr 1fr 1fr 1fr;
+                    column-gap: auto;
+                    row-gap: 20px;
+                    justify-items: center;
+                }
+                @include breakpoint(phablet) {
+                    width: 95%;
+                    height: 80%;
+                    display: grid;
+                    grid-template-columns:1fr 1fr;
+                    grid-template-rows: 1fr 1fr;
+                    column-gap: auto;
+                    row-gap: 20px;
+                    justify-items: start;
+                }
             }
         }
 
@@ -35,6 +85,12 @@
             width: 100%;
             height: 30%;
             @include colflex(flex-start,space-around);
+
+            @include breakpoint(mobileonly) {
+                height: 45%;
+                width: 100%;
+                @include colflex(flex-start,space-between);
+            }
 
             .bottom-text {
                 width: 100%;
@@ -56,6 +112,27 @@
                 column-gap: auto;
                 row-gap: 20px;
                 justify-items: start;
+
+                @include breakpoint(mobileonly) {
+                    width: 90%;
+                    height: 90%;
+                    display: grid;
+                    grid-template-columns:1fr;
+                    grid-template-rows: 180px 180px 180px 180px;
+                    column-gap: auto;
+                    row-gap: 20px;
+                    justify-items: start;
+                }
+                @include breakpoint(phablet) {
+                    width: 75%;
+                    height: fit-content;
+                    display: grid;
+                    grid-template-columns:1fr;
+                    grid-template-rows: 180px 180px 180px 180px;
+                    column-gap: auto;
+                    row-gap: 20px;
+                    justify-items: start;
+                }
 
             }
         }

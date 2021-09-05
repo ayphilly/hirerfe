@@ -3,13 +3,14 @@
 .empty-state-container {
     width: 500px;
     height: 500px;
-    
+    margin-top: 100px;
     
     .empty-state-inner{
         width: 90%;
         // height: 50%;
         @include colflex(center,space-around);
         text-align: center;
+
 
         img{
             width: auto;
@@ -21,6 +22,7 @@
 
         .empty-state-subtitle {
             width: 70%;
+            margin-top: -20px;
             @include fontNormal(1.2em, 1.5em, $blue-901);
         }
 

@@ -1,0 +1,16 @@
+.avatar-container {
+    width: fit-content;
+    height: fit-content;
+
+    img {
+        // width: 80px;
+        object-fit: contain;
+        border-radius: 50px;
+        background-blend-mode: normal;
+        box-shadow: inset 0px 0px 4px rgba(0, 59, 82, 0.42);
+        @include breakpoint (mobileonly) {
+            width: 60px;
+        }
+
+    }
+}

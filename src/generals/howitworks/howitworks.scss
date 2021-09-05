@@ -24,8 +24,8 @@
     @include breakpoint(tablet) {
         // height: 170vh;
         width: 100%;
-        height: 55em;
-        @include rowflex(flex-start, center);
+        height: 65em;
+        @include rowflex(center, center);
     }
 
     @include breakpoint(laptop) {
@@ -54,7 +54,7 @@
         @include breakpoint(tablet) {
             @include colflex(center, space-between);
             height: 90%;
-            width: 80%;
+            width: 90%;
 
         }
 
@@ -71,7 +71,7 @@
             }
             @include breakpoint(tablet) {
                 
-                height: 30%;
+                height: 15%;
             }
             
             p:nth-child(1) {
@@ -118,10 +118,11 @@
                 
             }
             @include breakpoint(tablet) {
-                height: 90%;
+                height: 80%;
                 width: 100%;
                 grid-template-columns: auto auto ;
-                grid-template-rows: 280px 280px;
+                // grid-template-rows: 280px 280px;
+                grid-template-rows: 1fr 1fr;
                 column-gap: 50px;
                 row-gap: 25px;
                 justify-items: center;

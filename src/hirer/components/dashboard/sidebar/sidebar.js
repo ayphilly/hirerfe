@@ -2,6 +2,7 @@ import dashboard from "../../../hirerassets/dashboard.svg"
 import chat from "../../../hirerassets/chat.svg"
 import talents from "../../../hirerassets/talents.svg"
 import jobs from "../../../hirerassets/suitcase.svg"
+import account from "../../../hirerassets/account.svg"
 import add from "../../../hirerassets/add.svg"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
@@ -38,6 +39,12 @@ const bars = [
         image: talents,
         name: 'Talents',
         link:''
+    },
+    {
+        id: 6,
+        image: account,
+        name: 'Account',
+        link:'account'
     },
 ];
 export const Sidebar = (props) => {

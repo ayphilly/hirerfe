@@ -7,6 +7,7 @@ import {savedList} from "../../constants"
 import {openAction} from "../../../helper"
 import {useHistory} from "react-router-dom";
 import { Loading } from "../../../generals/loading/loading";
+import { Pagination } from "../../../generals/pagination/pagination";
 export const Savedjobs = (props) => {
 
     var history = useHistory();
@@ -24,11 +25,13 @@ export const Savedjobs = (props) => {
                 // id={job.job.id}
                 key={index}
                 title={job.title}
-                title={job.description.substr(0, 50)}
+                // img={job.image}
+                description={job.description.substr(0, 60)}
                 click ={openAction}
                 saved = {saved}
                 goto = {goToJob}
                 delete={props.delete}
+
 
             >
 
@@ -61,9 +64,16 @@ export const Savedjobs = (props) => {
         return (
             <div className="saved-jobs-container">
                 <div className="saved-jobs-inner">
-                    {
-                        jobs
-                    }
+
+                    <div className="saved-jobs-lists">
+                        {
+                            jobs
+                        }
+                    </div>
+                    <Pagination
+                        links={props.links}
+                        paginate={props.paginate}
+                    ></Pagination>
                 </div>
             </div>
         )

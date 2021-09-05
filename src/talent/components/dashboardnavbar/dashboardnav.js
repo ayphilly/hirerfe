@@ -5,12 +5,54 @@ import notification from "../../talentassets/Notification.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { setTalentProfile, setTalentData } from "../../../slices/talentSlice";
+import { post } from "../../../requests";
+import { useState } from "react";
+import {useHistory} from "react-router";
 function Dashboardnav() {
   const data = useSelector((state) => state.auth.authData);
   const talentAvatar = useSelector((state) => state.talent.avatar);
   const talentAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+
+  const [Response, setResponse] = useState({})
+
+  let history = useHistory();
+  const dispatch = useDispatch()
+
+  var signOut = () => {
+    
+    post('/v1/auth/logout')
+    .then((response) => {
+
+      if (response.status) {
+
+        setResponse({
+            status: true,
+            message: "You Just Logged Out"
+        })
+        window.localStorage.clear();
+        dispatch(setTalentProfile({}))
+        dispatch(setTalentData({}))
+        history.push(`/signin`);
+
+
+          
+      } else {
+          // setResponse({
+          //     status: response.data.status,
+          //     message: response.data.message
+          // })
+      }
+      
+    }, (error) => {
+      setResponse({
+          status: error.response.data.status,
+          message: error.response.data.message
+      })
+    });
+
+  }
   return (
     <div className="talent-navbar-container">
       <div className="navbar-inner">
@@ -48,6 +90,7 @@ function Dashboardnav() {
             className="navbar-inner-nav-link"
             to="/signin"
             style={{ textDecoration: "none" }}
+            onClick={()=> signOut()}
           >
             Sign out
           </Link>

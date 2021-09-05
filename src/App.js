@@ -4,7 +4,6 @@ import Homepage from "./talent/pages/homepage/talent";
 import { Dashboardhome } from "./talent/pages/dashboard/homepage/homepage";
 import { Myjobs } from "./talent/pages/dashboard/myjobs/myjobs";
 import { Account } from "./talent/pages/dashboard/account/account";
-import { Searchjob } from "./talent/pages/searchjob/searchjob";
 import { Searchtalent } from "./hirer/pages/searchtalents/searchtalent";
 import Hirer from "./hirer/pages/homepage/hirer";
 // import { Createjob } from "./hirer/pages/postjob/createjob";
@@ -249,11 +248,11 @@ function App() {
           component={Home}
         />
         */}
-        <DashboardWithNavbar
+        {/* <DashboardWithNavbar
           exact
           path="/dashboard/hirer"
           component={DashboardSide}
-        />
+        /> */}
 
 
         <Route component={Error} />

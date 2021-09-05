@@ -9,6 +9,7 @@ export const Pagination =(props) => {
                 index={index}
                 link={link}
                 links={props.links}
+                paginate = {props.paginate}
             />
         )
     }) : ''
@@ -29,7 +30,7 @@ const SinglePagination = (props) => {
     if (props.index === 0) {
         var icon = String.fromCharCode(171) 
         return (
-            <div className={`single-pagination-container ${props.link.active ? 'active' : ''}`}>
+            <div className={`single-pagination-container ${props.link.active ? 'active' : ''}`} onClick={()=> props.link.url ? props.paginate(props.link.url) : ''}>
                 <p className={`single-text ${props.link.active ? 'active' : ''}`}> {icon} </p>
             </div>
         )
@@ -38,7 +39,7 @@ const SinglePagination = (props) => {
 
         var icon = String.fromCharCode(187) 
         return (
-            <div className={`single-pagination-container ${props.link.active ? 'active' : ''}`}>
+            <div className={`single-pagination-container ${props.link.active ? 'active' : ''}`} onClick={()=> props.link.url ? props.paginate(props.link.url) : ''}>
                 <p className={`single-text ${props.link.active ? 'active' : ''}`}>{icon}</p>
             </div>
         )
@@ -46,7 +47,7 @@ const SinglePagination = (props) => {
     } else {
 
         return (
-            <div className={`single-pagination-container ${props.link.active ? 'active' : ''}`}>
+            <div className={`single-pagination-container ${props.link.active ? 'active' : ''}`} onClick={()=> props.paginate(props.link.url)}>
                 <p className={`single-text ${props.link.active ? 'active' : ''}`}> {props.link.label} </p>
             </div>
         )

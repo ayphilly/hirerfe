@@ -64,8 +64,21 @@
             margin-bottom: 20px;
             @include rowflex(flex-start, space-between);
 
+            @include breakpoint(mobileonly) {
+                @include colflex(flex-start, space-between);
+            }
+
+            @include breakpoint(phablet) {
+                @include colflex(flex-start, space-between);
+            }
+
             img {
                 width: 60px;
+                border-radius: 50px;
+
+                @include breakpoint(mobileonly) {
+                    width: 40px;
+                }
             }
 
             .top-jobdetails{
@@ -82,15 +95,36 @@
                         // height: 0;
                         margin: 0;
                         @include fontSemiBold(1.5em,1.2em, $blue-902);
+
+                        @include breakpoint(mobileonly) {
+                            @include fontSemiBold(1.2em,1.2em, $blue-902);
+                        }
+                        @include breakpoint(phablet) {
+                            @include fontSemiBold(1.2em,1.2em, $blue-902);
+                        }
                     }
                     p:nth-child(2) {
                         
                         margin: 0;
                         @include fontNormal(1.1em,1.4em, $blue-901);
+
+                        @include breakpoint(mobileonly) {
+                            @include fontNormal(1em,1.4em, $blue-901);
+                        }
+                        @include breakpoint(phablet) {
+                            @include fontNormal(1em,1.4em, $blue-901);
+                        }
                     }
                     p:nth-child(3) {
                         // height: 0;
                         @include fontLight(.9em,0em, $blue-901);
+
+                        @include breakpoint(mobileonly) {
+                            @include fontLight(.8em,0em, $blue-901);
+                        }
+                        @include breakpoint(phablet) {
+                            @include fontLight(.8em,0em, $blue-901);
+                        }
                     }
                 }
                 &.bottom {
@@ -142,12 +176,31 @@
             width: 100%;
             height: fit-content;
             position: relative;
-            @include rowflex(flex-start, flex-start);
+            @include colflex(flex-start, flex-start);
+            @include breakpoint(mobileonly) {
+                height: 80%;
+                width: 100%;
+                @include colflexx(flex-start);
+            }
+            @include breakpoint(phablet) {
+                height: 80%;
+                width: 100%;
+                @include colflexx(flex-start);
+            }
             .fulljob-nav-link {
                 width: 40%;
                 height: fit-content;
                 @include rowflexx(flex-start);
                 border-bottom: 3px solid $gray-300;
+
+                @include breakpoint(mobileonly) {
+                    height: 120px !important;
+                    width: 80%;
+                }
+                @include breakpoint(phablet) {
+                    height: 100px;
+                    width: 80%;
+                }
 
                 .fulljob-single:nth-child(1) {
                     width: 40%;
@@ -220,14 +273,29 @@
                 }
             }
             .job-info-container {
-                position: absolute;
-                top:150%;
+                // position: absolute;
+                // top:150%;
                 background: #FFFFFF;
                 box-shadow: 0px 0px 20px #EFF1F3;
                 border-radius: 10px;
                 width: 60%;
                 height: fit-content;
                 padding: 30px;
+                margin-top: 50px;
+                @include breakpoint(mobileonly) {
+                    
+                    height: fit-content;
+                    width: 80%;
+                    margin-top: 50px;
+                    @include rowflex(flex-start,center);
+                }
+                @include breakpoint(phablet) {
+                    
+                    height: fit-content;
+                    width: 80%;
+                    margin-top: 50px;
+                    @include rowflex(flex-start,center);
+                }
                 &.sactive {
                     @include rowflex(flex-start,flex-start);
                     
@@ -252,9 +320,23 @@
                             p:nth-child(1) {
                                 margin: 0;
                                 @include fontSemiBold(1.1em,1em, $blue-700);
+
+                                @include breakpoint(mobileonly) {
+                                    @include fontSemiBold(.9em,1em, $blue-700);
+                                }
+                                @include breakpoint(phablet) {
+                                    @include fontSemiBold(.9em,1em, $blue-700);
+                                }
                             }
                             p:nth-child(2) {
                                 @include fontLight(1.1em,1.5em, $blue-901);
+
+                                @include breakpoint(mobileonly) {
+                                    @include fontLight(.8em,1.5em, $blue-901);
+                                }
+                                @include breakpoint(phablet) {
+                                    @include fontLight(.8em,1.5em, $blue-901);
+                                }
                             }
                             
                         }
@@ -271,14 +353,22 @@
             
             }
             .job-applicant-container {
-                position: absolute;
-                top:150%;
+                // position: absolute;
+                // top:150%;
                 // background-color: pink;
                 width: 100%;
                 height: fit-content;
                 &.sactive {
-                    @include rowflex(flex-start,flex-start);
+                    // @include rowflex(flex-start,flex-start);
+                    @include colflex(flex-start,space-between);
                     
+                }
+
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                }
+                @include breakpoint(phablet) {
+                    width: 100%;
                 }
     
                 &.hide {
@@ -332,6 +422,13 @@
                             align-items: center;
                             width: fit-content;
                             height: 100px;
+
+                            @include breakpoint(mobileonly) {
+                                height: 80px;
+                            }
+                            @include breakpoint(phablet) {
+                                height: 80px;
+                            }
                             .table-matches {
                                 
                                 &.match {
@@ -352,6 +449,13 @@
                                     p {
                                         margin-left: 3px;
                                     }
+
+                                    @include breakpoint(mobileonly) {
+                                        @include fontNormal(.7em, 0em, $blue-700);
+                                    }
+                                    @include breakpoint(phablet) {
+                                        @include fontNormal(.7em, 0em, $blue-700);
+                                    }
                                 }
                                 &.no-match {
                                     border: 1px solid $red-500;
@@ -367,6 +471,12 @@
                                     // @include fontNormal(.8em, .8em, $gray-600);
                                     p {
                                         margin-left: 3px;
+                                    }
+                                    @include breakpoint(mobileonly) {
+                                        @include fontNormal(.7em, 0em, $blue-700);
+                                    }
+                                    @include breakpoint(phablet) {
+                                        @include fontNormal(.7em, 0em, $blue-700);
                                     }
                                 }
                             }

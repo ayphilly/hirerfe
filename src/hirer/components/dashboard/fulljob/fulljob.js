@@ -17,7 +17,11 @@ import { post, get } from "../../../../requests"
 import { useSelector } from "react-redux";
 import { Loading } from "../../../../generals/loading/loading"
 import { Alert } from "../../../../generals/alert/alert"
+import { Pagination } from "../../../../generals/pagination/pagination"
 export const Fulljob = () => {
+
+    const empAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+    const empAvatar = useSelector((state) => state.company.dashboard.company_data.avatar);
 
     const info = useSelector((state) => state.auth.authData);
     const { search } = useLocation()
@@ -145,6 +149,25 @@ export const Fulljob = () => {
         });
     }
 
+    var closeJob = (job_id, talent_id) => {
+        post(`/v1/employer/dashboard/close/${response.data.id}`)
+          .then((response) => {
+              if (response.status) {
+                  console.log(response.data);
+                  setAlert(response.data)
+                //   setLoad(false)
+              } else {
+                //  setError({
+                //       status: response.data.status,
+                //       message: response.data.message
+                //   })
+              }
+              
+          }, (error) => {
+            setAlert(error.response.data)
+        });
+    }
+
     useEffect(()=> {
         getJob();
         getApplicants();
@@ -209,7 +232,8 @@ export const Fulljob = () => {
                 <div className="fulljob-inner">
                     
                     <div className="fulljob-inner top">
-                        <img src={profile} alt="company-profile"/>
+                        {/* <img src={profile} alt="company-profile"/> */}
+                        {empAvatar ? <img src={empAvatar} alt="user profile"/> :<img src={empAvi} alt="company profile"/>  }
                         <div className="top-jobdetails">
                             <div className="top-jobdetails top">
                                 <p>{response.data ? response.data.title : ''}</p>
@@ -218,7 +242,7 @@ export const Fulljob = () => {
                             </div>
                             <div className="top-jobdetails bottom">
                                 <button>Promote Job</button>
-                                <button>More</button>
+                                <button onClick={()=> closeJob()}>Close Job</button>
                             </div>
                         </div>
                     </div>
@@ -247,6 +271,10 @@ export const Fulljob = () => {
                                 declineApplicant={declineApplicant}
                                 jobId = {response.data ? response.data.id : ''}
                             ></Applicanttable>
+
+                            <Pagination
+                                links={applicants.links}
+                            ></Pagination>
                         </div>
                         
                     </div>

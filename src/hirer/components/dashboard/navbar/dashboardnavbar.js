@@ -5,10 +5,51 @@ import notification from "../../../hirerassets/Notification.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { setDashboard } from "../../../../slices/companySlice";
+import { post } from "../../../../requests";
+import { useState } from "react";
 function Hirerdashnav() {
   const data = useSelector((state) => state.auth.authData);
+
+  const [Response, setResponse] = useState({})
+
+  let history = useHistory();
+  const dispatch = useDispatch()
+
+  var signOut = () => {
+    
+    post('/v1/auth/logout')
+    .then((response) => {
+
+      if (response.status) {
+
+        setResponse({
+            status: true,
+            message: "You Just Logged Out"
+        })
+        window.localStorage.clear();
+        dispatch(setDashboard({}))
+        history.push(`/signin`);
+
+
+          
+      } else {
+          // setResponse({
+          //     status: response.data.status,
+          //     message: response.data.message
+          // })
+      }
+      
+    }, (error) => {
+      setResponse({
+          status: error.response.data.status,
+          message: error.response.data.message
+      })
+    });
+
+  }
   return (
     <div className="hirer-dash-container">
       <div className="hirer-dash-inner">
@@ -31,6 +72,7 @@ function Hirerdashnav() {
             className="navbar-inner-nav-link"
             to="/signin"
             style={{ textDecoration: "none" }}
+            onClick={()=> signOut()}
           >
             Sign out
           </Link>

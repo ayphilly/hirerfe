@@ -3,7 +3,6 @@ import {useEffect, useState} from "react"
 import {Savedjobs} from "../../../components/savedjobs/savedjobs"
 import {Applications} from "../../../components/activeapplications/applications"
 import {Archived} from "../../../components/archivedjobs/archived"
-import {activeList,savedList} from "../../../constants"
 import {jobUnveil } from "../../../../helper"
 import { del, get} from "../../../../requests"
 export const Myjobs = (props) => {
@@ -77,6 +76,35 @@ export const Myjobs = (props) => {
 
     }
 
+    const paginateSavedJobs = (url) => {
+        get(url)
+          .then((response) => {
+  
+              if (response.status) {
+  
+                setSavedJobs(response.data)
+                  console.log(response.data)
+                  setLoad(false);
+                  
+              } else {
+                 setResponse({
+                      status: response.data.status,
+                      message: response.data.message
+                  })
+                  setLoad(false);
+              }
+              
+          }, (error) => {
+              setLoad(false);
+              setResponse({
+                  status: error.response && error.response.data.status,
+                  message: error.response && error.response.data.message
+              })
+              
+          });
+ 
+    }
+
     useEffect(()=> {
         getSavedJobs()
     }, [])
@@ -113,6 +141,8 @@ export const Myjobs = (props) => {
                         delete = {delSavedjob}
                         savedJobs={savedJobs}
                         load={load}
+                        links ={savedJobs.links ? savedJobs.links.links : ''}
+                        paginate={paginateSavedJobs}
                    ></Savedjobs>
                 </div>
 

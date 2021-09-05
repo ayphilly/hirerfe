@@ -6,4 +6,14 @@
     background-color: #FAFCFF;
     @include rowflex(center,center);
 
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 100%;
+    }
+
+    @include breakpoint(phablet) {
+        width: 100%;
+        height: 100%;
+    }
+
 }
