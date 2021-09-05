@@ -11,9 +11,9 @@ import { updateEmpAccount, updateAvatar, updateEmpProfile } from "../../../../sl
 import Singleinputlocation from "../../../../generals/location/location"
 export const Account = () => {
     
-    const talentAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-    // const talentAvatar = useSelector((state) => state.company.dashboard.company_data.avatar);
-    const userAccount = useSelector((state) => state.company.dashboard.company_data);
+    const empAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
+    const empAvatar = useSelector((state) => state.company.dashboard.data.company_data.avatar);
+    const userAccount = useSelector((state) => state.company.dashboard.data.company_data);
 
     const dispatch = useDispatch();
     const [inputs, setInputs] = useState({
@@ -161,8 +161,8 @@ export const Account = () => {
                         <p>Choose a new avatar to be used across Hirer</p>
                     </div>
                     <div className="profile-picture-bottom">
-                        {/* {talentAvatar ? <img src={talentAvatar} alt="user profile"/> :<img src={talentAvi} alt="user profile"/>  } */}
-                        <img src={talentAvi} alt="user profile"/> 
+                        {empAvatar ? <img src={empAvatar} alt="user profile"/> :<img src={empAvi} alt="user profile"/>  }
+                        {/* <img src={empAvi} alt="user profile"/>  */}
                         <input type="file" accept="image/*" name="image-upload" id="inputavi"  hidden onChange={imageHandler}/>
                         <label htmlFor="inputavi" className="image-upload" id="image-upload">Upload New Picture</label>
                         <a href={() => false} className="profile-picture-delete">Delete</a>
