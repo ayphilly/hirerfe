@@ -248,11 +248,11 @@ function App() {
           component={Home}
         />
         */}
-        <DashboardWithNavbar
+        {/* <DashboardWithNavbar
           exact
           path="/dashboard/hirer"
           component={DashboardSide}
-        />
+        /> */}
 
 
         <Route component={Error} />

@@ -22,6 +22,7 @@
 
         .empty-state-subtitle {
             width: 70%;
+            margin-top: -20px;
             @include fontNormal(1.2em, 1.5em, $blue-901);
         }
 

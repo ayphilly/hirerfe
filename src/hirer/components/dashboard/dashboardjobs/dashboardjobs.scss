@@ -10,7 +10,7 @@
     }
     .dash-jobs-inner {
         width: 95%;
-        height: 55%;
+        height: fit-content;
         position: relative;
         @include colflexx(flex-start);
 
@@ -33,7 +33,6 @@
         &.top {
             width: 100%;
             height: fit-content;
-            margin-bottom: 30px;
             @include rowflex(flex-start,flex-start);
 
             @include breakpoint(mobileonly) {
@@ -111,11 +110,10 @@
             }
 
             .postedjob-container{
-                // position: absolute;
-                // top:150%;
+                
                 width: 100%;
                 height: fit-content;
-                // @include rowflex(center,center);
+                margin-top: 50px;
                 @include breakpoint(mobileonly) {
                     // top:15%;
                     height: fit-content;
@@ -174,9 +172,7 @@
             .draft-container {
                 width: 100%;
                 height: fit-content;
-                // position: absolute;
-                // top:150%;
-
+                margin-top: 50px;
                 @include breakpoint(mobileonly) {
                     // top:15%;
                     height: fit-content;
