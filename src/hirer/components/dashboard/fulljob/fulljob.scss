@@ -109,9 +109,11 @@
                         @include fontNormal(1.1em,1.4em, $blue-901);
 
                         @include breakpoint(mobileonly) {
+                            width: 100%;
                             @include fontNormal(1em,1.4em, $blue-901);
                         }
                         @include breakpoint(phablet) {
+                            width: 100%;
                             @include fontNormal(1em,1.4em, $blue-901);
                         }
                     }
@@ -132,7 +134,12 @@
                     width: 45%;
                     height: fit-content;
                     @include rowflex(flex-start, space-between);
-
+                    @include breakpoint(mobileonly) {
+                        width: 80%;
+                    }
+                    @include breakpoint(phablet) {
+                        width: 80%;
+                    }
                     button:nth-child(1) {
                         
                         width: 150px;
@@ -144,7 +151,12 @@
                         border-radius: 10px;
                         @include fontMedium(1em, 1em, #fff);
                         transition: all 0.3s ease;
-
+                        @include breakpoint(mobileonly) {
+                            @include fontMedium(.8em, 1em, #fff);
+                        }
+                        @include breakpoint(phablet) {
+                            @include fontMedium(.8em, 1em, #fff);
+                        }
                         &:hover {
                             background-color: transparent;
                             color: $blue-700;
