@@ -9,6 +9,10 @@
     border-radius: 10px;
     @include rowflex(center,center);
 
+    @include breakpoint(mobileonly) {
+        width: 340px;
+        height: 320px;
+    }
     .singlebox-inner {
         width: 80%;
         height: 80%;

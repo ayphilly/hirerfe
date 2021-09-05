@@ -25,11 +25,13 @@ export const Savedjobs = (props) => {
                 // id={job.job.id}
                 key={index}
                 title={job.title}
+                // img={job.image}
                 description={job.description.substr(0, 60)}
                 click ={openAction}
                 saved = {saved}
                 goto = {goToJob}
                 delete={props.delete}
+
 
             >
 
@@ -70,6 +72,7 @@ export const Savedjobs = (props) => {
                     </div>
                     <Pagination
                         links={props.links}
+                        paginate={props.paginate}
                     ></Pagination>
                 </div>
             </div>

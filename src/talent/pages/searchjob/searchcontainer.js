@@ -183,6 +183,7 @@ export const Searchcontainer = (props) => {
                             <div className="right-inner-pagination">
                                 <Pagination
                                     links={props.links}
+                                    paginate= {props.paginate}
                                 ></Pagination>
 
                             </div>

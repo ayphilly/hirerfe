@@ -9,13 +9,14 @@ function Singlejob  (props) {
     //     props.click()
     // },[])
 
+    const img = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
 
     return (
         <div className="resultjob-container" >
             <div className="singlejob-inner-col">
                 <div className="single-inner-top">
                     <div className="single-job-profile">
-                        <img src={profile} alt="job profile"></img>
+                        {props.img? <img src={props.img} alt="job profile"/> :<img src={img} alt="job profile"/>  }
                         <div className="single-job-details" onClick={()=> props.goto(props.title, props.id)}>
                             <p >{props.title}</p>
                             <p>{props.company}</p>

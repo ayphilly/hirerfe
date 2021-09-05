@@ -76,6 +76,35 @@ export const Myjobs = (props) => {
 
     }
 
+    const paginateSavedJobs = (url) => {
+        get(url)
+          .then((response) => {
+  
+              if (response.status) {
+  
+                setSavedJobs(response.data)
+                  console.log(response.data)
+                  setLoad(false);
+                  
+              } else {
+                 setResponse({
+                      status: response.data.status,
+                      message: response.data.message
+                  })
+                  setLoad(false);
+              }
+              
+          }, (error) => {
+              setLoad(false);
+              setResponse({
+                  status: error.response && error.response.data.status,
+                  message: error.response && error.response.data.message
+              })
+              
+          });
+ 
+    }
+
     useEffect(()=> {
         getSavedJobs()
     }, [])
@@ -113,6 +142,7 @@ export const Myjobs = (props) => {
                         savedJobs={savedJobs}
                         load={load}
                         links ={savedJobs.links ? savedJobs.links.links : ''}
+                        paginate={paginateSavedJobs}
                    ></Savedjobs>
                 </div>
 

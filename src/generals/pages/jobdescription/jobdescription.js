@@ -25,6 +25,7 @@ export const Jobdescription = ()=> {
     const openApp = () => {
         setOpen(!open)
     }
+    const img = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
     const getJob = () => {
         get(`/v1/job/${values.id}`)
           .then((response) => {
@@ -87,8 +88,9 @@ export const Jobdescription = ()=> {
                     <div className="jobdescription-left">
                         
                         <div className="jobdescription-left-top">
-    
-                            <img src={Aspire} className="company-img" alt="Company Profile Image"/>
+                            <img src={img} className="company-img" alt="Company Profile Image"/>
+                            {/* <img src={Aspire} className="company-img" alt="Company Profile Image"/> */}
+                            {/* {job.data.job[0].image? <img src={job.data.job[0].image} className="company-img" alt="Company Profile Image"/> :<img src={img} className="company-img" alt="Company Profile Image"/>  } */}
                             <div className="jobdescription-top-right">
                                 <p> {job.data ? job.data.job[0].title : ''} </p>
                                 <p>{job.data ? job.data.job[0].company : ''}</p>

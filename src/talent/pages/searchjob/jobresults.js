@@ -264,6 +264,7 @@ export const Jobresult = () => {
                         jobsearch={searchJobs}
                         totalResults = {myjobs.links ? myjobs.links.total : 0}
                         links ={myjobs.links ? myjobs.links.links : ''}
+                        paginate = {paginateJobs}
                     >
                        { jobs}
                     </Searchcontainer>

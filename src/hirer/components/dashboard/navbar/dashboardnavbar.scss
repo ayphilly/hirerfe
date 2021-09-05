@@ -11,7 +11,7 @@
         @include rowflex(center, space-between);
 
         @include breakpoint(mobileonly) {
-            width: 80%;
+            width: 90%;
             @include rowflex(center, space-between);
         }
         @include breakpoint(phablet) {
@@ -100,17 +100,8 @@
         
 
         &.right {
-            width: 30% !important;
+            width: 30%;
             @include rowflex(center, space-around);
-
-            @include breakpoint(phablet) {
-                width: 65% !important;
-            }
-            @include breakpoint(tablet) {
-                width: 10% !important;
-                @include rowflex(flex-end, flex-end);
-            }
-            
             .navbar-inner-nav-link {
                 max-height: 100%;
                 
@@ -226,9 +217,10 @@
 
             .hamburger-icon {
                 display: none;
-                // font-size: 2em;
+                font-size: 2em;
                 @include breakpoint(mobileonly) {
                     display: flex;
+                    @include rowflex(center, center);
                 }
                 @include breakpoint(phablet) {
                     display: flex;
@@ -241,8 +233,8 @@
             }
 
             @include breakpoint(mobileonly) {
-                width: 30%;
-                @include rowflex(center, flex-end);
+                width: 10% !important;
+                // @include rowflex(flex-end, flex-end);
             }
             @include breakpoint(phablet) {
                 width: 45%;
@@ -258,7 +250,7 @@
             }
 
             @include breakpoint(laptop) {
-                width: 30% !important;
+                width: 30%;
                 @include rowflex(center, space-between);
                 @include fontNormal(1em, 1em, $blue-902);
             }
