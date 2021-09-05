@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { setDashboard } from "../../../../slices/companySlice";
+import { setAuthData } from "../../../../slices/authSlice";
 import { post } from "../../../../requests";
 import { useState } from "react";
 function Hirerdashnav() {
@@ -31,8 +32,9 @@ function Hirerdashnav() {
             status: true,
             message: "You Just Logged Out"
         })
-        window.localStorage.clear();
+        localStorage.clear();
         dispatch(setDashboard({}))
+        dispatch(setAuthData({}))
         history.push(`/signin`);
 
 
