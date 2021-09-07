@@ -122,6 +122,9 @@ export const Signin =()=> {
         // alert(JSON.stringify(formState))
         getUserData().then((response) => {
             response.data.role === "company" ? getEmpData() : getTalentData();
+            setTimeout(()=> {
+                response.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
+            }, 1000)
         })
         setFormstate(
             {
@@ -130,9 +133,7 @@ export const Signin =()=> {
             }
         )
         setResponse({});
-        setTimeout(()=> {
-            response.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
-        }, 1000)
+        
         
     }
     
