@@ -14,8 +14,7 @@ import { useState } from "react";
 function Hirerdashnav() {
   const data = useSelector((state) => state.auth.authData);
   const empAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-    const empAvatar = useSelector((state) => state.company.dashboard.data);
-
+  const empAvatar = useSelector((state) => state.company.dashboard);
   const [Response, setResponse] = useState({})
 
   let history = useHistory();
@@ -66,7 +65,7 @@ function Hirerdashnav() {
           <img src={notification} className="notification" alt="notification" />
           <div className="dashboard-profile">
             {/* <img src={profile} alt="user profile" /> */}
-            {empAvatar.company_data ? <img src={empAvatar.company_data.avatar} alt="user profile"/> :<img src={empAvi} alt="user profile"/>  }
+            {empAvatar.data ? <img src={empAvatar.data.company_data.avatar} alt="user profile"/> :<img src={empAvi} alt="user profile"/>  }
             {/* <img src={empAvi} alt="user profile"/> */}
             <div className="dashboard-user">
               <p> Welcome</p>
