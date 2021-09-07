@@ -104,6 +104,29 @@ export const Fulljob = () => {
 
     }
 
+    const paginateApplicants = (url) => {
+        get(url)
+          .then((response) => {
+  
+              if (response.status) {
+  
+                    setApplicants(response.data);
+                  console.log(response.data)
+                  setLoad(false);
+                  
+              } else {
+                 console.log("something went wrong")
+                  setLoad(false);
+              }
+              
+          }, (error) => {
+              setLoad(false);
+              console.log("something went wrong")
+              
+          });
+ 
+    }
+
     var acceptApplicant = (job_id, talent_id) => {
         post(`/v1/employer/dashboard/accept`, {
             job_id :job_id,
@@ -276,6 +299,7 @@ export const Fulljob = () => {
                             <div className="table-paginate">
                                 <Pagination
                                     links={applicants.links.links}
+                                    paginate={paginateApplicants}
                                 ></Pagination>
                             </div>
                             

@@ -179,10 +179,13 @@ export const Dashboardjobs = () => {
                         </div>
                         
                     </div>
-                    <Pagination
+                   
+                    <div className="job-paginate">
+                        <Pagination
                             links={data.links ? data.links.links : ''}
                             paginate={paginateJobs}
-                    ></Pagination>
+                        ></Pagination>
+                    </div>
                    
                     
     
