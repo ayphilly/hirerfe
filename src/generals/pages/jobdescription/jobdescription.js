@@ -88,7 +88,7 @@ export const Jobdescription = ()=> {
                     <div className="jobdescription-left">
                         
                         <div className="jobdescription-left-top">
-                            <img src={img} className="company-img" alt="Company Profile Image"/>
+                            <img src={'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'} className="company-img" alt="Company Profile Image"/>
                             {/* <img src={Aspire} className="company-img" alt="Company Profile Image"/> */}
                             {/* {job.data.job[0].image? <img src={job.data.job[0].image} className="company-img" alt="Company Profile Image"/> :<img src={img} className="company-img" alt="Company Profile Image"/>  } */}
                             <div className="jobdescription-top-right">

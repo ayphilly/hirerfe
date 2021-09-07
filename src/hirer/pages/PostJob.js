@@ -36,7 +36,7 @@ let schema = yup.object().shape({
   jobSalary: yup.number().required(),
 });
 
-const PostJob = () => {
+const PostJob = (props) => {
   const dispatch = useDispatch()
   const [step, setStep] = useState(0);
   const [jobTypes, setJobTypes] = useState([]);
@@ -107,13 +107,13 @@ const PostJob = () => {
     const stepProps = () => ({ step, nextStep, previousStep });
     switch (step) {
       case 0:
-        return <JobDetailsForm {...stepProps()} jobTypes={jobTypes} />;
+        return <JobDetailsForm {...stepProps()} jobTypes={jobTypes} box = {props.box}/>;
       case 1:
-        return <JobDescForm {...stepProps()} />;
+        return <JobDescForm {...stepProps()} box = {props.box}/>;
       case 2:
-        return <JobFilterForm {...stepProps()} />;
+        return <JobFilterForm {...stepProps()} box = {props.box}/>;
       case 3:
-        return <JobReviewForm {...stepProps()} setStep={setStep} />;
+        return <JobReviewForm {...stepProps()} setStep={setStep} box = {props.box}/>;
       default:
         return <div>Not Found</div>;
     }

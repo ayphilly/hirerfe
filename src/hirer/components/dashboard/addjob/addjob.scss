@@ -1,0 +1,34 @@
+@import "../../../../variables.scss";
+
+.add-job-container {
+    width: 100%;
+    height: 100%;
+
+    @include rowflex(flex-start,center);
+    @include breakpoint(mobileonly) {
+        height: fit-content;
+    }
+    .add-job-inner {
+        width: 95%;
+        height: fit-content;
+        position: relative;
+        @include colflexx(flex-start);
+
+        @include breakpoint(mobileonly) {
+            height: 90%;
+            width: 100%;
+            position: relative;
+            @include colflex(flex-start,space-between);
+        }
+        @include breakpoint(phablet) {
+            height: 95%;
+            @include colflex(flex-start,space-between);
+        }
+
+
+        .headertext{
+            opacity: .5;
+            @include fontBold(2.25em, 1em, $blue-902);
+        }
+    }
+}

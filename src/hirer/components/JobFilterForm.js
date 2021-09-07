@@ -1,6 +1,6 @@
 import { Field, useFormikContext } from "formik";
 
-const JobFilterForm = ({ step, previousStep, nextStep }) => {
+const JobFilterForm = ({ step, previousStep, nextStep, box }) => {
   const {
     values: {
       filters: { experience, location, salary_expectation },
@@ -14,7 +14,7 @@ const JobFilterForm = ({ step, previousStep, nextStep }) => {
         maxWidth: "500px",
         margin: "auto",
       }}
-      className="plain-card progress d-flex flex-column "
+      className={ box == false ? "plain-no progress d-flex flex-column " :"plain-card progress d-flex flex-column "}
     >
       <div className="f-24 fw-700">Step {step + 1} of 4 &bull; Job Filter</div>
       <p className="mb-8">

@@ -1,6 +1,6 @@
 import { Field } from "formik";
 
-const JobDescForm = ({ step, previousStep, nextStep }) => {
+const JobDescForm = ({ step, previousStep, nextStep, box }) => {
   return (
     <div
       style={{
@@ -9,7 +9,7 @@ const JobDescForm = ({ step, previousStep, nextStep }) => {
         maxWidth: "500px",
         margin: "auto",
       }}
-      className="plain-card progress d-flex flex-column "
+      className={ box == false ? "plain-no progress d-flex flex-column " :"plain-card progress d-flex flex-column "}
     >
       <div className="f-24 fw-700">
         Step {step + 1} of 4 &bull; Job Description
