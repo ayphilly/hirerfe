@@ -86,9 +86,9 @@ export const Signin =()=> {
                 message: data.message,
                 role:data.data.role
             })
-            setTimeout(()=> {
-                data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
-            }, 1000)
+            // setTimeout(()=> {
+            //     data.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
+            // }, 2000)
             return data;
         } catch (err) {
             console.log(err.message);
@@ -130,6 +130,9 @@ export const Signin =()=> {
             }
         )
         setResponse({});
+        setTimeout(()=> {
+            response.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
+        }, 1000)
         
     }
     
