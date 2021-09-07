@@ -11,15 +11,15 @@ export const companySlice = createSlice({
       state.dashboard = action.payload;
     },
     updateAvatar: (state, action) => {
-      state.dashboard.company_data.avatar = action.payload;
+      state.dashboard.data.company_data.avatar = action.payload;
     },
     updateEmpAccount(state, action) {
       const {name, value} = action.payload;
-      state.dashboard.company_data[name] = value;
+      state.dashboard.data.company_data[name] = value;
     },
     updateEmpProfile(state, action) {
       const {name, value} = action.payload;
-      state.dashboard.company_data.profile[name] = value;
+      state.dashboard.data.company_data.profile[name] = value;
     },
   },
 });
