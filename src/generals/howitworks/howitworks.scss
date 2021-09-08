@@ -10,7 +10,7 @@
     @include breakpoint(mobileonly) {
         // height: 170vh;
         width: 95%;
-        height: 80em;
+        height: 80em !important;
         @include rowflex(flex-start, center);
     }
 
@@ -99,22 +99,19 @@
             width: 100%;
             align-items: space-between;
 
-            @include breakpoint(mobileonly) {
-                height: 90%;
+            
+            
+            
+
+            @include breakpoint(laptop) {
+                display: grid;
+                grid-template-columns: auto auto auto auto auto;
+                grid-template-rows: 280px;
+                column-gap: 30px;
                 width: 100%;
-                grid-template-columns: auto ;
-                grid-template-rows: 280px 280px 280px 280px;
-                justify-items: center;
-                
-            }
-            @include breakpoint(phablet) {
-                height: 90%;
-                width: 100%;
-                grid-template-columns: auto auto ;
-                grid-template-rows: 280px 280px;
-                column-gap: 25px;
-                row-gap: 30px;
-                justify-items: center;
+                align-content: center;
+                justify-content: center;
+                align-items: space-between;
                 
             }
             @include breakpoint(tablet) {
@@ -128,16 +125,22 @@
                 justify-items: center;
                 
             }
-
-            @include breakpoint(laptop) {
-                display: grid;
-                grid-template-columns: auto auto auto auto auto;
-                grid-template-rows: 280px;
-                column-gap: 30px;
+            @include breakpoint(phablet) {
+                height: 90%;
                 width: 100%;
-                align-content: center;
-                justify-content: center;
-                align-items: space-between;
+                grid-template-columns: auto auto ;
+                grid-template-rows: 280px 280px;
+                column-gap: 25px;
+                row-gap: 30px;
+                justify-items: center;
+                
+            }
+            @include breakpoint(mobileonly) {
+                height: fit-content;
+                width: 100%;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+                justify-items: center;
                 
             }
         }

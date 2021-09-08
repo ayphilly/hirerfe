@@ -12,26 +12,25 @@
         width: 95%;
         height: 95%;
         @include rowflex(center, space-between);
-
-        @include breakpoint(mobileonly) {
-            width: 80%;
+        
+        @include breakpoint(laptop) {
+            width: 95%;
+            @include rowflex(center, space-between);
+           
+        }
+        @include breakpoint(tablet) {
+            width: 95%;
             @include rowflex(center, space-between);
         }
         @include breakpoint(phablet) {
             width: 95%;
             @include rowflex(center, space-between);
         }
-
-        @include breakpoint(tablet) {
-            width: 95%;
+        @include breakpoint(mobileonly) {
+            width: 80%;
             @include rowflex(center, space-between);
         }
 
-        @include breakpoint(laptop) {
-            width: 95%;
-            @include rowflex(center, space-between);
-           
-        }
 
         &.left {
             width:25%;
@@ -196,9 +195,15 @@
                 }
             }
 
-            @include breakpoint(mobileonly) {
-                width: 30%;
-                @include rowflex(center, flex-end);
+            @include breakpoint(laptop) {
+                width: 40%;
+                @include rowflex(center, space-between);
+                @include fontNormal(1em, 1em, $blue-902);
+            }
+            @include breakpoint(tablet) {
+                width: 45%;
+                @include rowflex(center, space-between);
+                @include fontNormal(.8em, 1em, $blue-902);
             }
             @include breakpoint(phablet) {
                 width: 45%;
@@ -206,17 +211,9 @@
                 
                 @include fontNormal(.8em, 1em, $blue-902);
             }
-
-            @include breakpoint(tablet) {
-                width: 45%;
-                @include rowflex(center, space-between);
-                @include fontNormal(.8em, 1em, $blue-902);
-            }
-
-            @include breakpoint(laptop) {
-                width: 40%;
-                @include rowflex(center, space-between);
-                @include fontNormal(1em, 1em, $blue-902);
+            @include breakpoint(mobileonly) {
+                width: 30%;
+                @include rowflex(center, flex-end);
             }
 
         }

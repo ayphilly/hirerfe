@@ -3,33 +3,38 @@
 .talent-banner-container {
     width: 100%;
     height: 100vh;
-    background-color: #FAFCFF;
+    // background-color: red;
     @include rowflex(center, center);
     z-index: 5;
     position: relative;
     // overflow: hidden;
 
-    @include breakpoint(mobileonly) {
-        width: 100%;
-        height: 150vh;
-        @include rowflex(flex-start, center);
-    }
+    
 
     
-    @include breakpoint(phablet) {
-        width: 100% !important;
-        height: 80em;
-    }
-    @include breakpoint(tablet) {
-        width: 100%;
-        height: 40em !important;
-    }
+    
+    
 
     @include breakpoint(laptop) {
-        width: 100% !important;
+        width: 100%;
         height: 50em;
         
     }
+    @include breakpoint(tablet) {
+        width: 100%;
+        height: 40em;
+    }
+    @include breakpoint(phablet) {
+        width: 100%;
+        height: 80em;
+    }
+    @include breakpoint(mobileonly) {
+        width: 100%;
+        height: 120vh;
+        @include rowflex(center, center);
+    }
+    
+    
     .banner-inner {
         width: 95%;
         height: 85%;
@@ -38,6 +43,7 @@
 
         @include breakpoint(mobileonly) {
             width: 95%;
+            height: 95%;
             @include colflex(center, center);
         }
 
@@ -65,12 +71,7 @@
             overflow: hidden;
             @include colflex(flex-start, space-evenly);
 
-            @include breakpoint(mobileonly) {
-                width: 100%;
-                height: 70%;
-                margin: 0;
-                @include colflex(flex-start, flex-start);
-            }
+            
 
             @include breakpoint(tablet) {
                 width: 70%;
@@ -84,6 +85,13 @@
                 margin: 0;
                 @include colflex(flex-start, flex-start);
             }
+            @include breakpoint(mobileonly) {
+                width: 100%;
+                height: 35%;
+                margin: 0;
+                
+                @include colflex(flex-start, space-between);
+            }
 
             
 
@@ -94,17 +102,10 @@
                 width: 100%;
                 height: 40%;
                 text-align: left;
+                
 
-               
-
-                @include breakpoint(mobileonly) {
-                    width: 80%;
-                    height: 60%;
-                    @include colflex(flex-start, center);
-                }
-                @include breakpoint(phablet) {
-                    width: 80%;
-                    height: 60%;
+                @include breakpoint(laptop) {
+                    width: 100%;
                     @include colflex(flex-start, center);
                 }
                 @include breakpoint(tablet) {
@@ -113,11 +114,17 @@
                     @include colflex(flex-start, flex-start);
                 }
 
-                @include breakpoint(laptop) {
-                    width: 100%;
+                @include breakpoint(phablet) {
+                    width: 80%;
+                    height: 60%;
                     @include colflex(flex-start, center);
                 }
-
+                @include breakpoint(mobileonly) {
+                    width: 100%;
+                    height: 65%;
+                    @include colflex(flex-start, space-between);
+                    
+                }
                 .top-title {
                     // opacity: 0;
                     transform: translateY(100%);
@@ -135,18 +142,22 @@
                     }
                     @include fontBold(3.5em, 1.4em, $blue-902);
 
-                    @include breakpoint(mobileonly) {
-                        @include fontBold(2em, 1.4em, $blue-902);
+                    
+
+                    
+
+                    @include breakpoint(laptop) {
+                        @include fontBold(3em, 1.4em, $blue-902);
 
                     }
-
                     @include breakpoint(tablet) {
                         @include fontBold(2.5em, 1.4em, $blue-902);
 
                     }
-
-                    @include breakpoint(laptop) {
-                        @include fontBold(3em, 1.4em, $blue-902);
+                    @include breakpoint(mobileonly) {
+                        margin: 0;
+                        
+                        @include fontBold(2.5em, 1em, $blue-902);
 
                     }
 
@@ -159,9 +170,14 @@
                 p:nth-child(2) {
                     @include fontNormal(1.25em, 1em, $blue-902);
                     text-align: left;
-
+                    
                     @include breakpoint(tablet) {
                         @include fontNormal(1.3em, 1em, $blue-902);
+
+                    }
+                    @include breakpoint(mobileonly) {
+                        
+                        @include fontNormal(1em, 1em, $blue-902);
 
                     }
                 }
@@ -175,7 +191,7 @@
 
                     @include breakpoint(mobileonly) {
                         width: 100%;
-                        height: fit-content;
+                        height: 10%;
                         @include fontNormal(1em, 1em, $blue-902);
                     }
 
@@ -183,30 +199,30 @@
 
                 .bottom-brands {
                     @include rowflex(center, space-between);
+                    
+                    
+                    @include breakpoint(tablet) {
+                        width: 100%;
+                    }
+                    @include breakpoint(phablet) {
+                        width: 90%;
+                    }
                     @include breakpoint(mobileonly) {
                         width: 90%;
                     }
-                    @include breakpoint(phablet) {
-                        width: 90% !important;
-                    }
-                    @include breakpoint(tablet) {
-                        width: 100% !important;
-                    }
                     img {
                         width: auto;
-                        @include breakpoint(mobileonly) {
-                            width: 60px;
+                        @include breakpoint(laptop) {
+                            width: 65px;
+                        }
+                        @include breakpoint(tablet) {
+                            width: 65px;
                         }
                         @include breakpoint(phablet) {
                             width: 65px;
                         }
-
-                        @include breakpoint(tablet) {
-                            width: 65px;
-                        }
-
-                        @include breakpoint(laptop) {
-                            width: 65px;
+                        @include breakpoint(mobileonly) {
+                            width: 60px;
                         }
                         
                     }
@@ -221,46 +237,31 @@
             overflow: hidden;
             @include rowflex(center, flex-start);
             @include breakpoint(mobileonly) {
-               margin-top: -70px;
+               margin-top: 0px;
+               width: 100%;
+                position: relative;
+                overflow: hidden;
             }
             @include breakpoint(phablet) {
-                width: 100% !important;
+                width: 100%;
                 position: relative;
                 margin-top: -130px;
             }
             @include breakpoint(tablet) {
-                width: 80% !important;
+                width: 80%;
                 height: 100%;
                 overflow: hidden;
                 
              }
             @include breakpoint(laptop) {
-                width: 90% !important;
-                overflow: hidden !important;
+                width: 90%;
+                overflow: hidden;
              }
             img {
                 position: absolute;
                 top: -150px;
                 
                 right: 0px;
-                @include breakpoint(mobileonly) {
-                    width: 500px;
-                    top: -70px;
-                    right: -30px;
-                }
-                @include breakpoint(phablet) {
-                    width: 520px !important;
-                    top: -80px !important; 
-                    right: 0px;
-                }
-
-                @include breakpoint(tablet) {
-                    width: 450px  !important;
-                    top: 0px !important;
-                    right: -50px;
-                }
-
-                
 
                 @include breakpoint(laptop) {
                     width: auto;
@@ -268,6 +269,24 @@
                     right: -90px;
                     
                 }
+                @include breakpoint(tablet) {
+                    width: 450px ;
+                    top: 0px ;
+                    right: -50px;
+                }
+
+                @include breakpoint(phablet) {
+                    width: 520px;
+                    top: -80px; 
+                    right: 0px;
+                }
+
+                @include breakpoint(mobileonly) {
+                    width: 450px;
+                    top: -50px;
+                    right: -30px;
+                }
+                
                 
 
             }
@@ -286,27 +305,12 @@
             box-shadow: 0px 5px 15px #F3F2F1;
             @include rowflex(center,center);
 
-            @include breakpoint(mobileonly) {
+            @include breakpoint(laptop) {
                 width: 90%;
-                height: 450px;
-                left: 20px;
-                padding: 0;
-                margin: 0 auto;
-                // overflow: hidden;
-                @include rowflex(center, center);
-            }
-
-            
-
-            @include breakpoint(phablet) {
-                width: 90% !important;
                 height: 200px;
-                left: 25px;
-                // margin: 0 auto;
-                // overflow: hidden;
-                @include rowflex(center, center);
+                left: 50px;
+                margin: 0 auto;
             }
-
             @include breakpoint(tablet) {
                 width: 90%;
                 height: 200px;
@@ -315,33 +319,42 @@
                 margin: 0 auto;
                 @include colflex(center,center);
             }
-
-            @include breakpoint(laptop) {
+            @include breakpoint(phablet) {
                 width: 90%;
                 height: 200px;
-                left: 50px;
+                left: 25px;
+                // margin: 0 auto;
+                // overflow: hidden;
+                @include rowflex(center, center);
+            }
+
+            @include breakpoint(mobileonly) {
+                width: 90%;
+                height: 350px;
+                left: 15px;
+                padding: 0;
                 margin: 0 auto;
+                // overflow: hidden;
+                @include rowflex(center, center);
             }
 
             .bottom-cotent {
                 width: 90%;
                 height: fit-content;
+
+                @include breakpoint(tablet) {
+                    width: 100%;
+                    height: 85%;
+                    @include rowflex(center, center);
+                }
+                @include breakpoint(phablet) {
+                    width: 90%;
+                    height: 85%;
+                    @include rowflex(center, center);
+                }
                 @include breakpoint(mobileonly) {
                     width: 90%;
                     height: 450px;
-                    @include rowflex(center, center);
-                }
-    
-                
-    
-                @include breakpoint(phablet) {
-                    width: 90% !important;
-                    height: 85%;
-                    @include rowflex(center, center);
-                }
-                @include breakpoint(tablet) {
-                    width: 100% !important;
-                    height: 85%;
                     @include rowflex(center, center);
                 }
             }
