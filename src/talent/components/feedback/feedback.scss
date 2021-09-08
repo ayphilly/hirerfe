@@ -7,14 +7,16 @@
     @include rowflex(center,center);
     background-color: $blue-100;
 
-    @include breakpoint(mobileonly) {
-        height: 40em !important;
+    
+    @include breakpoint(laptop) {
+        height: 40em;
     }
+    
     @include breakpoint(phablet) {
         height: 55em;
     }
-    @include breakpoint(laptop) {
-        height: 40em;
+    @include breakpoint(mobileonly) {
+        height: 35em;
     }
 
     .feedback-inner {
@@ -22,12 +24,15 @@
         height: 85%;
         @include colflex(center, space-evenly);
 
-        @include breakpoint(mobileonly) {
-            width: 95% !important;
-        }
+        
         @include breakpoint(tablet) {
             width: 100%;
             height: 85%;
+        }
+        @include breakpoint(mobileonly) {
+            width: 95%;
+            height: 90%;
+            @include colflex(center, space-between);
         }
         
 
@@ -37,7 +42,7 @@
             text-align: center;
             @include breakpoint(mobileonly) {
                 width: 80%;
-                height: fit-content;
+                height: 10%;
             }
             @include breakpoint(tablet) {
                 width: 50%;
@@ -78,6 +83,7 @@
             @include breakpoint(mobileonly) {
                 width: 100%;
                 // @include rowflex(center,space-between);
+                height: 80%;
                 position: relative;
             }
 
@@ -107,7 +113,7 @@
                     font-size: 10px;
                     width: 30px;
                     position: absolute;
-                    bottom: 25px;
+                    bottom: -20px;
                     right: 105px;
                     width: 50px;
                     height: 50px;
@@ -137,7 +143,7 @@
                     font-size: 10px;
                     width: 30px;
                     position: absolute;
-                    bottom: 25px;
+                    bottom: -20px;
                     right: 30px;
                     width: 50px;
                     height: 50px;
@@ -155,7 +161,7 @@
                 @include breakpoint(mobileonly) {
                     width: 100% !important;
                     height: fit-content;
-                    margin-bottom: 60px;
+                    margin-bottom: 0px;
                 }
                 @include breakpoint(tablet) {
                     width: 90%;

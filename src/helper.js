@@ -3,7 +3,7 @@ import gsap from "gsap";
 export const slideUp = () => {
   const tl = gsap.timeline();
   tl.to(".slide-up", {
-    transform: "translateY(0%)",
+    transform: "translateY(20%)",
     "--slideHeight": "0%",
     opacity: 1,
     duration: 0.7,

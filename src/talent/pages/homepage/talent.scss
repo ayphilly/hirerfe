@@ -1,15 +1,23 @@
 @import "../../../variables.scss";
 
 .talent-homepage {
+    
     text-align: center;
     position: relative;
     @include colflex(center,center);
-    @include breakpoint(tablet) {
+    
+    @include breakpoint(mobileonly) {
       width: 100%;
+      height: fit-content;
+      margin: 0;
     }
     @include breakpoint(phablet) {
       width: 100%;
     }
+    @include breakpoint(tablet) {
+      width: 100%;
+    }
+    
     @include breakpoint(laptop) {
       width: 100%;
       position: relative;
