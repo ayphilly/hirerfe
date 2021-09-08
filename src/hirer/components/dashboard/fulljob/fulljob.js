@@ -151,7 +151,7 @@ export const Fulljob = () => {
         });
     }
     var declineApplicant = (job_id, talent_id) => {
-        post(`/v1/employer/dashboard/accept`, {
+        post(`/v1/employer/dashboard/reject`, {
             job_id :job_id,
             talent_id: talent_id
         })

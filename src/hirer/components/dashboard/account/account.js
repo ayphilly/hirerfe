@@ -12,8 +12,8 @@ import Singleinputlocation from "../../../../generals/location/location"
 export const Account = () => {
     
     const empAvi = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-    const empAvatar = useSelector((state) => state.company.dashboard.data.company_data.avatar);
-    const userAccount = useSelector((state) => state.company.dashboard.data.company_data);
+    const empAvatar = useSelector((state) => state.company.dashboard);
+    const userAccount = useSelector((state) => state.company.dashboard);
 
     const dispatch = useDispatch();
     const [inputs, setInputs] = useState({
@@ -161,7 +161,7 @@ export const Account = () => {
                         <p>Choose a new avatar to be used across Hirer</p>
                     </div>
                     <div className="profile-picture-bottom">
-                        {empAvatar ? <img src={empAvatar} alt="user profile"/> :<img src={empAvi} alt="user profile"/>  }
+                        {empAvatar.data.company_data.avatar ? <img src={empAvatar.data.company_data.avatar} alt="user profile"/> :<img src={empAvi} alt="user profile"/>  }
                         {/* <img src={empAvi} alt="user profile"/>  */}
                         <input type="file" accept="image/*" name="image-upload" id="inputavi"  hidden onChange={imageHandler}/>
                         <label htmlFor="inputavi" className="image-upload" id="image-upload">Upload New Picture</label>
@@ -181,7 +181,7 @@ export const Account = () => {
                                     type="text"
                                     label ="Contact Name"
                                     name="name"
-                                    value={userAccount ? userAccount.name : ''}
+                                    value={userAccount.data.company_data ? userAccount.data.company_data.name : ''}
                                     disabled= {false}
                                     
                                 />
@@ -190,7 +190,7 @@ export const Account = () => {
                                     type="text"
                                     label ="email"
                                     name="email"
-                                    value={userAccount ? userAccount.email : ''}
+                                    value={userAccount.data.company_data ? userAccount.data.company_data.email : ''}
                                     disabled= {false}
                                 />
                                 
@@ -199,7 +199,7 @@ export const Account = () => {
                                     label ="Location"
                                     subtext="Enter State"
                                     name="location"
-                                    value={ userAccount.profile ? userAccount.profile.location : ''}
+                                    value={ userAccount.data.company_data? userAccount.data.company_data.profile.location : ''}
                                     handleUserLocation ={handleUserLocation }
                                     
 
@@ -209,7 +209,7 @@ export const Account = () => {
                                     type="text"
                                     label ="Company Name"
                                     name="companyname"
-                                    value={userAccount.profile ? userAccount.profile.company_name : ''}
+                                    value={userAccount.data.company_data ? userAccount.data.company_data.profile.company_name : ''}
                                     disabled= {true}
                                     
                                 />
@@ -217,7 +217,7 @@ export const Account = () => {
                                     type="text"
                                     label ="Contact Website"
                                     name="website"
-                                    value={userAccount ? userAccount.profile.website : ''}
+                                    value={userAccount.data.company_data ? userAccount.data.company_data.profile.website : ''}
                                     disabled= {false}
                                     
                                 />
