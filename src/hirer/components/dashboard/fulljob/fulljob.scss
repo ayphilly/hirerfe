@@ -29,7 +29,8 @@
     }
     .alert-cont {
         position: absolute;
-        top: 0;
+        top: 30px;
+        width: 50%;
     }
     .show-talent-profile {
         box-shadow: 0px 0px 15px #F5F5F5;
@@ -135,7 +136,8 @@
                     height: fit-content;
                     @include rowflex(flex-start, space-between);
                     @include breakpoint(mobileonly) {
-                        width: 80%;
+                        width: 90%;
+                        @include rowflex(flex-start, space-between);
                     }
                     @include breakpoint(phablet) {
                         width: 80%;
@@ -152,6 +154,7 @@
                         @include fontMedium(1em, 1em, #fff);
                         transition: all 0.3s ease;
                         @include breakpoint(mobileonly) {
+                            width: 100px;
                             @include fontMedium(.8em, 1em, #fff);
                         }
                         @include breakpoint(phablet) {
@@ -179,6 +182,13 @@
                             color: #fff;
                             border: 1px solid $blue-700;
 
+                        }
+                        @include breakpoint(mobileonly) {
+                            width: 70px;
+                            @include fontMedium(.8em, 1em, #fff);
+                        }
+                        @include breakpoint(phablet) {
+                            @include fontMedium(.8em, 1em, #fff);
                         }
                     }
                 }
@@ -392,6 +402,15 @@
                     background: #FFFFFF;
                     border-radius: 10px;
                     padding: 30px;
+                    overflow-x:auto;
+                    @include breakpoint(mobileonly) {
+                        width: 90%;
+                        overflow-x:auto;
+                    }
+                    @include breakpoint(phablet) {
+                        width: 90%;
+                        overflow-x:auto;
+                    }
                     &.styled-table {
                         border-collapse: collapse;
                         // margin: 25px 0;
@@ -399,6 +418,13 @@
                         // font-family: sans-serif;
                         min-width: 400px;
                         width: 100%;
+
+                        @include breakpoint(mobileonly) {
+                            min-width: 100%;
+                            width: 100%;
+                            overflow: scroll
+                        }
+
 
                         thead tr{
                             @include fontNormal(1em, 1em, $blue-901);
