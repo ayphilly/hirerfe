@@ -18,7 +18,8 @@
             height: 90%;
             width: 100%;
             position: relative;
-            @include colflex(flex-start,space-between);
+            // @include colflex(flex-start,space-between);
+            @include colflexx(flex-start);
         }
         @include breakpoint(phablet) {
             height: 95%;

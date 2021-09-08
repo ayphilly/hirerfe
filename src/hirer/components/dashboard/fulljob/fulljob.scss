@@ -86,11 +86,26 @@
                 height: 100%;
                 width: 87%;
                 @include colflexx(flex-start);
+
+                @include breakpoint(mobileonly) {
+                    width: 95%;
+                }
+                @include breakpoint(phablet) {
+                    width: 95%;
+                }
+
                 &.top {
                     width: 50%;
                     height: fit-content;
                     margin: 0;
                     @include colflexx(flex-start);
+
+                    @include breakpoint(mobileonly) {
+                        width: 90%;
+                    }
+                    @include breakpoint(phablet) {
+                        width: 90%;
+                    }
 
                     p:nth-child(1) {
                         // height: 0;
@@ -136,11 +151,11 @@
                     height: fit-content;
                     @include rowflex(flex-start, space-between);
                     @include breakpoint(mobileonly) {
-                        width: 90%;
+                        width: 100%;
                         @include rowflex(flex-start, space-between);
                     }
                     @include breakpoint(phablet) {
-                        width: 80%;
+                        width: 100%;
                     }
                     button:nth-child(1) {
                         
@@ -185,10 +200,10 @@
                         }
                         @include breakpoint(mobileonly) {
                             width: 70px;
-                            @include fontMedium(.8em, 1em, #fff);
+                            @include fontMedium(1em, 1em, $blue-700);
                         }
                         @include breakpoint(phablet) {
-                            @include fontMedium(.8em, 1em, #fff);
+                            @include fontMedium(1em, 1em, $blue-700);
                         }
                     }
                 }
