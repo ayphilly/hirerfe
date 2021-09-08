@@ -8,7 +8,7 @@ export const Addjob = () => {
             <div className="add-job-inner">
                 <p className="headertext"> Post Job </p>
                 <PostJob
-                    box = {false}
+                    box = {0}
                 >
 
                 </PostJob>

@@ -66,7 +66,7 @@ const PostJob = (props) => {
       type_id: parseInt(formData.jobType),
       salary: "" + formData.jobSalary,
       description: formData.jobDescription,
-      jobCalendly : formData.jobCalendly,
+      calendly_link : formData.jobCalendly,
       filters: {
         ...filters,
       },
