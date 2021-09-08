@@ -19,7 +19,7 @@
 }
 
 .plain-no {
-  background-color: #fff;
+  // background-color: #fff;
   width: 100%;
   position: relative;
   padding: 75px 50px;
@@ -47,7 +47,7 @@
   border-radius: $btn-radius;
   border-width: 1px;
   border-style: solid;
-  border-color: #4385c6;
+  border-color: $blue-400;
   background-color: $blue-100;
   display: inline-block;
   font-weight: 500;

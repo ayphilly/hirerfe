@@ -13,7 +13,7 @@ const JobReviewForm = ({ step, setStep, box }) => {
         maxWidth: "500px",
         margin: "auto",
       }}
-      className={ box == false ? "plain-no progress d-flex flex-column " :"plain-card progress d-flex flex-column "}
+      className={ box < 1 ? "plain-no progress d-flex flex-column " :"plain-card progress d-flex flex-column "}
     >
       <div className="f-24 fw-700">Step {step + 1} of 4 &bull; Job Details</div>
       <p className="mb-8">
