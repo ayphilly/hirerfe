@@ -6,6 +6,7 @@ import { Fulljob } from "./fulljob/fulljob";
 import { Applicantprofile } from "./applicantprofile/applicantprofile";
 import PostJob from "../../pages/PostJob";
 import { Account } from "./account/account";
+import { Addjob } from "./addjob/addjob";
 const steps = [
     {id: 'dashboard'},
     {id: 'jobposts'},
@@ -33,7 +34,7 @@ const Show = (props) => {
             case "home":
                 return <DashboardHome  {...props} ></DashboardHome>;
             case "postjob":
-                return <PostJob  {...props} ></PostJob>;
+                return <Addjob  {...props} ></Addjob>;
             case "myjobs":
                 return <Dashboardjobs {...props} ></Dashboardjobs>;
             case `myjob`:
