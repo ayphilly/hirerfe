@@ -7,11 +7,15 @@ export const Addjob = () => {
         <div className="add-job-container">
             <div className="add-job-inner">
                 <p className="headertext"> Post Job </p>
-                <PostJob
-                    box = {0}
-                >
+                <div className="add-job-box">
+                    <PostJob
+                        box = {0}
+                    >
 
-                </PostJob>
+                    </PostJob>
+
+                </div>
+                
             </div>
         </div>
     )

@@ -12,7 +12,8 @@
         width: 95%;
         height: fit-content;
         position: relative;
-        @include colflexx(flex-start);
+        // @include colflexx(flex-start);
+        @include colflex(flex-start, flex-start);
 
         @include breakpoint(mobileonly) {
             height: 90%;
@@ -29,6 +30,11 @@
         .headertext{
             opacity: .5;
             @include fontBold(2.25em, 1em, $blue-902);
+        }
+        .add-job-box {
+            width: fit-content;
+            height: fit-content;
+            @include rowflex(flex-start, flex-start)
         }
     }
 }
