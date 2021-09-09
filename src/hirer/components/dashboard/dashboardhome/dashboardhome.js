@@ -16,7 +16,7 @@ const DashboardHome= (props) => {
     const [data, setData] = useState({})
     const dispatch = useDispatch()
 
-    
+
     var viewJob = (title,id)=> {
         history.push(`/dashboard/hirer/myjob/?title=${title}&id=${id}`);
     }
@@ -39,15 +39,7 @@ const DashboardHome= (props) => {
         )
     }): 0;
 
-    var getEmpData = async () => {
-        try {
-            const {data} = await get(`/v1/employer/dashboard`);
-            dispatch(setDashboard(data));
-            return data;
-        } catch (err) {
-            console.log(err.message);
-        }
-      }
+    
 
     var getDashboardData = ()=> {
         get(`/v1/employer/dashboard`)
@@ -56,6 +48,7 @@ const DashboardHome= (props) => {
               if (response.status) {
   
                   setData(response.data)
+                  dispatch(setDashboard(response.data));
                   
               } else {
                 //  setError({
@@ -65,14 +58,12 @@ const DashboardHome= (props) => {
               }
               
           }, (error) => {
-                setData(error.response.data)
+                // setData(error.response.data)
               console.log("Something went wrong")
           });
 
     }
-    useEffect(()=> {
-        getEmpData();
-    }, [])
+    
     useEffect(()=> {
         getDashboardData();
     }, [])

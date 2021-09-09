@@ -3,7 +3,9 @@
 .jobapplication-container{
 
     width: 70%;
-    height: 85em;
+    // height: 85em;
+    height: fit-content;
+    padding: 50px;
     background: #FFFFFF;
     box-shadow: 0px 0px 15px #EBEBEB;
     border-radius: 15px;

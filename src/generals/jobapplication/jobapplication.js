@@ -133,12 +133,12 @@ export const Jobapplication = (props) => {
 
                 </div>
                 <form onSubmit={applyJob }>
-                    <div className="form-cv">
+                    {/* <div className="form-cv">
                         <p>CV</p>
-                        {/* <div className="cv-choose-file">
+                        <div className="cv-choose-file">
                             <button className="file">Choose File</button>
                             <p>No File Chosen Yet</p>
-                        </div> */}
+                        </div>
                         <Singleinputlabel
                             type="text"
                             placeholder ="Link to your CV"
@@ -147,8 +147,8 @@ export const Jobapplication = (props) => {
                             value={formState.cv}
                             onChange={(event) => handleUserInput(event)}
                         />
-                    </div>
-                    <div className="form-cover-letter">
+                    </div> */}
+                    {/* <div className="form-cover-letter">
                         <p>Cover Letter </p>
                         <Textarea
                             type="text"
@@ -170,7 +170,7 @@ export const Jobapplication = (props) => {
                             consent settings at any time by unsubscribing or as detailed in our terms.
                         </p>
 
-                    </div>
+                    </div> */}
                     
                 
                     <div className="form-experience">
