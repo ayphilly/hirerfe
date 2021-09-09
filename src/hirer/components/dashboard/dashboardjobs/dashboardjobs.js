@@ -162,7 +162,7 @@ export const Dashboardjobs = () => {
                                 <p>{draftJobs}</p>
                             </div>
                         </div>
-                        <div className={`postedjob-container ${active.post ? postJobs == 0 ? ' ' : ' sactive' : ' hide'} `}>
+                        <div className={`postedjob-container ${active.post ? postJobs < 1 ? ' ' : ' sactive' : ' hide'} `}>
                            
                             { postJobs == 0 ? 
                                 <Emptystate

@@ -124,7 +124,7 @@ export const Signin =()=> {
             response.data.role === "company" ? getEmpData() : getTalentData();
             setTimeout(()=> {
                 response.data.role === "company" ? history.push("/dashboard/hirer/home") :history.push("/dashboard/talent/home");
-            }, 5000)
+            }, 2000)
         })
         setFormstate(
             {

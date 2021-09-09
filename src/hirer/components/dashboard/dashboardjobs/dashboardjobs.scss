@@ -131,12 +131,12 @@
                 }
     
                 &.sactive {
-                    width: 75%;
+                    width: 85%;
                     height: fit-content;
                     display: grid;
-                    grid-template-columns:1fr 1fr 1fr 1fr 1fr;
-                    grid-template-rows: 180px 180px;
-                    column-gap: auto;
+                    grid-template-columns:1fr 1fr 1fr;
+                    grid-template-rows: 180px 180px 180px 180px;
+                    column-gap: 20px;
                     row-gap: 20px;
                     justify-items: start;
 
