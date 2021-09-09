@@ -66,7 +66,7 @@ function Hirerdashnav() {
           <img src={notification} className="notification" alt="notification" />
           <div className="dashboard-profile">
             {/* <img src={profile} alt="user profile" /> */}
-            {empAvatar.data.company_data.avatar ? <img src={empAvatar.data.company_data.avatar} alt="user profile"/> :<img src={empAvi} alt="user profile"/>  }
+            {empAvatar.data ? <img src={empAvatar.data.company_data.avatar} alt="user profile"/> :<img src={empAvi} alt="user profile"/>  }
             {/* <img src={empAvi} alt="user profile"/> */}
             <div className="dashboard-user">
               <p> Welcome</p>
