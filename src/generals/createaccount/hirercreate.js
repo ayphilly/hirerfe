@@ -74,6 +74,44 @@ const Hirercreate = (props) =>  {
         });
 
     }
+
+    const socialBook = (event) => {
+        event.preventDefault();
+      
+        axios.get('https://hirer-be.herokuapp.com/auth/login/company/facebook')
+        .then((response) => {
+            console.log(response.status);
+            if (response.status) {
+                console.log(response.data);
+                window.location.href = response.data.data;
+                props.setUpCreated(response.data)
+                props.showAlert();
+                setTimeout(()=> {
+                    props.clearAlert();
+                }, 3000)
+                
+
+            } else {
+                // props.setUpCreated(response)
+                // props.showAlert();
+                // setTimeout(()=> {
+                //     props.clearAlert();
+
+                // }, 5000)
+            }
+            
+        }, (error) => {
+            
+            console.log(error.response.data);
+            props.setUpCreated(error.response.data)
+            props.showAlert();
+            setTimeout(()=> {
+                props.clearAlert();
+
+            }, 3000)
+        });
+
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -152,6 +190,7 @@ const Hirercreate = (props) =>  {
                 <Socialoption
                  title="Sign Up"
                  glink ={socials}
+                 flink={socialBook}
                ></Socialoption>
                 
                 <form onSubmit={handleSubmit}>
