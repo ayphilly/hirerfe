@@ -166,6 +166,34 @@ export const Signin =()=> {
         });
 
     }
+    const socialBook = (event) => {
+        event.preventDefault();
+      
+        axios.get('https://hirer-be.herokuapp.com/auth/login/talent/facebook')
+        .then((response) => {
+            console.log(response.status);
+            if (response.status) {
+                console.log(response.data);
+                
+                setResponse(response.data)
+                window.location.href = response.data.data;
+
+            } else {
+                // props.setUpCreated(response)
+                // props.showAlert();
+                // setTimeout(()=> {
+                //     props.clearAlert();
+
+                // }, 5000)
+            }
+            
+        }, (error) => {
+            
+            console.log(error.response.data);
+            setResponse(error.response.data)
+        });
+
+    }
     return (
         <div className="signin-container">
             
@@ -182,6 +210,7 @@ export const Signin =()=> {
                     <Socialoption
                         title="Continue"
                         glink ={socials}
+                        flink={socialBook}
                     ></Socialoption>
                 </div>
                     
