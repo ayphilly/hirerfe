@@ -49,7 +49,7 @@ export const Home = () => {
                 <div className="hirer-home-inner left" >
                     <Sidebar {...props}></Sidebar>
                 </div>
-                <div className="hirer-home-inner right" >
+                <div className="hirer-home-inner load" >
                     <Loading></Loading>
                 </div>
             </div>

@@ -14,8 +14,7 @@ const DashboardHome= (props) => {
 
     const history = useHistory();
     const dashData = useSelector((state) => state.company.dashboard);
-    const [data, setData] = useState({})
-    const [load, setLoad] = useState(true)
+    
     const dispatch = useDispatch()
 
 
@@ -43,107 +42,91 @@ const DashboardHome= (props) => {
 
     
 
-    var getDashboardData = ()=> {
-        get(`/v1/employer/dashboard`)
-          .then((response) => {
+    // var getDashboardData = ()=> {
+    //     get(`/v1/employer/dashboard`)
+    //       .then((response) => {
   
-              if (response.status) {
+    //           if (response.status) {
   
-                  setData(response.data)
-                  dispatch(setDashboard(response.data));
-                  setLoad(false)
+    //               setData(response.data)
+    //               dispatch(setDashboard(response.data));
+    //               setLoad(false)
                   
-              } else {
+    //           } else {
                 
-              }
+    //           }
               
-          }, (error) => {
-                // setData(error.response.data)
-              console.log("Something went wrong")
-              setLoad(false)
-          });
+    //       }, (error) => {
+    //             // setData(error.response.data)
+    //           console.log("Something went wrong")
+    //           setLoad(false)
+    //       });
 
-    }
+    // }
     
-    useEffect(()=> {
-        getDashboardData();
-    }, [])
+    // useEffect(()=> {
+    //     getDashboardData();
+    // }, [])
 
-    if (load) {
-        return (
-            <div className="dashboard-home-container">
-                <div className="dashboard-home-inner">
-                    <div className="dashboard-home-inner top">
-                        <p className="headertext"> Dashboard </p>
-                        <Loading></Loading>
-                    </div>
-                </div>
-            </div>
-           
-
-        )
-    }else {
-        return (
-            <div className="dashboard-home-container">
-                <div className="dashboard-home-inner">
-                  <div className="dashboard-home-inner top">
-                      <p className="headertext">Dashboard</p>
-                      <div className="dashboard-home-inner top top-reports">
-                          <Singlebox
-                              image = {Box}
-                              link = 'myjobs'
-                              title = "My Jobs"
-                              subtitle = "View, edit and manage your job slots"
-                              number = {dashData.data ? dashData.data.total_jobs: 0 }
-                              subtext = "Total Jobs Posted"
-                              view = {viewBox}
-                          ></Singlebox>
-                          <Singlebox
-                              image = {Box}
-                              title = "Weekly job views"
-                              subtitle = "See how your posted jobs are fairing"
-                              number = "10"
-                              subtext = "Job clicks (Last Week)"
-                          ></Singlebox>
-                          <Singlebox
-                              image = {Box}
-                              title = "Community Reviews"
-                              subtitle = "View, respond to and manage your reviews"
-                              number = "15"
-                              subtext = "New Reviews (Last Month)"
-                          ></Singlebox>
-                          <Singlebox
-                              image = {Box}
-                              title = "Candidates"
-                              subtitle = "Check the total amount of talents received"
-                              number = {dashData.data ? dashData.data.applicant_count: 0 }
-                              subtext = "Total Number of Candidates"
-                          ></Singlebox>
-      
-                      </div>
-      
-                     
+    return (
+        <div className="dashboard-home-container">
+            <div className="dashboard-home-inner">
+              <div className="dashboard-home-inner top">
+                  <p className="headertext">Dashboard</p>
+                  <div className="dashboard-home-inner top top-reports">
+                      <Singlebox
+                          image = {Box}
+                          link = 'myjobs'
+                          title = "My Jobs"
+                          subtitle = "View, edit and manage your job slots"
+                          number = {dashData.data ? dashData.data.total_jobs: 0 }
+                          subtext = "Total Jobs Posted"
+                          view = {viewBox}
+                      ></Singlebox>
+                      <Singlebox
+                          image = {Box}
+                          title = "Weekly job views"
+                          subtitle = "See how your posted jobs are fairing"
+                          number = "10"
+                          subtext = "Job clicks (Last Week)"
+                      ></Singlebox>
+                      <Singlebox
+                          image = {Box}
+                          title = "Community Reviews"
+                          subtitle = "View, respond to and manage your reviews"
+                          number = "15"
+                          subtext = "New Reviews (Last Month)"
+                      ></Singlebox>
+                      <Singlebox
+                          image = {Box}
+                          title = "Candidates"
+                          subtitle = "Check the total amount of talents received"
+                          number = {dashData.data ? dashData.data.applicant_count: 0 }
+                          subtext = "Total Number of Candidates"
+                      ></Singlebox>
+  
                   </div>
-      
-                  <div className="dashboard-home-inner bottom">
-                      <div className="bottom-text">
-                          <p>Recently Posted Jobs</p>
-                          <p>You can view the list of your most recent job adverts.</p>
-                      </div>
-                      <div className="bottom-content">
-                          {postedJobs == 0 ?
-                              <Empty
-                                  text="You are yet to create a job Post"
-                              />
-                          : postedJobs}
-                      </div>
-      
+  
+                 
+              </div>
+  
+              <div className="dashboard-home-inner bottom">
+                  <div className="bottom-text">
+                      <p>Recently Posted Jobs</p>
+                      <p>You can view the list of your most recent job adverts.</p>
                   </div>
-                </div>
+                  <div className="bottom-content">
+                      {postedJobs == 0 ?
+                          <Empty
+                              text="You are yet to create a job Post"
+                          />
+                      : postedJobs}
+                  </div>
+  
+              </div>
             </div>
-          );
-
-    }
+        </div>
+      );
 
     
   };

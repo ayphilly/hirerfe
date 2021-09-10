@@ -38,7 +38,7 @@ const ExperienceFields = () => {
         <Field
           as="select"
           name="experience.location"
-          className="classic-input w-100"
+          className="classic-input-select w-100"
           type="text"
         >
           <option value="" selected disabled hidden>
@@ -58,7 +58,7 @@ const ExperienceFields = () => {
             <Field
               name="experience.from_month"
               as="select"
-              className="classic-input w-100"
+              className="classic-input-select w-100"
               type="text"
             >
               <option value="" selected disabled hidden>
@@ -77,7 +77,7 @@ const ExperienceFields = () => {
             <Field
               as="select"
               name="experience.from_year"
-              className="classic-input w-100"
+              className="classic-input-select w-100"
               type="text"
             >
               <option value="" selected disabled hidden>
@@ -99,7 +99,7 @@ const ExperienceFields = () => {
             <Field
               as="select"
               name="experience.to_month"
-              className="classic-input w-100"
+              className="classic-input-select w-100"
               type="text"
             >
               <option value="" selected disabled hidden>
@@ -118,7 +118,7 @@ const ExperienceFields = () => {
             <Field
               as="select"
               name="experience.to_year"
-              className="classic-input w-100"
+              className="classic-input-select w-100"
               type="text"
             >
               <option value="" selected disabled hidden>

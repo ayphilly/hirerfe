@@ -34,7 +34,7 @@ const JobDetailsForm = ({ step, jobTypes, nextStep, box }) => {
           Job Type
           <span style={{ color: "red" }}>*</span>
         </label>
-        <Field name="jobType" className="mb-8 classic-input w-100" as="select">
+        <Field name="jobType" className="mb-8 classic-input-select w-100" as="select">
           <option value="" hidden disabled></option>
           {jobTypes.map(({ id, type }, idx) => (
             <option key={idx} value={id}>

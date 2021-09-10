@@ -12,7 +12,7 @@ const EducationFields = () => {
         <Field
           as="select"
           name="education.level"
-          className="classic-input w-100"
+          className="classic-input-select w-100"
           type="text"
         >
           <option value="" selected disabled hidden>
@@ -29,7 +29,7 @@ const EducationFields = () => {
         <Field
           as="select"
           name="education.field"
-          className="classic-input w-100"
+          className="classic-input-select w-100"
           type="text"
         >
           <option value="" selected disabled hidden>
@@ -58,7 +58,7 @@ const EducationFields = () => {
         <Field
           as="select"
           name="education.location"
-          className="classic-input w-100"
+          className="classic-input-select w-100"
           type="text"
         >
           <option value="" selected disabled hidden>
@@ -78,7 +78,7 @@ const EducationFields = () => {
             <Field
               as="select"
               name="education.from_month"
-              className="classic-input w-100"
+              className="classic-input-select w-100"
               type="text"
             >
               <option value="" selected disabled hidden>
@@ -97,7 +97,7 @@ const EducationFields = () => {
             <Field
               as="select"
               name="education.from_year"
-              className="classic-input w-100"
+              className="classic-input-select w-100"
               type="text"
             >
               <option value="" selected disabled hidden>
@@ -119,7 +119,7 @@ const EducationFields = () => {
             <Field
               as="select"
               name="education.to_month"
-              className="classic-input w-100"
+              className="classic-input-select w-100"
               type="text"
             >
               <option value="" selected disabled hidden>
@@ -138,7 +138,7 @@ const EducationFields = () => {
             <Field
               as="select"
               name="education.to_year"
-              className="classic-input w-100"
+              className="classic-input-select w-100"
               type="text"
             >
               <option value="" selected disabled hidden>

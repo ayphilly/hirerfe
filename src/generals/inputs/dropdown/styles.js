@@ -85,6 +85,9 @@ export const StyledSelect = styled.select`
 
 export const StyledOption = styled.option`
   color: ${(props) => (props.selected ? "lightgrey" : "black")};
+  -moz-appearance: none; 
+	-webkit-appearance: none; 
+	appearance: none;
 `;
 
 export const StyledLabel = styled.label`
@@ -99,4 +102,5 @@ export const StyledButton = styled.input`
   justify-content: flex-end;
   border: solid 2px blue;
   padding: 0.5rem;
+  
 `;
