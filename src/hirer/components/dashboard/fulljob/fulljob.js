@@ -444,13 +444,13 @@ const Tablerow = (props) => {
             <td> <a onClick={() => props.view(props.data.id)}>View Profile</a></td>
             <td>{props.data ? applicationDate : ''}</td>
             <td>
-                <div className={`action-box green ${props.data.status ==="accepted" ? 'disable' : ''}`} onClick={()=> props.acceptApplicant(props.jobId, props.data.id)}>
+                <div className={`action-box green ${props.data.status == " accepted" ? ' disable' : ''}`} onClick={()=> props.acceptApplicant(props.jobId, props.data.id)}>
                     <FontAwesomeIcon icon={faUserCheck} className="star-icon" size="lg"/>
                 </div>
                 <div className="action-box yellow">
                     <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
                 </div>
-                <div className={`action-box red ${props.data.status ==="declined" ? 'disable' : ''}`}  onClick={()=> props.declineApplicant(props.jobId, props.data.id)}>
+                <div className={`action-box red ${props.data.status == " rejected" ? ' disable' : ''}`}  onClick={()=> props.declineApplicant(props.jobId, props.data.id)}>
                     <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
                 </div>
             </td>

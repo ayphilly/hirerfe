@@ -14,7 +14,7 @@ function Banner () {
 
     var redirect = (jobtitle,location)=> {
         if (jobtitle || location) {
-            history.push(`/talent/searchjob/?title=${jobtitle}&location=${location}`);
+            history.push(`/talent/searchjob/?jobtitle=${jobtitle}&location=${location}`);
         }
         else {
             alert("type in something")
