@@ -10,7 +10,7 @@ export const Socialoption = (props) => {
                     <FontAwesomeIcon icon={faGoogle} className="sc-icon"/> 
                     {props.title} with Google
                 </a>
-                <a href={() => false} className="facebook" onClick={(e)=> props.flink(e)}>
+                <a href="" className="facebook" onClick={(e)=> props.flink(e)}>
                     <FontAwesomeIcon icon={faFacebookF} className="sc-icon"/> 
                     {props.title} with Facebook
                 </a>
