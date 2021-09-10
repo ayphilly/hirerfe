@@ -69,10 +69,10 @@ function Dashboardnav() {
           </Link>
           <Link
             className="navbar-inner-nav-link"
-            to="/dashboard/talent/company"
+            to="/dashboard/talent/myjobs"
             style={{ textDecoration: "none" }}
           >
-            Company Review
+            My Jobs
           </Link>
         </div>
         <div className="navbar-inner right">
