@@ -31,7 +31,7 @@
         }
 
         &.left {
-            width:30% !important;
+            width:fit-content;
             height: 100%;
             @include rowflex(center, space-between);
             @include breakpoint(tablet) {
@@ -50,6 +50,7 @@
                 @include rowflex(center, space-around);
                 cursor: pointer;
                 transition: all 0.1s ease-in-out;
+                margin-left: 50px;
                 &.active {
                     color: $blue-700;
                     // border-bottom: 5px solid $blue-700;
@@ -102,7 +103,7 @@
         
 
         &.right {
-            width: 30% !important;
+            width: fit-content;
             @include rowflex(center, space-around);
 
             @include breakpoint(phablet) {
@@ -151,7 +152,9 @@
                 
                 
             }
-
+            .navbar-inner-nav-link:not(:first-child) {
+                margin-left: 50px;
+            }
             .navbar-inner-nav-link:nth-child(3) {
                 @include fontBold(1em, 1em, $blue-700);
                 text-decoration: none;
@@ -159,6 +162,7 @@
             .navbar-inner-nav-btn{
                 width: 150px;
                 height: 50px;
+                margin-left: 50px;
                 font-size: 1em;
                 font-family: 'Inter', sans-serif;
                 font-weight: 500;
