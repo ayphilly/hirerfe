@@ -14,6 +14,7 @@ import { myStates } from "../../constants";
 export const Jobapplication = (props) => {
 
     const [checked, setCheck] = useState(true);
+    const [disable, setDisable] = useState(false);
     const [optionValue, setOptionValue] = useState("");
     const [locid, setLocId] = useState(null)
     const [formState, setFormstate] = useState({
@@ -23,6 +24,7 @@ export const Jobapplication = (props) => {
         cv:'',
         id: ''
     })
+
 
     const [response, setResponse] = useState({
         status: null,
@@ -61,6 +63,7 @@ export const Jobapplication = (props) => {
               .then((response) => {
                   if (response.status) {
                       setResponse(response.data);
+                      setDisable(true);
                     //   setLoad(false)
                   } else {
                     //  setError({
@@ -209,7 +212,7 @@ export const Jobapplication = (props) => {
 
                     </div>
                     <div className="form-apply-button">
-                        <button type="submit" className="apply-button">Apply Now!</button>
+                        <button type="submit" className="apply-button" disabled={disable}>Apply Now!</button>
                         <p>By clicking "Apply Now", you agree to our <span>Terms & Conditions </span> and <span>Privacy Policy</span></p>
 
                     </div>

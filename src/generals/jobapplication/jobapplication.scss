@@ -124,9 +124,10 @@
                 }
             }
 
-            @include breakpoint (mobileonly) {
-                width: 100%;
+            @include breakpoint (laptop) {
+                width: 80%;
             }
+            
 
             @include breakpoint (phablet) {
                 width: 100%;
@@ -134,10 +135,11 @@
             @include breakpoint (tablet) {
                 width: 80%;
             }
-
-            @include breakpoint (laptop) {
-                width: 80%;
+            @include breakpoint (mobileonly) {
+                width: 100%;
             }
+
+            
 
         }
 
@@ -162,12 +164,8 @@
                 height: 150px;
                 @include colflex(flex-start, space-between);
 
-                @include breakpoint (mobileonly) {
-                    height: 35%;
-                    @include colflex(flex-start, space-around);
-                }
-
-                @include breakpoint (phablet) {
+                @include breakpoint (laptop) {
+                    height: 150px;
                     @include colflex(flex-start, space-around);
                 }
 
@@ -175,10 +173,16 @@
                     @include colflex(flex-start, space-around);
                 }
 
-                @include breakpoint (laptop) {
-                    height: 150px;
+                @include breakpoint (phablet) {
                     @include colflex(flex-start, space-around);
                 }
+                
+                @include breakpoint (mobileonly) {
+                    height: 35%;
+                    @include colflex(flex-start, space-around);
+                }
+
+                
                 p:nth-child(1) {
                     margin-bottom: 0;
                     @include fontBold(1.2em, 0em, $blue-902);
@@ -198,16 +202,10 @@
                     height: 10%;
                     @include rowflex(center, space-between);
 
-                    @include breakpoint (mobileonly) {
-                        width: 90%;
-                        // height: 10%;
+                    @include breakpoint (laptop) {
+                        width: fit-content;
+                        height: 10%;
                         @include rowflex(center, space-between);
-                    }
-
-                    @include breakpoint (phablet) {
-                        width: 85%;
-                        
-                        @include rowflex(center, space-around);
                     }
 
                     @include breakpoint (tablet) {
@@ -215,10 +213,16 @@
                         height: 10%;
                         @include rowflex(center, space-between);
                     }
+                    @include breakpoint (phablet) {
+                        width: 85%;
+                        
+                        @include rowflex(center, space-around);
+                    }
 
-                    @include breakpoint (laptop) {
-                        width: fit-content;
-                        height: 10%;
+                    
+                    @include breakpoint (mobileonly) {
+                        width: 90%;
+                        // height: 10%;
                         @include rowflex(center, space-between);
                     }
 
@@ -281,24 +285,22 @@
                 height: 400px;
                 @include colflex(flex-start,space-between);
 
+                @include breakpoint (laptop) {
+                    height: 400px;
+                    @include colflex(flex-start, space-around);
+                }
+                @include breakpoint (tablet) {
+                    @include colflex(flex-start, space-around);
+                }
+                @include breakpoint (phablet) {
+                    @include colflex(flex-start, space-around);
+                }
 
                 @include breakpoint (mobileonly) {
                     height: 50%;
                     @include colflex(flex-start, space-around);
                 }
-
-                @include breakpoint (phablet) {
-                    @include colflex(flex-start, space-around);
-                }
-
-                @include breakpoint (tablet) {
-                    @include colflex(flex-start, space-around);
-                }
-
-                @include breakpoint (laptop) {
-                    height: 400px;
-                    @include colflex(flex-start, space-around);
-                }
+                
 
                 p:nth-child(1) {
                     margin-bottom: 0;
@@ -308,13 +310,8 @@
                     width: 70%;
                     @include fontMedium(1em, 1.5em, $gray-500);
 
-                    @include breakpoint (mobileonly) {
-                        width:100%;
-                        @include fontLight(.8em, 1.5em, $gray-500);
-                    }
-
-                    @include breakpoint (phablet) {
-                        width: 100%;
+                    @include breakpoint (laptop) {
+                        width: 90%;
                         @include fontLight(.8em, 1.5em, $gray-500);
                     }
 
@@ -323,10 +320,17 @@
                         @include fontLight(.8em, 1.5em, $gray-500);
                     }
 
-                    @include breakpoint (laptop) {
-                        width: 90%;
+                    @include breakpoint (phablet) {
+                        width: 100%;
                         @include fontLight(.8em, 1.5em, $gray-500);
                     }
+
+                    @include breakpoint (mobileonly) {
+                        width:100%;
+                        @include fontLight(.8em, 1.5em, $gray-500);
+                    }
+
+                    
                 }
             }
             .form-experience {
@@ -407,6 +411,12 @@
                         color: $blue-700;
                         border: 1px solid $blue-700;
 
+                    }
+                    &:disabled {
+                        // border: 1px solid #999999;
+                        background-color: #cccccc;
+                        color: #666666;
+                        cursor: not-allowed;
                     }
 
                 }

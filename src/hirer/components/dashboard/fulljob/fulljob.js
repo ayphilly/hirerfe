@@ -450,7 +450,7 @@ const Tablerow = (props) => {
                 <div className="action-box yellow">
                     <FontAwesomeIcon icon={faQuestionCircle} className="star-icon" size="lg"/>
                 </div>
-                <div className={`action-box red ${props.data.status == " rejected" ? ' disable' : ''}`}  onClick={()=> props.declineApplicant(props.jobId, props.data.id)}>
+                <div className={`action-box red ${props.data.status == " declined" ? ' disable' : ''}`}  onClick={()=> props.declineApplicant(props.jobId, props.data.id)}>
                     <FontAwesomeIcon icon={faUserTimes} className="star-icon" size="lg"/>
                 </div>
             </td>

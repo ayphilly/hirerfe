@@ -142,9 +142,10 @@ export const Jobdescription = ()=> {
                         <div className="jobdescription-left-bottom">
                             <p>Posted 2days Ago</p>
                             <button className="report-job">
-                                <FontAwesomeIcon icon={faExclamationCircle} className="hamburger-icon" size="lg"/>
+                                <FontAwesomeIcon icon={faExclamationCircle} className="hamburger-icon" size="lg" disabled={true}/>
                                 Report Job
                             </button>
+                            <p>Coming Soon .... </p>
                         </div>
                         
                     </div>
